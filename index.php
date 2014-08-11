@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="./css/modal.css" type="text/css">
 <link rel="stylesheet" href="./css/layout.css" type="text/css">
 <link rel="stylesheet" href="./images/-1" type="text/css">
+<link rel="stylesheet" href="./css/dropdown/select2.css" type="text/css">
 <script src="./js/mootools-core.js" type="text/javascript"></script>
 <script src="./js/core.js" type="text/javascript"></script>
 <script src="./js/caption.js" type="text/javascript"></script>
@@ -35,10 +36,10 @@
 <script src="./js/jquery.masonry.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -61,10 +62,10 @@ window.addEvent('domready', function() {
     var JTooltips = new Tips($$('.hasTip'), {"maxTitleChars": 50,"fixed": false});
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -105,10 +106,10 @@ jQuery.noConflict();
 })(jQuery);
 
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -131,10 +132,10 @@ window.addEvent('domready', function() {
     var JTooltips = new Tips($$('.hasTip'), {"maxTitleChars": 50,"fixed": false});
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -193,10 +194,10 @@ jQuery.noConflict();
 })(jQuery);
 
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -219,10 +220,10 @@ window.addEvent('domready', function() {
     var JTooltips = new Tips($$('.hasTip'), {"maxTitleChars": 50,"fixed": false});
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -263,10 +264,10 @@ jQuery.noConflict();
 })(jQuery);
 
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -289,10 +290,10 @@ window.addEvent('domready', function() {
     var JTooltips = new Tips($$('.hasTip'), {"maxTitleChars": 50,"fixed": false});
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -456,10 +457,10 @@ jQuery.noConflict();
 })(jQuery);
 
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -482,10 +483,10 @@ window.addEvent('domready', function() {
     var JTooltips = new Tips($$('.hasTip'), {"maxTitleChars": 50,"fixed": false});
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -529,10 +530,10 @@ jQuery.noConflict();
 })(jQuery);
 
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -555,10 +556,10 @@ window.addEvent('domready', function() {
     var JTooltips = new Tips($$('.hasTip'), {"maxTitleChars": 50,"fixed": false});
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -617,10 +618,10 @@ jQuery.noConflict();
 })(jQuery);
 
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -643,10 +644,10 @@ window.addEvent('domready', function() {
     var JTooltips = new Tips($$('.hasTip'), {"maxTitleChars": 50,"fixed": false});
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -687,10 +688,10 @@ jQuery.noConflict();
 })(jQuery);
 
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -713,10 +714,10 @@ window.addEvent('domready', function() {
     var JTooltips = new Tips($$('.hasTip'), {"maxTitleChars": 50,"fixed": false});
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 window.addEvent('load', function() {
-    new JCaption('img.caption');
+    new JCaption('img class="img-responsive thumbnail".caption');
 });
 var acymailing = Array();
 acymailing['NAMECAPTION'] = 'Name';
@@ -894,6 +895,8 @@ jQuery.noConflict();
         var options53e8ca2278610 = layerOptions;
 
         var mySequence53e8ca2278610 = $("#53e8ca2278610").sequence(options53e8ca2278610).data("sequence");
+
+        $("#city_start").select2();
     });
 })(jQuery);
 
@@ -908,6 +911,7 @@ jQuery.noConflict();
 <link rel="stylesheet" href="./css/typography.css" type="text/css">
 <link rel="stylesheet" href="./css/style(3).css" type="text/css">
 <script src="./js/avatar-template.js" type="text/javascript"></script>
+<script src="./js/dropdown/select2.min.js" type="text/javascript"></script>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
 <script stype="text/javascript">
@@ -1025,6 +1029,14 @@ jQuery.noConflict();
     #avatar-main-content{
         width: 100%;
     }
+
+    .title {
+        text-align:center;
+    }
+
+    .wrapper {
+        text-align: center;
+    }
 </style>
 
 </head>
@@ -1033,7 +1045,20 @@ jQuery.noConflict();
 <div id="avatar-full-5-block">
     <div class="avatar-wrapper block-default-width">
         <div id="111" class="avatar-module st-recent-home-page avatar-scroll-disappear">
-            <h3 class="st-module-heading"><span><span>Recent Work</span></span></h3>
+            <h3 class="st-module-heading"><span><span>Chọn Mặt Hàng Kinh Doanh</span></span></h3>
+
+            <div style="width:50%;margin:0 auto;">
+                <select multiple="multiple" id="city_start" style="width:100%">
+                    <option value="parking">Bãi Giữ Xe</option>
+                    <option value="hospital">Bệnh Viện</option>
+                    <option value="petrol_station">Cây Xăng</option>
+                    <option value="airline_agency">Đại Lý Máy Bay</option>
+                    <option value="telcom">Hãng Viễn Thông</option>
+                    <option value="bank">Ngân Hàng</option>
+                    <option value="taxi">Taxi</option>
+                    <option value="va_xe">Vá Xe</option>
+                </select>
+            </div>
             <div class="st-module-content">
                 <div class="st-news-horizonal">
                     <div class="row-fluid">
@@ -1042,68 +1067,64 @@ jQuery.noConflict();
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work4.png" title="Illustrator, Photoshop 3">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/taxi.jpg" title="Illustrator, Photoshop 3">
                                                 <div class="media">
-                                                    <img src="./images/recent_work4.png" alt="Illustrator, Photoshop 3">
+                                                    <img class="img-responsive thumbnail" src="./images/taxi.jpg" alt="Illustrator, Photoshop 3">
                                                 </div>
                                             </a>
                                         </div>
-                                        <h3 class="title">
-                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=44&Itemid=105">
-                                                Illustrator, Photoshop 3</a>
-                                        </h3>
-                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        <div class="wrapper">
+                                            <button type="button" class="btn btn-primary">Taxi</button>
+                                        </div>
+                                        <div class="content"><p class="tag"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work2.png" title="Lorem ipsum 4">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/petrol_station.jpg" title="Lorem ipsum 4">
                                                 <div class="media">
-                                                    <img src="./images/recent_work2.png" alt="Lorem ipsum 4">
+                                                    <img class="img-responsive thumbnail" src="./images/petrol_station.jpg" alt="Lorem ipsum 4">
                                                 </div>
                                             </a>
                                         </div>
-                                        <h3 class="title">
-                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=43&Itemid=105">
-                                                Lorem ipsum 4</a>
-                                        </h3>
-                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        <div class="wrapper">
+                                            <button type="button" class="btn btn-primary">Cây Xăng</button>
+                                        </div>
+                                        <div class="content"><p class="tag"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work1.png" title="Lorem ipsum 3">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/parking.jpg" title="Lorem ipsum 3">
                                                 <div class="media">
-                                                    <img src="./images/recent_work1.png" alt="Lorem ipsum 3">
+                                                    <img class="img-responsive thumbnail" src="./images/parking.jpg" alt="Lorem ipsum 3">
                                                 </div>
                                             </a>
                                         </div>
-                                        <h3 class="title">
-                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=42&Itemid=105">
-                                                Lorem ipsum 3</a>
-                                        </h3>
-                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        <div class="wrapper">
+                                            <button type="button" class="btn btn-primary">Bãi Giữ Xe</button>
+                                        </div>
+                                        <div class="content"><p class="tag"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work4.png" title="Illustrator, Photoshop 2">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/hospital.jpg" title="Illustrator, Photoshop 2">
                                                 <div class="media">
-                                                    <img src="./images/recent_work4.png" alt="Illustrator, Photoshop 2">
+                                                    <img class="img-responsive thumbnail" src="./images/hospital.jpg" alt="Illustrator, Photoshop 2">
                                                 </div>
                                             </a>
                                         </div>
-                                        <h3 class="title">
-                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=41&Itemid=105">
-                                                Illustrator, Photoshop 2</a>
-                                        </h3>
-                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        <div class="wrapper">
+                                            <button type="button" class="btn btn-primary">Bệnh Viện</button>
+                                        </div>
+                                        <div class="content"><p class="tag"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -1112,69 +1133,65 @@ jQuery.noConflict();
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work2.png" title="Illustrator, Photoshop">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/va_xe.jpg" title="Illustrator, Photoshop">
                                                 <div class="media">
-                                                    <img src="./images/recent_work2.png" alt="Illustrator, Photoshop">
+                                                    <img class="img-responsive thumbnail" src="./images/va_xe.jpg" alt="Illustrator, Photoshop">
                                                 </div>
                                             </a>
                                         </div>
-                                        <h3 class="title">
-                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=40&Itemid=105">
-                                                Illustrator, Photoshop</a>
-                                        </h3>
-                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        <div class="wrapper">
+                                            <button type="button" class="btn btn-primary">Vá Xe</button>
+                                        </div>
+                                        <div class="content"><p class="tag"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work3.png" title="Lorem ipsum 2">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/telcom.jpg" title="Lorem ipsum 2">
                                                 <div class="media">
-                                                    <img src="./images/recent_work3.png" alt="Lorem ipsum 2">
+                                                    <img class="img-responsive thumbnail" src="./images/telcom.jpg" alt="Lorem ipsum 2">
                                                 </div>
                                             </a>
                                         </div>
-                                        <h3 class="title">
-                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=39&Itemid=105">
-                                                Lorem ipsum 2</a>
-                                        </h3>
-                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        <div class="wrapper">
+                                            <button type="button" class="btn btn-primary">Viễn Thông</button>
+                                        </div>
+                                        <div class="content"><p class="tag"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work4.png" title="Lorem ipsum">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/bank.jpg" title="Lorem ipsum">
                                                 <div class="media">
-                                                    <img src="./images/recent_work4.png" alt="Lorem ipsum">
+                                                    <img class="img-responsive thumbnail" src="./images/bank.jpg" alt="Lorem ipsum">
                                                 </div>
                                             </a>
                                         </div>
-                                        <h3 class="title">
-                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=38&Itemid=105">
-                                                Lorem ipsum</a>
-                                        </h3>
-                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        <div class="wrapper">
+                                            <button type="button" class="btn btn-primary">Ngân Hàng</button>
+                                        </div>
+                                        <div class="content"><p class="tag"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work1.png" title="Recent Work Home 2">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/airline_agency.jpg" title="Recent Work Home 2">
                                                 <div class="media">
-                                                    <img src="./images/recent_work1.png" alt="Recent Work Home 2">
+                                                    <img class="img-responsive thumbnail" src="./images/airline_agency.jpg" alt="Recent Work Home 2">
                                                 </div>
                                             </a>
                                         </div>
-                                        <h3 class="title">
-                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=37&Itemid=105">
-                                                Recent Work Home 2</a>
-                                        </h3>
+                                        <div class="wrapper">
+                                            <button type="button" class="btn btn-primary">Đại Lý Vé Máy Bay</button>
+                                        </div>
                                         <div class="content"><div class="st-recent-work-home-2">
-                                                <p class="tag">Illustrator, Photoshop,Video</p>
+                                                <p class="tag"></p>
                                             </div>
                                         </div>
                                     </div>
