@@ -97,9 +97,6 @@ jQuery.noConflict();
             layerOptions.prevButton = "#53e8c67d2d27d .sequence-prev";
         }
 
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
-
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c67d2d27d .sequence-pagination" }
         var options53e8c67d2d27d = layerOptions;
 
@@ -170,9 +167,6 @@ jQuery.noConflict();
             layerOptions.prevButton = "#53e8c67d2d27d .sequence-prev";
         }
 
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
-
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c67d2d27d .sequence-pagination" }
         var options53e8c67d2d27d = layerOptions;
 
@@ -190,9 +184,6 @@ jQuery.noConflict();
             layerOptions.nextButton = "#53e8c90c465c6 .sequence-next";
             layerOptions.prevButton = "#53e8c90c465c6 .sequence-prev";
         }
-
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
 
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c90c465c6 .sequence-pagination" }
         var options53e8c90c465c6 = layerOptions;
@@ -264,9 +255,6 @@ jQuery.noConflict();
             layerOptions.prevButton = "#53e8c67d2d27d .sequence-prev";
         }
 
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
-
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c67d2d27d .sequence-pagination" }
         var options53e8c67d2d27d = layerOptions;
 
@@ -337,9 +325,6 @@ jQuery.noConflict();
             layerOptions.prevButton = "#53e8c67d2d27d .sequence-prev";
         }
 
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
-
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c67d2d27d .sequence-pagination" }
         var options53e8c67d2d27d = layerOptions;
 
@@ -357,9 +342,6 @@ jQuery.noConflict();
             layerOptions.nextButton = "#53e8c90c465c6 .sequence-next";
             layerOptions.prevButton = "#53e8c90c465c6 .sequence-prev";
         }
-
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
 
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c90c465c6 .sequence-pagination" }
         var options53e8c90c465c6 = layerOptions;
@@ -609,9 +591,6 @@ jQuery.noConflict();
             layerOptions.prevButton = "#53e8c67d2d27d .sequence-prev";
         }
 
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
-
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c67d2d27d .sequence-pagination" }
         var options53e8c67d2d27d = layerOptions;
 
@@ -629,9 +608,6 @@ jQuery.noConflict();
             layerOptions.nextButton = "#53e8c90c465c6 .sequence-next";
             layerOptions.prevButton = "#53e8c90c465c6 .sequence-prev";
         }
-
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
 
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c90c465c6 .sequence-pagination" }
         var options53e8c90c465c6 = layerOptions;
@@ -703,9 +679,6 @@ jQuery.noConflict();
             layerOptions.prevButton = "#53e8c67d2d27d .sequence-prev";
         }
 
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
-
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c67d2d27d .sequence-pagination" }
         var options53e8c67d2d27d = layerOptions;
 
@@ -776,9 +749,6 @@ jQuery.noConflict();
             layerOptions.prevButton = "#53e8c67d2d27d .sequence-prev";
         }
 
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
-
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c67d2d27d .sequence-pagination" }
         var options53e8c67d2d27d = layerOptions;
 
@@ -796,9 +766,6 @@ jQuery.noConflict();
             layerOptions.nextButton = "#53e8c90c465c6 .sequence-next";
             layerOptions.prevButton = "#53e8c90c465c6 .sequence-prev";
         }
-
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
 
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8c90c465c6 .sequence-pagination" }
         var options53e8c90c465c6 = layerOptions;
@@ -923,9 +890,6 @@ jQuery.noConflict();
             layerOptions.prevButton = "#53e8ca2278610 .sequence-prev";
         }
 
-        //layerOptions.preventDelayWhenReversingAnimations = true;
-        //layerOptions.transitionThreshold = 3000;
-
         if (layerOptions.pagination) { layerOptions.pagination = "#53e8ca2278610 .sequence-pagination" }
         var options53e8ca2278610 = layerOptions;
 
@@ -992,8 +956,11 @@ jQuery.noConflict();
     })(jQuery)
 </script>
 <style type="text/css">
-    body { background-image: url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/backgrounds/);}
-</style>		<style type="text/css">
+    body {
+        background-image: url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/backgrounds/)
+    ;}
+</style>
+<style type="text/css">
     .avatar-wrapper{
         width: 960px;
         margin: auto;
@@ -1064,271 +1031,187 @@ jQuery.noConflict();
 <body id="avatar-template" class="avatar-responsive css3-effect  st-page-home" style="opacity: 1;">
 
 <div id="avatar-full-5-block">
-<div class="avatar-wrapper block-default-width">
-<div id="111" class="avatar-module st-recent-home-page avatar-scroll-disappear">
-<h3 class="st-module-heading"><span><span>Recent Work</span></span></h3>
-<div class="st-module-content">
-
-
-
-
-
-
-
-
-<div class="st-news-horizonal">
-<div class="row-fluid">
-
-<div class="contents">
-<div class="row-fluid items">					<div class="span3">
-        <div class="inner clearfix">
-            <div class="image">
-
-                <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work4.png" title="Illustrator, Photoshop 3">
-                    <div class="media">
-                        <img src="./images/recent_work4.png" alt="Illustrator, Photoshop 3">
-                    </div>
-                </a>
-
-
-            </div>
-
-            <h3 class="title">
-                <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=44&Itemid=105">
-                    Illustrator, Photoshop 3</a>
-            </h3>
-
-
-
-            <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
-            </div>
-
-        </div>
-    </div>
-    <div class="span3">
-        <div class="inner clearfix">
-            <div class="image">
-
-                <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work2.png" title="Lorem ipsum 4">
-                    <div class="media">
-                        <img src="./images/recent_work2.png" alt="Lorem ipsum 4">
-                    </div>
-                </a>
-
-
-            </div>
-
-            <h3 class="title">
-                <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=43&Itemid=105">
-                    Lorem ipsum 4</a>
-            </h3>
-
-
-
-            <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
-            </div>
-
-        </div>
-    </div>
-    <div class="span3">
-        <div class="inner clearfix">
-            <div class="image">
-
-                <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work1.png" title="Lorem ipsum 3">
-                    <div class="media">
-                        <img src="./images/recent_work1.png" alt="Lorem ipsum 3">
-                    </div>
-                </a>
-
-
-            </div>
-
-            <h3 class="title">
-                <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=42&Itemid=105">
-                    Lorem ipsum 3</a>
-            </h3>
-
-
-
-            <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
-            </div>
-
-        </div>
-    </div>
-    <div class="span3">
-        <div class="inner clearfix">
-            <div class="image">
-
-                <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work4.png" title="Illustrator, Photoshop 2">
-                    <div class="media">
-                        <img src="./images/recent_work4.png" alt="Illustrator, Photoshop 2">
-                    </div>
-                </a>
-
-
-            </div>
-
-            <h3 class="title">
-                <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=41&Itemid=105">
-                    Illustrator, Photoshop 2</a>
-            </h3>
-
-
-
-            <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
-            </div>
-
-        </div>
-    </div>
-</div>									<div class="row-fluid items">					<div class="span3">
-        <div class="inner clearfix">
-            <div class="image">
-
-                <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work2.png" title="Illustrator, Photoshop">
-                    <div class="media">
-                        <img src="./images/recent_work2.png" alt="Illustrator, Photoshop">
-                    </div>
-                </a>
-
-
-            </div>
-
-            <h3 class="title">
-                <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=40&Itemid=105">
-                    Illustrator, Photoshop</a>
-            </h3>
-
-
-
-            <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
-            </div>
-
-        </div>
-    </div>
-    <div class="span3">
-        <div class="inner clearfix">
-            <div class="image">
-
-                <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work3.png" title="Lorem ipsum 2">
-                    <div class="media">
-                        <img src="./images/recent_work3.png" alt="Lorem ipsum 2">
-                    </div>
-                </a>
-
-
-            </div>
-
-            <h3 class="title">
-                <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=39&Itemid=105">
-                    Lorem ipsum 2</a>
-            </h3>
-
-
-
-            <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
-            </div>
-
-        </div>
-    </div>
-    <div class="span3">
-        <div class="inner clearfix">
-            <div class="image">
-
-                <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work4.png" title="Lorem ipsum">
-                    <div class="media">
-                        <img src="./images/recent_work4.png" alt="Lorem ipsum">
-                    </div>
-                </a>
-
-
-            </div>
-
-            <h3 class="title">
-                <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=38&Itemid=105">
-                    Lorem ipsum</a>
-            </h3>
-
-
-
-            <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
-            </div>
-
-        </div>
-    </div>
-    <div class="span3">
-        <div class="inner clearfix">
-            <div class="image">
-
-                <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work1.png" title="Recent Work Home 2">
-                    <div class="media">
-                        <img src="./images/recent_work1.png" alt="Recent Work Home 2">
-                    </div>
-                </a>
-
-
-            </div>
-
-            <h3 class="title">
-                <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=37&Itemid=105">
-                    Recent Work Home 2</a>
-            </h3>
-
-
-
-            <div class="content"><div class="st-recent-work-home-2">
-                    <p class="tag">Illustrator, Photoshop,Video</p>
-                </div></div>
-
-        </div>
-    </div>
-</div>							</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-
-<div id="avatar-body-middle-block" class=" ">
     <div class="avatar-wrapper block-default-width">
-
-        <div id="avatar-content" style="width: 99%;">
-
-            <div id="avatar-main-content">
-                <div id="avatar-main-content-inner">
-
-
-
-
-
-
-                    <div id="avatar-pos-main-body">
-                        <div class="blog-featuredst-page-home">
-                            <div class="page-header">
-                                <h1>
-                                    Home	</h1>
+        <div id="111" class="avatar-module st-recent-home-page avatar-scroll-disappear">
+            <h3 class="st-module-heading"><span><span>Recent Work</span></span></h3>
+            <div class="st-module-content">
+                <div class="st-news-horizonal">
+                    <div class="row-fluid">
+                        <div class="contents">
+                            <div class="row-fluid items">
+                                <div class="span3">
+                                    <div class="inner clearfix">
+                                        <div class="image">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work4.png" title="Illustrator, Photoshop 3">
+                                                <div class="media">
+                                                    <img src="./images/recent_work4.png" alt="Illustrator, Photoshop 3">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <h3 class="title">
+                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=44&Itemid=105">
+                                                Illustrator, Photoshop 3</a>
+                                        </h3>
+                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="inner clearfix">
+                                        <div class="image">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work2.png" title="Lorem ipsum 4">
+                                                <div class="media">
+                                                    <img src="./images/recent_work2.png" alt="Lorem ipsum 4">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <h3 class="title">
+                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=43&Itemid=105">
+                                                Lorem ipsum 4</a>
+                                        </h3>
+                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="inner clearfix">
+                                        <div class="image">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work1.png" title="Lorem ipsum 3">
+                                                <div class="media">
+                                                    <img src="./images/recent_work1.png" alt="Lorem ipsum 3">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <h3 class="title">
+                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=42&Itemid=105">
+                                                Lorem ipsum 3</a>
+                                        </h3>
+                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="inner clearfix">
+                                        <div class="image">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work4.png" title="Illustrator, Photoshop 2">
+                                                <div class="media">
+                                                    <img src="./images/recent_work4.png" alt="Illustrator, Photoshop 2">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <h3 class="title">
+                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=41&Itemid=105">
+                                                Illustrator, Photoshop 2</a>
+                                        </h3>
+                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-
-
-
+                            <div class="row-fluid items">
+                                <div class="span3">
+                                    <div class="inner clearfix">
+                                        <div class="image">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work2.png" title="Illustrator, Photoshop">
+                                                <div class="media">
+                                                    <img src="./images/recent_work2.png" alt="Illustrator, Photoshop">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <h3 class="title">
+                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=40&Itemid=105">
+                                                Illustrator, Photoshop</a>
+                                        </h3>
+                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="inner clearfix">
+                                        <div class="image">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work3.png" title="Lorem ipsum 2">
+                                                <div class="media">
+                                                    <img src="./images/recent_work3.png" alt="Lorem ipsum 2">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <h3 class="title">
+                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=39&Itemid=105">
+                                                Lorem ipsum 2</a>
+                                        </h3>
+                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="inner clearfix">
+                                        <div class="image">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work4.png" title="Lorem ipsum">
+                                                <div class="media">
+                                                    <img src="./images/recent_work4.png" alt="Lorem ipsum">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <h3 class="title">
+                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=38&Itemid=105">
+                                                Lorem ipsum</a>
+                                        </h3>
+                                        <div class="content"><p class="tag">Illustrator, Photoshop, Graphic</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="inner clearfix">
+                                        <div class="image">
+                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/recent_work1.png" title="Recent Work Home 2">
+                                                <div class="media">
+                                                    <img src="./images/recent_work1.png" alt="Recent Work Home 2">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <h3 class="title">
+                                            <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=37&Itemid=105">
+                                                Recent Work Home 2</a>
+                                        </h3>
+                                        <div class="content"><div class="st-recent-work-home-2">
+                                                <p class="tag">Illustrator, Photoshop,Video</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
-
-
-
-
-
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div id="avatar-body-middle-block" class=" ">
+        <div class="avatar-wrapper block-default-width">
+            <div id="avatar-content" style="width: 99%;">
+                <div id="avatar-main-content">
+                    <div id="avatar-main-content-inner">
+                        <div id="avatar-pos-main-body">
+                            <div class="blog-featuredst-page-home">
+                                <div class="page-header">
+                                    <h1>
+                                        Home
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearbreak"></div>
+            </div>
             <div class="clearbreak"></div>
         </div>
-        <div class="clearbreak"></div>
     </div>
 </div>
-
+<div id="sbox-overlay" aria-hidden="true" tabindex="-1" style="z-index: 65555; opacity: 0;"></div>
+<div id="sbox-window" role="dialog" aria-hidden="true" class="shadow" style="z-index: 65557;">
+    <div id="sbox-content" style="opacity: 0;"></div>
+    <a id="sbox-btn-close" href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#" role="button" aria-controls="sbox-window"></a>
 </div>
-<div id="sbox-overlay" aria-hidden="true" tabindex="-1" style="z-index: 65555; opacity: 0;"></div><div id="sbox-window" role="dialog" aria-hidden="true" class="shadow" style="z-index: 65557;"><div id="sbox-content" style="opacity: 0;"></div><a id="sbox-btn-close" href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#" role="button" aria-controls="sbox-window"></a></div></body></html>
+</body>
+</html>
