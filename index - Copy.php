@@ -1062,7 +1062,209 @@ jQuery.noConflict();
 
 </head>
 <body id="avatar-template" class="avatar-responsive css3-effect  st-page-home" style="opacity: 1;">
+<a name="top" id="top"></a>
+<div class="clearfix">
+<a id="avatar-go-to-top" href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#top" style="display: block;">
+    <span>Top</span>
+</a>
 
+
+
+
+
+
+
+<div id="avatar-header-inside-block">
+    <div class="avatar-wrapper block-default-width">
+        <div id="avatar-pos-top-left">
+            <div id="87" class="avatar-module avatar-scroll-appear">
+                <div class="st-module-content">
+
+
+                    <div class="custom">
+                        <div id="st-logo">
+                            <h1><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php">Venus</a></h1>
+                        </div></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="avatar-pos-top-right">
+            <div id="88" class="avatar-module avatar-scroll-appear">
+                <div class="st-module-content">
+
+
+                    <div class="custom">
+                        <div id="st-call-us">
+                            <p><span>Call Us Free:</span> (000) 112-6789</p>
+                        </div></div>
+                </div>
+            </div>
+            <div id="89" class="avatar-module avatar-scroll-appear">
+                <div class="st-module-content">
+                    <div class="search">
+                        <form action="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php" method="post" class="form-inline">
+                            <label for="mod-search-searchword" class="element-invisible">Search...</label> <input name="searchword" id="mod-search-searchword" maxlength="20" class="inputbox search-query" type="text" size="20" value="Search..." onblur="if (this.value==&#39;&#39;) this.value=&#39;Search...&#39;;" onfocus="if (this.value==&#39;Search...&#39;) this.value=&#39;&#39;;">    	<input type="hidden" name="task" value="search">
+                            <input type="hidden" name="option" value="com_search">
+                            <input type="hidden" name="Itemid" value="101">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearbreak"></div>
+    </div>
+</div>
+
+<div id="avatar-body-top-block">
+    <div class="avatar-wrapper block-default-width">
+        <div id="avatar-promo-top">
+            <div id="avatar-pos-promo-top-left">
+                <div id="1" class="avatar-module avatar-scroll-appear">
+                    <div class="st-module-content">
+                        <div class="avatar-nav-responsive clearfix">
+                            <span class="toggle">Menu</span>
+                            <ul class="nav st-mega-menu menu avatar-main-menu clearfix">
+                                <li class="item-101 current active deeper parent"><span class="pull">&nbsp;</span><a href="feedback.htm">Home</a><div class="st-mega-menu-row  " style="  "><div class="row-fluid clearfix"><div class="st-mega-menu-col  " style=""><ul><li class="item-107"><div class="title"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php/home/home-ver-2">Home ver 2</a></div></li></ul></div></div></div></li><li class="item-102 divider deeper parent"><span class="pull">&nbsp;</span><span class="separator">Pages</span>
+                                    <div class="st-mega-menu-row  " style="  "><div class="row-fluid clearfix"><div class="st-mega-menu-col  " style=""><ul><li class="item-109"><div class="title"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php/pages/about-us">About Us</a></div></li><li class="item-110"><div class="title"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php/pages/contact">Contact</a></div></li><li class="item-137"><div class="title"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php/pages/404-menu">404 Menu</a></div></li></ul></div></div></div></li><li class="item-104 deeper parent"><span class="pull">&nbsp;</span><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php/portfolio">Portfolio</a><div class="st-mega-menu-row  " style="  "><div class="row-fluid clearfix"><div class="st-mega-menu-col  " style=""><ul><li class="item-111"><div class="title"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php/portfolio/portfolio-ver-2">Portfolio 2</a></div></li></ul></div></div></div></li><li class="item-105"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php/blog">Blog</a></li><li class="item-138"><a href="http://beautiful-templates.com/evo/st-venus-joomla-blog-templates/">Download</a></li></ul>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="avatar-pos-promo-top-right">
+                <div id="90" class="avatar-module avatar-scroll-appear">
+                    <div class="st-module-content">
+
+
+                        <div class="custom">
+                            <ul id="st-connect">
+                                <li id="connect-facebook"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                                <li id="connect-twitter"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                                <li id="connect-rss"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                                <li id="connect-google"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                                <li id="connect-vimeo"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            </ul></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="clearbreak"></div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<div id="avatar-full-2-block">
+    <div class="avatar-wrapper block-max-width-100">
+        <div id="91" class="avatar-module st-slide-home-1 avatar-scroll-appear">
+            <div class="st-module-content">
+                <div class="st-layer-slider  layer_layout_slide layer-effect-breaking_news" style="width: 100%; height: 457px;" id="53e8ca2278610">
+                    <div class="sequence-prev"></div>
+                    <div class="sequence-next"></div>
+                    <ul class="sequence-canvas">
+                        <li class="animate-in" style="z-index: 2;">
+                            <div class="column" style="width: 100%; left: 0%;">
+                                <div class="column-inner">
+                                    <div class="content"><div class="st-slider-1 st-slide1-frame-2">
+                                            <div class="inner">
+                                                <div class="content">
+                                                    <h3 class="title">Responsive Design &amp; Retina Ready</h3>
+                                                    <p class="drescription">Ready for small, medium and double pixel screens!</p>
+                                                </div>
+                                                <div class="image"><img src="./images/slide2_article.png" alt="slide 2"></div>
+                                            </div>
+                                        </div></div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="column" style="width: 100%; left: 0%;">
+                                <div class="column-inner">
+                                    <div class="content"><div class="st-slider-1 st-slide1-frame-1">
+                                            <div class="inner">
+                                                <div class="image"><img src="./images/slide1_article.png" alt="frame 1"></div>
+                                                <div class="content">
+                                                    <h3 class="title">Everything you need to<br> Build Something Exceptional</h3>
+                                                    <p class="drescription">Etiam imperdiet, sem sed lacinia vehicula, orci nunc vehicula turpis, eu congue erat nunc ut diam. Pellentesque ultricies urna sit amet diam egestas, vel porttitor libero congue. Duis ac ipsum fringilla tellus consequat tincidunt et at nunc.</p>
+                                                    <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">Sell All Features</a></div>
+                                            </div>
+                                        </div></div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="copyright" style="margin: 5px; clear:both; text-align: center;">
+                    Beautiful-Templates.com
+                    <a href="http://www.beautiful-templates.com/">Joomla Extensions</a>
+                    -
+                    <a href="http://www.beautiful-templates.com/">Joomla Templates</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="avatar-full-3-block">
+    <div class="avatar-wrapper block-default-width">
+        <div id="115" class="avatar-module st-mauris-home-page avatar-scroll-appear">
+            <div class="st-module-content">
+
+
+                <div class="customst-mauris-home-page">
+                    <div class="st-mauris-home-page-content">
+                        <h3>Mauris aliquam diam sem, in vehicula diam pulvinar quis.</h3>
+                        <p>Proin porta pharetra leo sed.Lorem Ipsum has been the industry's standard dummy text ever</p>
+                        <p>Maecenas lacinia tortor rhoncus dolor mollis ullamcorper sagittis purus faucibus</p>
+                    </div></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="avatar-full-4-block">
+    <div class="avatar-wrapper block-default-width">
+        <div id="116" class="avatar-module st-great-support-home-page avatar-scroll-appear">
+            <div class="st-module-content">
+
+
+                <div class="customst-great-support-home-page">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <div class="great-support"><img src="./images/great-support.png" alt="great support">
+                                <h3>Great Support</h3>
+                                <p>There are many variations of passages of Lorem <br>Ipsum available, but the majority have suffered <br>alteration in some form</p>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <div class="mutiple-purpose"><img src="./images/mutiple-purpose.png" alt="Multiple purpose">
+                                <h3>Multiple Purpose</h3>
+                                <p>There are many variations of passages of Lorem <br>Ipsum available, but the majority have suffered <br>alteration in some form</p>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <div class="clean-design"><img src="./images/clean-design.png" alt="Clean Design">
+                                <h3>Clean Design</h3>
+                                <p>There are many variations of passages of Lorem <br>Ipsum available, but the majority have suffered <br>alteration in some form</p>
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+        </div>
+
+    </div>
+</div>
 <div id="avatar-full-5-block">
 <div class="avatar-wrapper block-default-width">
 <div id="111" class="avatar-module st-recent-home-page avatar-scroll-disappear">
@@ -1283,6 +1485,12 @@ jQuery.noConflict();
     </div>
 </div>							</div>
 </div>
+</div><div class="copyright" style="margin: 5px; clear:both; text-align: center;">
+    Beautiful-Templates.com
+    <a href="http://www.beautiful-templates.com/">Joomla Extensions</a>
+    -
+    <a href="http://www.beautiful-templates.com/">Joomla Templates</a>
+</div>
 </div>
 </div>
 
@@ -1330,5 +1538,441 @@ jQuery.noConflict();
     </div>
 </div>
 
+<div id="avatar-full-6-block">
+    <div class="avatar-wrapper block-default-width">
+        <div id="119" class="avatar-module st-shoot avatar-scroll-disappear">
+            <div class="st-module-content">
+
+
+                <div class="customst-shoot">
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <p class="video"><iframe src="./images/73728043.htm" frameborder="0" width="384" height="224"></iframe></p>
+                        </div>
+                        <div class="span6">
+                            <div class="st-shoot-content">
+                                <h3>Shoot. Share. Keep</h3>
+                                <p>There are many variations of passages of Lorem Ipsum available</p>
+                                <p class="what-video"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">What the Video</a></p>
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+        </div>
+
+    </div>
 </div>
+<div id="avatar-body-bottom-block">
+<div class="avatar-wrapper block-default-width">
+
+<div id="avatar-pos-content-bottom">
+<div id="118" class="avatar-module st-our-team avatar-scroll-disappear">
+<h3 class="st-module-heading"><span><span>Our Team</span></span></h3>
+<div class="st-module-content">
+<div class="st-layer-slider  layer_layout_slide layer-effect-breaking_news" style="width: 100%; height: 345px;" id="53e8c90c465c6">
+    <div class="sequence-prev"></div>
+    <div class="sequence-next"></div>
+    <ul class="sequence-canvas">
+        <li class="animate-out" style="z-index: 1; opacity: 1;">
+            <div class="column" style="width: 25%; left: 0%;">
+                <div class="column-inner">
+                    <div class="image">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=45&Itemid=105">
+                            <img src="./images/our_team1.png" alt="John Doe">
+                        </a>
+                    </div>
+                    <h3 class="title">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=45&Itemid=105">
+                            John Doe</a>
+                    </h3>
+                    <div class="content"><h3 class="job">Web Designer</h3>
+                        <p class="content-show">Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo.</p>
+                        <ul id="out-team-connect">
+                            <li class="connect-facebook"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-twitter"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-google"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-vimeo"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column" style="width: 25%; left: 25%;">
+                <div class="column-inner">
+                    <div class="image">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=46&Itemid=105">
+                            <img src="./images/our_team3.png" alt="Rafel Nadal">
+                        </a>
+                    </div>
+                    <h3 class="title">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=46&Itemid=105">
+                            Rafel Nadal</a>
+                    </h3>
+                    <div class="content"><h3 class="job">Web Designer</h3>
+                        <p class="content-show">Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo.</p>
+                        <ul id="out-team-connect">
+                            <li class="connect-facebook"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-twitter"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-google"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-vimeo"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column" style="width: 25%; left: 50%;">
+                <div class="column-inner">
+                    <div class="image">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=47&Itemid=105">
+                            <img src="./images/our_team2.png" alt="De Gea">
+                        </a>
+                    </div>
+                    <h3 class="title">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=47&Itemid=105">
+                            De Gea</a>
+                    </h3>
+                    <div class="content"><h3 class="job">Web Designer</h3>
+                        <p class="content-show">Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo.</p>
+                        <ul id="out-team-connect">
+                            <li class="connect-facebook"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-twitter"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-google"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-vimeo"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column" style="width: 25%; left: 75%;">
+                <div class="column-inner">
+                    <div class="image">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=48&Itemid=105">
+                            <img src="./images/our_team4.png" alt="Serena">
+                        </a>
+                    </div>
+                    <h3 class="title">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=48&Itemid=105">
+                            Serena</a>
+                    </h3>
+                    <div class="content"><h3 class="job">Web Designer</h3>
+                        <p class="content-show">Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo.</p>
+                        <ul id="out-team-connect">
+                            <li class="connect-facebook"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-twitter"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-google"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-vimeo"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        <li class="animate-in" style="opacity: 1; z-index: 2;">
+            <div class="column" style="width: 25%; left: 0%;">
+                <div class="column-inner">
+                    <div class="image">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=80&Itemid=105">
+                            <img src="./images/our_team2.png" alt="Mr Smith">
+                        </a>
+                    </div>
+                    <h3 class="title">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=80&Itemid=105">
+                            Mr Smith</a>
+                    </h3>
+                    <div class="content"><h3 class="job">Web Developer</h3>
+                        <p class="content-show">Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo.</p>
+                        <ul id="out-team-connect">
+                            <li class="connect-facebook"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-twitter"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-google"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-vimeo"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column" style="width: 25%; left: 25%;">
+                <div class="column-inner">
+                    <div class="image">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=81&Itemid=105">
+                            <img src="./images/our_team4.png" alt="Jenny">
+                        </a>
+                    </div>
+                    <h3 class="title">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=81&Itemid=105">
+                            Jenny</a>
+                    </h3>
+                    <div class="content"><h3 class="job">Web Designer</h3>
+                        <p class="content-show">Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo.</p>
+                        <ul id="out-team-connect">
+                            <li class="connect-facebook"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-twitter"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-google"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-vimeo"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column" style="width: 25%; left: 50%;">
+                <div class="column-inner">
+                    <div class="image">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=82&Itemid=105">
+                            <img src="./images/our_team3.png" alt="Steven">
+                        </a>
+                    </div>
+                    <h3 class="title">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=82&Itemid=105">
+                            Steven</a>
+                    </h3>
+                    <div class="content"><h3 class="job">Web Designer</h3>
+                        <p class="content-show">Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo.</p>
+                        <ul id="out-team-connect">
+                            <li class="connect-facebook"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-twitter"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-google"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-vimeo"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column" style="width: 25%; left: 75%;">
+                <div class="column-inner">
+                    <div class="image">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=83&Itemid=105">
+                            <img src="./images/our_team1.png" alt="Nick Power">
+                        </a>
+                    </div>
+                    <h3 class="title">
+                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=83&Itemid=105">
+                            Nick Power</a>
+                    </h3>
+                    <div class="content"><h3 class="job">Web Developer</h3>
+                        <p class="content-show">Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo.</p>
+                        <ul id="out-team-connect">
+                            <li class="connect-facebook"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-twitter"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-google"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                            <li class="connect-vimeo"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="copyright" style="margin: 5px; clear:both; text-align: center;">
+    Beautiful-Templates.com
+    <a href="http://www.beautiful-templates.com/">Joomla Extensions</a>
+    -
+    <a href="http://www.beautiful-templates.com/">Joomla Templates</a>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div id="avatar-full-7-block">
+    <div class="avatar-wrapper block-default-width">
+        <div id="98" class="avatar-module st-out-client avatar-scroll-disappear">
+            <h3 class="st-module-heading"><span><span>Our Client</span></span></h3>
+            <div class="st-module-content">
+                <div class="st-layer-slider  layer_layout_slide layer-effect-breaking_news" style="width: 100%; height: 104px;" id="53e8c67d2d27d">
+                    <div class="sequence-prev"></div>
+                    <div class="sequence-next"></div>
+                    <ul class="sequence-canvas">
+                        <li class="animate-out" style="z-index: 1; opacity: 1;">
+                            <div class="column" style="width: 25%; left: 0%;">
+                                <div class="column-inner">
+                                    <div class="image">
+                                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=19&Itemid=105">
+                                            <img src="./images/out_client1.png" alt="Out Client 1">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="column" style="width: 25%; left: 25%;">
+                                <div class="column-inner">
+                                    <div class="image">
+                                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=20&Itemid=105">
+                                            <img src="./images/out_client2.png" alt="Out Client 2">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="column" style="width: 25%; left: 50%;">
+                                <div class="column-inner">
+                                    <div class="image">
+                                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=21&Itemid=105">
+                                            <img src="./images/out_client3.png" alt="Out Client 3">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="column" style="width: 25%; left: 75%;">
+                                <div class="column-inner">
+                                    <div class="image">
+                                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=22&Itemid=105">
+                                            <img src="./images/out_client4.png" alt="Out Client 4">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="animate-in" style="opacity: 1; z-index: 2;">
+                            <div class="column" style="width: 25%; left: 0%;">
+                                <div class="column-inner">
+                                    <div class="image">
+                                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=75&Itemid=105">
+                                            <img src="./images/out_client2.png" alt="Out Client 6">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="column" style="width: 25%; left: 25%;">
+                                <div class="column-inner">
+                                    <div class="image">
+                                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=77&Itemid=105">
+                                            <img src="./images/out_client4.png" alt="Out Client 8">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="column" style="width: 25%; left: 50%;">
+                                <div class="column-inner">
+                                    <div class="image">
+                                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=84&Itemid=105">
+                                            <img src="./images/out_client1.png" alt="Out Client 5 ">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="column" style="width: 25%; left: 75%;">
+                                <div class="column-inner">
+                                    <div class="image">
+                                        <a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php?option=com_content&view=article&id=85&Itemid=105">
+                                            <img src="./images/out_client3.png" alt="Out Client 7 ">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="copyright" style="margin: 5px; clear:both; text-align: center;">
+                    Beautiful-Templates.com
+                    <a href="http://www.beautiful-templates.com/">Joomla Extensions</a>
+                    -
+                    <a href="http://www.beautiful-templates.com/">Joomla Templates</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="avatar-full-8-block">
+    <div class="avatar-wrapper block-default-width">
+        <div id="123" class="avatar-module st-subscribe avatar-scroll-disappear">
+            <div class="st-module-content">
+                <div class="acymailing_modulest-subscribe" id="acymailing_module_formAcymailing93471">
+                    <div class="acymailing_fulldiv" id="acymailing_fulldiv_formAcymailing93471">
+                        <form id="formAcymailing93471" action="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/index.php" onsubmit="return submitacymailingform(&#39;optin&#39;,&#39;formAcymailing93471&#39;)" method="post" name="formAcymailing93471">
+                            <div class="acymailing_module_form">
+			<span class="acymailing_introtext">Subscribe our
+    Newsletter</span>						<table class="acymailing_form">
+                                    <tbody><tr>
+                                        <td class="acyfield_email">
+                                            <input id="user_email_formAcymailing93471" onfocus="if(this.value == &#39;E-mail&#39;) this.value = &#39;&#39;;" onblur="if(this.value==&#39;&#39;) this.value=&#39;E-mail&#39;;" class="inputbox" type="text" name="user[email]" style="width:95.8%" value="E-mail">
+                                        </td>
+                                        <td class="acysubbuttons">
+                                            <input class="button subbutton btn btn-primary" type="submit" value="Subscribe" name="Submit" onclick="try{ return submitacymailingform(&#39;optin&#39;,&#39;formAcymailing93471&#39;); }catch(err){alert(&#39;The form could not be submitted &#39;+err);return false;}">
+                                        </td>
+                                    </tr>
+                                    </tbody></table>
+                                <input type="hidden" name="ajax" value="0">
+                                <input type="hidden" name="ctrl" value="sub">
+                                <input type="hidden" name="task" value="notask">
+                                <input type="hidden" name="redirect" value="http%3A%2F%2Fwww.beautiful-templates.com%2Fdemo%2Ftemplates-joomla%2Fst_venus%2F">
+                                <input type="hidden" name="redirectunsub" value="http%3A%2F%2Fwww.beautiful-templates.com%2Fdemo%2Ftemplates-joomla%2Fst_venus%2F">
+                                <input type="hidden" name="option" value="com_acymailing">
+                                <input type="hidden" name="hiddenlists" value="1">
+                                <input type="hidden" name="acyformname" value="formAcymailing93471">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="avatar-full-9-block">
+    <div class="avatar-wrapper block-default-width">
+        <div id="117" class="avatar-module st-footer-top avatar-scroll-disappear">
+            <div class="st-module-content">
+
+
+                <div class="customst-footer-top">
+                    <div class="st-footer-top-content">
+                        <div class="row-fluid">
+                            <div class="span3">
+                                <div class="st-about-us">
+                                    <h3>About Us</h3>
+                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <div class="st-address">
+                                    <h3>Address</h3>
+                                    <p class="house-number">160 South Park Avenue, CA94108 San Francisco USA</p>
+                                    <p>Phone: <span>000 765-4321</span></p>
+                                    <p>Fax: <span>000 765-4321</span></p>
+                                    <p>Website: <span class="website"><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">http://google.com.vn</a></span></p>
+                                    <p>Email: <span><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">info@gmail.com</a></span></p>
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <div class="st-lastest-tweets">
+                                    <h3>Lastest Tweets</h3>
+                                    <p>Pellentesque eget felis quis mi malesuada auctor. More info at <span><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">http://t.co/f7fj73j1</a></span></p>
+                                    <p>Vivamus ultricies sapien sed dolor gravida dictum. More info at <span><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">http://t.co/f7fj73j1</a></span></p>
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <div class="st-service">
+                                    <h3>Service</h3>
+                                    <ul>
+                                        <li><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">Lorem ipsum dolo</a></li>
+                                        <li><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">Sed laoreet</a></li>
+                                        <li><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">Lorem ipsum dolo</a></li>
+                                        <li><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">Morbi ac magna est</a></li>
+                                        <li><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">Lorem ipsum dolo</a></li>
+                                        <li><a href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#">Aliquam felis</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+<div id="avatar-template-copyright" style="display: none;">2013 - Powered by <a href="http://www.beautiful-templates.com/">Beautiful-Templates.com</a>. All Rights Reserved.</div>		<div id="avatar-settings"><span id="close"></span><h3>Showcases</h3><div class="color-image clearfix"><span onclick="avatarSettingPanel.showcase.change(&#39;black&#39;);" class="item" style="background-image:url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/showcases/black/color.png)"></span><span onclick="avatarSettingPanel.showcase.change(&#39;blue&#39;);" class="item" style="background-image:url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/showcases/blue/color.png)"></span><span onclick="avatarSettingPanel.showcase.change(&#39;green&#39;);" class="item" style="background-image:url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/showcases/green/color.png)"></span><span onclick="avatarSettingPanel.showcase.change(&#39;purple&#39;);" class="item" style="background-image:url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/showcases/purple/color.png)"></span><span onclick="avatarSettingPanel.showcase.change(&#39;red&#39;);" class="item" style="background-image:url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/showcases/red/color.png)"></span><span onclick="avatarSettingPanel.showcase.change(&#39;showcases-1&#39;);" class="item" style="background-image:url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/showcases/showcases-1/color.png)"></span><span onclick="avatarSettingPanel.showcase.change(&#39;showcases-2&#39;);" class="item" style="background-image:url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/showcases/showcases-2/color.png)"></span><span onclick="avatarSettingPanel.showcase.change(&#39;yellow&#39;);" class="item" style="background-image:url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/showcases/yellow/color.png)"></span></div><h3>Background Image</h3><div class="bg-image clearfix"><span class="item" style="background-image:url(http://www.beautiful-templates.com/demo/templates-joomla/st_venus/templates/st_venus/backgrounds/index.html)"></span></div><div class="header-color"><h3>Header Color</h3>: <span class="minicolors"><input class="picker-color" value="#ffffff" type="minicolors" name="header-color" onchange="avatarSettingPanel.header.color(this);" data-default="" data-slider="hue" size="7" maxlength="7"><span class="minicolors-swatch"><span style="background-color: rgb(255, 255, 255);"></span></span><span class="minicolors-panel minicolors-slider-hue"><span class="minicolors-slider"><span class="minicolors-picker" style="top: 0px;"></span></span><span class="minicolors-opacity-slider"><span class="minicolors-picker"></span></span><span class="minicolors-grid" style="background-color: rgb(255, 0, 0);"><span class="minicolors-grid-inner"></span><span class="minicolors-picker" style="top: 0px; left: 0px;"><span></span></span></span></span></span></div><div class="body-color"><h3>Content Color</h3>: <span class="minicolors"><input class="picker-color" value="#ffffff" type="minicolors" name="body-color" onchange="avatarSettingPanel.body.color(this);" data-default="" data-slider="hue" size="7" maxlength="7"><span class="minicolors-swatch"><span style="background-color: rgb(255, 255, 255);"></span></span><span class="minicolors-panel minicolors-slider-hue"><span class="minicolors-slider"><span class="minicolors-picker" style="top: 0px;"></span></span><span class="minicolors-opacity-slider"><span class="minicolors-picker"></span></span><span class="minicolors-grid" style="background-color: rgb(255, 0, 0);"><span class="minicolors-grid-inner"></span><span class="minicolors-picker" style="top: 0px; left: 0px;"><span></span></span></span></span></span></div><br><button onclick="avatarSettingPanel.reset(); return false;" class="btn">Reset</button></div>
+
 <div id="sbox-overlay" aria-hidden="true" tabindex="-1" style="z-index: 65555; opacity: 0;"></div><div id="sbox-window" role="dialog" aria-hidden="true" class="shadow" style="z-index: 65557;"><div id="sbox-content" style="opacity: 0;"></div><a id="sbox-btn-close" href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#" role="button" aria-controls="sbox-window"></a></div></body></html>
