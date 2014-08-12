@@ -1,12 +1,20 @@
 <?php 
 	$link = null;
 
-	// 
-	$link = mysql_connect('toibalocom.ipagemysql.com', 'toifeedback', 'toifeedback');
+	print_r($_SERVER['SERVER_NAME']);
 
-	if (!$link) { 
-	    die('Could not connect: ' . mysql_error()); 
-	} 
-	echo 'Connected successfully'; 
-	// mysql_select_db(toifeedback); 
+	// try {
+	// 	// iPage connection
+	// 	$link = mysqli_connect('toibalocom.ipagemysql.com', 'toifeedback', 'toifeedback');
+
+	// 	// if (!$link) { 
+	// 	//     $link = mysql_connect('localhost:3306', 'root', '');
+	// 	// } 
+	// 	// echo 'Connected successfully'; 
+	// 	// mysql_select_db(toifeedback); 
+	// }
+	// catch (Exception $e) {
+	//     echo 'Caught exception: ',  $e->getMessage(), "\n";
+	// }
+
 ?>
