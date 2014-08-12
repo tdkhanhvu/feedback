@@ -1429,7 +1429,7 @@ ul.st-footer-menu li:hover a{
 .st-recent-home-page  .title a:hover{
 	color:#FD7800;
 }
-.st-recent-home-page .items .content p.tag{
+.st-recent-home-page .items .content div.tag{
 	padding:5px 0 12px 0;
 	margin:0;
 }

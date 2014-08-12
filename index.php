@@ -970,72 +970,59 @@ jQuery.noConflict();
         margin: auto;
     }
 
-    #avatar-pos-top-left {
-        width: 75%;
-    }
-    #avatar-pos-top-middle {
-        width: 0%;
-    }
-    #avatar-pos-top-right {
-        width: 25%;
-    }
-
-    #avatar-pos-footer-left {
-        width: 40%;
-    }
-    #avatar-pos-footer-middle {
-        width: 0%;
-    }
-    #avatar-pos-footer-right {
-        width: 60%;
-    }
-
-    #avatar-pos-promo-top-left {
-        width: 65%;
-    }
-    #avatar-pos-promo-top-middle {
-        width: 0%;
-    }
-    #avatar-pos-promo-top-right {
-        width: 35%;
-    }
-
-    #avatar-pos-promo-bottom-left {
-        width: 33.33%;
-    }
-    #avatar-pos-promo-bottom-middle {
-        width: 100%;
-    }
-    #avatar-pos-promo-bottom-right {
-        width: 33.33%;
-    }
-
-    #avatar-left {
-        width: 23%;
-    }
-    #avatar-right {
-        width: 23%;
-    }
     #avatar-content {
         width: 100%;
-    }
-    #avatar-pos-inner-left {
-        width: 23%;
-    }
-    #avatar-pos-inner-right {
-        width: 23%;
     }
 
     #avatar-main-content{
         width: 100%;
     }
 
-    .title {
-        text-align:center;
+    .icon {
+        width:33%;
+        float:left;
+    }
+    .icon > img{
+        width:25px;
+        height:25px;
     }
 
-    .wrapper {
-        text-align: center;
+    .thumbnail {
+        margin-bottom: 0px;
+    }
+
+    .image {
+        position: relative;
+        height: 129px;
+        width: 220px;
+    }
+
+    .imgDescription {
+        position: absolute;
+        text-align:center;
+        font-size: 30px;
+        top: 0;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        background: rgba(29, 106, 154, 0.72);
+        color: #fff;
+        line-height: 100%;
+
+
+        visibility: hidden;
+        opacity: 0;
+
+        /*remove comment if you want a gradual transition between states
+        -webkit-transition: visibility opacity 0.2s;
+        */
+    }
+
+
+    .image:hover .imgDescription {
+        visibility: visible;
+        opacity: 1;
+        cursor: pointer;
     }
 </style>
 
@@ -1067,64 +1054,96 @@ jQuery.noConflict();
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/taxi.jpg" title="Illustrator, Photoshop 3">
-                                                <div class="media">
-                                                    <img class="img-responsive thumbnail" src="./images/taxi.jpg" alt="Illustrator, Photoshop 3">
+
+                                            <img class="img-responsive thumbnail hover" src="./images/taxi.jpg" alt="Illustrator, Photoshop 3">
+
+                                            <p class="imgDescription"></br></br>Taxi</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="tag">
+                                                <div class="icon">
+                                                    <img src="images/review.png" />1000
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="wrapper">
-                                            <button type="button" class="btn btn-primary">Taxi</button>
-                                        </div>
-                                        <div class="content"><p class="tag"></p>
+                                                <div class="icon">
+                                                    <img  src="images/comment.png" />1000
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="images/company.png" />20
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/petrol_station.jpg" title="Lorem ipsum 4">
-                                                <div class="media">
-                                                    <img class="img-responsive thumbnail" src="./images/petrol_station.jpg" alt="Lorem ipsum 4">
+
+                                            <img class="img-responsive thumbnail hover" src="./images/petrol_station.jpg" alt="Illustrator, Photoshop 3">
+
+                                            <p class="imgDescription"></br></br>Cây Xăng</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="tag">
+                                                <div class="icon">
+                                                    <img src="images/review.png" />1000
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="wrapper">
-                                            <button type="button" class="btn btn-primary">Cây Xăng</button>
-                                        </div>
-                                        <div class="content"><p class="tag"></p>
+                                                <div class="icon">
+                                                    <img  src="images/comment.png" />1000
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="images/company.png" />20
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/parking.jpg" title="Lorem ipsum 3">
-                                                <div class="media">
-                                                    <img class="img-responsive thumbnail" src="./images/parking.jpg" alt="Lorem ipsum 3">
+
+                                            <img class="img-responsive thumbnail hover" src="./images/parking.jpg" alt="Illustrator, Photoshop 3">
+
+                                            <p class="imgDescription"></br></br>Bãi Giữ Xe</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="tag">
+                                                <div class="icon">
+                                                    <img src="images/review.png" />1000
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="wrapper">
-                                            <button type="button" class="btn btn-primary">Bãi Giữ Xe</button>
-                                        </div>
-                                        <div class="content"><p class="tag"></p>
+                                                <div class="icon">
+                                                    <img  src="images/comment.png" />1000
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="images/company.png" />20
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/hospital.jpg" title="Illustrator, Photoshop 2">
-                                                <div class="media">
-                                                    <img class="img-responsive thumbnail" src="./images/hospital.jpg" alt="Illustrator, Photoshop 2">
+
+                                            <img class="img-responsive thumbnail hover" src="./images/hospital.jpg" alt="Illustrator, Photoshop 3">
+
+                                            <p class="imgDescription"></br></br>Bệnh Viện</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="tag">
+                                                <div class="icon">
+                                                    <img src="images/review.png" />1000
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="wrapper">
-                                            <button type="button" class="btn btn-primary">Bệnh Viện</button>
-                                        </div>
-                                        <div class="content"><p class="tag"></p>
+                                                <div class="icon">
+                                                    <img  src="images/comment.png" />1000
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="images/company.png" />20
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1133,65 +1152,95 @@ jQuery.noConflict();
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/va_xe.jpg" title="Illustrator, Photoshop">
-                                                <div class="media">
-                                                    <img class="img-responsive thumbnail" src="./images/va_xe.jpg" alt="Illustrator, Photoshop">
+
+                                            <img class="img-responsive thumbnail hover" src="./images/va_xe.jpg" alt="Illustrator, Photoshop 3">
+
+                                            <p class="imgDescription"></br></br>Vá Xe</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="tag">
+                                                <div class="icon">
+                                                    <img src="images/review.png" />1000
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="wrapper">
-                                            <button type="button" class="btn btn-primary">Vá Xe</button>
-                                        </div>
-                                        <div class="content"><p class="tag"></p>
+                                                <div class="icon">
+                                                    <img  src="images/comment.png" />1000
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="images/company.png" />20
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/telcom.jpg" title="Lorem ipsum 2">
-                                                <div class="media">
-                                                    <img class="img-responsive thumbnail" src="./images/telcom.jpg" alt="Lorem ipsum 2">
+
+                                            <img class="img-responsive thumbnail hover" src="./images/telcom.jpg" alt="Illustrator, Photoshop 3">
+
+                                            <p class="imgDescription"></br></br>Viễn Thông</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="tag">
+                                                <div class="icon">
+                                                    <img src="images/review.png" />1000
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="wrapper">
-                                            <button type="button" class="btn btn-primary">Viễn Thông</button>
-                                        </div>
-                                        <div class="content"><p class="tag"></p>
+                                                <div class="icon">
+                                                    <img  src="images/comment.png" />1000
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="images/company.png" />20
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/bank.jpg" title="Lorem ipsum">
-                                                <div class="media">
-                                                    <img class="img-responsive thumbnail" src="./images/bank.jpg" alt="Lorem ipsum">
+
+                                            <img class="img-responsive thumbnail hover" src="./images/bank.jpg" alt="Illustrator, Photoshop 3">
+
+                                            <p class="imgDescription"></br></br>Ngân Hàng</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="tag">
+                                                <div class="icon">
+                                                    <img src="images/review.png" />1000
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="wrapper">
-                                            <button type="button" class="btn btn-primary">Ngân Hàng</button>
-                                        </div>
-                                        <div class="content"><p class="tag"></p>
+                                                <div class="icon">
+                                                    <img  src="images/comment.png" />1000
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="images/company.png" />20
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <div class="inner clearfix">
                                         <div class="image">
-                                            <a class="modal" rel="{handler: &#39;image&#39;}" href="./images/airline_agency.jpg" title="Recent Work Home 2">
-                                                <div class="media">
-                                                    <img class="img-responsive thumbnail" src="./images/airline_agency.jpg" alt="Recent Work Home 2">
+
+                                            <img class="img-responsive thumbnail hover" src="./images/airline_agency.jpg" alt="Illustrator, Photoshop 3">
+
+                                            <p class="imgDescription"></br>Đại Lý Vé Máy Bay</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="tag">
+                                                <div class="icon">
+                                                    <img src="images/review.png" />1000
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <div class="wrapper">
-                                            <button type="button" class="btn btn-primary">Đại Lý Vé Máy Bay</button>
-                                        </div>
-                                        <div class="content"><div class="st-recent-work-home-2">
-                                                <p class="tag"></p>
+                                                <div class="icon">
+                                                    <img  src="images/comment.png" />1000
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="images/company.png" />20
+                                                </div>
+                                                <div class="clearfix"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1230,5 +1279,26 @@ jQuery.noConflict();
     <div id="sbox-content" style="opacity: 0;"></div>
     <a id="sbox-btn-close" href="http://www.beautiful-templates.com/demo/templates-joomla/st_venus/#" role="button" aria-controls="sbox-window"></a>
 </div>
+
+<script type="text/javascript">
+    function SubmitFeedback() {
+        jQuery.ajax({
+            url: "data.php?format=raw",
+            type: "post",
+            target:
+            data: {
+                'request':'GetIndustryList',
+                'industry': industry
+            },
+            success: function(msg){
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+            }
+        });
+
+        return;
+    }
+</script>
 </body>
 </html>
