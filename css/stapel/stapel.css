@@ -27,7 +27,7 @@
 }
 
 body {
-	font-family: 'Lato', Calibri, Arial, sans-serif;
+/*	font-family: 'Lato', Calibri, Arial, sans-serif;*/
 	background: #cecece url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQklEQVQYV2P8//+/JCMj43MGPACsBiSPTzFMDqwQl2JkA+AK0RWj24KiEKYYRKO7mzyFyNbhtBqbzzE8Q1TwEBvgADC3RjcXfBsqAAAAAElFTkSuQmCC);
 	font-weight: 300;
 	font-size: 15px;
@@ -278,7 +278,7 @@ a {
 	height: 40px;
 	position: absolute;
 	left: 50%;
-	top: 50%;
+	top: 80%;
 	margin: -20px 0 0 -20px;
 	border-radius: 50%;
 	text-align: center;
