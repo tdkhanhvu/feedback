@@ -31,6 +31,7 @@
 <section class="main">
 <div class="wrapper">
 <div class="topbar">
+    <?php print_r(PDO::getAvailableDrivers()); ?>
     <div style="width:50%;margin:20px auto;">
         <select multiple="multiple" id="city_start" style="width:100%">
             <option value="parking">Bãi Giữ Xe</option>
@@ -427,6 +428,8 @@
             stapel.closePile();
         });
         $("#city_start").select2();
+
+        $('.select2-container').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
     });
 </script>
 <script src="./js/dropdown/select2.min.js" type="text/javascript"></script>
