@@ -1,0 +1,874 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video
+{
+/*    border: 0;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;*/
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
+{
+    display: block;
+}
+body
+{
+    line-height: 1;
+}
+ol,ul
+{
+    list-style: none;
+}
+blockquote,q
+{
+    quotes: none;
+}
+blockquote:before,blockquote:after,q:before,q:after
+{
+    content: '';
+    content: none;
+}
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body
+{
+    color: #fff;
+    font: 1em/1.3em Montserrat,Helvetica,sans-serif;
+    margin: 0 auto;
+}
+/*body,html
+{
+    height: 100%;
+}*/
+.clearfix
+{
+    clear: both;
+}
+.container
+{
+/*    background-color: #f97e72;
+    height: 100%;
+    padding: 20px 10%;
+    text-align: center;
+    width: 80%;*/
+}
+h1
+{
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 40px;
+    margin: 40px 0;
+    text-shadow: 0px 1px 0 rgba(0,0,0,.3);
+    webkit-font-smoothing: antialiased;
+}
+h2
+{
+    color: #fff;
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    text-align: left;
+}
+a
+{
+/*    color: #fff;
+    margin: 0 10px;
+    text-align: left;
+    text-decoration: none;*/
+}
+p
+{
+    line-height: 32px;
+    padding: 0 0 40px 0;
+    text-align: left;
+}
+i.fa-bars
+{
+    float: left;
+    font-size: 28px;
+    margin-top: 2px;
+}
+.btn
+{
+    background-color: #ea5648;
+    border-radius: 6px;
+    box-shadow: 0 3px 0 0 #e04338;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+    moz-border-radius: 6px;
+    moz-box-sizing: border-box;
+    overflow: hidden;
+    padding: 0 30px;
+    position: relative;
+    webkit-border-radius: 6px;
+    webkit-box-shadow: 0 3px 0 0 #e04338;
+    webkit-box-sizing: border-box;
+}
+.btn:active,.btn.active
+{
+    box-shadow: 0 1px 0 0 #e04338;
+    top: 2px;
+    webkit-box-shadow: 0 1px 0 0 #e04338;
+}
+.btn-small
+{
+    font-size: 10px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+}
+.menu
+{
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+.menu .left-menu
+{
+    background-color: #444;
+    border-right: 1px solid #444;
+    display: table;
+    height: 100%;
+    left: -50%;
+    position: absolute;
+    transition: .4s;
+    webkit-transition: .4s;
+    width: 30%;
+    z-index: 1;
+}
+.menu .left-menu a.menu-button
+{
+    font-size: 11px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-transform: uppercase;
+    top: 20px;
+}
+.menu .left-menu a.menu-button i
+{
+    font-size: 28px;
+    margin: -3.5px 10px 0 0;
+    vertical-align: middle;
+}
+.menu .left-menu ul
+{
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    width: 100%;
+}
+.menu .left-menu li
+{
+    font-size: 28px;
+    line-height: 30px;
+    margin: 10px;
+}
+.menu.in .left-menu
+{
+    left: 0;
+}
+.menu.bounce.in .left-menu
+{
+    animation-duration: .8s;
+    animation-fill-mode: backwards;
+    animation-name: bounce-right;
+    moz-animation-duration: .8s;
+    moz-animation-fill-mode: backwards;
+    moz-animation-name: bounce-right;
+    webkit-animation-duration: .8s;
+    webkit-animation-fill-mode: backwards;
+    webkit-animation-name: bounce-right;
+}
+.menu .circle
+{
+    background-color: #CCC;
+    border-radius: 50%;
+    height: 150px;
+    margin-right: -75px;
+    margin-top: -75px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 150px;
+}
+.menu .circle a
+{
+    filter: alpha(opacity=80);
+    khtml-opacity: 0.8;
+    margin: 0;
+    moz-opacity: 0.8;
+    ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    opacity: 0.8;
+    position: relative;
+    top: 50px;
+}
+.menu .right-preview
+{
+    background-color: #ffb9b5;
+    height: 100%;
+    position: absolute;
+    right: -70%;
+    transition: .4s;
+    webkit-transition: .4s;
+    width: 70%;
+    z-index: 0;
+}
+.menu .right-preview a
+{
+    display: inline-block;
+    height: 128px;
+    margin-top: -64px;
+    padding: 0 50px;
+    position: relative;
+    top: 50%;
+    transition: .2s;
+    webkit-transition: .2s;
+}
+.menu .right-preview a:hover
+{
+    top: 48%;
+}
+.menu.in .right-preview
+{
+    right: 0;
+}
+.menu.bounce.in .right-preview
+{
+    animation-duration: .8s;
+    animation-fill-mode: backwards;
+    animation-name: bounce-left;
+    moz-animation-duration: .8s;
+    moz-animation-fill-mode: backwards;
+    moz-animation-name: bounce-left;
+    webkit-animation-duration: .8s;
+    webkit-animation-fill-mode: backwards;
+    webkit-animation-name: bounce-left;
+}
+a.menu-button
+{
+    font-size: 11px;
+    left: 10%;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-transform: uppercase;
+    top: 20px;
+}
+.menu .top-menu
+{
+    background-color: #444;
+    height: 50%;
+    position: absolute;
+    top: -70%;
+    transition: .4s;
+    webkit-transition: .4s;
+    width: 100%;
+    z-index: 1;
+}
+.menu .top-menu ul
+{
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+    top: 40%;
+}
+.menu .top-menu ul li
+{
+    float: left;
+    font-size: 23px;
+    padding: 0 15px;
+}
+.menu .top-menu .circle
+{
+    left: 50%;
+    margin-left: -75px;
+    top: 100%;
+}
+.menu .top-menu a.menu-button
+{
+    right: auto;
+}
+.menu .top-menu a.menu-button i
+{
+    font-size: 28px;
+    margin: -3.5px 10px 0 0;
+    vertical-align: middle;
+}
+.menu.in .top-menu
+{
+    top: 0;
+}
+.menu.bounce.in .top-menu
+{
+    animation-duration: .8s;
+    animation-fill-mode: backwards;
+    animation-name: bounce-bottom;
+    moz-animation-duration: .8s;
+    moz-animation-fill-mode: backwards;
+    moz-animation-name: bounce-bottom;
+    webkit-animation-duration: .8s;
+    webkit-animation-fill-mode: backwards;
+    webkit-animation-name: bounce-bottom;
+}
+.menu .bottom-preview
+{
+    background-color: #ffb9b5;
+    bottom: -50%;
+    height: 50%;
+    position: absolute;
+    transition: .4s;
+    webkit-transition: .4s;
+    width: 100%;
+    z-index: 0;
+}
+.menu .bottom-preview a
+{
+    display: inline-block;
+    height: 64px;
+    margin-top: -32px;
+    padding: 0 50px;
+    position: relative;
+    top: 50%;
+    transition: .2s;
+    webkit-transition: .2s;
+}
+.menu .bottom-preview a img
+{
+    height: 64px;
+}
+.menu .bottom-preview a:hover
+{
+    top: 48%;
+}
+.menu.in .bottom-preview
+{
+    bottom: 0;
+}
+.menu.bounce.in .bottom-preview
+{
+    animation-duration: .8s;
+    animation-fill-mode: backwards;
+    animation-name: bounce-top;
+    moz-animation-duration: .8s;
+    moz-animation-fill-mode: backwards;
+    moz-animation-name: bounce-top;
+    webkit-animation-duration: .8s;
+    webkit-animation-fill-mode: backwards;
+    webkit-animation-name: bounce-top;
+}
+@-webkit-keyframes bounce-right
+{
+    0%
+    {
+        left: -30%;
+        webkit-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        left: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        left: -7.5%;
+        webkit-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        left: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        left: -2.1%;
+        webkit-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        left: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        left: -0.6%;
+        webkit-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        left: 0;
+    }
+}
+@-moz-keyframes bounce-right
+{
+    0%
+    {
+        left: -30%;
+        moz-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        left: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        left: -7.5%;
+        moz-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        left: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        left: -2.1%;
+        moz-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        left: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        left: -0.6%;
+        moz-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        left: 0;
+    }
+}
+@keyframes bounce-right
+{
+    0%
+    {
+        left: -30%;
+        moz-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        left: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        left: -7.5%;
+        moz-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        left: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        left: -2.1%;
+        moz-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        left: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        left: -0.6%;
+        moz-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        left: 0;
+    }
+}
+@-webkit-keyframes bounce-left
+{
+    0%
+    {
+        right: -70%;
+        webkit-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        right: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        right: -17.5%;
+        webkit-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        right: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        right: -4.9%;
+        webkit-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        right: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        right: -1.4%;
+        webkit-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        right: 0;
+    }
+}
+@-moz-keyframes bounce-left
+{
+    0%
+    {
+        moz-animation-timing-function: ease-in;
+        right: -70%;
+    }
+    37%
+    {
+        moz-animation-timing-function: ease-out;
+        right: 0;
+    }
+    55%
+    {
+        moz-animation-timing-function: ease-in;
+        right: -17.5%;
+    }
+    73%
+    {
+        moz-animation-timing-function: ease-out;
+        right: 0;
+    }
+    82%
+    {
+        moz-animation-timing-function: ease-in;
+        right: -4.9%;
+    }
+    91%
+    {
+        moz-animation-timing-function: ease-out;
+        right: 0;
+    }
+    96%
+    {
+        moz-animation-timing-function: ease-in;
+        right: -1.4%;
+    }
+    100%
+    {
+        right: 0;
+    }
+}
+@keyframes bounce-left
+{
+    0%
+    {
+        moz-animation-timing-function: ease-in;
+        right: -70%;
+    }
+    37%
+    {
+        moz-animation-timing-function: ease-out;
+        right: 0;
+    }
+    55%
+    {
+        moz-animation-timing-function: ease-in;
+        right: -17.5%;
+    }
+    73%
+    {
+        moz-animation-timing-function: ease-out;
+        right: 0;
+    }
+    82%
+    {
+        moz-animation-timing-function: ease-in;
+        right: -4.9%;
+    }
+    91%
+    {
+        moz-animation-timing-function: ease-out;
+        right: 0;
+    }
+    96%
+    {
+        moz-animation-timing-function: ease-in;
+        right: -1.4%;
+    }
+    100%
+    {
+        right: 0;
+    }
+}
+@-webkit-keyframes bounce-bottom
+{
+    0%
+    {
+        top: -70%;
+        webkit-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        top: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        top: -17.5%;
+        webkit-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        top: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        top: -4.9%;
+        webkit-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        top: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        top: -1.4%;
+        webkit-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        top: 0;
+    }
+}
+@-moz-keyframes bounce-bottom
+{
+    0%
+    {
+        top: -70%;
+        webkit-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        top: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        top: -17.5%;
+        webkit-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        top: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        top: -4.9%;
+        webkit-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        top: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        top: -1.4%;
+        webkit-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        top: 0;
+    }
+}
+@keyframes bounce-bottom
+{
+    0%
+    {
+        top: -70%;
+        webkit-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        top: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        top: -17.5%;
+        webkit-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        top: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        top: -4.9%;
+        webkit-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        top: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        top: -1.4%;
+        webkit-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        top: 0;
+    }
+}
+@-webkit-keyframes bounce-top
+{
+    0%
+    {
+        bottom: -70%;
+        webkit-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        bottom: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        bottom: -17.5%;
+        webkit-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        bottom: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        bottom: -4.9%;
+        webkit-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        bottom: 0;
+        webkit-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        bottom: -1.4%;
+        webkit-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        bottom: 0;
+    }
+}
+@-moz-keyframes bounce-top
+{
+    0%
+    {
+        bottom: -70%;
+        moz-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        bottom: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        bottom: -17.5%;
+        moz-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        bottom: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        bottom: -4.9%;
+        moz-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        bottom: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        bottom: -1.4%;
+        moz-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        bottom: 0;
+    }
+}
+@keyframes bounce-top
+{
+    0%
+    {
+        bottom: -70%;
+        moz-animation-timing-function: ease-in;
+    }
+    37%
+    {
+        bottom: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    55%
+    {
+        bottom: -17.5%;
+        moz-animation-timing-function: ease-in;
+    }
+    73%
+    {
+        bottom: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    82%
+    {
+        bottom: -4.9%;
+        moz-animation-timing-function: ease-in;
+    }
+    91%
+    {
+        bottom: 0;
+        moz-animation-timing-function: ease-out;
+    }
+    96%
+    {
+        bottom: -1.4%;
+        moz-animation-timing-function: ease-in;
+    }
+    100%
+    {
+        bottom: 0;
+    }
+}

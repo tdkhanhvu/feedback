@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="http://tympanus.net/Development/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/stapel/stapel.css">
     <link rel="stylesheet" href="./css/dropdown/select2.css" type="text/css">
+    <link rel="stylesheet" href="./css/closingeffect/closingeffect.css" type="text/css">
     <script src="./js/modernizr.custom.63321.js"></script>
     <style>
         .icon {
@@ -31,7 +32,6 @@
 <section class="main">
 <div class="wrapper">
 <div class="topbar">
-    <?php print_r(PDO::getAvailableDrivers()); ?>
     <div style="width:50%;margin:20px auto;">
         <select multiple="multiple" id="city_start" style="width:100%">
             <option value="parking">Bãi Giữ Xe</option>
@@ -68,12 +68,9 @@
         <img src="./images/vinasun.jpg">
     </a>
 </li>
-<li data-pile="Taxi"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/cmhM">
+<li data-pile="Taxi" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
         <span class="tp-info"><span>Saigontourist</span></span>
-        <img src="./images/saigontourist.jpg">
-    </a>
+        <img class="company" src="./images/saigontourist.jpg"/>
 </li>
 <li data-pile="Taxi"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
@@ -400,6 +397,17 @@
 </div>
 </section>
 </div>
+
+<div class="menu" style="z-index: -1;">
+    <div class="left-menu">
+        <a class="menu-button" href="#"><i class="fa fa-times"></i>Close Menu</a>
+
+        <div class="circle"><a href="http://www.webdesigncrowd.com/"><img src="./Closing Door Menu_files/logo.png"></a></div>
+    </div>
+
+    <div class="right-preview">
+    </div>
+</div>
 <!-- /container -->
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/stapel/jquery.stapel.js"></script>
@@ -430,6 +438,18 @@
         $("#city_start").select2();
 
         $('.select2-container').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
+    });
+
+    $(document).on('click', ".company,.menu-button", function() {
+        var menu = $('.menu');
+        if (menu.hasClass('in')) {
+            setTimeout(function() {
+                menu.css('z-index', '-1');
+            }, 400);
+        } else {
+            menu.css('z-index', '9999');
+        }
+        menu.toggleClass('in');
     });
 </script>
 <script src="./js/dropdown/select2.min.js" type="text/javascript"></script>
