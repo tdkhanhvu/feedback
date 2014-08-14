@@ -1,14 +1,9 @@
 <?php
 
-/**
- * MySQL handles the MySQL Database connection
- *
- * @author Quang Phuc
- * @link
- * @copyright
- * @license
+/*
+ * Usage: 	$mysql = new MySQL();
+ *			$mysql->selectFromTable(..Read Docs below..);
  */
-
 class MySQL {
 	// Private PDO object
 	private $dbh;
@@ -85,10 +80,3 @@ class MySQL {
 		$this->dbh = null;
 	}
 }
-
-$mysql = new MySQL();
-$args = array(['industry',1]);
-
-echo '<pre>';
-print_r($mysql->selectFromTable('company', $args));
-echo '</pre>';
