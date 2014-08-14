@@ -2,7 +2,7 @@
 
 /*
  * Usage: 	$mysql = new MySQL();
- *			$mysql->selectFromTable(..Read Docs below..);
+ *			$dataYouWant = $mysql->selectFromTable(..Read Docs below..);
  *
  * Select From Table:
  * 
@@ -15,10 +15,10 @@
  *				or 	 array(['name', 'Mai Linh'], ['industry', 'Taxi'])
  *		3) $crits 	(1D array) : Criteria. Optional and can be more than one.
  *				E.g: array(['id', 'name'])
- * 
- * Return: results in array form.
  *
  * Notes: To select ALL, leave the last 2 parameters null.
+ *
+ * Return: results in array form.
  *
  */
 class MySQL {
