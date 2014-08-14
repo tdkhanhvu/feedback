@@ -18,7 +18,7 @@
  *
  * Notes: To select ALL, leave the last 2 parameters null.
  *
- * Return: results in array form.
+ * Return: Data results in array form. If nothing found, NULL returned.
  *
  */
 class MySQL {
