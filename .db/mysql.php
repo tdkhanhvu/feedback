@@ -3,6 +3,23 @@
 /*
  * Usage: 	$mysql = new MySQL();
  *			$mysql->selectFromTable(..Read Docs below..);
+ *
+ * Select From Table:
+ * 
+ * selectFromTable fetch data from respective table
+ *
+ * Parameters: 
+ * 		1) $table 	(string): table name. Compulsory. E.g: 'industry'
+ *		2) $args 	(2D array)	: paired arguments. Optional and can be more than one. 
+ *				E.g: array(['name', 'Mai Linh'])
+ *				or 	 array(['name', 'Mai Linh'], ['industry', 'Taxi'])
+ *		3) $crits 	(1D array) : Criteria. Optional and can be more than one.
+ *				E.g: array(['id', 'name'])
+ * 
+ * Return: results in array form.
+ *
+ * Notes: To select ALL, leave the last 2 parameters null.
+ *
  */
 class MySQL {
 	// Private PDO object
@@ -13,24 +30,7 @@ class MySQL {
 		$this->dbh = new PDO('mysql:host=localhost;dbname=feedback', 'root', '');
 	}
 
-	/*
-	 * Select From Table
-	 * 
-	 * selectFromTable fetch data from respective table
-	 *
-	 * Parameters: 
-	 * 		1) $table 	(string): table name. Compulsory. E.g: 'industry'
-	 *		2) $args 	(2D array)	: paired arguments. Optional and can be more than one. 
-	 *				E.g: array(['name', 'Mai Linh'])
-	 *				or 	 array(['name', 'Mai Linh'], ['industry', 'Taxi'])
-	 *		3) $crits 	(1D array) : Criteria. Optional and can be more than one.
- 	 *				E.g: array(['id', 'name'])
- 	 * 
- 	 * Return: results in array form.
- 	 *
- 	 * Notes: To select ALL, leave the last 2 parameters null.
- 	 *
-	 */
+	// Query
 	public function selectFromTable($table, $args = null, $crits = null) {
 		$query = 'SELECT ';
 
