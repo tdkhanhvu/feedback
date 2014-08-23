@@ -721,7 +721,7 @@
 
     $('body').on('click', '.reply', function() {
         var temp = $(this).parent().parent().parent();
-        var div = temp.find('.row:last-child');
+        var div = temp.find('> .row:last-child');
         if (!div.hasClass('comment_box'))
             temp.append('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
         else {
@@ -731,15 +731,25 @@
 
     $('body').on('click', '.minimize', function() {
         var temp = $(this).parent().parent().parent();
+        //description
         temp.find('h6').toggle();
 
         var img = temp.parent().children().first().find('img');
+        //profile pic
         if (img.css('display') === 'none')
             img.css('display','block').css('height','auto').css('width','auto');
         else
             img.css('display','none').css('height','50px').css('min-width','69px');
 
-        temp.parent().parent().find('.row:last-child').toggle();
+        //last row
+        var row = temp.parent().parent().find('>.row:last-child');
+
+        if (row.hasClass('comment_box')) {
+            row.parent().find('>.row:nth-last-child(2)').toggle();
+
+            row.css('display','none');
+        }
+        else row.toggle();
     });
 
     $('body').on('click', '.flag', function() {
