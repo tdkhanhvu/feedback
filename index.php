@@ -35,6 +35,52 @@
             height: 25px;
             vertical-align: middle;
         }
+
+        .action_icon {
+            width:24px;
+            height:24px;
+            opacity: 1.0;
+            filter: alpha(opacity=100); /* For IE8 and earlier */
+        }
+
+        .action_icon:hover {
+            opacity: 0.4;
+            filter: alpha(opacity=40); /* For IE8 and earlier */
+        }
+        
+        .minimize {
+            background: url(images/icon/minimize.png);
+            background-size: cover;
+            float:right;
+        }
+
+        .flag {
+            background: url(images/icon/flag.png);
+            background-size: cover;
+            float:right;
+        }
+
+        .up {
+            background: url(images/icon/up.png);
+            background-size: cover;
+            float:left;
+        }
+
+        .down {
+            background: url(images/icon/down.png);
+            background-size: cover;
+            float:left;
+        }
+
+        .reply_icon {
+            background: url(images/icon/reply.png);
+            background-size: cover;
+            float:left;
+        }
+
+        .comment_detail {
+            border: 3px solid green;
+        }
     </style>
 </head>
 <body>
@@ -436,7 +482,7 @@
         <section id="container">
             <ul id="stage">
                 <li data-tags="Phục Vụ, Giữ Xe">
-                    <div style="margin:5px 20px 0; border: 3px solid green;">
+                    <div style="/*margin:5px 20px 0*/;" class="comment_detail post_start">
                         <div class="row">
                             <div class="col-md-2">
                                 <img class="img-responsive" src="./images/user/user1.jpg"/>
@@ -449,8 +495,8 @@
 
                                     <div id="feedback" class="col-md-4"></div>
                                     <div class="col-md-4">
-                                        <img src="images/icon/minimize.png" style="width:24px;float:right;"/>
-                                        <img src="images/icon/flag.png" style="width:24px;float:right;"/>
+                                        <div class="action_icon minimize"></div>
+                                        <img class="action_icon flag"/>
                                     </div>
                                 </div>
 
@@ -473,14 +519,14 @@
                             </div>
                             <div class="col-md-10">
                                 <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">20</h4>
-                                <img src="images/icon/up.png" style="width:24px;float:left;"/>
-                                <img src="images/icon/down.png" style="width:24px;float:left;"/>
-                                <button type="button" class="btn btn-success" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
+                                <div class="action_icon up"></div>
+                                <div class="action_icon down"></div>
+                                <button type="button" class="btn btn-success reply" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
                                 <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
                             </div>
                         </div>
                     </div>
-                    <div style="margin:5px 20px 5px 50px; border: 3px solid green;">
+                    <div style="margin:5px 0px 5px 50px;" class="comment_detail">
                         <div class="row">
                             <div class="col-md-2">
                                 <img class="img-responsive" src="./images/kfc.jpg"/>
@@ -489,13 +535,13 @@
                                 <div class="row" style="margin-top: 5px;">
                                     <div class="col-md-8">
                                         <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
-                                        <img src="images/icon/reply.png" style="width:24px;float:left;"/>
+                                        <div class="action_icon reply_icon"></div>
                                         <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Trần Đoàn Khánh Vũ</h4>
                                     </div>
 
                                     <div class="col-md-4">
-                                        <img src="images/icon/minimize.png" style="width:24px;float:right;"/>
-                                        <img src="images/icon/flag.png" style="width:24px;float:right;"/>
+                                        <div class="action_icon minimize"></div>
+                                        <img class="action_icon flag"/>
                                     </div>
                                 </div>
 
@@ -510,16 +556,16 @@
                             </div>
                             <div class="col-md-10">
                                 <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">5</h4>
-                                <img src="images/icon/up.png" style="width:24px;float:left;"/>
-                                <img src="images/icon/down.png" style="width:24px;float:left;"/>
-                                <button type="button" class="btn btn-success" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
+                                <div class="action_icon up"></div>
+                                <div class="action_icon down"></div>
+                                <button type="button" class="btn btn-success reply" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
                                 <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li data-tags="Sản Phẩm">
-                    <div style="margin:5px 20px 0; border: 3px solid green;">
+                    <div style="/*margin:5px 20px 0*/;" class="comment_detail post_start">
                         <div class="row">
                             <div class="col-md-2">
                                 <img class="img-responsive" src="./images/user/user2.jpg"/>
@@ -532,8 +578,8 @@
 
                                     <div id="feedback1" class="col-md-4"></div>
                                     <div class="col-md-4">
-                                        <img src="images/icon/minimize.png" style="width:24px;float:right;"/>
-                                        <img src="images/icon/flag.png" style="width:24px;float:right;"/>
+                                        <div class="action_icon minimize"></div>
+                                        <img class="action_icon flag"/>
                                     </div>
                                 </div>
 
@@ -555,14 +601,14 @@
                             </div>
                             <div class="col-md-10">
                                 <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">20</h4>
-                                <img src="images/icon/up.png" style="width:24px;float:left;"/>
-                                <img src="images/icon/down.png" style="width:24px;float:left;"/>
-                                <button type="button" class="btn btn-success" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
+                                <div class="action_icon up"></div>
+                                <div class="action_icon down"></div>
+                                <button type="button" class="btn btn-success reply" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
                                 <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
                             </div>
                         </div>
                     </div>
-                    <div style="margin:5px 20px 5px 50px; border: 3px solid green;">
+                    <div style="margin:5px 0px 5px 50px;" class="comment_detail">
                         <div class="row">
                             <div class="col-md-2">
                                 <img class="img-responsive" src="./images/kfc.jpg"/>
@@ -571,13 +617,13 @@
                                 <div class="row" style="margin-top: 5px;">
                                     <div class="col-md-8">
                                         <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
-                                        <img src="images/icon/reply.png" style="width:24px;float:left;"/>
+                                        <div class="action_icon reply_icon"></div>
                                         <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Nguyễn Duy Long</h4>
                                     </div>
 
                                     <div class="col-md-4">
-                                        <img src="images/icon/minimize.png" style="width:24px;float:right;"/>
-                                        <img src="images/icon/flag.png" style="width:24px;float:right;"/>
+                                        <div class="action_icon minimize"></div>
+                                        <img class="action_icon flag"/>
                                     </div>
                                 </div>
 
@@ -591,9 +637,9 @@
                             </div>
                             <div class="col-md-10">
                                 <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">5</h4>
-                                <img src="images/icon/up.png" style="width:24px;float:left;"/>
-                                <img src="images/icon/down.png" style="width:24px;float:left;"/>
-                                <button type="button" class="btn btn-success" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
+                                <div class="action_icon up"></div>
+                                <div class="action_icon down"></div>
+                                <button type="button" class="btn btn-success reply" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
                                 <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
                             </div>
                         </div>
@@ -662,6 +708,49 @@
             menu.css('z-index', '9999');
         }
         menu.toggleClass('in');
+    });
+
+    $('body').on('click', '.send_comment', function() {
+        alert($(this).parent().find('input').val());
+        $(this).parent().parent().remove();
+    });
+
+    $('body').on('click', '.cancel_comment', function() {
+        $(this).parent().parent().remove();
+    });
+
+    $('body').on('click', '.reply', function() {
+        var temp = $(this).parent().parent().parent();
+        var div = temp.find('.row:last-child');
+        if (!div.hasClass('comment_box'))
+            temp.append('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
+        else {
+            div.toggle();
+        }
+    });
+
+    $('body').on('click', '.minimize', function() {
+        var temp = $(this).parent().parent().parent();
+        temp.find('h6').toggle();
+
+        var img = temp.parent().children().first().find('img');
+        if (img.css('display') === 'none')
+            img.css('display','block').css('height','auto').css('width','auto');
+        else
+            img.css('display','none').css('height','50px').css('min-width','69px');
+
+        temp.parent().parent().find('.row:last-child').toggle();
+    });
+
+    $('body').on('click', '.flag', function() {
+        var temp = $(this).closest('.comment_detail');
+
+        if (temp.hasClass('post_start')) {
+            temp.parent().find('.comment_detail').each(function() {
+                $(this).html('You have flagged this comment as spam');
+            });
+        }
+        else temp.html('You have flagged this comment as spam');
     });
 </script>
 <script src="./js/dropdown/select2.min.js" type="text/javascript"></script>

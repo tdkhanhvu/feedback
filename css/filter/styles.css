@@ -83,7 +83,7 @@ a:hover{
 #container{
 	display:block;
 	overflow:hidden;
-	width: 830px;
+	/*width: 830px;*/
 	margin:0 auto;
 }
 
@@ -94,11 +94,19 @@ a:hover{
 	list-style: none outside none;
 	margin: 6px;
 	position: relative;
-	/*width: 125px;*/
+	width: 98%;
 	
 	-moz-box-shadow: 0 0 5px #000;
 	-webkit-box-shadow: 0 0 5px #000;
 	box-shadow: 0 0 5px #000;
+}
+
+#container li:nth-child(even) {
+    background-color: rgb(245, 222, 230);
+}
+
+#container li:nth-child(odd) {
+    background-color: rgb(213, 245, 204);
 }
 
 #container ul{
@@ -107,4 +115,8 @@ a:hover{
 
 #container ul.hidden{
 	display:none;
+}
+
+#stage {
+    height: auto !important;
 }
