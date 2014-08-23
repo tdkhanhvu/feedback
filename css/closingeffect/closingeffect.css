@@ -13,7 +13,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
 }
 body
 {
-    line-height: 1;
+ /*   line-height: 1;*/
 }
 ol,ul
 {
@@ -35,9 +35,9 @@ table
 }
 body
 {
-    color: #fff;
+/*    color: #fff;
     font: 1em/1.3em Montserrat,Helvetica,sans-serif;
-    margin: 0 auto;
+    margin: 0 auto;*/
 }
 /*body,html
 {
@@ -81,8 +81,8 @@ a
 }
 p
 {
-    line-height: 32px;
-    padding: 0 0 40px 0;
+    line-height: 25px;
+    padding: 0 0 20px 0;
     text-align: left;
 }
 i.fa-bars
@@ -134,7 +134,7 @@ i.fa-bars
 }
 .menu .left-menu
 {
-    background-color: #444;
+    background-color: #ECE2E2;
     border-right: 1px solid #444;
     display: table;
     height: 100%;
@@ -142,37 +142,37 @@ i.fa-bars
     position: absolute;
     transition: .4s;
     webkit-transition: .4s;
-    width: 30%;
+    width: 40%;
     z-index: 1;
 }
 .menu .left-menu a.menu-button
 {
-    font-size: 11px;
+/*    font-size: 11px;
     left: 0;
     position: absolute;
     right: 0;
     text-align: center;
     text-transform: uppercase;
-    top: 20px;
+    top: 20px;*/
 }
 .menu .left-menu a.menu-button i
 {
-    font-size: 28px;
+/*    font-size: 28px;
     margin: -3.5px 10px 0 0;
-    vertical-align: middle;
+    vertical-align: middle;*/
 }
 .menu .left-menu ul
 {
-    display: table-cell;
+/*    display: table-cell;
     text-align: left;
     vertical-align: middle;
-    width: 100%;
+    width: 100%;*/
 }
 .menu .left-menu li
 {
-    font-size: 28px;
+/*    font-size: 28px;
     line-height: 30px;
-    margin: 10px;
+    margin: 10px;*/
 }
 .menu.in .left-menu
 {
@@ -210,18 +210,24 @@ i.fa-bars
     moz-opacity: 0.8;
     ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: 0.8;
-    position: relative;
-    top: 50px;
+/*    position: relative;
+    top: 50px;*/
 }
+
+.menu .circle img {
+    width: 150px;
+    border-radius: 50%;
+}
+
 .menu .right-preview
 {
-    background-color: #ffb9b5;
+    background-color: #CCE0F8;
     height: 100%;
     position: absolute;
     right: -70%;
     transition: .4s;
     webkit-transition: .4s;
-    width: 70%;
+    width: 60%;
     z-index: 0;
 }
 .menu .right-preview a

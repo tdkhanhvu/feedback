@@ -10,11 +10,11 @@
     <meta name="description" content="Thumbnail Pile Effect with Automatic Grouping">
     <meta name="keywords" content="jquery, pile, effect, images, grid, thumbnails, css3, grouping, albums">
     <meta name="author" content="Codrops">
-    <link rel="shortcut icon" href="http://tympanus.net/Development/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/stapel/stapel.css">
     <link rel="stylesheet" href="./css/dropdown/select2.css" type="text/css">
     <link rel="stylesheet" href="./css/closingeffect/closingeffect.css" type="text/css">
-    <script src="./js/modernizr.custom.63321.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="./css/bootstrap-theme.css" type="text/css">
     <style>
         .icon {
             width: 33%;
@@ -25,6 +25,15 @@
             width: 25px;
             height: 25px;
         }
+
+        .branch_info {
+            padding: 0 0 5px 0;
+        }
+        .branch_info > img {
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -33,7 +42,7 @@
 <div class="wrapper">
 <div class="topbar">
     <div style="width:50%;margin:20px auto;">
-        <select multiple="multiple" id="city_start" style="width:100%">
+        <select multiple="multiple" id="industry_list" style="width:100%">
             <option value="parking">Bãi Giữ Xe</option>
             <option value="hospital">Bệnh Viện</option>
             <option value="petrol_station">Cây Xăng</option>
@@ -70,7 +79,7 @@
 </li>
 <li data-pile="Taxi" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
         <span class="tp-info"><span>Saigontourist</span></span>
-        <img class="company" src="./images/saigontourist.jpg"/>
+        <img src="./images/saigontourist.jpg"/>
 </li>
 <li data-pile="Taxi"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
@@ -83,7 +92,7 @@
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
     <a href="http://drbl.in/fHXA">
         <span class="tp-info"><span>Phương Trang</span></span>
-        <img src="./images/phuong_trang.JPG">
+        <img src="./images/phuong_trang.jpg">
     </a>
 </li>
 <li data-pile="Taxi"
@@ -115,10 +124,6 @@
         <span class="tp-info"><span>Mai Linh</span></span>
         <img src="./images/mai_linh.jpg">
     </a>
-
-    <div class="tp-title">
-        <span>Taxi</span><span>12</span>
-    </div>
 </li>
 <li data-pile="Cây Xăng"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 0px; display: list-item;">
@@ -154,8 +159,6 @@
         <span class="tp-info"><span>Nguyễn Thái Bình</span></span>
         <img src="./images/nguyen_thai_binh.jpg">
     </a>
-
-    <div class="tp-title"><span>Cây Xăng</span><span>12</span></div>
 </li>
 <li data-pile="Cinema"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 0px; display: list-item;">
@@ -183,8 +186,6 @@
     <a href="http://drbl.in/eavb">
         <span class="tp-info"><span>Cinebox Cinema</span></span>
         <img src="./images/cinebox_cinema.jpg">
-
-        <div class="tp-title"><span>Cinema</span><span>8</span></div>
     </a>
 </li>
 <li data-pile="Viễn Thông"
@@ -214,8 +215,6 @@
         <span class="tp-info"><span>Beeline</span></span>
         <img src="./images/beeline.jpg">
     </a>
-
-    <div class="tp-title"><span>Viễn Thông</span><span>14</span></div>
 </li>
 <li data-pile="Siêu Thị"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 248px; display: list-item;">
@@ -244,8 +243,6 @@
         <span class="tp-info"><span>Lottemart</span></span>
         <img src="./images/lottemart.jpg">
     </a>
-
-    <div class="tp-title"><span>Siêu Thị</span><span>6</span></div>
 </li>
 <li data-pile="Trung Tâm Mua Sắm"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 248px; display: list-item;">
@@ -288,8 +285,6 @@
         <span class="tp-info"><span>Diamond Plaza</span></span>
         <img src="./images/diamond_plaza.jpg">
     </a>
-
-    <div class="tp-title"><span>Trung Tâm Mua Sắm</span><span>7</span></div>
 </li>
 <li data-pile="Hàng Không"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 248px; display: list-item;">
@@ -346,8 +341,6 @@
         <span class="tp-info"><span>Qatar Airways</span></span>
         <img src="./images/qatar_airway.jpg">
     </a>
-
-    <div class="tp-title"><span>Hàng Không</span><span>8</span></div>
 </li>
 <li data-pile="Thức Ăn Nhanh"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 930px; top: 248px; display: list-item;">
@@ -358,10 +351,8 @@
 </li>
 <li data-pile="Thức Ăn Nhanh"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 930px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/dyZH">
         <span class="tp-info"><span>KFC</span></span>
-        <img src="./images/kfc.jpg">
-    </a>
+        <img class="company" src="./images/kfc.jpg">
 </li>
 <li data-pile="Thức Ăn Nhanh"
     style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 930px; top: 248px; display: list-item;">
@@ -390,8 +381,6 @@
         <span class="tp-info"><span>Pizza Hut</span></span>
         <img src="./images/pizzahut.jpg">
     </a>
-
-    <div class="tp-title"><span>Thức Ăn Nhanh</span><span>6</span></div>
 </li>
 </ul>
 </div>
@@ -401,16 +390,134 @@
 <div class="menu" style="z-index: -1;">
     <div class="left-menu">
         <a class="menu-button" href="#"><i class="fa fa-times"></i>Close Menu</a>
+        <div style="width:100%;margin:50px auto;">
+            <p>Chọn chi nhánh</p>
+            <select multiple="multiple" id="branch_list" style="width:100%">
+                <option value="kfc_1">A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM</option>
+                <option value="kfc_2">Lầu 4 – DiamondPlaza 34 Lê Duẩn – Phường Bến Nghé – Quận 1- Tp.HCM</option>
+                <option value="kfc_3">Siêu thị Sài Gòn – số 34 Đường 3/2 – Phường 12 – Quận 10 – Tp.HCM</option>
+                <option value="kfc_4">15-17 Cộng Hòa – Phường 4 – Quận Tân Bình – Tp.HCM</option>
+                <option value="kfc_5">20 An Dương Vương – Phường 9 – Quận 5 – Tp.HCM</option>
+                <option value="kfc_6"> 74/2 Hai Bà Trưng – Phường Bến Nghé – Quận 1- Tp.HCM</option>
+                <option value="kfc_7"> 80 Đường Tháp Mười – Phường 2 – Quận 6 – Tp.HCM</option>
+                <option value="kfc_8">Co.op Mart – 571 Nguyễn Kiệm – Phường 9 – Quận Phú Nhuận – Tp.HCM</option>
+            </select>
 
-        <div class="circle"><a href="http://www.webdesigncrowd.com/"><img src="./Closing Door Menu_files/logo.png"></a></div>
+            <p style="padding:0px;">
+                <img src="./images/kfc_logo.png" style="width:200px;margin:0 auto;"/>
+            </p>
+            <p class="branch_info">
+                <img class="info_icon" src="./images/icon/description.png" style="display: inline;">
+                Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.
+            </p>
+            <p>
+                Năm 1997, KFC đã khai trương nhà hàng đầu tiên tại Thành phố Hồ Chí Minh. Đến nay, hệ thống các nhà hàng của KFC đã phát triển tới hơn 140 nhà hàng, có mặt tại hơn 19 tỉnh/thành phố lớn trên cả nước, sử dụng hơn 3.000 lao động đồng thời cũng tạo thêm nhiều việc làm trong ngành công nghiệp bổ trợ tại Việt Nam.
+            </p>
+
+            <p class="branch_info">
+                <img src="./images/icon/time.png" style="display: inline;">
+                <b id="branch_hour">7h30-11h00 &amp; 13h00-16h00 các ngày trong tuần</b>
+            </p>
+            <p class="branch_info">
+                <img src="./images/icon/address.png" style="display: inline;">
+                <b id="branch_address">A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM</b>
+            </p>
+            <p class="branch_info">
+                <img src="./images/icon/phone.png" style="display: inline;">
+                <b id="branch_phone">0123456789</b>
+            </p>
+        </div>
     </div>
 
     <div class="right-preview">
+        <div style="margin:30px 20px 0; border: 3px solid green;">
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="img-responsive" src="./images/user/avatar.jpg"/>
+                </div>
+                <div class="col-md-10">
+                    <div class="row" style="margin-top: 5px;">
+                        <div class="col-md-4">
+                            <h4 style="color: rgb(141, 30, 30);margin:5px;">Trần Đoàn Khánh Vũ</h4>
+                        </div>
+
+                        <div id="feedback" class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <img src="images/icon/minimize.png" style="width:24px;float:right;"/>
+                            <img src="images/icon/flag.png" style="width:24px;float:right;"/>
+                        </div>
+                    </div>
+
+                    <h6>Tối thứ 7 tuần rồi (16/8), mình và một người bạn tới quán này để ăn trưa. Không ngờ gặp nhân viên giữ xe khá là bất lịch sự và gắt gỏng với tụi mình. Thế nên cuối cùng cả hai quyết định không vào quán nữa mà ghé quán khác
+                    </h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <span class="label label-danger">Chưa Giải Quyết</span>
+                </div>
+                <div class="col-md-10">
+                    <span class="label label-primary">Phục Vụ</span>
+                    <span class="label label-success">Giữ Xe</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">
+                    <h5 style="text-align: center;color: rgb(17, 83, 141);">3 ngày trước</h5>
+                </div>
+                <div class="col-md-10">
+                    <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">20</h4>
+                    <img src="images/icon/up.png" style="width:24px;float:left;"/>
+                    <img src="images/icon/down.png" style="width:24px;float:left;"/>
+                    <button type="button" class="btn btn-success" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
+                    <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
+                </div>
+            </div>
+        </div>
+        <div style="margin:5px 20px 0 50px; border: 3px solid green;">
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="img-responsive" src="./images/kfc.jpg"/>
+                </div>
+                <div class="col-md-10">
+                    <div class="row" style="margin-top: 5px;">
+                        <div class="col-md-8">
+                            <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
+                            <img src="images/icon/reply.png" style="width:24px;float:left;"/>
+                            <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Trần Đoàn Khánh Vũ</h4>
+                        </div>
+
+                        <div class="col-md-4">
+                            <img src="images/icon/minimize.png" style="width:24px;float:right;"/>
+                            <img src="images/icon/flag.png" style="width:24px;float:right;"/>
+                        </div>
+                    </div>
+
+                    <h6>Cám ơn bạn đã phản hồi cho quán. Quản lý của quán đã làm việc với nhân viên gửi xe. Nếu nhân viên gửi xe còn tái phạm nữa thì quán sẽ thay thế nhân viên khác.
+                        Mong bạn sẽ còn quay lại quán những lần sau!
+                    </h6>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">
+                    <h5 style="text-align: center;color: rgb(17, 83, 141);">2 giờ trước</h5>
+                </div>
+                <div class="col-md-10">
+                    <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">5</h4>
+                    <img src="images/icon/up.png" style="width:24px;float:left;"/>
+                    <img src="images/icon/down.png" style="width:24px;float:left;"/>
+                    <button type="button" class="btn btn-success" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
+                    <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- /container -->
 <script type="text/javascript" src="./js/jquery.min.js"></script>
+<script src="./js/modernizr.custom.63321.js"></script>
 <script type="text/javascript" src="./js/stapel/jquery.stapel.js"></script>
+<script type="text/javascript" src="./js/rating/rating.js"></script>
 <script type="text/javascript">
     $(function () {
 
@@ -435,9 +542,17 @@
             $name.empty();
             stapel.closePile();
         });
-        $("#city_start").select2();
+        $("#industry_list").select2();
+        $("#branch_list").select2();
 
         $('.select2-container').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
+
+        $.fn.raty.defaults.path = './images/rating';
+
+        $('#feedback').raty({
+            readOnly: true,
+            score: 1
+        });
     });
 
     $(document).on('click', ".company,.menu-button", function() {
