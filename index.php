@@ -88,6 +88,7 @@
 
         .comment_detail {
             border: 3px solid green;
+            padding-bottom: 5px;
         }
 
         #Container .mix{
@@ -151,7 +152,6 @@
         }
 
         .timeago {
-            white-space: nowrap;
             margin-left: 10px;
         }
     </style>
@@ -639,7 +639,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <span class="label label-danger">Chưa Giải Quyết</span>
+                                            <span class="label label-success">Đã Giải Quyết</span>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="label label-primary">Phục Vụ</span>
@@ -648,7 +648,7 @@
                                     </div>
                                     <div class="row" style="margin-top:5px;">
                                         <div class="col-md-2">
-                                            <time class="timeago text-primary" datetime="2014-08-22T09:24:17Z"></time>
+                                            <time class="timeago text-primary text-nowrap" datetime="2014-08-22T09:24:17Z"></time>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="badge">15</span>
@@ -687,7 +687,7 @@
                                     </div>
                                     <div class="row" style="margin-top:5px;">
                                         <div class="col-md-2">
-                                            <time class="timeago text-primary" datetime="2014-08-24T23:24:17Z"></time>
+                                            <time class="timeago text-primary text-nowrap" datetime="2014-08-24T23:24:17Z"></time>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="badge">10</span>
@@ -734,7 +734,7 @@
                                     </div>
                                     <div class="row" style="margin-top:5px;">
                                         <div class="col-md-2">
-                                            <time class="timeago text-primary" datetime="2014-08-24T09:24:17Z"></time>
+                                            <time class="timeago text-primary text-nowrap" datetime="2014-08-24T09:24:17Z"></time>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="badge">35</span>
@@ -772,7 +772,7 @@
                                     </div>
                                     <div class="row" style="margin-top:5px;">
                                         <div class="col-md-2">
-                                            <time class="timeago text-primary" datetime="2014-08-25T00:10:17Z"></time>
+                                            <time class="timeago text-primary text-nowrap" datetime="2014-08-25T00:10:17Z"></time>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="badge">1</span>
