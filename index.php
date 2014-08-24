@@ -150,7 +150,7 @@
             width:96px;
         }
 
-        .time-ago {
+        .timeago {
             white-space: nowrap;
             margin-left: 10px;
         }
@@ -648,7 +648,7 @@
                                     </div>
                                     <div class="row" style="margin-top:5px;">
                                         <div class="col-md-2">
-                                            <span class="text-primary time-ago">3 ngày trước</span>
+                                            <time class="timeago text-primary" datetime="2014-08-22T09:24:17Z"></time>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="badge">15</span>
@@ -687,7 +687,7 @@
                                     </div>
                                     <div class="row" style="margin-top:5px;">
                                         <div class="col-md-2">
-                                            <span class="text-primary time-ago">2 giờ trước</span>
+                                            <time class="timeago text-primary" datetime="2014-08-24T23:24:17Z"></time>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="badge">10</span>
@@ -734,7 +734,7 @@
                                     </div>
                                     <div class="row" style="margin-top:5px;">
                                         <div class="col-md-2">
-                                            <spanp class="text-primary time-ago">30 phút trước</spanp>
+                                            <time class="timeago text-primary" datetime="2014-08-24T09:24:17Z"></time>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="badge">35</span>
@@ -772,7 +772,7 @@
                                     </div>
                                     <div class="row" style="margin-top:5px;">
                                         <div class="col-md-2">
-                                            <span class="text-primary time-ago">10 phút trước</span>
+                                            <time class="timeago text-primary" datetime="2014-08-25T00:10:17Z"></time>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="badge">1</span>
@@ -802,6 +802,7 @@
 <script type="text/javascript" src="./js/rating/rating.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
 <script src="./js/dropdown/select2.min.js" type="text/javascript"></script>
+<script src="./js/timeago/jquery.timeago.js" type="text/javascript"></script>
 <script src="./js/bootstrap.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
@@ -852,6 +853,8 @@
         $('#Container').mixItUp();
 
         $('.collapse').collapse();
+
+        $("time.timeago").timeago();
     });
 
     $(document).on('click', ".company,.menu-button", function() {
