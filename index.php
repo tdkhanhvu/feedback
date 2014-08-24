@@ -55,7 +55,7 @@
         
         .minimize {
             float:right;
-            color: rgb(182, 17, 17);
+            color: rgb(17, 182, 24);
         }
 
         .flag {
@@ -903,6 +903,8 @@
             row.css('display','none');
         }
         else row.toggle();
+
+        $(this).toggleClass('glyphicon-minus glyphicon-plus');
     });
 
     $('body').on('click', '.flag', function() {
