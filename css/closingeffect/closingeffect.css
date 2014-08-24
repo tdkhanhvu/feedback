@@ -82,7 +82,7 @@ a
 p
 {
     line-height: 25px;
-    padding: 0 0 20px 0;
+    padding: 0 0 0 5px;
     text-align: left;
 }
 i.fa-bars
@@ -93,7 +93,7 @@ i.fa-bars
 }
 .btn
 {
-    background-color: #ea5648;
+/*    background-color: #ea5648;
     border-radius: 6px;
     box-shadow: 0 3px 0 0 #e04338;
     box-sizing: border-box;
@@ -108,12 +108,12 @@ i.fa-bars
     position: relative;
     webkit-border-radius: 6px;
     webkit-box-shadow: 0 3px 0 0 #e04338;
-    webkit-box-sizing: border-box;
+    webkit-box-sizing: border-box;*/
 }
 .btn:active,.btn.active
 {
     box-shadow: 0 1px 0 0 #e04338;
-    top: 2px;
+   /* top: 2px;*/
     webkit-box-shadow: 0 1px 0 0 #e04338;
 }
 .btn-small
@@ -233,9 +233,11 @@ i.fa-bars
 .menu .right-preview a
 {
     display: inline-block;
+/*
     height: 128px;
+*/
    /* margin-top: -64px;*/
-    padding: 0 50px;
+    /*padding: 0 50px;*/
     /*position: relative;*/
     top: 50%;
     transition: .2s;

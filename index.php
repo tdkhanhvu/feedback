@@ -36,6 +36,7 @@
         }
 
         .action_icon {
+            font-size: x-large;
             width:24px;
             height:24px;
             opacity: 1.0;
@@ -46,35 +47,43 @@
             opacity: 0.4;
             filter: alpha(opacity=40); /* For IE8 and earlier */
         }
+
+        .disabled {
+            opacity: 0.4;
+            filter: alpha(opacity=40); /* For IE8 and earlier */
+        }
         
         .minimize {
-            background: url(images/icon/minimize.png);
-            background-size: cover;
             float:right;
+            color: rgb(182, 17, 17);
         }
 
         .flag {
-            background: url(images/icon/flag.png);
-            background-size: cover;
-            float:right;
+            float: right;
+            color: rgb(182, 17, 17);
         }
 
         .up {
-            background: url(images/icon/up.png);
-            background-size: cover;
-            float:left;
+            float: left;
+            color: green;
         }
 
         .down {
-            background: url(images/icon/down.png);
-            background-size: cover;
-            float:left;
+            float: left;
+            color: red;
+            margin-right: 10px;
         }
 
         .reply_icon {
-            background: url(images/icon/reply.png);
-            background-size: cover;
             float:left;
+        }
+
+        .reply {
+            float:left;
+            height: 20px;
+            padding-top: 0;
+            margin-top: 5px;
+            margin-right:10px;
         }
 
         .comment_detail {
@@ -93,7 +102,7 @@
 
         label{
             font-weight: 300;
-            margin: 0 .4em 0 0;
+            /*margin: 0 .4em 0 0;*/
         }
 
         button{
@@ -126,6 +135,24 @@
 
         #Container > div:nth-child(even) {
             background-color: rgb(245, 236, 231);
+        }
+
+        #Container > .mix {
+            width:100%;
+        }
+
+        .badge {
+            float: left;
+            margin: 5px 5px 0 0;
+        }
+
+        .avatar {
+            width:96px;
+        }
+
+        .time-ago {
+            white-space: nowrap;
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -523,193 +550,248 @@
     </div>
 
     <div class="right-preview">
-        <div class="controls">
-            <label>Lọc:</label>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <span class="glyphicon glyphicon-plus"></span>Thêm nhận xét về công ty
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row comment_box">
 
-            <button class="filter" data-filter="all">Tất Cả</button>
-            <button class="filter" data-filter=".category-service">Phục Vụ</button>
-            <button class="filter" data-filter=".category-park">Giữ Xe</button>
-            <button class="filter" data-filter=".category-product">Sản Phẩm</button>
-
-            <label>Sort:</label>
-
-            <button class="sort" data-sort="myorder:asc">Asc</button>
-            <button class="sort" data-sort="myorder:desc">Desc</button>
-        </div>
-        <div id="Container">
-            <div class="mix category-service category-park" data-myorder="1">
-                <div style="/*margin:5px 20px 0*/;" class="comment_detail post_start">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img class="img-responsive" src="./images/user/user1.jpg"/>
-                        </div>
-                        <div class="col-md-10">
-                            <div class="row" style="margin-top: 5px;">
-                                <div class="col-md-4">
+                            <div class="col-md-2" style="padding:0;">
+                                <img class="img-thumbnail" src="images/user/user1.jpg"/>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="col-md-8">
                                     <h4 style="color: rgb(141, 30, 30);margin:5px;">Trần Đoàn Khánh Vũ</h4>
                                 </div>
-
                                 <div id="feedback" class="col-md-4"></div>
-                                <div class="col-md-4">
-                                    <div class="action_icon minimize"></div>
-                                    <img class="action_icon flag"/>
+                                <input type="text" class="form-control" placeholder="Nhập nhận xét">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default active">
+                                        <input type="checkbox" checked>Phục Vụ
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="checkbox"> Giữ Xe
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="checkbox"> Sản Phẩm
+                                    </label>
                                 </div>
+                                <button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button>
+                                <button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button>
                             </div>
-
-                            <h6>Tối thứ 7 tuần rồi (16/8), mình và một người bạn tới quán này để ăn trưa. Không ngờ gặp nhân viên giữ xe khá là bất lịch sự và gắt gỏng với tụi mình. Thế nên cuối cùng cả hai quyết định không vào quán nữa mà ghé quán khác
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <span class="label label-danger">Chưa Giải Quyết</span>
-                        </div>
-                        <div class="col-md-10">
-                            <span class="label label-primary">Phục Vụ</span>
-                            <span class="label label-success">Giữ Xe</span>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top:5px;">
-                        <div class="col-md-2">
-                            <h5 style="text-align: center;color: rgb(17, 83, 141);">3 ngày trước</h5>
-                        </div>
-                        <div class="col-md-10">
-                            <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">20</h4>
-                            <div class="action_icon up"></div>
-                            <div class="action_icon down"></div>
-                            <button type="button" class="btn btn-success reply" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
-                            <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin:5px 0px 5px 50px;" class="comment_detail">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img class="img-responsive" src="./images/kfc.jpg"/>
-                        </div>
-                        <div class="col-md-10">
-                            <div class="row" style="margin-top: 5px;">
-                                <div class="col-md-8">
-                                    <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
-                                    <div class="action_icon reply_icon"></div>
-                                    <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Trần Đoàn Khánh Vũ</h4>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="action_icon minimize"></div>
-                                    <img class="action_icon flag"/>
-                                </div>
-                            </div>
-
-                            <h6>Cám ơn bạn đã phản hồi cho quán. Quản lý của quán đã làm việc với nhân viên gửi xe. Nếu nhân viên gửi xe còn tái phạm nữa thì quán sẽ thay thế nhân viên khác.
-                                Mong bạn sẽ còn quay lại quán những lần sau!
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top:5px;">
-                        <div class="col-md-2">
-                            <h5 style="text-align: center;color: rgb(17, 83, 141);">2 giờ trước</h5>
-                        </div>
-                        <div class="col-md-10">
-                            <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">5</h4>
-                            <div class="action_icon up"></div>
-                            <div class="action_icon down"></div>
-                            <button type="button" class="btn btn-success reply" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
-                            <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="mix category-product" data-myorder="2">
-                <div style="/*margin:5px 20px 0*/;" class="comment_detail post_start">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img class="img-responsive" src="./images/user/user2.jpg"/>
-                        </div>
-                        <div class="col-md-10">
-                            <div class="row" style="margin-top: 5px;">
-                                <div class="col-md-4">
-                                    <h4 style="color: rgb(141, 30, 30);margin:5px;">Nguyễn Duy Long</h4>
-                                </div>
-
-                                <div id="feedback1" class="col-md-4"></div>
-                                <div class="col-md-4">
-                                    <div class="action_icon minimize"></div>
-                                    <img class="action_icon flag"/>
-                                </div>
-                            </div>
-
-                            <h6>Hôm qua (22/8), mình tới ăn tối ở quán này và gọi phần Combo 1. Thức ăn đem ra không nóng sốt và có cả gián nằm trong đó.
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <span class="label label-danger">Chưa Giải Quyết</span>
-                        </div>
-                        <div class="col-md-10">
-                            <span class="label label-warning">Sản Phẩm</span>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top:5px;">
-                        <div class="col-md-2">
-                            <h5 style="text-align: center;color: rgb(17, 83, 141);">30 phút trước</h5>
-                        </div>
-                        <div class="col-md-10">
-                            <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">20</h4>
-                            <div class="action_icon up"></div>
-                            <div class="action_icon down"></div>
-                            <button type="button" class="btn btn-success reply" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
-                            <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
-                        </div>
-                    </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Tất cả nhận xét
+                        </a>
+                    </h4>
                 </div>
-                <div style="margin:5px 0px 5px 50px;" class="comment_detail">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img class="img-responsive" src="./images/kfc.jpg"/>
-                        </div>
-                        <div class="col-md-10">
-                            <div class="row" style="margin-top: 5px;">
-                                <div class="col-md-8">
-                                    <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
-                                    <div class="action_icon reply_icon"></div>
-                                    <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Nguyễn Duy Long</h4>
-                                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="controls">
+                            <label>Lọc:</label>
 
-                                <div class="col-md-4">
-                                    <div class="action_icon minimize"></div>
-                                    <img class="action_icon flag"/>
+                            <button class="filter" data-filter="all">Tất Cả</button>
+                            <button class="filter btn-primary" data-filter=".category-service">Phục Vụ</button>
+                            <button class="filter btn-success" data-filter=".category-park">Giữ Xe</button>
+                            <button class="filter btn-warning" data-filter=".category-product">Sản Phẩm</button>
+
+                            <label>Sort:</label>
+
+                            <button class="sort" data-sort="myorder:asc">Asc</button>
+                            <button class="sort" data-sort="myorder:desc">Desc</button>
+                        </div>
+                        <div id="Container">
+                            <div class="mix category-service category-park" data-myorder="1">
+                                <div class="comment_detail post_start">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img class="avatar img-thumbnail" src="./images/user/user1.jpg"/>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="row" style="margin-top: 5px;">
+                                                <div class="col-md-4">
+                                                    <h4 style="color: rgb(141, 30, 30);margin:5px;">Trần Đoàn Khánh Vũ</h4>
+                                                </div>
+
+                                                <div id="feedback1" class="col-md-4"></div>
+                                                <div class="col-md-4">
+                                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
+                                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
+                                                </div>
+                                            </div>
+
+                                            <h6>Tối thứ 7 tuần rồi (16/8), mình và một người bạn tới quán này để ăn trưa. Không ngờ gặp nhân viên giữ xe khá là bất lịch sự và gắt gỏng với tụi mình. Thế nên cuối cùng cả hai quyết định không vào quán nữa mà ghé quán khác
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <span class="label label-danger">Chưa Giải Quyết</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <span class="label label-primary">Phục Vụ</span>
+                                            <span class="label label-success">Giữ Xe</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:5px;">
+                                        <div class="col-md-2">
+                                            <span class="text-primary time-ago">3 ngày trước</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <span class="badge">15</span>
+                                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
+                                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
+                                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin:5px 0px 5px 50px;" class="comment_detail">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img class="avatar img-thumbnail" src="./images/firm/kfc.jpg"/>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="row" style="margin-top: 5px;">
+                                                <div class="col-md-8">
+                                                    <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
+                                                    <span class="action_icon reply_icon glyphicon glyphicon-share-alt"></span>
+                                                    <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Trần Đoàn Khánh Vũ</h4>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
+                                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
+                                                </div>
+                                            </div>
+
+                                            <h6>Cám ơn bạn đã phản hồi cho quán. Quản lý của quán đã làm việc với nhân viên gửi xe. Nếu nhân viên gửi xe còn tái phạm nữa thì quán sẽ thay thế nhân viên khác.
+                                                Mong bạn sẽ còn quay lại quán những lần sau!
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:5px;">
+                                        <div class="col-md-2">
+                                            <span class="text-primary time-ago">2 giờ trước</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <span class="badge">10</span>
+                                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
+                                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
+                                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mix category-product" data-myorder="2">
+                                <div class="comment_detail post_start">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img class="avatar img-thumbnail" src="./images/user/user2.jpg"/>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="row" style="margin-top: 5px;">
+                                                <div class="col-md-4">
+                                                    <h4 style="color: rgb(141, 30, 30);margin:5px;">Nguyễn Duy Long</h4>
+                                                </div>
+
+                                                <div id="feedback2" class="col-md-4"></div>
+                                                <div class="col-md-4">
+                                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
+                                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
+                                                </div>
+                                            </div>
+
+                                            <h6>Hôm qua (22/8), mình tới ăn tối ở quán này và gọi phần Combo 1. Thức ăn đem ra không nóng sốt và có cả gián nằm trong đó.
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <span class="label label-danger">Chưa Giải Quyết</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <span class="label label-warning">Sản Phẩm</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:5px;">
+                                        <div class="col-md-2">
+                                            <spanp class="text-primary time-ago">30 phút trước</spanp>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <span class="badge">35</span>
+                                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
+                                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
+                                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin:5px 0px 5px 50px;" class="comment_detail">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img class="avatar img-thumbnail" src="./images/firm/kfc.jpg"/>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="row" style="margin-top: 5px;">
+                                                <div class="col-md-8">
+                                                    <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
+                                                    <span class="action_icon reply_icon glyphicon glyphicon-share-alt"></span>
+                                                    <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Nguyễn Duy Long</h4>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
+                                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
+                                                </div>
+                                            </div>
+
+                                            <h6>Cám ơn bạn đã phản hồi cho công ty. Công ty rất tiếc vì trường hợp đã xảy ra. Chúng tôi sẽ làm rõ việc này với nhân viên vì an toàn vệ sinh thực phẩm là mối quan tâm hàng đầu của công ty.
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:5px;">
+                                        <div class="col-md-2">
+                                            <span class="text-primary time-ago">10 phút trước</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <span class="badge">1</span>
+                                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
+                                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
+                                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
+                                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <h6>Cám ơn bạn đã phản hồi cho công ty. Công ty rất tiếc vì trường hợp đã xảy ra. Chúng tôi sẽ làm rõ việc này với nhân viên vì an toàn vệ sinh thực phẩm là mối quan tâm hàng đầu của công ty.
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top:5px;">
-                        <div class="col-md-2">
-                            <h5 style="text-align: center;color: rgb(17, 83, 141);">10 phút trước</h5>
-                        </div>
-                        <div class="col-md-10">
-                            <h4 style="color: rgb(16, 141, 32);margin:5px;float:left;">5</h4>
-                            <div class="action_icon up"></div>
-                            <div class="action_icon down"></div>
-                            <button type="button" class="btn btn-success reply" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;">Trả Lời</button>
-                            <button type="button" class="btn btn-primary" style="float:left;height: 20px;padding-top: 0;margin-top: 5px;margin-left:15px;">Chia Sẻ</button>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="mix category-1" data-myorder="3"></div>
-            <div class="mix category-2" data-myorder="4"></div>
-            <div class="mix category-1" data-myorder="5"></div>
-            <div class="mix category-1" data-myorder="6"></div>
-            <div class="mix category-2" data-myorder="7"></div>
-            <div class="mix category-2" data-myorder="8"></div>
-
-            <div class="gap"></div>
-            <div class="gap"></div>
         </div>
     </div>
 </div>
@@ -719,6 +801,8 @@
 <script type="text/javascript" src="./js/stapel/jquery.stapel.js"></script>
 <script type="text/javascript" src="./js/rating/rating.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+<script src="./js/dropdown/select2.min.js" type="text/javascript"></script>
+<script src="./js/bootstrap.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
 
@@ -751,8 +835,8 @@
         $.fn.raty.defaults.path = './images/rating';
 
         $('#feedback').raty({
-            readOnly: true,
-            score: 1
+            score: 0,
+            cancel: true
         });
 
         $('#feedback1').raty({
@@ -760,7 +844,14 @@
             score: 1
         });
 
+        $('#feedback2').raty({
+            readOnly: true,
+            score: 1
+        });
+
         $('#Container').mixItUp();
+
+        $('.collapse').collapse();
     });
 
     $(document).on('click', ".company,.menu-button", function() {
@@ -801,10 +892,7 @@
 
         var img = temp.parent().children().first().find('img');
         //profile pic
-        if (img.css('display') === 'none')
-            img.css('display','block').css('height','auto').css('width','auto');
-        else
-            img.css('display','none').css('height','50px').css('min-width','69px');
+        img.toggle();
 
         //last row
         var row = temp.parent().parent().find('>.row:last-child');
@@ -827,7 +915,27 @@
         }
         else temp.html('You have flagged this comment as spam');
     });
+
+    $('body').on('click', '.up', function() {
+        changeCount(this, 1, 2);
+    });
+
+    $('body').on('click', '.down', function() {
+        changeCount(this, -1, 1);
+    });
+
+    function changeCount(e, inc, index) {
+        var item = $(e);
+        if (!item.hasClass('disabled')) {
+            var span = item.parent().find('>span');
+            var temp = span.first();
+
+            temp.html(parseInt(temp.html(), 10) + inc);
+            item.addClass('disabled');
+            span.eq(index).removeClass('disabled');
+        }
+    }
 </script>
-<script src="./js/dropdown/select2.min.js" type="text/javascript"></script>
+
 </body>
 </html>
