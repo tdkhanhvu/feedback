@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2014 at 04:23 PM
+-- Generation Time: Aug 25, 2014 at 03:19 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `info` text,
   `industry` int(11) NOT NULL,
   `address` text,
+  `image` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
@@ -43,15 +44,15 @@ CREATE TABLE IF NOT EXISTS `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`id`, `name`, `like`, `dislike`, `star`, `view`, `info`, `industry`, `address`) VALUES
-(1, 'Mai Linh Taxi', 2384, 459, 4, 37282, 'We are the best taxi service in Vietnam', 1, 'TpHCM'),
-(2, 'Vinasun', 1367, 237, 4, 27181, 'Vinasun is one of the most important taxi services in Vietnam', 1, 'Hanoi'),
-(3, 'Petrolimex', 3714, 421, 5, 42142, 'Taxi Petrolimex is the best in Vietnam', 1, 'Danang, Hanoi'),
-(4, 'Cho Ray', 3234, 513, 4, 34214, 'Best Hospital in Southern of Vietnam', 4, 'TpHCM'),
-(5, 'Nhan Dan Gia Dinh', 2321, 932, 3, 34224, 'Best Hospital Service for everyone!', 4, 'Saigon'),
-(6, 'Thong Nhat', 1231, 214, 5, 32153, 'Good Location for people at Tan Binh District HCMC', 4, 'Saigon'),
-(7, 'Saigontourist', 2125, 5532, 1, 342321, 'We are the top service Taxi in Vietnam. Join us!', 1, 'Hanoi'),
-(8, '115', 2241, 332, 2, 32142, 'Affordable Hospital for everybody!', 4, 'Tan Binh, Vietnam');
+INSERT INTO `company` (`id`, `name`, `like`, `dislike`, `star`, `view`, `info`, `industry`, `address`, `image`) VALUES
+(1, 'Mai Linh Taxi', 2384, 459, 4, 37282, 'We are the best taxi service in Vietnam', 1, 'TpHCM', ''),
+(2, 'Vinasun', 1367, 237, 4, 27181, 'Vinasun is one of the most important taxi services in Vietnam', 1, 'Hanoi', ''),
+(3, 'Petrolimex', 3714, 421, 5, 42142, 'Taxi Petrolimex is the best in Vietnam', 1, 'Danang, Hanoi', ''),
+(4, 'Cho Ray', 3234, 513, 4, 34214, 'Best Hospital in Southern of Vietnam', 4, 'TpHCM', ''),
+(5, 'Nhan Dan Gia Dinh', 2321, 932, 3, 34224, 'Best Hospital Service for everyone!', 4, 'Saigon', ''),
+(6, 'Thong Nhat', 1231, 214, 5, 32153, 'Good Location for people at Tan Binh District HCMC', 4, 'Saigon', ''),
+(7, 'Saigontourist', 2125, 5532, 1, 342321, 'We are the top service Taxi in Vietnam. Join us!', 1, 'Hanoi', ''),
+(8, '115', 2241, 332, 2, 32142, 'Affordable Hospital for everybody!', 4, 'Tan Binh, Vietnam', '');
 
 -- --------------------------------------------------------
 
@@ -60,21 +61,37 @@ INSERT INTO `company` (`id`, `name`, `like`, `dislike`, `star`, `view`, `info`, 
 --
 
 CREATE TABLE IF NOT EXISTS `feedback` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `company` int(11) NOT NULL,
-  `content` text NOT NULL,
-  `like` int(11) NOT NULL,
-  `dislike` int(11) NOT NULL,
-  PRIMARY KEY (`company`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `star` int(11) NOT NULL,
+  `likes` int(11) NOT NULL,
+  `dislikes` int(11) NOT NULL,
+  `solved` int(11) NOT NULL,
+  `tags` text NOT NULL,
+  `parent` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `feedback`
+-- Table structure for table `field`
 --
 
-INSERT INTO `feedback` (`company`, `content`, `like`, `dislike`) VALUES
-(1, 'I like the service. But the rate is a bit high.', 157, 78),
-(2, 'This is very good service. Highle recommended.', 241, 24),
-(3, 'Bad driver. Over charged.', 253, 14);
+CREATE TABLE IF NOT EXISTS `field` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `field`
+--
+
+INSERT INTO `field` (`id`, `name`) VALUES
+(1, 'Service'),
+(2, 'Parking'),
+(3, 'Product');
 
 -- --------------------------------------------------------
 
