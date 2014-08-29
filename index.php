@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)http://tympanus.net/Development/Stapel/index.html -->
-<html lang="en" class=" js no-touch cssanimations csstransitions">
+<html ng-app="web" lang="en" class=" js no-touch cssanimations csstransitions">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
@@ -52,7 +52,7 @@
             opacity: 0.4;
             filter: alpha(opacity=40); /* For IE8 and earlier */
         }
-        
+
         .minimize {
             float:right;
             color: rgb(17, 182, 24);
@@ -154,9 +154,13 @@
         .timeago {
             margin-left: 10px;
         }
+
+        h6 {
+            margin: 0;
+        }
     </style>
 </head>
-<body>
+<body ng-controller="FeedbackController as feedback">
 <div class="container">
 <section class="main">
 <div class="wrapper">
@@ -175,625 +179,307 @@
     </div>
     <span id="close" class="back">←</span>
 </div>
-<ul id="tp-grid" class="tp-grid" style="min-width: 310px; margin-left: 20px; height: 456px;">
-<li data-pile="Taxi"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/cmVe">
+<ul id="tp-grid" class="tp-grid" style="min-width: 310px; margin-left: 20px; height: 456px;" >
+<li data-pile="{{company.industryName}}" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;"
+    ng-repeat="company in feedback.companies" id="{{company.company_id}}">
         <span class="tp-info">
-            <span>Vinasun</span>
-            <div>
-                <div class="icon">
-                    <img src="images/review.png"/>1000
-                </div>
-                <div class="icon">
-                    <img src="images/comment.png"/>1000
-                </div>
-                <div class="icon">
-                    <img src="images/company.png"/>20
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            <span>{{company.companyName}}</span>
         </span>
-        <img src="./images/vinasun.jpg">
-    </a>
+    <img class="company" ng-src="./images/{{company.photo}}">
 </li>
-<li data-pile="Taxi" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
-        <span class="tp-info"><span>Saigontourist</span></span>
-        <img src="./images/saigontourist.jpg"/>
-</li>
-<li data-pile="Taxi"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/eKdt">
-        <span class="tp-info"><span>SaigonAir</span></span>
-        <img src="./images/saigonair.jpg">
-    </a>
-</li>
-<li data-pile="Taxi"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/fHXA">
-        <span class="tp-info"><span>Phương Trang</span></span>
-        <img src="./images/phuong_trang.jpg">
-    </a>
-</li>
-<li data-pile="Taxi"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/fOSN">
-        <span class="tp-info"><span>Hoàng Long</span></span>
-        <img src="./images/hoang_long.jpg">
-    </a>
-</li>
-<li data-pile="Taxi"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 0px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/fQiz">
-        <span class="tp-info"><span>Dầu Khí Cửu Long</span></span>
-        <img src="./images/dau_khi_cuu_long.jpg">
-    </a>
-</li>
-<li data-pile="Taxi"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(2deg); left: 0px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/fRUG">
-        <span class="tp-info">
-            <span>Vinataxi</span><p>1</p>
-        </span>
-        <img src="./images/vinataxi.jpg">
-    </a>
-</li>
-<li data-pile="Taxi"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/fRUH">
-        <span class="tp-info"><span>Mai Linh</span></span>
-        <img src="./images/mai_linh.jpg">
-    </a>
-</li>
-<li data-pile="Cây Xăng"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/eiUm">
-        <span class="tp-info"><span>Bến Thành</span></span>
-        <img src="./images/ben_thanh.jpg">
-    </a>
-</li>
-<li data-pile="Cây Xăng"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/ekMY">
-        <span class="tp-info"><span>Nơ Trang Long</span></span>
-        <img src="./images/no_trang_long.jpg">
-    </a>
-</li>
-<li data-pile="Cây Xăng"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/esQV">
-        <span class="tp-info"><span>Điện Biên Phủ</span></span>
-        <img src="./images/dien_bien_phu.jpg">
-    </a>
-</li>
-<li data-pile="Cây Xăng"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/eByE">
-        <span class="tp-info"><span>Nguyễn Tri Phương</span></span>
-        <img src="./images/nguyen_tri_phuong.jpg">
-    </a>
-</li>
-<li data-pile="Cây Xăng"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 310px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/eGZl">
-        <span class="tp-info"><span>Nguyễn Thái Bình</span></span>
-        <img src="./images/nguyen_thai_binh.jpg">
-    </a>
-</li>
-<li data-pile="Cinema"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/fzUB">
-        <span class="tp-info"><span>Galaxy Cinema</span></span>
-        <img src="./images/galaxy_cinema.jpg">
-    </a>
-</li>
-<li data-pile="Cinema"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/fQEv">
-        <span class="tp-info"><span>Megastar Cinema</span></span>
-        <img src="./images/megastar_cinema.jpg">
-    </a>
-</li>
-<li data-pile="Cinema"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/fREU">
-        <span class="tp-info"><span>Lotte Cinema</span></span>
-        <img src="./images/lotte_cinema.jpg">
-    </a>
-</li>
-<li data-pile="Cinema"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 620px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/eavb">
-        <span class="tp-info"><span>Cinebox Cinema</span></span>
-        <img src="./images/cinebox_cinema.jpg">
-    </a>
-</li>
-<li data-pile="Viễn Thông"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 930px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/cRkb">
-        <span class="tp-info"><span>Viettel</span></span>
-        <img src="./images/viettel.jpg">
-    </a>
-</li>
-<li data-pile="Viễn Thông"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 930px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/cSKM">
-        <span class="tp-info"><span>Mobifone</span></span>
-        <img src="./images/mobifone.jpg">
-    </a>
-</li>
-<li data-pile="Viễn Thông"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 930px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/djyP">
-        <span class="tp-info"><span>Vinaphone</span></span>
-        <img src="./images/vinaphone.jpg">
-    </a>
-</li>
-<li data-pile="Viễn Thông"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 930px; top: 0px; display: list-item;">
-    <a href="http://drbl.in/duLR">
-        <span class="tp-info"><span>Beeline</span></span>
-        <img src="./images/beeline.jpg">
-    </a>
-</li>
-<li data-pile="Siêu Thị"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fRjs">
-        <span class="tp-info"><span>CoopMart</span></span>
-        <img src="./images/coopmart.jpg">
-    </a>
-</li>
-<li data-pile="Siêu Thị"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fHRu">
-        <span class="tp-info"><span>BigC</span></span>
-        <img src="./images/bigC.jpg">
-    </a>
-</li>
-<li data-pile="Siêu Thị"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/etDm">
-        <span class="tp-info"><span>Maximark</span></span>
-        <img src="./images/maximark.jpg">
-    </a>
-</li>
-<li data-pile="Siêu Thị"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 0px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/dJgj">
-        <span class="tp-info"><span>Lottemart</span></span>
-        <img src="./images/lottemart.jpg">
-    </a>
-</li>
-<li data-pile="Trung Tâm Mua Sắm"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fmcU">
-        <span class="tp-info"><span>Parkson</span></span>
-        <img src="./images/parkson.jpg">
-    </a>
-</li>
-<li data-pile="Trung Tâm Mua Sắm"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fueE">
-        <span class="tp-info"><span>Vincom</span></span>
-        <img src="./images/vincom.jpg">
-    </a>
-</li>
-<li data-pile="Trung Tâm Mua Sắm"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fCkb">
-        <span class="tp-info"><span>Nowzone</span></span>
-        <img src="./images/nowzone.jpg">
-    </a>
-</li>
-<li data-pile="Trung Tâm Mua Sắm"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 310px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fMuo">
-        <span class="tp-info"><span>Lotte Mart</span></span>
-        <img src="./images/lottemart.jpg">
-    </a>
-</li>
-<li data-pile="Trung Tâm Mua Sắm"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 310px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fMur">
-        <span class="tp-info"><span>Aeon Mall</span></span>
-        <img src="./images/aeon_mall.jpg">
-    </a>
-</li>
-<li data-pile="Trung Tâm Mua Sắm"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(2deg); left: 310px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fMus">
-        <span class="tp-info"><span>Diamond Plaza</span></span>
-        <img src="./images/diamond_plaza.jpg">
-    </a>
-</li>
-<li data-pile="Hàng Không"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fMMb">
-        <span class="tp-info"><span>Jetstar</span></span>
-        <img src="./images/jetstar.jpg">
-    </a>
-</li>
-<li data-pile="Hàng Không"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fNkT">
-        <span class="tp-info"><span>Vietnam Airline</span></span>
-        <img src="./images/vietnam_airline.jpg">
-    </a>
-</li>
-<li data-pile="Hàng Không"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fNoY">
-        <span class="tp-info"><span>Vietjet</span></span>
-        <img src="./images/vietjet.jpg">
-    </a>
-</li>
-<li data-pile="Hàng Không"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fNlX">
-        <span class="tp-info"><span>AirAsia</span></span>
-        <img src="./images/airsia.jpg">
-    </a>
-</li>
-<li data-pile="Hàng Không"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 620px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fNoR">
-        <span class="tp-info"><span>Tiger Airways</span></span>
-        <img src="./images/tigerair.jpg">
-    </a>
-</li>
-<li data-pile="Hàng Không"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 620px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fNoZ">
-        <span class="tp-info"><span>Singapore Airline</span></span>
-        <img src="./images/singapore_airline.jpg">
-    </a>
-</li>
-<li data-pile="Hàng Không"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(2deg); left: 620px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fRcg">
-        <span class="tp-info"><span>Thai Airway</span></span>
-        <img src="./images/thai_airway.jpg">
-    </a>
-</li>
-<li data-pile="Hàng Không"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 620px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fRcm">
-        <span class="tp-info"><span>Qatar Airways</span></span>
-        <img src="./images/qatar_airway.jpg">
-    </a>
-</li>
-<li data-pile="Thức Ăn Nhanh"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 930px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/edAj">
-        <span class="tp-info"><span>Lotteria</span></span>
-        <img src="./images/lotteria.jpg">
-    </a>
-</li>
-<li data-pile="Thức Ăn Nhanh"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 930px; top: 248px; display: list-item;">
-        <span class="tp-info"><span>KFC</span></span>
-        <img class="company" src="./images/kfc.jpg">
-</li>
-<li data-pile="Thức Ăn Nhanh"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 930px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/ebCc">
-        <span class="tp-info"><span>Jollibee</span></span>
-        <img src="./images/jollibee.jpg">
-    </a>
-</li>
-<li data-pile="Thức Ăn Nhanh"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 930px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/edyg">
-        <span class="tp-info"><span>Burger King</span></span>
-        <img src="./images/burgerking.jpg">
-    </a>
-</li>
-<li data-pile="Thức Ăn Nhanh"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(2deg); left: 930px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/fszB">
-        <span class="tp-info"><span>McDonalds</span></span>
-        <img src="./images/mcdonald.jpg">
-    </a>
-</li>
-<li data-pile="Thức Ăn Nhanh"
-    style="transition: left 400ms ease-in-out, top 400ms ease-in-out; -webkit-transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 930px; top: 248px; display: list-item;">
-    <a href="http://drbl.in/eLXj">
-        <span class="tp-info"><span>Pizza Hut</span></span>
-        <img src="./images/pizzahut.jpg">
-    </a>
-</li>
+
 </ul>
 </div>
 </section>
 </div>
 
 <div class="menu" style="z-index: -1;">
-    <div class="left-menu">
-        <a class="menu-button" href="#"><i class="fa fa-times"></i>Close Menu</a>
-        <div style="width:100%;margin:50px auto;">
-            <p>Chọn chi nhánh</p>
-            <select multiple="multiple" id="branch_list" style="width:100%">
-                <option value="kfc_1">A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM</option>
-                <option value="kfc_2">Lầu 4 – DiamondPlaza 34 Lê Duẩn – Phường Bến Nghé – Quận 1- Tp.HCM</option>
-                <option value="kfc_3">Siêu thị Sài Gòn – số 34 Đường 3/2 – Phường 12 – Quận 10 – Tp.HCM</option>
-                <option value="kfc_4">15-17 Cộng Hòa – Phường 4 – Quận Tân Bình – Tp.HCM</option>
-                <option value="kfc_5">20 An Dương Vương – Phường 9 – Quận 5 – Tp.HCM</option>
-                <option value="kfc_6"> 74/2 Hai Bà Trưng – Phường Bến Nghé – Quận 1- Tp.HCM</option>
-                <option value="kfc_7"> 80 Đường Tháp Mười – Phường 2 – Quận 6 – Tp.HCM</option>
-                <option value="kfc_8">Co.op Mart – 571 Nguyễn Kiệm – Phường 9 – Quận Phú Nhuận – Tp.HCM</option>
-            </select>
+<div class="left-menu">
+    <a class="menu-button" href="#"><i class="fa fa-times"></i>Close Menu</a>
+    <div style="width:100%;margin:50px auto;">
+        <p>Chọn chi nhánh</p>
+        <select multiple="multiple" id="branch_list" style="width:100%">
+            <option value="kfc_1">A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM</option>
+            <option value="kfc_2">Lầu 4 – DiamondPlaza 34 Lê Duẩn – Phường Bến Nghé – Quận 1- Tp.HCM</option>
+            <option value="kfc_3">Siêu thị Sài Gòn – số 34 Đường 3/2 – Phường 12 – Quận 10 – Tp.HCM</option>
+            <option value="kfc_4">15-17 Cộng Hòa – Phường 4 – Quận Tân Bình – Tp.HCM</option>
+            <option value="kfc_5">20 An Dương Vương – Phường 9 – Quận 5 – Tp.HCM</option>
+            <option value="kfc_6"> 74/2 Hai Bà Trưng – Phường Bến Nghé – Quận 1- Tp.HCM</option>
+            <option value="kfc_7"> 80 Đường Tháp Mười – Phường 2 – Quận 6 – Tp.HCM</option>
+            <option value="kfc_8">Co.op Mart – 571 Nguyễn Kiệm – Phường 9 – Quận Phú Nhuận – Tp.HCM</option>
+        </select>
 
-            <p style="padding:0px;">
-                <img src="./images/kfc_logo.png" style="width:200px;margin:0 auto;"/>
-            </p>
-            <p class="branch_info">
-                <img class="info_icon" src="./images/icon/description.png" style="display: inline;">
-                Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.
-            </p>
-            <p>
-                Năm 1997, KFC đã khai trương nhà hàng đầu tiên tại Thành phố Hồ Chí Minh. Đến nay, hệ thống các nhà hàng của KFC đã phát triển tới hơn 140 nhà hàng, có mặt tại hơn 19 tỉnh/thành phố lớn trên cả nước, sử dụng hơn 3.000 lao động đồng thời cũng tạo thêm nhiều việc làm trong ngành công nghiệp bổ trợ tại Việt Nam.
-            </p>
+        <p style="padding:0px;">
+            <img src="./images/kfc_logo.png" style="width:200px;margin:0 auto;"/>
+        </p>
+        <p class="branch_info">
+            <img class="info_icon" src="./images/icon/description.png" style="display: inline;">
+            Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.
+        </p>
+        <p>
+            Năm 1997, KFC đã khai trương nhà hàng đầu tiên tại Thành phố Hồ Chí Minh. Đến nay, hệ thống các nhà hàng của KFC đã phát triển tới hơn 140 nhà hàng, có mặt tại hơn 19 tỉnh/thành phố lớn trên cả nước, sử dụng hơn 3.000 lao động đồng thời cũng tạo thêm nhiều việc làm trong ngành công nghiệp bổ trợ tại Việt Nam.
+        </p>
 
-            <p class="branch_info">
-                <img src="./images/icon/time.png" style="display: inline;">
-                <b id="branch_hour">7h30-11h00 &amp; 13h00-16h00 các ngày trong tuần</b>
-            </p>
-            <p class="branch_info">
-                <img src="./images/icon/address.png" style="display: inline;">
-                <b id="branch_address">A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM</b>
-            </p>
-            <p class="branch_info">
-                <img src="./images/icon/phone.png" style="display: inline;">
-                <b id="branch_phone">0123456789</b>
-            </p>
+        <p class="branch_info">
+            <img src="./images/icon/time.png" style="display: inline;">
+            <b id="branch_hour">7h30-11h00 &amp; 13h00-16h00 các ngày trong tuần</b>
+        </p>
+        <p class="branch_info">
+            <img src="./images/icon/address.png" style="display: inline;">
+            <b id="branch_address">A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM</b>
+        </p>
+        <p class="branch_info">
+            <img src="./images/icon/phone.png" style="display: inline;">
+            <b id="branch_phone">0123456789</b>
+        </p>
+    </div>
+</div>
+
+<div class="right-preview">
+<div class="panel-group" id="accordion">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <span class="glyphicon glyphicon-plus"></span>Thêm nhận xét về công ty
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <div class="row comment_box">
+
+                <div class="col-md-2" style="padding:0;">
+                    <img class="img-thumbnail" src="images/user/user1.jpg"/>
+                </div>
+                <div class="col-md-10">
+                    <div class="col-md-8">
+                        <h4 style="color: rgb(141, 30, 30);margin:5px;">Trần Đoàn Khánh Vũ</h4>
+                    </div>
+                    <div id="feedback" class="col-md-4"></div>
+                    <input type="text" class="form-control" placeholder="Nhập nhận xét">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default active">
+                            <input type="checkbox" checked>Phục Vụ
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="checkbox"> Giữ Xe
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="checkbox"> Sản Phẩm
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button>
+                    <button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+<div class="panel panel-primary">
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Tất cả nhận xét
+        </a>
+    </h4>
+</div>
+<div id="collapseTwo" class="panel-collapse collapse">
+    <div class="panel-body">
+        <div class="controls">
+            <label>Lọc:</label>
 
-    <div class="right-preview">
-        <div class="panel-group" id="accordion">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                            <span class="glyphicon glyphicon-plus"></span>Thêm nhận xét về công ty
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                        <div class="row comment_box">
+            <button class="filter" data-filter="all">Tất Cả</button>
+            <button class="filter btn-primary" data-filter=".category-service">Phục Vụ</button>
+            <button class="filter btn-success" data-filter=".category-park">Giữ Xe</button>
+            <button class="filter btn-warning" data-filter=".category-product">Sản Phẩm</button>
 
-                            <div class="col-md-2" style="padding:0;">
-                                <img class="img-thumbnail" src="images/user/user1.jpg"/>
-                            </div>
-                            <div class="col-md-10">
-                                <div class="col-md-8">
+            <label>Sort:</label>
+
+            <button class="sort" data-sort="myorder:asc">Asc</button>
+            <button class="sort" data-sort="myorder:desc">Desc</button>
+        </div>
+        <div id="Container">
+            <div class="mix category-service category-park" data-myorder="1">
+                <div class="comment_detail post_start">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img class="avatar img-thumbnail" src="./images/user/user1.jpg"/>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-4">
                                     <h4 style="color: rgb(141, 30, 30);margin:5px;">Trần Đoàn Khánh Vũ</h4>
                                 </div>
-                                <div id="feedback" class="col-md-4"></div>
-                                <input type="text" class="form-control" placeholder="Nhập nhận xét">
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-default active">
-                                        <input type="checkbox" checked>Phục Vụ
-                                    </label>
-                                    <label class="btn btn-default">
-                                        <input type="checkbox"> Giữ Xe
-                                    </label>
-                                    <label class="btn btn-default">
-                                        <input type="checkbox"> Sản Phẩm
-                                    </label>
+
+                                <div id="feedback1" class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
+                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
                                 </div>
-                                <button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button>
-                                <button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button>
                             </div>
+
+                            <h6>Tối thứ 7 tuần rồi (16/8), mình và một người bạn tới quán này để ăn trưa. Không ngờ gặp nhân viên giữ xe khá là bất lịch sự và gắt gỏng với tụi mình. Thế nên cuối cùng cả hai quyết định không vào quán nữa mà ghé quán khác
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span class="label label-success">Đã Giải Quyết</span>
+                        </div>
+                        <div class="col-md-10">
+                            <span class="label label-primary">Phục Vụ</span>
+                            <span class="label label-success">Giữ Xe</span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-2">
+                            <time class="timeago text-primary text-nowrap" datetime="2014-08-22T09:24:17Z"></time>
+                        </div>
+                        <div class="col-md-10">
+                            <span class="badge">15</span>
+                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
+                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
+                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin:5px 0px 5px 50px;" class="comment_detail">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img class="avatar img-thumbnail" src="./images/firm/kfc.jpg"/>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-8">
+                                    <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
+                                    <span class="action_icon reply_icon glyphicon glyphicon-share-alt"></span>
+                                    <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Trần Đoàn Khánh Vũ</h4>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
+                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
+                                </div>
+                            </div>
+
+                            <h6>Cám ơn bạn đã phản hồi cho quán. Quản lý của quán đã làm việc với nhân viên gửi xe. Nếu nhân viên gửi xe còn tái phạm nữa thì quán sẽ thay thế nhân viên khác.
+                                Mong bạn sẽ còn quay lại quán những lần sau!
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-2">
+                            <time class="timeago text-primary text-nowrap" datetime="2014-08-24T23:24:17Z"></time>
+                        </div>
+                        <div class="col-md-10">
+                            <span class="badge">10</span>
+                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
+                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
+                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                            Tất cả nhận xét
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <div class="controls">
-                            <label>Lọc:</label>
-
-                            <button class="filter" data-filter="all">Tất Cả</button>
-                            <button class="filter btn-primary" data-filter=".category-service">Phục Vụ</button>
-                            <button class="filter btn-success" data-filter=".category-park">Giữ Xe</button>
-                            <button class="filter btn-warning" data-filter=".category-product">Sản Phẩm</button>
-
-                            <label>Sort:</label>
-
-                            <button class="sort" data-sort="myorder:asc">Asc</button>
-                            <button class="sort" data-sort="myorder:desc">Desc</button>
+            <div class="mix category-product" data-myorder="2">
+                <div class="comment_detail post_start">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img class="avatar img-thumbnail" src="./images/user/user2.jpg"/>
                         </div>
-                        <div id="Container">
-                            <div class="mix category-service category-park" data-myorder="1">
-                                <div class="comment_detail post_start">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img class="avatar img-thumbnail" src="./images/user/user1.jpg"/>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="row" style="margin-top: 5px;">
-                                                <div class="col-md-4">
-                                                    <h4 style="color: rgb(141, 30, 30);margin:5px;">Trần Đoàn Khánh Vũ</h4>
-                                                </div>
-
-                                                <div id="feedback1" class="col-md-4"></div>
-                                                <div class="col-md-4">
-                                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
-                                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
-                                                </div>
-                                            </div>
-
-                                            <h6>Tối thứ 7 tuần rồi (16/8), mình và một người bạn tới quán này để ăn trưa. Không ngờ gặp nhân viên giữ xe khá là bất lịch sự và gắt gỏng với tụi mình. Thế nên cuối cùng cả hai quyết định không vào quán nữa mà ghé quán khác
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <span class="label label-success">Đã Giải Quyết</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <span class="label label-primary">Phục Vụ</span>
-                                            <span class="label label-success">Giữ Xe</span>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-top:5px;">
-                                        <div class="col-md-2">
-                                            <time class="timeago text-primary text-nowrap" datetime="2014-08-22T09:24:17Z"></time>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <span class="badge">15</span>
-                                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
-                                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
-                                            <button type="button" class="btn btn-success reply">Trả Lời</button>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
-                                        </div>
-                                    </div>
+                        <div class="col-md-10">
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-4">
+                                    <h4 style="color: rgb(141, 30, 30);margin:5px;">Nguyễn Duy Long</h4>
                                 </div>
-                                <div style="margin:5px 0px 5px 50px;" class="comment_detail">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img class="avatar img-thumbnail" src="./images/firm/kfc.jpg"/>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="row" style="margin-top: 5px;">
-                                                <div class="col-md-8">
-                                                    <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
-                                                    <span class="action_icon reply_icon glyphicon glyphicon-share-alt"></span>
-                                                    <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Trần Đoàn Khánh Vũ</h4>
-                                                </div>
 
-                                                <div class="col-md-4">
-                                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
-                                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
-                                                </div>
-                                            </div>
-
-                                            <h6>Cám ơn bạn đã phản hồi cho quán. Quản lý của quán đã làm việc với nhân viên gửi xe. Nếu nhân viên gửi xe còn tái phạm nữa thì quán sẽ thay thế nhân viên khác.
-                                                Mong bạn sẽ còn quay lại quán những lần sau!
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-top:5px;">
-                                        <div class="col-md-2">
-                                            <time class="timeago text-primary text-nowrap" datetime="2014-08-24T23:24:17Z"></time>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <span class="badge">10</span>
-                                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
-                                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
-                                            <button type="button" class="btn btn-success reply">Trả Lời</button>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mix category-product" data-myorder="2">
-                                <div class="comment_detail post_start">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img class="avatar img-thumbnail" src="./images/user/user2.jpg"/>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="row" style="margin-top: 5px;">
-                                                <div class="col-md-4">
-                                                    <h4 style="color: rgb(141, 30, 30);margin:5px;">Nguyễn Duy Long</h4>
-                                                </div>
-
-                                                <div id="feedback2" class="col-md-4"></div>
-                                                <div class="col-md-4">
-                                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
-                                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
-                                                </div>
-                                            </div>
-
-                                            <h6>Hôm qua (22/8), mình tới ăn tối ở quán này và gọi phần Combo 1. Thức ăn đem ra không nóng sốt và có cả gián nằm trong đó.
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <span class="label label-danger">Chưa Giải Quyết</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <span class="label label-warning">Sản Phẩm</span>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-top:5px;">
-                                        <div class="col-md-2">
-                                            <time class="timeago text-primary text-nowrap" datetime="2014-08-24T09:24:17Z"></time>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <span class="badge">35</span>
-                                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
-                                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
-                                            <button type="button" class="btn btn-success reply">Trả Lời</button>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="margin:5px 0px 5px 50px;" class="comment_detail">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img class="avatar img-thumbnail" src="./images/firm/kfc.jpg"/>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="row" style="margin-top: 5px;">
-                                                <div class="col-md-8">
-                                                    <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
-                                                    <span class="action_icon reply_icon glyphicon glyphicon-share-alt"></span>
-                                                    <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Nguyễn Duy Long</h4>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
-                                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
-                                                </div>
-                                            </div>
-
-                                            <h6>Cám ơn bạn đã phản hồi cho công ty. Công ty rất tiếc vì trường hợp đã xảy ra. Chúng tôi sẽ làm rõ việc này với nhân viên vì an toàn vệ sinh thực phẩm là mối quan tâm hàng đầu của công ty.
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-top:5px;">
-                                        <div class="col-md-2">
-                                            <time class="timeago text-primary text-nowrap" datetime="2014-08-25T00:10:17Z"></time>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <span class="badge">1</span>
-                                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
-                                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
-                                            <button type="button" class="btn btn-success reply">Trả Lời</button>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
-                                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
-                                        </div>
-                                    </div>
+                                <div id="feedback2" class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
+                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
                                 </div>
                             </div>
 
+                            <h6>Hôm qua (22/8), mình tới ăn tối ở quán này và gọi phần Combo 1. Thức ăn đem ra không nóng sốt và có cả gián nằm trong đó.
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span class="label label-danger">Chưa Giải Quyết</span>
+                        </div>
+                        <div class="col-md-10">
+                            <span class="label label-warning">Sản Phẩm</span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-2">
+                            <time class="timeago text-primary text-nowrap" datetime="2014-08-24T09:24:17Z"></time>
+                        </div>
+                        <div class="col-md-10">
+                            <span class="badge">35</span>
+                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
+                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
+                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin:5px 0px 5px 50px;" class="comment_detail">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img class="avatar img-thumbnail" src="./images/firm/kfc.jpg"/>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-8">
+                                    <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">KFC</h4>
+                                    <span class="action_icon reply_icon glyphicon glyphicon-share-alt"></span>
+                                    <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">Nguyễn Duy Long</h4>
+                                </div>
 
+                                <div class="col-md-4">
+                                    <span class="action_icon minimize glyphicon glyphicon-minus"></span>
+                                    <span class="action_icon flag glyphicon glyphicon-flag"></span>
+                                </div>
+                            </div>
+
+                            <h6>Cám ơn bạn đã phản hồi cho công ty. Công ty rất tiếc vì trường hợp đã xảy ra. Chúng tôi sẽ làm rõ việc này với nhân viên vì an toàn vệ sinh thực phẩm là mối quan tâm hàng đầu của công ty.
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-2">
+                            <time class="timeago text-primary text-nowrap" datetime="2014-08-25T00:10:17Z"></time>
+                        </div>
+                        <div class="col-md-10">
+                            <span class="badge">1</span>
+                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
+                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
+                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
+                            <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <!-- /container -->
 <script type="text/javascript" src="./js/jquery.min.js"></script>
@@ -804,6 +490,8 @@
 <script src="./js/dropdown/select2.min.js" type="text/javascript"></script>
 <script src="./js/timeago/jquery.timeago.js" type="text/javascript"></script>
 <script src="./js/bootstrap.js" type="text/javascript"></script>
+<script src="./js/angular.min.js" type="text/javascript"></script>
+<script src="./js/app.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
 
@@ -858,6 +546,7 @@
     });
 
     $(document).on('click', ".company,.menu-button", function() {
+        alert($(this).parent().attr('id'));
         var menu = $('.menu');
         if (menu.hasClass('in')) {
             setTimeout(function() {
