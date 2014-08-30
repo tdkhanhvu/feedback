@@ -1,0 +1,146 @@
+html {
+    overflow-y:hidden;
+}
+.icon {
+    width: 33%;
+    float: left;
+}
+
+.icon > img {
+    width: 25px;
+    height: 25px;
+}
+
+.branch_info {
+    padding: 0 0 5px 0;
+}
+.branch_info > img {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.action_icon {
+    font-size: x-large;
+    width:24px;
+    height:24px;
+    opacity: 1.0;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.action_icon:hover {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.disabled {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.minimize {
+    float:right;
+    color: rgb(17, 182, 24);
+}
+
+.flag {
+    float: right;
+    color: rgb(182, 17, 17);
+}
+
+.up {
+    float: left;
+    color: green;
+}
+
+.down {
+    float: left;
+    color: red;
+    margin-right: 10px;
+}
+
+.reply_icon {
+    float:left;
+}
+
+.reply {
+    float:left;
+    height: 20px;
+    padding-top: 0;
+    margin-top: 5px;
+    margin-right:10px;
+}
+
+.comment_detail {
+    border: 3px solid green;
+    padding-bottom: 5px;
+    margin:5px 0px 5px 50px;
+}
+
+.post_start {
+    margin: 0;
+}
+
+#Container .mix{
+    display: none;
+}
+
+.controls{
+    padding: 2%;
+    background: #333;
+    color: #eee;
+}
+
+label{
+    font-weight: 300;
+    /*margin: 0 .4em 0 0;*/
+}
+
+button{
+    display: inline-block;
+    padding: .4em .8em;
+    background: #666;
+    border: 0;
+    color: #ddd;
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.active{
+    background: #68b8c4;
+}
+
+button:focus{
+    outline: 0 none;
+}
+
+button + label{
+    margin-left: 1em;
+}
+
+#Container > div:nth-child(odd) {
+    background-color: rgb(226, 245, 213);
+}
+
+#Container > div:nth-child(even) {
+    background-color: rgb(245, 236, 231);
+}
+
+#Container > .mix {
+    width:100%;
+}
+
+.badge {
+    float: left;
+    margin: 5px 5px 0 0;
+}
+
+.avatar {
+    width:96px;
+}
+
+.timeago {
+    margin-left: 10px;
+}
