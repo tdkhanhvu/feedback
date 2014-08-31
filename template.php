@@ -141,3 +141,10 @@
         </p>
     </div>
 </script>
+<script id="industryListTmpl" type="text/x-jsrender">
+        <select multiple="multiple" id="industry_list" style="width:100%">
+            {^{for industries}}
+              <option value={{:id}}>{{:name}}</option>
+            {{/for}}
+        </select>
+</script>

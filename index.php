@@ -23,42 +23,11 @@
 <section class="main">
 <div class="wrapper">
 <div class="topbar">
-    <div style="width:50%;margin:20px auto;">
-        <select multiple="multiple" id="industry_list" style="width:100%">
-            <option value="parking">Bãi Giữ Xe</option>
-            <option value="hospital">Bệnh Viện</option>
-            <option value="petrol_station">Cây Xăng</option>
-            <option value="airline_agency">Đại Lý Máy Bay</option>
-            <option value="telcom">Hãng Viễn Thông</option>
-            <option value="bank">Ngân Hàng</option>
-            <option value="taxi">Taxi</option>
-            <option value="va_xe">Vá Xe</option>
-        </select>
+    <div style="width:50%;margin:20px auto;" id="industry_list_placeholder">
     </div>
     <span id="close" class="back">←</span>
 </div>
 <ul id="tp-grid" class="tp-grid">
-<!--<li data-pile="Taxi">-->
-<!--    <a href="http://drbl.in/cmVe">-->
-<!--        <span class="tp-info">-->
-<!--            <span>Vinasun</span>-->
-<!--            <div>-->
-<!--                <div class="icon">-->
-<!--                    <img src="images/review.png"/>1000-->
-<!--                </div>-->
-<!--                <div class="icon">-->
-<!--                    <img src="images/comment.png"/>1000-->
-<!--                </div>-->
-<!--                <div class="icon">-->
-<!--                    <img src="images/company.png"/>20-->
-<!--                </div>-->
-<!--                <div class="clearfix"></div>-->
-<!--            </div>-->
-<!--        </span>-->
-<!--        <img src="./images/vinasun.jpg">-->
-<!--    </a>-->
-<!--</li>-->
-
 </ul>
 </div>
 </section>
@@ -141,17 +110,17 @@
 </div>
 <!-- /container -->
 
-<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script src="./js/jquery.min.js"></script>
 <script src="./js/modernizr.custom.63321.js"></script>
-<script type="text/javascript" src="./js/stapel/jquery.stapel.js"></script>
-<script type="text/javascript" src="./js/rating/rating.js"></script>
-<script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
-<script src="./js/dropdown/select2.min.js" type="text/javascript"></script>
-<script src="./js/timeago/jquery.timeago.js" type="text/javascript"></script>
-<script src="./js/bootstrap.js" type="text/javascript"></script>
-<script src="./js/template/jsviews.js" type="text/javascript"></script>
+<script src="./js/stapel/jquery.stapel.js"></script>
+<script src="./js/rating/rating.js"></script>
+<script src="./js/filter/jquery.mixitup.min.js"></script>
+<script src="./js/dropdown/select2.min.js"></script>
+<script src="./js/timeago/jquery.timeago.js"></script>
+<script src="./js/bootstrap.js"></script>
+<script src="./js/template/jsviews.js"></script>
 
-<script src="./js/main.js" type="text/javascript"></script>
+<script src="./js/main.js"></script>
 <div id="temp"></div>
 </body>
 </html>

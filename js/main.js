@@ -5,7 +5,6 @@ var allCategories = ['service','park','product'];
 $(function(){
     initIndustry();
     initTpGrid();
-    initDropDownList();
     initRating();
 
     initReview();
@@ -253,6 +252,7 @@ function initIndustry() {
     ];
 
     var companies = new Array();
+    var industryList = {industries: new Array()};
     industries.forEach(function(industry){
         industry.companies.forEach(function(company) {
 //            var item = $("<li data-pile='" + industry.name + "'><span class='tp-info'><span>"
@@ -266,10 +266,23 @@ function initIndustry() {
                     id: company.id
                 });
         })
+        industryList.industries.push(
+            {
+                id: industry.id,
+                name: industry.name
+            });
     })
     var template = $.templates("#industryTmpl");
 
     template.link("#tp-grid", companies);
+
+    var industryListTmpl = $.templates("#industryListTmpl");
+
+    industryListTmpl.link("#industry_list_placeholder", industryList);
+
+    $("#industry_list").select2();
+
+    $('.select2-container').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
 }
 
 function initTpGrid() {
@@ -294,12 +307,6 @@ function initTpGrid() {
         $name.empty();
         stapel.closePile();
     });
-}
-
-function initDropDownList() {
-    $("#industry_list").select2();
-
-    $('.select2-container').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
 }
 
 function initRating() {
