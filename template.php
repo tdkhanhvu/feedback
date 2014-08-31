@@ -9,7 +9,7 @@
 </body>
 </html>
 <script id="industryTmpl" type="text/x-jsrender">
-<li data-pile='{{:industryName}}'>
+<li data-pile='{{:industryName}}' id='{{:id}}'>
     <span class='tp-info'>
         <span>{{:companyName}}</span>
         <div>
@@ -98,11 +98,46 @@
                     <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
                 {{/if}}
 
-                <button type="button" class="btn btn-success reply">Trả Lời</button>
+                {{if userName != name}}
+                    <button type="button" class="btn btn-success reply">Trả Lời</button>
+                {{/if}}
+
                 <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
                 <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
                 <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
             </div>
         </div>
+    </div>
+</script>
+<script id="companyTmpl" type="text/x-jsrender">
+    <a class="menu-button" href="#"><i class="fa fa-times"></i>Close Menu</a>
+    <div style="width:100%;margin:50px auto;">
+        <p>Chọn chi nhánh</p>
+        <select multiple="multiple" id="branch_list" style="width:100%">
+            {^{for branches}}
+              <option value={{:id}}>{{:name}}</option>
+            {{/for}}
+        </select>
+
+        <p style="padding:0px;">
+            <img src="./images/{{:photo}}" style="width:200px;margin:0 auto;"/>
+        </p>
+        <p class="branch_info">
+            <img class="info_icon" src="./images/icon/description.png" style="display: inline;">
+            {{:description}}
+        </p>
+
+        <p class="branch_info">
+            <img src="./images/icon/time.png" style="display: inline;">
+            <b id="branch_hour">{{:time}}</b>
+        </p>
+        <p class="branch_info">
+            <img src="./images/icon/address.png" style="display: inline;">
+            <b id="branch_address">{{:address}}</b>
+        </p>
+        <p class="branch_info">
+            <img src="./images/icon/phone.png" style="display: inline;">
+            <b id="branch_phone">{{:phone}}</b>
+        </p>
     </div>
 </script>

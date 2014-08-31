@@ -262,7 +262,8 @@ function initIndustry() {
                 {
                     industryName : industry.name,
                     companyName : company.name,
-                    companyPhoto : company.photo
+                    companyPhoto : company.photo,
+                    id: company.id
                 });
         })
     })
@@ -297,7 +298,6 @@ function initTpGrid() {
 
 function initDropDownList() {
     $("#industry_list").select2();
-    $("#branch_list").select2();
 
     $('.select2-container').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
 }
@@ -392,15 +392,16 @@ function initReview() {
     })
 
 
-    $(document).on('click', ".company,.menu-button", function() {
+    $(document).on('click', ".company", function() {
+            initCompany($(this).parent().attr('id'));
+    });
+
+    $(document).on('click', ".menu-button", function() {
         var menu = $('.menu');
-        if (menu.hasClass('in')) {
-            setTimeout(function() {
-                menu.css('z-index', '-1');
-            }, 400);
-        } else {
-            menu.css('z-index', '9999');
-        }
+        setTimeout(function() {
+            menu.css('z-index', '-1');
+        }, 400);
+
         menu.toggleClass('in');
     });
 
@@ -423,7 +424,7 @@ function initReview() {
             start: true,
             solve: false,
             time: (new Date()).toISOString(),
-            ratingScore: $('#feedback').find('input').val(),
+            ratingScore: $('#feedback').raty('score'),
             totalVote: 0,
             voteUp: false,
             voteDown: false,
@@ -434,6 +435,14 @@ function initReview() {
         if ($('#button_all').hasClass('active'))
             $('#button_service').click();
         $('#button_all').click();
+
+        //reset the form
+        $('#input_comment').val('');
+        $('#feedback').raty('cancel', false);
+        allCategories.forEach(function(category) {
+             $('#input_' + category).attr('checked', false)
+                 .parent().removeClass('active');
+        })
     });
 
     $('body').on('click', '.send_comment', function() {
@@ -445,7 +454,7 @@ function initReview() {
             description: $(this).parent().find('input').val(),
             start: false,
             time: (new Date()).toISOString(),
-            replyTo: post.find('> .row:first-of-type').find('h4:last-of-type').text(),
+            replyTo: post.find('> .row:first-of-type').find('h4:first-of-type').text(),
             totalVote: 0,
             voteUp:false,
             voteDown: false
@@ -556,7 +565,8 @@ function getReviewAttribute(obj) {
         time: obj.time,
         totalVote: obj.totalVote,
         voteUp: obj.voteUp,
-        voteDown: obj.voteDown
+        voteDown: obj.voteDown,
+        userName: userName
     }
 }
 
@@ -599,4 +609,60 @@ function addReply(threadId, reply) {
     $('#temp').html('');
 
     $("time.timeago").timeago();
+}
+
+function initCompany(companyId) {
+    if (companyId == 'fastfood_2') {
+        var company = {
+            photo: 'kfc_logo.png',
+            description: 'Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.',
+            time: '7h30-11h00 &amp; 13h00-16h00 các ngày trong tuần',
+            address: 'A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM',
+            phone: '0123456789',
+            branches: [
+                {
+                    id: 'kfc_1',
+                    name: 'A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM'
+                },
+                {
+                    id: 'kfc_2',
+                    name: 'Lầu 4 – DiamondPlaza 34 Lê Duẩn – Phường Bến Nghé – Quận 1- Tp.HCM'
+                },
+                {
+                    id: 'kfc_3',
+                    name: 'Siêu thị Sài Gòn – số 34 Đường 3/2 – Phường 12 – Quận 10 – Tp.HCM'
+                },
+                {
+                    id: 'kfc_4',
+                    name: '15-17 Cộng Hòa – Phường 4 – Quận Tân Bình – Tp.HCM'
+                },
+                {
+                    id: 'kfc_5',
+                    name: '20 An Dương Vương – Phường 9 – Quận 5 – Tp.HCM'
+                },
+                {
+                    id: 'kfc_6',
+                    name: '74/2 Hai Bà Trưng – Phường Bến Nghé – Quận 1- Tp.HCM'
+                },
+                {
+                    id: 'kfc_7',
+                    name: '80 Đường Tháp Mười – Phường 2 – Quận 6 – Tp.HCM',
+                },
+                {
+                    id: 'kfc_8',
+                    name: 'Co.op Mart – 571 Nguyễn Kiệm – Phường 9 – Quận Phú Nhuận – Tp.HCM'
+                }
+            ]
+        };
+        $.templates("#companyTmpl").link('#companyInfo', company);
+        $("#branch_list").select2();
+        $('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
+        $('.menu').css('z-index', '9999').toggleClass('in');
+    }
+}
+
+function insertDom(templ, obj, destId) {
+    templ.link("#temp", obj);
+    $('#' + destId).append($('#temp').html());
+    $('#temp').html('');
 }

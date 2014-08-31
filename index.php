@@ -65,45 +65,7 @@
 </div>
 
 <div class="menu" style="z-index: -1;">
-    <div class="left-menu">
-        <a class="menu-button" href="#"><i class="fa fa-times"></i>Close Menu</a>
-        <div style="width:100%;margin:50px auto;">
-            <p>Chọn chi nhánh</p>
-            <select multiple="multiple" id="branch_list" style="width:100%">
-                <option value="kfc_1">A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM</option>
-                <option value="kfc_2">Lầu 4 – DiamondPlaza 34 Lê Duẩn – Phường Bến Nghé – Quận 1- Tp.HCM</option>
-                <option value="kfc_3">Siêu thị Sài Gòn – số 34 Đường 3/2 – Phường 12 – Quận 10 – Tp.HCM</option>
-                <option value="kfc_4">15-17 Cộng Hòa – Phường 4 – Quận Tân Bình – Tp.HCM</option>
-                <option value="kfc_5">20 An Dương Vương – Phường 9 – Quận 5 – Tp.HCM</option>
-                <option value="kfc_6"> 74/2 Hai Bà Trưng – Phường Bến Nghé – Quận 1- Tp.HCM</option>
-                <option value="kfc_7"> 80 Đường Tháp Mười – Phường 2 – Quận 6 – Tp.HCM</option>
-                <option value="kfc_8">Co.op Mart – 571 Nguyễn Kiệm – Phường 9 – Quận Phú Nhuận – Tp.HCM</option>
-            </select>
-
-            <p style="padding:0px;">
-                <img src="./images/kfc_logo.png" style="width:200px;margin:0 auto;"/>
-            </p>
-            <p class="branch_info">
-                <img class="info_icon" src="./images/icon/description.png" style="display: inline;">
-                Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.
-            </p>
-            <p>
-                Năm 1997, KFC đã khai trương nhà hàng đầu tiên tại Thành phố Hồ Chí Minh. Đến nay, hệ thống các nhà hàng của KFC đã phát triển tới hơn 140 nhà hàng, có mặt tại hơn 19 tỉnh/thành phố lớn trên cả nước, sử dụng hơn 3.000 lao động đồng thời cũng tạo thêm nhiều việc làm trong ngành công nghiệp bổ trợ tại Việt Nam.
-            </p>
-
-            <p class="branch_info">
-                <img src="./images/icon/time.png" style="display: inline;">
-                <b id="branch_hour">7h30-11h00 &amp; 13h00-16h00 các ngày trong tuần</b>
-            </p>
-            <p class="branch_info">
-                <img src="./images/icon/address.png" style="display: inline;">
-                <b id="branch_address">A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM</b>
-            </p>
-            <p class="branch_info">
-                <img src="./images/icon/phone.png" style="display: inline;">
-                <b id="branch_phone">0123456789</b>
-            </p>
-        </div>
+    <div class="left-menu" id="companyInfo">
     </div>
 
     <div class="right-preview">
