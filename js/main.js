@@ -2,15 +2,21 @@ var countThreadId = 2;
 var userName = "Trần Đoàn Khánh Vũ";
 var photo = "user/user1.jpg";
 var allCategories = ['service','park','product'];
+var initFilter = false;
 $(function(){
     initIndustry();
     initTpGrid();
     initRating();
 
     initReview();
-    $('#Container').mixItUp();
+    //initCompany('fastfood_2');
+
 
     $('.collapse').collapse();
+
+    $('.right-preview').css('height',$(window).height());
+    $('.left-menu').css('height',$(window).height());
+    $('.wrapper').css('height',$(window).height());
 });
 
 function changeCount(e, inc, index) {
@@ -400,16 +406,15 @@ function initReview() {
 
 
     $(document).on('click', ".company", function() {
-            initCompany($(this).parent().attr('id'));
+        initCompany($(this).parent().attr('id'));
     });
 
     $(document).on('click', ".menu-button", function() {
-        var menu = $('.menu');
-        setTimeout(function() {
-            menu.css('z-index', '-1');
-        }, 400);
+        //company info
+        $('#overlay').css('display','none');
 
-        menu.toggleClass('in');
+        $('.right-preview').toggleClass('unscrollable');
+        $('.wrapper').toggleClass('unscrollable');
     });
 
     $('body').on('click', '.send_thread', function() {
@@ -439,9 +444,6 @@ function initReview() {
         };
         //alert(JSON.stringify(thread));
         addThread(thread);
-        if ($('#button_all').hasClass('active'))
-            $('#button_service').click();
-        $('#button_all').click();
 
         //reset the form
         $('#input_comment').val('');
@@ -602,6 +604,10 @@ function addThread(thread) {
     });
 
     $("time.timeago").timeago();
+
+    if ($('#button_all').hasClass('active'))
+    $('#button_service').click();
+    $('#button_all').click();
 }
 
 function addReply(threadId, reply) {
@@ -664,7 +670,15 @@ function initCompany(companyId) {
         $.templates("#companyTmpl").link('#companyInfo', company);
         $("#branch_list").select2();
         $('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
-        $('.menu').css('z-index', '9999').toggleClass('in');
+
+        if (!initFilter) {
+            $('#Container').mixItUp();
+            initFilter = true;
+        }
+        $('#overlay').css('display','block');
+
+        $('.right-preview').toggleClass('unscrollable');
+        $('.wrapper').toggleClass('unscrollable');
     }
 }
 

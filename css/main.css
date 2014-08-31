@@ -1,6 +1,38 @@
-html {
-    overflow-y:hidden;
+/*company info*/
+.left-menu
+{
+    background-color: #ECE2E2;
+    border-right: 1px solid #444;
+    display: table;
+    /*height: 100%;*/
+    left: -50%;
+    position: absolute;
+    transition: .4s;
+    webkit-transition: .4s;
+    width: 40%;
+    z-index: 1;
 }
+
+.left-menu
+{
+    left: 0;
+}
+
+.right-preview
+{
+    background-color: #CCE0F8;
+    /*height: 120%;*/
+    position: absolute;
+    right: 0;
+    transition: .4s;
+    webkit-transition: .4s;
+    width: 60%;
+    z-index: 0;
+    overflow-y: auto;
+}
+
+/*end company info*/
+
 .icon {
     width: 33%;
     float: left;
@@ -81,7 +113,7 @@ html {
     margin: 0;
 }
 
-#Container .mix{
+#Container .mix {
     display: none;
 }
 
@@ -120,6 +152,10 @@ button + label{
     margin-left: 1em;
 }
 
+#Container {
+    height: 100% !important;
+}
+
 #Container > div:nth-child(odd) {
     background-color: rgb(226, 245, 213);
 }
@@ -144,3 +180,23 @@ button + label{
 .timeago {
     margin-left: 10px;
 }
+
+#overlay {
+    /*height: 100%;*/
+    width: 100%;
+    position: absolute;
+    background-color: rgb(46, 44, 44);
+    z-index: 9999;
+    top: 0;
+    /*opacity: 0.7;*/
+    display:none;
+}
+
+#overlay_content {
+    opacity:1;
+}
+
+.unscrollable {
+    overflow-y: hidden;
+}
+

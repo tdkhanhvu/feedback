@@ -273,19 +273,17 @@ a {
 	box-shadow: 0 1px 0 #aaa, 0 -1px 0 #aaa;
 }
 
-.back {
+.back, .exit {
 	width: 40px;
 	height: 40px;
 	position: absolute;
 	left: 50%;
-	top: 80%;
 	margin: -20px 0 0 -20px;
 	border-radius: 50%;
 	text-align: center;
 	line-height: 38px;
 	color: #999;
 	background: #ddd;
-	background: rgba(255,255,255,0.5);
 	cursor: pointer;
 	display: none;
 	-webkit-touch-callout: none;
@@ -296,9 +294,15 @@ a {
 	user-select: none;
 }
 
+.exit {
+    margin:0;
+    font-size: xx-large;
+    height: 35px;
+    width: 35px;
+}
+
 .no-touch .back:hover {
-	background: #fff;
-	background: rgba(255,255,255,0.9);
+	background: rgba(187, 178, 178, 0.9);
 }
 
 .topbar h2,

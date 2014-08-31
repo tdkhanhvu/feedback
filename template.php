@@ -45,21 +45,19 @@
             <div class="col-md-10">
                 <div class="row" style="margin-top: 5px;">
                     {{if start }}
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">{{:name}}</h4>
                         </div>
                         <div id="{{:ratingId}}" class="col-md-4"></div>
                     {{else}}
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">{{:name}}</h4>
                             <span class="action_icon reply_icon glyphicon glyphicon-share-alt"></span>
                             <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">{{:replyTo}}</h4>
                         </div>
                     {{/if}}
 
-
-                    <div id="feedback2" class="col-md-4"></div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <span class="action_icon minimize glyphicon glyphicon-minus"></span>
                         <span class="action_icon flag glyphicon glyphicon-flag"></span>
                     </div>
@@ -110,8 +108,8 @@
     </div>
 </script>
 <script id="companyTmpl" type="text/x-jsrender">
-    <a class="menu-button" href="#"><i class="fa fa-times"></i>Close Menu</a>
-    <div style="width:100%;margin:50px auto;">
+    <span class="exit menu-button glyphicon glyphicon-remove-sign"></span>
+    <div style="width:100%;margin:0 auto;">
         <p>Chọn chi nhánh</p>
         <select multiple="multiple" id="branch_list" style="width:100%">
             {^{for branches}}
