@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2014 at 03:19 PM
+-- Generation Time: Sep 01, 2014 at 07:41 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -27,32 +27,54 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `company` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(32) NOT NULL,
   `name` text NOT NULL,
-  `like` int(11) NOT NULL,
-  `dislike` int(11) NOT NULL,
-  `star` int(11) NOT NULL,
-  `view` int(11) NOT NULL,
-  `info` text,
-  `industry` int(11) NOT NULL,
-  `address` text,
   `image` text NOT NULL,
+  `info` text NOT NULL,
+  `address` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`id`, `name`, `like`, `dislike`, `star`, `view`, `info`, `industry`, `address`, `image`) VALUES
-(1, 'Mai Linh Taxi', 2384, 459, 4, 37282, 'We are the best taxi service in Vietnam', 1, 'TpHCM', ''),
-(2, 'Vinasun', 1367, 237, 4, 27181, 'Vinasun is one of the most important taxi services in Vietnam', 1, 'Hanoi', ''),
-(3, 'Petrolimex', 3714, 421, 5, 42142, 'Taxi Petrolimex is the best in Vietnam', 1, 'Danang, Hanoi', ''),
-(4, 'Cho Ray', 3234, 513, 4, 34214, 'Best Hospital in Southern of Vietnam', 4, 'TpHCM', ''),
-(5, 'Nhan Dan Gia Dinh', 2321, 932, 3, 34224, 'Best Hospital Service for everyone!', 4, 'Saigon', ''),
-(6, 'Thong Nhat', 1231, 214, 5, 32153, 'Good Location for people at Tan Binh District HCMC', 4, 'Saigon', ''),
-(7, 'Saigontourist', 2125, 5532, 1, 342321, 'We are the top service Taxi in Vietnam. Join us!', 1, 'Hanoi', ''),
-(8, '115', 2241, 332, 2, 32142, 'Affordable Hospital for everybody!', 4, 'Tan Binh, Vietnam', '');
+INSERT INTO `company` (`id`, `name`, `image`, `info`, `address`) VALUES
+('cine_cinebox', 'Cinebox Cinema', 'cinebox_cinema.jpg', '', ''),
+('cine_galaxy', 'Cinema Galaxy', 'galaxy_cinema.jpg', '', ''),
+('cine_lotte', 'Cinema Lotteria', 'lotte_cinema.jpg', '', ''),
+('cine_megastar', 'Cinema Megastar', 'megastar_cinema.jpg', '', ''),
+('ff_burgerking', 'Burger King', 'burgerking.jpg', '', ''),
+('ff_jollibee', 'Jollibee', 'jollibee.jpg', '', ''),
+('ff_kfc', 'KFC', 'kfc.jpg', '', ''),
+('ff_lotte', 'Lotteria', 'lotteria.jpg', '', ''),
+('ff_mcdonald', 'Mc Donald''s', 'mcdonald.jpg', '', ''),
+('ff_pizzahut', 'Pizza Hut', 'pizzahut.jpg', '', ''),
+('gas_benthanh', 'Ben Thanh', 'ben_thanh.jpg', '', ''),
+('gas_dbp', 'Dien Bien Phu', 'dien_bien_phu.jpg', '', ''),
+('gas_notranglong', 'No Trang Long', 'no_trang_long.jpg', '', ''),
+('gas_ntp', 'Nguyen Tri Phuong', 'nguyen_tri_phuong.jpg', '', ''),
+('mall_aeon', 'Aeon Mall', 'aeon_mall.jpg', '', ''),
+('mall_diamond', 'Diamond Plaza Mall', 'diamond_plaza.jpg', '', ''),
+('mall_nowzone', 'Now Zone', 'nowzone.jpg', '', ''),
+('mall_parkson', 'Parkson', 'parkson.jpg', '', ''),
+('mall_vincom', 'Vincom', 'vincom.jpg', '', ''),
+('mart_bigc', 'Big C', 'bigC.jpg', '', ''),
+('mart_coopmart', 'Coop Mart', 'coopmart.jpg', '', ''),
+('mart_lotte', 'Lotte Mart', 'lottemart.jpg', '', ''),
+('mart_maximark', 'Maximark', 'maximark.jpg', '', ''),
+('taxi_daukhicuulong', 'Dau Khi Cuu Long', 'dau_khi_cuu_long.jpg', '', ''),
+('taxi_hoanglong', 'Hoang Long', 'hoang_long.jpg', '', ''),
+('taxi_mailinh', 'Mai Linh', 'mai_linh.jpg', '', ''),
+('taxi_phuongtrang', 'Phuong Trang', 'phuong_trang.jpg', '', ''),
+('taxi_saigonair', 'Saigon Air', 'saigonair.jpg', '', ''),
+('taxi_saigontourist', 'Saigontourist', 'saigontourist.jpg', '', ''),
+('taxi_vinasun', 'Vinasun', 'vinasun.jpg', '', ''),
+('taxi_vinataxi', 'Vina Taxi', 'vinataxi.jpg', '', ''),
+('telco_beeline', 'Beeline', 'beeline.jpg', '', ''),
+('telco_mobifone', 'Mobifone', 'mobifone.jpg', '', ''),
+('telco_viettel', 'Viettel', 'viettel.jpg', '', ''),
+('telco_vinaphone', 'Vinaphone', 'vinaphone.jpg', '', '');
 
 -- --------------------------------------------------------
 
@@ -100,23 +122,23 @@ INSERT INTO `field` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `industry` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` text NOT NULL,
   `name` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `image` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `industry`
 --
 
-INSERT INTO `industry` (`id`, `name`) VALUES
-(1, 'Taxi'),
-(2, 'Bank'),
-(3, 'Car Park'),
-(4, 'Hospital'),
-(5, 'Motobike Repair'),
-(6, 'Telcom'),
-(7, 'Air Ticket Retailer');
+INSERT INTO `industry` (`id`, `name`, `image`) VALUES
+('fastfood', 'Thuc An Nhanh', 'pizzahut.jpg'),
+('taxi', 'Taxi', 'mai_linh.jpg'),
+('cinema', 'Cinema Movie', 'cinebox_cinema.jpg'),
+('telco', 'Vien Thong', 'beeline.jpg'),
+('supermarket', 'Sieu Thi', 'lottemart.jpg'),
+('mall', 'Trung Tam Mua Sam', 'diamond_plaza.jpg'),
+('gas', 'Cay Xang', 'nguyen_tri_phuong.jpg');
 
 -- --------------------------------------------------------
 
