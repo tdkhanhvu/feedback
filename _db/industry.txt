@@ -1,0 +1,15 @@
+id				name
+
+fastfood:		Thuc An Nhanh
+
+taxi:			Taxi
+
+cinema:			Cinema Movie
+
+telco:			Vien Thong
+
+supermarket:	Sieu Thi
+
+mall:			Trung Tam Mua Sam
+
+gas:			Cay Xang

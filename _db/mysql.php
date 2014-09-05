@@ -3,10 +3,11 @@
 /*
  * Usage: 	$mysql = new MySQL();
  *			$dataYouWant = $mysql->selectFromTable(..Read Docs below..);
+ *			$dataYouWant = $mysql->selectAllCompaniesFromIndustry(..Read Docs below..);
  *
- * Select From Table:
- * 
- * selectFromTable fetch data from respective table
+ *************************************************************************************
+ *
+ * selectFromTable(table, [args, [crits]]) :	fetch data from respective table
  *
  * Parameters: 
  * 		1) $table 	(string): table name. Compulsory. E.g: 'industry'
@@ -19,6 +20,19 @@
  * Notes: To select ALL, leave the last 2 parameters null.
  *
  * Return: Data results in array form. If nothing found, NULL returned.
+ *
+ **************************************************************************************
+ *
+ * selectAllCompaniesFromIndustry(id) :	fetch all companies belong to an industry
+ * 
+ * Parameter:
+ * 		1)	$id 	(string): id name. Compulsory. E.g: 'taxi'
+ *		
+ * Note: refer to the industry.txt to get the list of current industries.
+ *
+ * Return: Data results in array form. If nothing found, NULL returned.
+ *
+ **************************************************************************************
  *
  */
 class MySQL {
@@ -73,6 +87,20 @@ class MySQL {
 
 		// No result
 		return null;
+	}
+
+	// Select all companies from a particular industry
+	public function selectAllCompaniesFromIndustry($ind) {
+		$result_set = array();
+	    $rels = $this->selectFromTable('ind_com', [['industry', $ind]]);
+	    foreach ($rels as $key => $value) {
+	    	$com = $this->selectFromTable('company', [['id', $value['company']]]);
+	    	if ($com != null) {
+	    		array_push($result_set, $com[0]);
+	    	}
+	    }
+	    
+	    return $result_set;
 	}
 
 	// Destruction

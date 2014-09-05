@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2014 at 07:41 PM
+-- Generation Time: Sep 05, 2014 at 10:40 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -143,23 +143,54 @@ INSERT INTO `industry` (`id`, `name`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rank_company`
+-- Table structure for table `ind_com`
 --
 
-CREATE TABLE IF NOT EXISTS `rank_company` (
-  `industry` int(11) NOT NULL,
-  `rank` int(11) NOT NULL,
-  `company` int(11) NOT NULL
+CREATE TABLE IF NOT EXISTS `ind_com` (
+  `industry` text NOT NULL,
+  `company` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rank_company`
+-- Dumping data for table `ind_com`
 --
 
-INSERT INTO `rank_company` (`industry`, `rank`, `company`) VALUES
-(1, 1, 3),
-(1, 1, 1),
-(1, 1, 2);
+INSERT INTO `ind_com` (`industry`, `company`) VALUES
+('cinema', 'cine_cinebox'),
+('cinema', 'cine_galaxy'),
+('cinema', 'cine_lotte'),
+('cinema', 'cine_megastar'),
+('fastfood', 'ff_burgerking'),
+('fastfood', 'ff_jollibee'),
+('fastfood', 'ff_kfc'),
+('fastfood', 'ff_lotte'),
+('fastfood', 'ff_mcdonald'),
+('fastfood', 'ff_pizzahut'),
+('gas', 'gas_benthanh'),
+('gas', 'gas_dbp'),
+('gas', 'gas_notranglong'),
+('gas', 'gas_ntp'),
+('mall', 'mall_aeon'),
+('mall', 'mall_diamond'),
+('mall', 'mall_nowzone'),
+('mall', 'mall_parkson'),
+('mall', 'mall_vincom'),
+('supermarket', 'mart_bigc'),
+('supermarket', 'mart_coopmart'),
+('supermarket', 'mart_lotte'),
+('supermarket', 'mart_maximark'),
+('taxi', 'taxi_daukhicuulong'),
+('taxi', 'taxi_hoanglong'),
+('taxi', 'taxi_mailinh'),
+('taxi', 'taxi_phuongtrang'),
+('taxi', 'taxi_saigonair'),
+('taxi', 'taxi_saigontourist'),
+('taxi', 'taxi_vinasun'),
+('taxi', 'taxi_vinataxi'),
+('telco', 'telco_beeline'),
+('telco', 'telco_mobifone'),
+('telco', 'telco_viettel'),
+('telco', 'telco_vinaphone');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
