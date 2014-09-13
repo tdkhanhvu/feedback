@@ -3,13 +3,15 @@ var userName = "Trần Đoàn Khánh Vũ";
 var photo = "user/user1.jpg";
 var allCategories = ['service','park','product'];
 var initFilter = false;
+var serviceUrl = './_db/WebService.php';
+
+var companies = [];
+
 $(function(){
-    initIndustry();
-    initTpGrid();
+    getIndustryList(initIndustry);
     initRating();
 
     initReview();
-    //initCompany('fastfood_2');
 
 
     $('.collapse').collapse();
@@ -31,264 +33,55 @@ function changeCount(e, inc, index) {
     }
 }
 
-function initIndustry() {
-    var industries = [
-        {
-            id: 1,
-            name: "Taxi",
-            companies: [
-                {
-                    id: 'taxi_1',
-                    name: "Vinasun",
-                    photo: "vinasun.jpg"
-                },
-                {
-                    id: 'taxi_2',
-                    name: "Saigontourist",
-                    photo: "saigontourist.jpg"
-                },
-                {
-                    id: 'taxi_3',
-                    name: "Saigon Air",
-                    photo: "saigonair.jpg"
-                },
-                {
-                    id: 'taxi_4',
-                    name: "Phương Trang",
-                    photo: "phuong_trang.jpg"
-                },
-                {
-                    id: 'taxi_5',
-                    name: "Hoàng Long",
-                    photo: "hoang_long.jpg"
-                },
-                {
-                    id: 'taxi_6',
-                    name: "Dầu Khí Cửu Long",
-                    photo: "dau_khi_cuu_long.jpg"
-                },
-                {
-                    id: 'taxi_7',
-                    name: "Vinataxi",
-                    photo: "vinataxi.jpg"
-                },
-                {
-                    id: 'taxi_8',
-                    name: "Mai Linh",
-                    photo: "mai_linh.jpg"
-                }
-            ]
-        },
-        {
-            id: 2,
-            name: "Cây Xăng",
-            companies: [
-                {
-                    id: 'cayxang_1',
-                    name: "Bến Thành",
-                    photo: "ben_thanh.jpg"
-                },
-                {
-                    id: 'cayxang_2',
-                    name: "Nơ Trang Long",
-                    photo: "no_trang_long.jpg"
-                },
-                {
-                    id: 'cayxang_3',
-                    name: "Điện Biên Phủ",
-                    photo: "dien_bien_phu.jpg"
-                },
-                {
-                    id: 'cayxang_4',
-                    name: "Nguyễn Tri Phương",
-                    photo: "nguyen_tri_phuong.jpg"
-                }
-            ]
-        },
-        {
-            id: 3,
-            name: "Cinema",
-            companies: [
-                {
-                    id: 'cinema_1',
-                    name: "Galaxy Cinema",
-                    photo: "galaxy_cinema.jpg"
-                },
-                {
-                    id: 'cinema_2',
-                    name: "Megastar Cinema",
-                    photo: "megastar_cinema.jpg"
-                },
-                {
-                    id: 'cinema_3',
-                    name: "Lotte Cinema",
-                    photo: "lotte_cinema.jpg"
-                },
-                {
-                    id: 'cinema_4',
-                    name: "Cinebox Cinema",
-                    photo: "cinebox_cinema.jpg"
-                }
-            ]
-        },
-        {
-            id: 4,
-            name: "Viễn Thông",
-            companies: [
-                {
-                    id: 'vienthong_1',
-                    name: "Viettel",
-                    photo: "viettel.jpg"
-                },
-                {
-                    id: 'vienthong_2',
-                    name: "Mobifone",
-                    photo: "mobifone.jpg"
-                },
-                {
-                    id: 'vienthong_3',
-                    name: "Vinaphone",
-                    photo: "vinaphone.jpg"
-                },
-                {
-                    id: 'vienthong_4',
-                    name: "Beeline",
-                    photo: "beeline.jpg"
-                }
-            ]
-        },
-        {
-            id: 5,
-            name: "Siêu Thị",
-            companies: [
-                {
-                    id: 'sieuthi_1',
-                    name: "CoopMart",
-                    photo: "coopmart.jpg"
-                },
-                {
-                    id: 'sieuthi_2',
-                    name: "Big C",
-                    photo: "bigC.jpg"
-                },
-                {
-                    id: 'sieuthi_3',
-                    name: "Maximark",
-                    photo: "maximark.jpg"
-                },
-                {
-                    id: 'sieuthi_4',
-                    name: "Lotte Mart",
-                    photo: "lottemart.jpg"
-                }
-            ]
-        },
-        {
-            id: 6,
-            name: "Trung Tâm Mua Sắm",
-            companies: [
-                {
-                    id: 'trungtammuasam_1',
-                    name: "Parkson",
-                    photo: "parkson.jpg"
-                },
-                {
-                    id: 'trungtammuasam_2',
-                    name: "Vincom",
-                    photo: "vincom.jpg"
-                },
-                {
-                    id: 'trungtammuasam_3',
-                    name: "Now Zone",
-                    photo: "nowzone.jpg"
-                },
-                {
-                    id: 'trungtammuasam_4',
-                    name: "Lotte Mart",
-                    photo: "lottemart.jpg"
-                },
-                {
-                    id: 'trungtammuasam_5',
-                    name: "Aeon Mall",
-                    photo: "aeon_mall.jpg"
-                },
-                {
-                    id: 'trungtammuasam_6',
-                    name: "Diamond Plaza",
-                    photo: "diamond_plaza.jpg"
-                }
-            ]
-        },
-        {
-            id: 7,
-            name: "Thức Ăn Nhanh",
-            companies: [
-                {
-                    id: 'fastfood_1',
-                    name: "Lotteria",
-                    photo: "lotteria.jpg"
-                },
-                {
-                    id: 'fastfood_2',
-                    name: "KFC",
-                    photo: "kfc.jpg"
-                },
-                {
-                    id: 'fastfood_3',
-                    name: "Jollibee",
-                    photo: "jollibee.jpg"
-                },
-                {
-                    id: 'fastfood_4',
-                    name: "Burger King",
-                    photo: "burgerking.jpg"
-                },
-                {
-                    id: 'fastfood_5',
-                    name: "McDonalds",
-                    photo: "mcdonald.jpg"
-                },
-                {
-                    id: 'fastfood_6',
-                    name: "Pizza Hut",
-                    photo: "pizzahut.jpg"
-                }
-            ]
-        }
-    ];
+function initIndustry(indInfos) {
+    var gets = [];
 
-    var companies = new Array();
     var industryList = {industries: new Array()};
-    industries.forEach(function(industry){
-        industry.companies.forEach(function(company) {
-//            var item = $("<li data-pile='" + industry.name + "'><span class='tp-info'><span>"
-//            + company.name + "</span></span><img class='company' src='./images/" + company.photo + "'></li>").prependTo($('#tp-grid'));
 
-            companies.push(
-                {
-                    industryName : industry.name,
-                    companyName : company.name,
-                    companyPhoto : company.photo,
-                    id: company.id
-                });
-        })
+    for (var i = 0; i < indInfos.length; i++) {
+        var indInfo = indInfos[i];
+        gets.push(getCompaniesByIndustryId(indInfo.id, indInfo.name));
+
         industryList.industries.push(
             {
-                id: industry.id,
-                name: industry.name
+                id: indInfo.id,
+                name: indInfo.name
             });
-    })
-    var template = $.templates("#industryTmpl");
+    }
 
-    template.link("#tp-grid", companies);
+    $.when.apply($, gets).then(function() {
+        companies.sort(function(a,b){
+            if (a.industryName > b.industryName){
+                return 1;
+            }
+            else if (a.industryName < b.industryName){
+                return -1;
+            }
+            else if (a.id > b.id) {
+                return 1;
+            }
+            else if (a.id < b.id) {
+                return -1;
+            }
 
-    var industryListTmpl = $.templates("#industryListTmpl");
+            return 0;
+        });
 
-    industryListTmpl.link("#industry_list_placeholder", industryList);
+        var template = $.templates("#industryTmpl");
 
-    $("#industry_list").select2();
+        template.link("#tp-grid", companies);
 
-    $('.select2-container').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
+        var industryListTmpl = $.templates("#industryListTmpl");
+
+        industryListTmpl.link("#industry_list_placeholder", industryList);
+
+        $("#industry_list").select2();
+
+        $('.select2-container').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
+
+        initTpGrid();
+    });
+
 }
 
 function initTpGrid() {
@@ -625,7 +418,7 @@ function addReply(threadId, reply) {
 }
 
 function initCompany(companyId) {
-    if (companyId == 'fastfood_2') {
+    if (companyId == 'ff_kfc') {
         var company = {
             photo: 'kfc_logo.png',
             description: 'Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.',
@@ -686,4 +479,48 @@ function insertDom(templ, obj, destId) {
     templ.link("#temp", obj);
     $('#' + destId).append($('#temp').html());
     $('#temp').html('');
+}
+
+function getIndustryList(callback) {
+    $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'GetAllIndustries'},
+        dataType: 'json',
+        success: function(result){
+            callback(result);
+        },
+        error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
+        }
+    });
+}
+
+function getCompaniesByIndustryId(industryId, industryName) {
+    return $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'GetAllCompaniesFromIndustries', 'industryId':industryId},
+        dataType: 'json',
+        success: function(result){
+            for (var i = 0; i < result.length; i++) {
+                var company = result[i];
+                companies.push(
+                    {
+                        industryName : industryName,
+                        companyName : company.name,
+                        companyPhoto : company.image,
+                        id: company.id
+                    });
+            }
+
+//            var template = $.templates("#industryTmpl");
+//            insertDom(template, companies, "tp-grid");
+        },
+        error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
+        }
+    });
 }
