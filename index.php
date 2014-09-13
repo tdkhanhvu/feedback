@@ -3,7 +3,6 @@
 <html>
 <?php require 'template.php'?>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,27 +10,38 @@
     <meta name="description" content="Thumbnail Pile Effect with Automatic Grouping">
     <meta name="keywords" content="jquery, pile, effect, images, grid, thumbnails, css3, grouping, albums">
     <meta name="author" content="Codrops">
-    <link rel="stylesheet" type="text/css" href="./css/stapel/stapel.css">
-    <link rel="stylesheet" href="./css/dropdown/select2.css" type="text/css">
     <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="./css/bootstrap-theme.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./css/stapel/stapel.css">
+    <link rel="stylesheet" href="./css/dropdown/select2.css" type="text/css">
     <link rel="stylesheet" href="./css/main.css" type="text/css">
 </head>
 <body>
 <div class="container">
-    <section class="main">
-        <div class="wrapper">
-            <div class="topbar">
-                <div style="width:50%;margin:20px auto;" id="industry_list_placeholder">
-                </div>
-                <span id="close" class="back">←</span>
-            </div>
-            <ul id="tp-grid" class="tp-grid">
-            </ul>
+    <header>
+        <div style="width:50%;margin:20px auto;" id="industry_list_placeholder">
         </div>
-    </section>
+        <span id="close" class="back">←</span>
+    </header>
+    <main>
+        <ul id="tp-grid" class="tp-grid">
+        </ul>
+    </main>
+    <footer>
+        <div class="row">
+            <div class="col-lg-4">
+                    Copyright 2014 ToiPhanHoi.com, All rights reserved
+            </div>
+            <div class="col-lg-4">
+                Tel: (+65) 9390 5003
+            </div>
+            <div class="col-lg-4">
+                Address: 20 C Lorong Marzuki, Singapore, 417066
+            </div>
+        </div>
+    </footer>
     <div id="overlay">
-            <div id="overlay_content">
+
         <div class="left-menu" id="companyInfo">
         </div>
 
@@ -105,8 +115,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
     </div>
 </div>
 

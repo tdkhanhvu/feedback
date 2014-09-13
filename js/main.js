@@ -659,7 +659,7 @@ function initCompany(companyId) {
                 },
                 {
                     id: 'kfc_7',
-                    name: '80 Đường Tháp Mười – Phường 2 – Quận 6 – Tp.HCM',
+                    name: '80 Đường Tháp Mười – Phường 2 – Quận 6 – Tp.HCM'
                 },
                 {
                     id: 'kfc_8',
@@ -668,7 +668,7 @@ function initCompany(companyId) {
             ]
         };
         $.templates("#companyTmpl").link('#companyInfo', company);
-        $("#branch_list").select2();
+        $("#branch_list").select2({maximumSelectionSize: 1 });
         $('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
 
         if (!initFilter) {

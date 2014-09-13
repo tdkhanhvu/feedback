@@ -108,9 +108,8 @@
     </div>
 </script>
 <script id="companyTmpl" type="text/x-jsrender">
-    <span class="exit menu-button glyphicon glyphicon-remove-sign"></span>
     <div style="width:100%;margin:0 auto;">
-        <p>Chọn chi nhánh</p>
+        <p id="select_branch_text" >Chọn chi nhánh<span class="exit menu-button glyphicon glyphicon-remove-sign"></span></p>
         <select multiple="multiple" id="branch_list" style="width:100%">
             {^{for branches}}
               <option value={{:id}}>{{:name}}</option>
@@ -118,9 +117,11 @@
         </select>
 
         <p style="padding:0px;">
-            <img src="./images/{{:photo}}" style="width:200px;margin:0 auto;"/>
+            <div style="margin: 0 30%;">
+                <img src="./images/{{:photo}}" class="img-responsive thumbnail"/>
+            </div>
         </p>
-        <p class="branch_info">
+        <p class="branch_info branch_description">
             <img class="info_icon" src="./images/icon/description.png" style="display: inline;">
             {{:description}}
         </p>
