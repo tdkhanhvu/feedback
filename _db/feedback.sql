@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2014 at 07:26 PM
+-- Generation Time: Sep 14, 2014 at 08:05 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `branch` (
   `id` varchar(128) NOT NULL,
   `address` text NOT NULL,
+  `time` int(11) NOT NULL,
+  `phone` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -36,15 +38,15 @@ CREATE TABLE IF NOT EXISTS `branch` (
 -- Dumping data for table `branch`
 --
 
-INSERT INTO `branch` (`id`, `address`) VALUES
-('kfc_1', 'A43 Tr??ng S?n – Ph??ng 4 – Qu?n Tân Bình – Tp.HCM'),
-('kfc_2', 'L?u 4 – DiamondPlaza 34 Lê Du?n – Ph??ng B?n Nghé – Qu?n 1- Tp.HCM'),
-('kfc_3', 'Siêu th? Sài Gòn – s? 34 ???ng 3/2 – Ph??ng 12 – Qu?n 10 – Tp.HCM'),
-('kfc_4', '15-17 C?ng Hòa – Ph??ng 4 – Qu?n Tân Bình – Tp.HCM'),
-('kfc_5', '20 An D??ng V??ng – Ph??ng 9 – Qu?n 5 – Tp.HCM'),
-('kfc_6', '74/2 Hai Bà Tr?ng – Ph??ng B?n Nghé – Qu?n 1- Tp.HCM'),
-('kfc_7', '80 ???ng Tháp M??i – Ph??ng 2 – Qu?n 6 – Tp.HCM'),
-('kfc_8', 'Co.op Mart – 571 Nguy?n Ki?m – Ph??ng 9 – Qu?n Phú Nhu?n – Tp.HCM');
+INSERT INTO `branch` (`id`, `address`, `time`, `phone`) VALUES
+('kfc_1', 'A43 Truong Son – Phuong 4 – Quan Tân Bình – Tp.HCM', 0, '91234291'),
+('kfc_2', 'L?u 4 – DiamondPlaza 34 Lê Du?n – Ph??ng B?n Nghé – Qu?n 1- Tp.HCM', 0, '0'),
+('kfc_3', 'Siêu th? Sài Gòn – s? 34 ???ng 3/2 – Ph??ng 12 – Qu?n 10 – Tp.HCM', 0, '0'),
+('kfc_4', '15-17 C?ng Hòa – Ph??ng 4 – Qu?n Tân Bình – Tp.HCM', 0, '0'),
+('kfc_5', '20 An D??ng V??ng – Ph??ng 9 – Qu?n 5 – Tp.HCM', 0, '0'),
+('kfc_6', '74/2 Hai Bà Tr?ng – Ph??ng B?n Nghé – Qu?n 1- Tp.HCM', 0, '0'),
+('kfc_7', '80 ???ng Tháp M??i – Ph??ng 2 – Qu?n 6 – Tp.HCM', 0, '0'),
+('kfc_8', 'Co.op Mart – 571 Nguy?n Ki?m – Ph??ng 9 – Qu?n Phú Nhu?n – Tp.HCM', 0, '0');
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,9 @@ CREATE TABLE IF NOT EXISTS `company` (
   `image` text NOT NULL,
   `info` text NOT NULL,
   `address` text NOT NULL,
+  `description` text NOT NULL,
+  `time` text NOT NULL,
+  `phone` int(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,42 +70,42 @@ CREATE TABLE IF NOT EXISTS `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`id`, `name`, `image`, `info`, `address`) VALUES
-('cine_cinebox', 'Cinebox Cinema', 'cinebox_cinema.jpg', '', ''),
-('cine_galaxy', 'Cinema Galaxy', 'galaxy_cinema.jpg', '', ''),
-('cine_lotte', 'Cinema Lotteria', 'lotte_cinema.jpg', '', ''),
-('cine_megastar', 'Cinema Megastar', 'megastar_cinema.jpg', '', ''),
-('ff_burgerking', 'Burger King', 'burgerking.jpg', '', ''),
-('ff_jollibee', 'Jollibee', 'jollibee.jpg', '', ''),
-('ff_kfc', 'KFC', 'kfc.jpg', '', ''),
-('ff_lotte', 'Lotteria', 'lotteria.jpg', '', ''),
-('ff_mcdonald', 'Mc Donald''s', 'mcdonald.jpg', '', ''),
-('ff_pizzahut', 'Pizza Hut', 'pizzahut.jpg', '', ''),
-('gas_benthanh', 'Ben Thanh', 'ben_thanh.jpg', '', ''),
-('gas_dbp', 'Dien Bien Phu', 'dien_bien_phu.jpg', '', ''),
-('gas_notranglong', 'No Trang Long', 'no_trang_long.jpg', '', ''),
-('gas_ntp', 'Nguyen Tri Phuong', 'nguyen_tri_phuong.jpg', '', ''),
-('mall_aeon', 'Aeon Mall', 'aeon_mall.jpg', '', ''),
-('mall_diamond', 'Diamond Plaza Mall', 'diamond_plaza.jpg', '', ''),
-('mall_nowzone', 'Now Zone', 'nowzone.jpg', '', ''),
-('mall_parkson', 'Parkson', 'parkson.jpg', '', ''),
-('mall_vincom', 'Vincom', 'vincom.jpg', '', ''),
-('mart_bigc', 'Big C', 'bigC.jpg', '', ''),
-('mart_coopmart', 'Coop Mart', 'coopmart.jpg', '', ''),
-('mart_lotte', 'Lotte Mart', 'lottemart.jpg', '', ''),
-('mart_maximark', 'Maximark', 'maximark.jpg', '', ''),
-('taxi_daukhicuulong', 'Dau Khi Cuu Long', 'dau_khi_cuu_long.jpg', '', ''),
-('taxi_hoanglong', 'Hoang Long', 'hoang_long.jpg', '', ''),
-('taxi_mailinh', 'Mai Linh', 'mai_linh.jpg', '', ''),
-('taxi_phuongtrang', 'Phuong Trang', 'phuong_trang.jpg', '', ''),
-('taxi_saigonair', 'Saigon Air', 'saigonair.jpg', '', ''),
-('taxi_saigontourist', 'Saigontourist', 'saigontourist.jpg', '', ''),
-('taxi_vinasun', 'Vinasun', 'vinasun.jpg', '', ''),
-('taxi_vinataxi', 'Vina Taxi', 'vinataxi.jpg', '', ''),
-('telco_beeline', 'Beeline', 'beeline.jpg', '', ''),
-('telco_mobifone', 'Mobifone', 'mobifone.jpg', '', ''),
-('telco_viettel', 'Viettel', 'viettel.jpg', '', ''),
-('telco_vinaphone', 'Vinaphone', 'vinaphone.jpg', '', '');
+INSERT INTO `company` (`id`, `name`, `image`, `info`, `address`, `description`, `time`, `phone`) VALUES
+('cine_cinebox', 'Cinebox Cinema', 'cinebox_cinema.jpg', '', '', '', '', 0),
+('cine_galaxy', 'Cinema Galaxy', 'galaxy_cinema.jpg', '', '', '', '', 0),
+('cine_lotte', 'Cinema Lotteria', 'lotte_cinema.jpg', '', '', '', '', 0),
+('cine_megastar', 'Cinema Megastar', 'megastar_cinema.jpg', '', '', '', '', 0),
+('ff_burgerking', 'Burger King', 'burgerking.jpg', '', '', '', '', 0),
+('ff_jollibee', 'Jollibee', 'jollibee.jpg', '', '', '', '', 0),
+('ff_kfc', 'KFC', 'kfc.jpg', '', '', '', '', 0),
+('ff_lotte', 'Lotteria', 'lotteria.jpg', '', '', '', '', 0),
+('ff_mcdonald', 'Mc Donald''s', 'mcdonald.jpg', '', '', '', '', 0),
+('ff_pizzahut', 'Pizza Hut', 'pizzahut.jpg', '', '', '', '', 0),
+('gas_benthanh', 'Ben Thanh', 'ben_thanh.jpg', '', '', '', '', 0),
+('gas_dbp', 'Dien Bien Phu', 'dien_bien_phu.jpg', '', '', '', '', 0),
+('gas_notranglong', 'No Trang Long', 'no_trang_long.jpg', '', '', '', '', 0),
+('gas_ntp', 'Nguyen Tri Phuong', 'nguyen_tri_phuong.jpg', '', '', '', '', 0),
+('mall_aeon', 'Aeon Mall', 'aeon_mall.jpg', '', '', '', '', 0),
+('mall_diamond', 'Diamond Plaza Mall', 'diamond_plaza.jpg', '', '', '', '', 0),
+('mall_nowzone', 'Now Zone', 'nowzone.jpg', '', '', '', '', 0),
+('mall_parkson', 'Parkson', 'parkson.jpg', '', '', '', '', 0),
+('mall_vincom', 'Vincom', 'vincom.jpg', '', '', '', '', 0),
+('mart_bigc', 'Big C', 'bigC.jpg', '', '', '', '', 0),
+('mart_coopmart', 'Coop Mart', 'coopmart.jpg', '', '', '', '', 0),
+('mart_lotte', 'Lotte Mart', 'lottemart.jpg', '', '', '', '', 0),
+('mart_maximark', 'Maximark', 'maximark.jpg', '', '', '', '', 0),
+('taxi_daukhicuulong', 'Dau Khi Cuu Long', 'dau_khi_cuu_long.jpg', '', '', '', '', 0),
+('taxi_hoanglong', 'Hoang Long', 'hoang_long.jpg', '', '', '', '', 0),
+('taxi_mailinh', 'Mai Linh', 'mai_linh.jpg', '', '', '', '', 0),
+('taxi_phuongtrang', 'Phuong Trang', 'phuong_trang.jpg', '', '', '', '', 0),
+('taxi_saigonair', 'Saigon Air', 'saigonair.jpg', '', '', '', '', 0),
+('taxi_saigontourist', 'Saigontourist', 'saigontourist.jpg', '', '', '', '', 0),
+('taxi_vinasun', 'Vinasun', 'vinasun.jpg', '', '', '', '', 0),
+('taxi_vinataxi', 'Vina Taxi', 'vinataxi.jpg', '', '', '', '', 0),
+('telco_beeline', 'Beeline', 'beeline.jpg', '', '', '', '', 0),
+('telco_mobifone', 'Mobifone', 'mobifone.jpg', '', '', '', '', 0),
+('telco_viettel', 'Viettel', 'viettel.jpg', '', '', '', '', 0),
+('telco_vinaphone', 'Vinaphone', 'vinaphone.jpg', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
