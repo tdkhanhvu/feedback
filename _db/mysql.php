@@ -4,6 +4,7 @@
  * Usage: 	$mysql = new MySQL();
  *			$dataYouWant = $mysql->selectFromTable(..Read Docs below..);
  *			$dataYouWant = $mysql->selectAllCompaniesFromIndustry(..Read Docs below..);
+ *			$dataYouWant = $mysql->selectAllBranchesFromCompany(..Read Docs below..);
  *
  *************************************************************************************
  *
@@ -29,6 +30,17 @@
  * 		1)	$id 	(string): id name. Compulsory. E.g: 'taxi'
  *		
  * Note: refer to the industry.txt to get the list of current industries.
+ *
+ * Return: Data results in array form. If nothing found, NULL returned.
+ *
+ **************************************************************************************
+ *
+ * selectAllBranchesFromCompany(id) :	fetch all branches belong to a company
+ * 
+ * Parameter:
+ * 		1)	$id 	(string): id name. Compulsory. E.g: 'ff_kfc'
+ *		
+ * Note: refer to the company.txt to get the list of current company.
  *
  * Return: Data results in array form. If nothing found, NULL returned.
  *
@@ -97,6 +109,20 @@ class MySQL {
 	    	$com = $this->selectFromTable('company', [['id', $value['company']]]);
 	    	if ($com != null) {
 	    		array_push($result_set, $com[0]);
+	    	}
+	    }
+	    
+	    return $result_set;
+	}
+
+	// Select all branches from a particular company
+	public function selectAllBranchesFromCompany($ind) {
+		$result_set = array();
+	    $rels = $this->selectFromTable('com_branch', [['company', $ind]]);
+	    foreach ($rels as $key => $value) {
+	    	$branches = $this->selectFromTable('branch', [['id', $value['branch']]]);
+	    	if ($branches != null) {
+	    		array_push($result_set, $branches[0]);
 	    	}
 	    }
 	    

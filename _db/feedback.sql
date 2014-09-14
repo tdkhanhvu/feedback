@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2014 at 10:40 PM
+-- Generation Time: Sep 14, 2014 at 07:26 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,6 +19,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `feedback`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `branch`
+--
+
+CREATE TABLE IF NOT EXISTS `branch` (
+  `id` varchar(128) NOT NULL,
+  `address` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `branch`
+--
+
+INSERT INTO `branch` (`id`, `address`) VALUES
+('kfc_1', 'A43 Tr??ng S?n – Ph??ng 4 – Qu?n Tân Bình – Tp.HCM'),
+('kfc_2', 'L?u 4 – DiamondPlaza 34 Lê Du?n – Ph??ng B?n Nghé – Qu?n 1- Tp.HCM'),
+('kfc_3', 'Siêu th? Sài Gòn – s? 34 ???ng 3/2 – Ph??ng 12 – Qu?n 10 – Tp.HCM'),
+('kfc_4', '15-17 C?ng Hòa – Ph??ng 4 – Qu?n Tân Bình – Tp.HCM'),
+('kfc_5', '20 An D??ng V??ng – Ph??ng 9 – Qu?n 5 – Tp.HCM'),
+('kfc_6', '74/2 Hai Bà Tr?ng – Ph??ng B?n Nghé – Qu?n 1- Tp.HCM'),
+('kfc_7', '80 ???ng Tháp M??i – Ph??ng 2 – Qu?n 6 – Tp.HCM'),
+('kfc_8', 'Co.op Mart – 571 Nguy?n Ki?m – Ph??ng 9 – Qu?n Phú Nhu?n – Tp.HCM');
 
 -- --------------------------------------------------------
 
@@ -75,6 +101,31 @@ INSERT INTO `company` (`id`, `name`, `image`, `info`, `address`) VALUES
 ('telco_mobifone', 'Mobifone', 'mobifone.jpg', '', ''),
 ('telco_viettel', 'Viettel', 'viettel.jpg', '', ''),
 ('telco_vinaphone', 'Vinaphone', 'vinaphone.jpg', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `com_branch`
+--
+
+CREATE TABLE IF NOT EXISTS `com_branch` (
+  `company` text NOT NULL,
+  `branch` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `com_branch`
+--
+
+INSERT INTO `com_branch` (`company`, `branch`) VALUES
+('ff_kfc', 'kfc_1'),
+('ff_kfc', 'kfc_2'),
+('ff_kfc', 'kfc_3'),
+('ff_kfc', 'kfc_4'),
+('ff_kfc', 'kfc_6'),
+('ff_kfc', 'kfc_7'),
+('ff_kfc', 'kfc_8'),
+('ff_kfc', 'kfc_5');
 
 -- --------------------------------------------------------
 
