@@ -188,11 +188,17 @@ button + label{
     top: 0;
     left: 0;
     text-align: justify;
-    padding: 2% 8%;
+    /*padding: 2% 8%;*/
     display:none;
 }
 
-#overlay > div {
+#overlay_content {
+    width: 84%;
+    position:relative;
+    margin: 0 auto;
+}
+
+#overlay_content > div {
     border: 5px groove #666;
 }
 

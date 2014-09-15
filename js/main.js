@@ -421,11 +421,7 @@ function initEvent() {
     });
 
     $(document).on('click', ".menu-button", function() {
-        //company info
-        $('#overlay').css('display','none');
-
-        $('.right-preview').toggleClass('unscrollable');
-        $('.wrapper').toggleClass('unscrollable');
+        closeCompanyInfo();
     });
 
     $('body').on('click', '.send_thread', function() {
@@ -535,4 +531,20 @@ function initEvent() {
     $('body').on('click', '.down', function() {
         changeCount(this, -1, 1);
     });
+
+    $('body').on('click', '#overlay', function() {
+        closeCompanyInfo();
+    });
+
+    $('body').on('click', '#overlay_content', function(event) {
+        event.stopPropagation();
+    });
+}
+
+function closeCompanyInfo() {
+    //company info
+    $('#overlay').css('display','none');
+
+    $('.right-preview').toggleClass('unscrollable');
+    $('.wrapper').toggleClass('unscrollable');
 }
