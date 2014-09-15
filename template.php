@@ -43,17 +43,17 @@
                 <img class="avatar img-thumbnail" src="./images/{{:photo}}"/>
             </div>
             <div class="col-md-10">
-                <div class="row" style="margin-top: 5px;">
+                <div class="row">
                     {{if start }}
                         <div class="col-md-6">
-                            <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">{{:name}}</h4>
+                            <h5 style="color: rgb(141, 30, 30);margin:5px;float:left">{{:name}}</h5>
                         </div>
                         <div id="{{:ratingId}}" class="col-md-4"></div>
                     {{else}}
                         <div class="col-md-10">
-                            <h4 style="color: rgb(141, 30, 30);margin:5px;float:left">{{:name}}</h4>
+                            <h5 style="color: rgb(141, 30, 30);margin:5px;float:left">{{:name}}</h5>
                             <span class="action_icon reply_icon glyphicon glyphicon-share-alt"></span>
-                            <h4 style="color: rgb(135, 135, 135);margin:5px;float:left">{{:replyTo}}</h4>
+                            <h5 style="color: rgb(135, 135, 135);margin:5px;float:left">{{:replyTo}}</h5>
                         </div>
                     {{/if}}
 
@@ -63,7 +63,7 @@
                     </div>
                 </div>
 
-                <h6>
+                <h6 class="comment_content">
                     {{:description}}
                 </h6>
             </div>
@@ -78,7 +78,7 @@
                 </div>
             </div>
         {{/if}}
-        <div class="row" style="margin-top:5px;">
+        <div class="row">
             <div class="col-md-2">
                 <time class="timeago text-primary text-nowrap" datetime="{{:time}}"></time>
             </div>

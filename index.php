@@ -96,18 +96,30 @@
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class="controls">
-                                <label>Lọc:</label>
+<!--                            <div class="controls">-->
+                            <div class="controls" style="position:fixed; right: 0; z-index: 1; padding: 0%; width: 8%; top: 5%;">
 
-                                <button id="button_all" class="filter" data-filter="all">Tất Cả</button>
-                                <button id="button_service" class="filter" data-filter=".service">Phục Vụ</button>
-                                <button class="filter" data-filter=".park">Giữ Xe</button>
-                                <button class="filter" data-filter=".product">Sản Phẩm</button>
-
-                                <label>Sort:</label>
-
-                                <button class="sort" data-sort="myorder:asc">Asc</button>
-                                <button class="sort" data-sort="myorder:desc">Desc</button>
+                                <p>Phân Loại</p>
+                                <p id="button_all" class="filter bg-primary" data-filter="all">
+                                    Tất Cả
+                                </p>
+                                <p id="button_service" class="filter" data-filter=".service">
+                                    Phục Vụ
+                                </p>
+                                <p class="filter" data-filter=".park">
+                                    Giữ Xe
+                                </p>
+                                <p class="filter" data-filter=".product">
+                                    Sản Phẩm
+                                </p>
+                                
+                                <p style="margin-top: 20%;">Thời Gian</p>
+                                <p class="sort" data-sort="myorder:asc">
+                                    Gần Nhất
+                                </p>
+                                <p class="sort" data-sort="myorder:desc">
+                                    Xa Nhất
+                                </p>
                             </div>
                             <div id="Container"></div>
                         </div>

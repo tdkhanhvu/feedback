@@ -8,11 +8,11 @@ var serviceUrl = './_db/WebService.php';
 var companies = [];
 
 $(function(){
+    initEvent();
     getIndustryList(initIndustry);
     initRating();
 
     initReview();
-
 
     $('.collapse').collapse();
 
@@ -197,130 +197,14 @@ function initReview() {
         })
     })
 
+    $( document ).ready(function() {
+        //hide all replies at beginning
+        $('.minimize').each(function() {
+            var min = $(this);
 
-    $(document).on('click', ".company", function() {
-        initCompany($(this).parent().attr('id'));
-    });
-
-    $(document).on('click', ".menu-button", function() {
-        //company info
-        $('#overlay').css('display','none');
-
-        $('.right-preview').toggleClass('unscrollable');
-        $('.wrapper').toggleClass('unscrollable');
-    });
-
-    $('body').on('click', '.send_thread', function() {
-        countThreadId++;
-        var categories = new Array();
-        allCategories.forEach(function(category) {
-            if ($('#input_' + category).is(':checked'))
-                categories.push(category);
-        })
-
-        var thread = {
-            thread_id: 'thread'+countThreadId,
-            id: 'thread'+countThreadId + '_1',
-            photo: photo,
-            name: userName,
-            categories: categories,
-            description: $('#input_comment').val(),
-            order: countThreadId,
-            start: true,
-            solve: false,
-            time: (new Date()).toISOString(),
-            ratingScore: $('#feedback').raty('score'),
-            totalVote: 0,
-            voteUp: false,
-            voteDown: false,
-            replies: []
-        };
-        //alert(JSON.stringify(thread));
-        addThread(thread);
-
-        //reset the form
-        $('#input_comment').val('');
-        $('#feedback').raty('cancel', false);
-        allCategories.forEach(function(category) {
-             $('#input_' + category).attr('checked', false)
-                 .parent().removeClass('active');
-        })
-    });
-
-    $('body').on('click', '.send_comment', function() {
-        var post = $(this).parent().parent().parent();
-        var reply = {
-            id: Math.floor((Math.random() * 100000) + 1),
-            photo: photo,
-            name: userName,
-            description: $(this).parent().find('input').val(),
-            start: false,
-            time: (new Date()).toISOString(),
-            replyTo: post.find('> .row:first-of-type').find('h4:first-of-type').text(),
-            totalVote: 0,
-            voteUp:false,
-            voteDown: false
-        };
-        //alert(JSON.stringify(reply));
-        //alert(post.parent().attr('id'));
-        addReply(post.parent().attr('id'),reply);
-        //alert();
-        $(this).parent().parent().remove();
-    });
-
-    $('body').on('click', '.cancel_comment', function() {
-        $(this).parent().parent().remove();
-    });
-
-    $('body').on('click', '.reply', function() {
-        var temp = $(this).parent().parent().parent();
-        var div = temp.find('> .row:last-child');
-        if (!div.hasClass('comment_box'))
-            temp.append('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
-        else {
-            div.toggle();
-        }
-    });
-
-    $('body').on('click', '.minimize', function() {
-        var temp = $(this).parent().parent().parent();
-        //description
-        temp.find('h6').toggle();
-
-        var img = temp.parent().children().first().find('img');
-        //profile pic
-        img.toggle();
-
-        //last row
-        var row = temp.parent().parent().find('>.row:last-child');
-
-        if (row.hasClass('comment_box')) {
-            row.parent().find('>.row:nth-last-child(2)').toggle();
-
-            row.css('display','none');
-        }
-        else row.toggle();
-
-        $(this).toggleClass('glyphicon-minus glyphicon-plus');
-    });
-
-    $('body').on('click', '.flag', function() {
-        var temp = $(this).closest('.comment_detail');
-
-        if (temp.hasClass('post_start')) {
-            temp.parent().find('.comment_detail').each(function() {
-                $(this).html('You have flagged this comment as spam');
-            });
-        }
-        else temp.html('You have flagged this comment as spam');
-    });
-
-    $('body').on('click', '.up', function() {
-        changeCount(this, 1, 2);
-    });
-
-    $('body').on('click', '.down', function() {
-        changeCount(this, -1, 1);
+            if (!min.closest('.comment_detail').hasClass('post_start'))
+                min.trigger('click');
+        });
     });
 }
 
@@ -514,13 +398,141 @@ function getCompaniesByIndustryId(industryId, industryName) {
                         id: company.id
                     });
             }
-
-//            var template = $.templates("#industryTmpl");
-//            insertDom(template, companies, "tp-grid");
         },
         error: function(xhr, status, error) {
             var err = eval("(" + xhr.responseText + ")");
             alert(err.Message);
         }
+    });
+}
+
+function resetSubmitThreadForm() {
+    $('#input_comment').val('');
+    $('#feedback').raty('cancel', false);
+    allCategories.forEach(function(category) {
+        $('#input_' + category).attr('checked', false)
+            .parent().removeClass('active');
+    })
+}
+
+function initEvent() {
+    $(document).on('click', ".company", function() {
+        initCompany($(this).parent().attr('id'));
+    });
+
+    $(document).on('click', ".menu-button", function() {
+        //company info
+        $('#overlay').css('display','none');
+
+        $('.right-preview').toggleClass('unscrollable');
+        $('.wrapper').toggleClass('unscrollable');
+    });
+
+    $('body').on('click', '.send_thread', function() {
+        countThreadId++;
+        var categories = new Array();
+        allCategories.forEach(function(category) {
+            if ($('#input_' + category).is(':checked'))
+                categories.push(category);
+        })
+
+        var thread = {
+            thread_id: 'thread'+countThreadId,
+            id: 'thread'+countThreadId + '_1',
+            photo: photo,
+            name: userName,
+            categories: categories,
+            description: $('#input_comment').val(),
+            order: countThreadId,
+            start: true,
+            solve: false,
+            time: (new Date()).toISOString(),
+            ratingScore: $('#feedback').raty('score'),
+            totalVote: 0,
+            voteUp: false,
+            voteDown: false,
+            replies: []
+        };
+        addThread(thread);
+
+        resetSubmitThreadForm();
+    });
+
+    $('body').on('click', '.cancel_thread', function() {
+        resetSubmitThreadForm()
+    });
+
+    $('body').on('click', '.send_comment', function() {
+        var post = $(this).parent().parent().parent();
+        var reply = {
+            id: Math.floor((Math.random() * 100000) + 1),
+            photo: photo,
+            name: userName,
+            description: $(this).parent().find('input').val(),
+            start: false,
+            time: (new Date()).toISOString(),
+            replyTo: post.find('> .row:first-of-type').find('h4:first-of-type').text(),
+            totalVote: 0,
+            voteUp:false,
+            voteDown: false
+        };
+        addReply(post.parent().attr('id'),reply);
+
+        $(this).parent().parent().remove();
+    });
+
+    $('body').on('click', '.cancel_comment', function() {
+        $(this).parent().parent().remove();
+    });
+
+    $('body').on('click', '.reply', function() {
+        var temp = $(this).parent().parent().parent();
+        var div = temp.find('> .row:last-child');
+        if (!div.hasClass('comment_box'))
+            temp.append('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
+        else {
+            div.toggle();
+        }
+    });
+
+    $('body').on('click', '.minimize', function() {
+        var temp = $(this).parent().parent().parent();
+        //description
+        temp.find('h6').toggle();
+
+        var img = temp.parent().children().first().find('img');
+        //profile pic
+        img.toggle();
+
+        //last row
+        var row = temp.parent().parent().find('>.row:last-child');
+
+        if (row.hasClass('comment_box')) {
+            row.parent().find('>.row:nth-last-child(2)').toggle();
+
+            row.css('display','none');
+        }
+        else row.toggle();
+
+        $(this).toggleClass('glyphicon-minus glyphicon-plus');
+    });
+
+    $('body').on('click', '.flag', function() {
+        var temp = $(this).closest('.comment_detail');
+
+        if (temp.hasClass('post_start')) {
+            temp.parent().find('.comment_detail').each(function() {
+                $(this).html('You have flagged this comment as spam');
+            });
+        }
+        else temp.html('You have flagged this comment as spam');
+    });
+
+    $('body').on('click', '.up', function() {
+        changeCount(this, 1, 2);
+    });
+
+    $('body').on('click', '.down', function() {
+        changeCount(this, -1, 1);
     });
 }
