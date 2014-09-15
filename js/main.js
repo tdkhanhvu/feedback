@@ -420,10 +420,6 @@ function initEvent() {
         initCompany($(this).parent().attr('id'));
     });
 
-    $(document).on('click', ".menu-button", function() {
-        closeCompanyInfo();
-    });
-
     $('body').on('click', '.send_thread', function() {
         countThreadId++;
         var categories = new Array();
