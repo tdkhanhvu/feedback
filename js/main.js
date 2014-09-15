@@ -528,13 +528,29 @@ function initEvent() {
         changeCount(this, -1, 1);
     });
 
+    /*
+        close company popup window
+     */
+
     $('body').on('click', '#overlay', function() {
         closeCompanyInfo();
     });
 
     $('body').on('click', '#overlay_content', function(event) {
+        //disable clicking on inner element
         event.stopPropagation();
     });
+
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) {
+            if ($('#overlay').css('display') == 'block')
+                closeCompanyInfo();
+        }   // esc
+    });
+
+    /*
+        end close company popup window
+     */
 }
 
 function closeCompanyInfo() {
