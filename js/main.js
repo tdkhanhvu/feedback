@@ -6,6 +6,7 @@ var initFilter = false;
 var serviceUrl = './_db/WebService.php';
 
 var companies = [];
+var overlayDisable = false;
 
 $(function(){
     initEvent();
@@ -533,12 +534,18 @@ function initEvent() {
      */
 
     $('body').on('click', '#overlay', function() {
-        closeCompanyInfo();
+        //alert('#overlay');
+
+        if(!overlayDisable)
+            closeCompanyInfo();
+        else
+            overlayDisable = false;
     });
 
     $('body').on('click', '#overlay_content', function(event) {
         //disable clicking on inner element
-        event.stopPropagation();
+        overlayDisable = true;
+        //event.stopPropagation();
     });
 
     $(document).keyup(function(e) {

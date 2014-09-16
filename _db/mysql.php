@@ -54,6 +54,7 @@ class MySQL {
 	// Construction
 	public function __construct() {
 		$this->dbh = new PDO('mysql:host=localhost;dbname=feedback', 'root', '');
+		//$this->dbh = new PDO('mysql:host=toibalocom.ipagemysql.com;dbname=feedback', 'tdkhanhvu', 'F%pks58F');
 	}
 
 	// Query
