@@ -105,6 +105,14 @@
                 <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
             </div>
         </div>
+        {{if uploadphotos}}
+            <div class="row">
+                <hr class="separator"/>
+                  {^{for uploadphotos}}
+                    <img class="img-responsive img-thumbnail img_uploaded" src="uploaded_file/{{:photo}}"/>
+                  {{/for}}
+            </div>
+        {{/if}}
     </div>
 </script>
 <script id="companyTmpl" type="text/x-jsrender">

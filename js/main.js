@@ -138,6 +138,17 @@ function initReview() {
             totalVote: 35,
             voteUp: false,
             voteDown: false,
+            uploadphotos: [
+                {
+                    photo: '1.jpg'
+                },
+                {
+                    photo: '2.jpg'
+                },
+                {
+                    photo: '3.jpg'
+                }
+            ],
             replies: [
                 {
                     id: '4343434',
@@ -253,7 +264,8 @@ function getReviewAttribute(obj) {
         totalVote: obj.totalVote,
         voteUp: obj.voteUp,
         voteDown: obj.voteDown,
-        userName: userName
+        userName: userName,
+        uploadphotos: obj.uploadphotos
     }
 }
 

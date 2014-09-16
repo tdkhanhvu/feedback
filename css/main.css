@@ -235,3 +235,18 @@ footer .row > div {
 #photo_upload_comment_box {
     top: 30px;
 }
+
+.img_uploaded {
+    width: 30%;
+    margin: 0 0.5%;
+}
+
+.img_uploaded:first-of-type {
+    margin-left: 3.5%;
+}
+
+.separator {
+    width: 95.5%;
+    margin: 1% 0 1% 2%;
+    border: 1px solid black;
+}
