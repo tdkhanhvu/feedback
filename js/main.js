@@ -482,7 +482,7 @@ function initEvent() {
         var temp = $(this).parent().parent().parent();
         var div = temp.find('> .row:last-child');
         if (!div.hasClass('comment_box'))
-            temp.append('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
+            temp.append('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><span class="glyphicon glyphicon-camera photo_upload_icon"></span><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
         else {
             div.toggle();
         }
@@ -527,6 +527,20 @@ function initEvent() {
 
     $('body').on('click', '.down', function() {
         changeCount(this, -1, 1);
+    });
+
+    $('body').on('click', '.photo_upload_icon', function() {
+        var icon = $(this);
+        var form = icon.parent().find('form');
+        if (form.length) {
+            form.toggle();
+        }
+        else {
+            var id = 'upload-' + $.now();
+            $('<form action="/file-upload" class="dropzone" id="' + id + '"></form>').insertAfter(icon);
+
+            $("#" + id).dropzone({ url: "upload.php", addRemoveLinks: true });
+        }
     });
 
     /*

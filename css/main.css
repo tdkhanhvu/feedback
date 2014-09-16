@@ -225,3 +225,9 @@ footer .row > div {
 .comment_content {
     margin: 0;
 }
+
+.photo_upload_icon {
+    position: absolute;
+    right: 4%;
+    font-size: xx-large;
+}

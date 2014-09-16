@@ -6,15 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adaptive Thumbnail Pile Effect with Automatic Grouping</title>
-    <meta name="description" content="Thumbnail Pile Effect with Automatic Grouping">
-    <meta name="keywords" content="jquery, pile, effect, images, grid, thumbnails, css3, grouping, albums">
-    <meta name="author" content="Codrops">
-    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="./css/bootstrap-theme.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="./css/stapel/stapel.css">
-    <link rel="stylesheet" href="./css/dropdown/select2.css" type="text/css">
-    <link rel="stylesheet" href="./css/main.css" type="text/css">
+    <title>Tôi Feedback</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap-theme.css">
+    <link rel="stylesheet" href="./css/stapel/stapel.css">
+    <link rel="stylesheet" href="./css/dropdown/select2.css">
+    <link rel="stylesheet" href="./css/upload/dropzone.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
 <div class="container">
@@ -145,7 +143,7 @@
 <script src="./js/timeago/jquery.timeago.js"></script>
 <script src="./js/bootstrap.js"></script>
 <script src="./js/template/jsviews.js"></script>
-
+<script src="./js/upload/dropzone.js"></script>
 <script src="./js/main.js"></script>
 <div id="temp"></div>
 </body>
