@@ -66,6 +66,7 @@
                                         </div>
                                         <div id="feedback" class="col-md-5"></div>
                                         <input id="input_comment" type="text" class="form-control" placeholder="Nhập nhận xét">
+                                        <span class="glyphicon glyphicon-camera photo_upload_icon" id="photo_upload_comment_box"></span>
                                         <div class="btn-group" data-toggle="buttons">
                                             <label class="btn btn-default active">
                                                 <input id="input_service" type="checkbox" checked>Phục Vụ
