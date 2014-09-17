@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2014 at 05:09 PM
+-- Generation Time: Sep 17, 2014 at 05:49 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -56,17 +56,20 @@ INSERT INTO `branch` (`id`, `address`, `time`, `phone`) VALUES
 
 CREATE TABLE IF NOT EXISTS `category` (
   `thread_id` int(11) NOT NULL,
-  `cat` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `cat` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`thread_id`, `cat`) VALUES
-(1, 'Phuc vu'),
-(1, 'Giu xe'),
-(2, 'San pham');
+INSERT INTO `category` (`thread_id`, `cat`, `name`, `_id`) VALUES
+(1, 1, 'Phuc Vu', 1),
+(1, 2, 'Giu Xe', 2),
+(2, 3, 'San Pham', 3);
 
 -- --------------------------------------------------------
 
@@ -310,7 +313,6 @@ CREATE TABLE IF NOT EXISTS `thread` (
   `name` text NOT NULL,
   `description` text NOT NULL,
   `order` int(11) NOT NULL,
-  `start` tinyint(1) NOT NULL,
   `isSolved` tinyint(1) NOT NULL,
   `time` datetime NOT NULL,
   `ratingScore` int(11) NOT NULL,
@@ -325,9 +327,9 @@ CREATE TABLE IF NOT EXISTS `thread` (
 -- Dumping data for table `thread`
 --
 
-INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `photo`, `name`, `description`, `order`, `start`, `isSolved`, `time`, `ratingScore`, `totalVote`, `totalUp`, `totalDown`, `isSpam`) VALUES
-(1, 'kfc_1', '1', 'user/user2.jpg', 'Nguyen Duy Long', 'Hôm qua (22/8), mình t?i ?n t?i ? quán này và g?i ph?n Combo 1. Th?c ?n ?em ra không nóng s?t và có c? gián n?m trong ?ó.', 2, 1, 0, '2014-09-17 00:00:00', 2, 13, 5, 7, 0),
-(2, 'kfc_1', '2', 'user/user1.jpg', 'Tran Doan Khanh Vu', 'T?i th? 7 tu?n r?i (16/8), mình và m?t ng??i b?n t?i quán này ?? ?n tr?a. Không ng? g?p nhân viên gi? xe khá là b?t l?ch s? và g?t g?ng v?i t?i mình. Th? nên cu?i cùng c? hai quy?t ??nh không vào quán n?a mà ghé quán khác', 0, 0, 0, '2014-09-09 00:00:00', 3, 8, 2, 6, 0);
+INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `photo`, `name`, `description`, `order`, `isSolved`, `time`, `ratingScore`, `totalVote`, `totalUp`, `totalDown`, `isSpam`) VALUES
+(1, 'kfc_1', '1', 'user/user2.jpg', 'Nguyen Duy Long', 'Hôm qua (22/8), mình t?i ?n t?i ? quán này và g?i ph?n Combo 1. Th?c ?n ?em ra không nóng s?t và có c? gián n?m trong ?ó.', 2, 0, '2014-09-17 00:00:00', 2, 13, 5, 7, 0),
+(2, 'kfc_1', '2', 'user/user1.jpg', 'Tran Doan Khanh Vu', 'T?i th? 7 tu?n r?i (16/8), mình và m?t ng??i b?n t?i quán này ?? ?n tr?a. Không ng? g?p nhân viên gi? xe khá là b?t l?ch s? và g?t g?ng v?i t?i mình. Th? nên cu?i cùng c? hai quy?t ??nh không vào quán n?a mà ghé quán khác', 0, 0, '2014-09-09 00:00:00', 3, 8, 2, 6, 0);
 
 -- --------------------------------------------------------
 
