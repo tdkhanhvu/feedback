@@ -56,7 +56,7 @@
  * Return: Data results in array form. If nothing found, NULL returned.
  *
  **************************************************************************************
- * selectRepliessFromThread(id, start, length) :	fetch all replies belong to a thread
+ * selectRepliesFromThread(id, start, length) :	fetch all replies belong to a thread
  * 
  * Parameter:
  * 		1)	$id 	(string): branch id. Compulsory. E.g: 'kfc_1'
