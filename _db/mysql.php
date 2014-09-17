@@ -74,7 +74,7 @@ class MySQL {
 
 	// Construction
 	public function __construct() {
-		$this->dbh = new PDO('mysql:host=localhost;dbname=feedback', 'root', '');
+		$this->dbh = new PDO('mysql:host=localhost;dbname=feedback;charset=utf8"', 'root', '');
 		//$this->dbh = new PDO('mysql:host=toibalocom.ipagemysql.com;dbname=feedback', 'tdkhanhvu', 'F%pks58F');
 	}
 
@@ -163,6 +163,11 @@ class MySQL {
 	public function selectRepliesFromThread($id, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
 	    return $this->selectFromTable('reply', [['thread_id', $id]], null, "LIMIT $start, $length");
+	}
+
+	// Select all categories from a particular thread
+	public function selectCategoriesFromThread($id) {
+	    return $this->selectFromTable('category', [['thread_id', $id]]);
 	}
 
 	// Destruction
