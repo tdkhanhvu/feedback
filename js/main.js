@@ -120,104 +120,33 @@ function initRating() {
 }
 
 function initReview() {
-//    var threads = [
-//        {
-//            thread_id: 'thread1',
-//            id: '11111',
-//            photo: 'user/user1.jpg',
-//            name: 'Trần Đoàn Khánh Vũ',
-//            categories: [
-//                'service',
-//                'park'
-//            ],
-//            description: 'Tối thứ 7 tuần rồi (16/8), mình và một người bạn tới quán này để ăn trưa. Không ngờ gặp nhân viên giữ xe khá là bất lịch sự và gắt gỏng với tụi mình. Thế nên cuối cùng cả hai quyết định không vào quán nữa mà ghé quán khác',
-//            order: 1,
-//            start: true,
-//            solve: true,
-//            time: '2014-08-22T09:24:17Z',
-//            ratingScore: 2,
-//            totalVote: 35,
-//            voteUp: false,
-//            voteDown: false,
-//            uploadphotos: [
-//                {
-//                    photo: '1.jpg'
-//                },
-//                {
-//                    photo: '2.jpg'
-//                },
-//                {
-//                    photo: '3.jpg'
-//                }
-//            ],
-//            replies: [
-//                {
-//                    id: '4343434',
-//                    photo: 'firm/kfc.jpg',
-//                    name: 'KFC',
-//                    description: 'Cám ơn bạn đã phản hồi cho quán. Quản lý của quán đã làm việc với nhân viên gửi xe. Nếu nhân viên gửi xe còn tái phạm nữa thì quán sẽ thay thế nhân viên khác. Mong bạn sẽ còn quay lại quán những lần sau',
-//                    start: false,
-//                    time: '2014-08-24T23:24:17Z',
-//                    replyTo: 'Trần Đoàn Khánh Vũ',
-//                    totalVote: 23,
-//                    voteUp:false,
-//                    voteDown: true
-//                }
-//            ]
-//        },
-//        {
-//            thread_id: 'thread2',
-//            id: '11112',
-//            photo: 'user/user2.jpg',
-//            name: 'Nguyễn Duy Long',
-//            categories: [
-//                'product'
-//            ],
-//            description: 'Hôm qua (22/8), mình tới ăn tối ở quán này và gọi phần Combo 1. Thức ăn đem ra không nóng sốt và có cả gián nằm trong đó.',
-//            order: 2,
-//            start: true,
-//            solve: false,
-//            time: '2014-08-24T09:24:17Z',
-//            ratingScore: 1,
-//            totalVote: 5,
-//            voteUp: true,
-//            voteDown: false,
-//            replies: [
-//                {
-//                    id: '4343433',
-//                    photo: 'firm/kfc.jpg',
-//                    name: 'KFC',
-//                    description: 'Cám ơn bạn đã phản hồi cho công ty. Công ty rất tiếc vì trường hợp đã xảy ra. Chúng tôi sẽ làm rõ việc này với nhân viên vì an toàn vệ sinh thực phẩm là mối quan tâm hàng đầu của công ty.',
-//                    start: false,
-//                    time: '2014-08-25T00:10:17Z',
-//                    replyTo: 'Nguyễn Duy Long',
-//                    totalVote: 3,
-//                    voteUp:false,
-//                    voteDown: false
-//                }
-//            ]
-//        }
-//    ];
-
     $.when.apply($, [getThreadsFromBranch('kfc_1')]).then(function() {
         $.views.helpers({getStatus: getStatus});
         $.views.helpers({getCategoryLabel: getCategoryLabel});
 
-        threads.forEach(function(thread){
-            addThread(thread);
+        loadReplies = [];
 
-            thread.replies.forEach(function(reply) {
-                addReply(thread.thread_id,reply);
-            })
+        threads.forEach(function(thread){
+            loadReplies.push(getRepliesFromThread(thread));
         })
 
-        $( document ).ready(function() {
-            //hide all replies at beginning
-            $('.minimize').each(function() {
-                var min = $(this);
+        $.when.apply($, loadReplies).then(function() {
+            threads.forEach(function(thread){
+                addThread(thread);
 
-                if (!min.closest('.comment_detail').hasClass('post_start'))
-                    min.trigger('click');
+                thread.replies.forEach(function(reply) {
+                    addReply(thread.thread_id,reply);
+                })
+            })
+
+            $( document ).ready(function() {
+                //hide all replies at beginning
+                $('.minimize').each(function() {
+                    var min = $(this);
+
+                    if (!min.closest('.comment_detail').hasClass('post_start'))
+                        min.trigger('click');
+                });
             });
         });
     });
@@ -320,7 +249,6 @@ function addReply(threadId, reply) {
 function initCompany(companyId) {
     if (companyId == 'ff_kfc') {
         var branches = [];
-        alert(companyId);
         $.when.apply($, [getAllBranchesFromCompany(companyId, branches)]).then(function() {
             var company = {
                 photo: 'kfc_logo.png',
@@ -463,6 +391,38 @@ function getAllBranchesFromCompany(companyId, branches) {
         error: function(xhr, status, error) {
             //var err = eval("(" + xhr.responseText + ")");
             //alert(err.Message);
+        }
+    });
+}
+
+function getRepliesFromThread(thread) {
+    return $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'GetRepliesFromThread', 'threadId':thread.thread_id},
+        dataType: 'json',
+        success: function(result){
+            thread.replies = [];
+            for (var i = 0; i < result.length; i++) {
+                var reply = result[i];
+                thread.replies.push(
+                {
+                    id: reply.id,
+                    photo: 'firm/kfc.jpg',
+                    name: 'KFC',
+                    description: reply.description,
+                    start: false,
+                    time: thread.time,
+                    replyTo: 'Trần Đoàn Khánh Vũ',
+                    totalVote: reply.totalVote,
+                    voteUp:false,
+                    voteDown: true
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
         }
     });
 }
