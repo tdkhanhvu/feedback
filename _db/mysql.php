@@ -66,6 +66,14 @@
  * Return: Data results in array form. If nothing found, NULL returned.
  *
  **************************************************************************************
+ * selectCategoriesFromThread(id, start, length) :	fetch all categories belong to a thread
+ * 
+ * Parameter:
+ * 		1)	$id 	(string): branch id. Compulsory. E.g: 'kfc_1'
+ *		
+ * Return: Data results in array form. If nothing found, NULL returned.
+ *
+ **************************************************************************************
  *
  */
 class MySQL {
