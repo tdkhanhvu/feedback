@@ -513,23 +513,18 @@ function initEvent() {
     });
 
     $('body').on('click', '.minimize', function() {
-        var temp = $(this).parent().parent().parent();
-        //description
-        temp.find('h6').toggle();
+        var parent = $(this).closest('.comment_detail');
 
-        var img = temp.parent().children().first().find('img');
-        //profile pic
-        img.toggle();
+        parent.find('.avatar').toggle();
+        parent.find('.comment_content').toggle();
+        parent.find('.command_button').toggle();
+        parent.find('.uploadphotos').toggle();
 
-        //last row
-        var row = temp.parent().parent().find('>.row:last-child');
+        var comment_box = parent.find('.comment_box');
 
-        if (row.hasClass('comment_box')) {
-            row.parent().find('>.row:nth-last-child(2)').toggle();
-
-            row.css('display','none');
+        if (comment_box) {
+            comment_box.hide();
         }
-        else row.toggle();
 
         $(this).toggleClass('glyphicon-minus glyphicon-plus');
     });
