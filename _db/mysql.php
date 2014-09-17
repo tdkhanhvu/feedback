@@ -6,6 +6,7 @@
  *			$data = $mysql->selectAllCompaniesFromIndustry(..Read Docs below..);
  *			$data = $mysql->selectAllBranchesFromCompany(..Read Docs below..);
  *			$data = $mysql->selectThreadsFromBranch(..Read Docs below..);
+ *			$data = $mysql->selectRepliesFromThread(..Read Docs below..);
  *
  *************************************************************************************
  *
