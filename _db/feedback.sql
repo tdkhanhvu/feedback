@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2014 at 04:23 PM
+-- Generation Time: Sep 17, 2014 at 05:09 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -304,6 +304,7 @@ INSERT INTO `reply` (`id`, `thread_id`, `photo`, `description`, `time`, `totalVo
 
 CREATE TABLE IF NOT EXISTS `thread` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `branch_id` varchar(64) NOT NULL,
   `user_id` varchar(128) NOT NULL,
   `photo` text NOT NULL,
   `name` text NOT NULL,
@@ -324,9 +325,9 @@ CREATE TABLE IF NOT EXISTS `thread` (
 -- Dumping data for table `thread`
 --
 
-INSERT INTO `thread` (`id`, `user_id`, `photo`, `name`, `description`, `order`, `start`, `isSolved`, `time`, `ratingScore`, `totalVote`, `totalUp`, `totalDown`, `isSpam`) VALUES
-(1, '1', 'user/user2.jpg', 'Nguyen Duy Long', 'Hôm qua (22/8), mình t?i ?n t?i ? quán này và g?i ph?n Combo 1. Th?c ?n ?em ra không nóng s?t và có c? gián n?m trong ?ó.', 2, 1, 0, '2014-09-17 00:00:00', 2, 13, 5, 7, 0),
-(2, '2', 'user/user1.jpg', 'Tran Doan Khanh Vu', 'T?i th? 7 tu?n r?i (16/8), mình và m?t ng??i b?n t?i quán này ?? ?n tr?a. Không ng? g?p nhân viên gi? xe khá là b?t l?ch s? và g?t g?ng v?i t?i mình. Th? nên cu?i cùng c? hai quy?t ??nh không vào quán n?a mà ghé quán khác', 0, 0, 0, '2014-09-09 00:00:00', 3, 8, 2, 6, 0);
+INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `photo`, `name`, `description`, `order`, `start`, `isSolved`, `time`, `ratingScore`, `totalVote`, `totalUp`, `totalDown`, `isSpam`) VALUES
+(1, 'kfc_1', '1', 'user/user2.jpg', 'Nguyen Duy Long', 'Hôm qua (22/8), mình t?i ?n t?i ? quán này và g?i ph?n Combo 1. Th?c ?n ?em ra không nóng s?t và có c? gián n?m trong ?ó.', 2, 1, 0, '2014-09-17 00:00:00', 2, 13, 5, 7, 0),
+(2, 'kfc_1', '2', 'user/user1.jpg', 'Tran Doan Khanh Vu', 'T?i th? 7 tu?n r?i (16/8), mình và m?t ng??i b?n t?i quán này ?? ?n tr?a. Không ng? g?p nhân viên gi? xe khá là b?t l?ch s? và g?t g?ng v?i t?i mình. Th? nên cu?i cùng c? hai quy?t ??nh không vào quán n?a mà ghé quán khác', 0, 0, 0, '2014-09-09 00:00:00', 3, 8, 2, 6, 0);
 
 -- --------------------------------------------------------
 

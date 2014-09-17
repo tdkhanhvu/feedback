@@ -156,7 +156,7 @@ class MySQL {
 	// Select all threads from a particular branch
 	public function selectThreadsFromBranch($id, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
-	    return $this->selectFromTable('thread', [['id', $id]], null, "LIMIT $start, $length");
+	    return $this->selectFromTable('thread', [['branch_id', $id]], null, "LIMIT $start, $length");
 	}
 
 	// Select all replies from a particular thread
