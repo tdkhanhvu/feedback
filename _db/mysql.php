@@ -2,9 +2,10 @@
 
 /*
  * Usage: 	$mysql = new MySQL();
- *			$dataYouWant = $mysql->selectFromTable(..Read Docs below..);
- *			$dataYouWant = $mysql->selectAllCompaniesFromIndustry(..Read Docs below..);
- *			$dataYouWant = $mysql->selectAllBranchesFromCompany(..Read Docs below..);
+ *			$data = $mysql->selectFromTable(..Read Docs below..);
+ *			$data = $mysql->selectAllCompaniesFromIndustry(..Read Docs below..);
+ *			$data = $mysql->selectAllBranchesFromCompany(..Read Docs below..);
+ *			$data = $mysql->selectThreadsFromBranch(..Read Docs below..);
  *
  *************************************************************************************
  *
@@ -27,7 +28,7 @@
  * selectAllCompaniesFromIndustry(id) :	fetch all companies belong to an industry
  * 
  * Parameter:
- * 		1)	$id 	(string): id name. Compulsory. E.g: 'taxi'
+ * 		1)	$id 	(string): industry id. Compulsory. E.g: 'taxi'
  *		
  * Note: refer to the industry.txt to get the list of current industries.
  *
@@ -38,10 +39,29 @@
  * selectAllBranchesFromCompany(id) :	fetch all branches belong to a company
  * 
  * Parameter:
- * 		1)	$id 	(string): id name. Compulsory. E.g: 'ff_kfc'
+ * 		1)	$id 	(string): company id. Compulsory. E.g: 'ff_kfc'
  *		
- * Note: refer to the company.txt to get the list of current company.
+ * Return: Data results in array form. If nothing found, NULL returned.
  *
+ **************************************************************************************
+ *
+ * selectThreadsFromBranch(id, start, length) :	fetch all threads belong to a branch
+ * 
+ * Parameter:
+ * 		1)	$id 	(string): branch id. Compulsory. E.g: 'kfc_1'
+ * 		1)	$start 	(int)	: start index. Optional. Default 1.
+ * 		1)	$length	(int)	: num of rows. Optional. Default 10.
+ *		
+ * Return: Data results in array form. If nothing found, NULL returned.
+ *
+ **************************************************************************************
+ * selectRepliessFromThread(id, start, length) :	fetch all replies belong to a thread
+ * 
+ * Parameter:
+ * 		1)	$id 	(string): branch id. Compulsory. E.g: 'kfc_1'
+ * 		1)	$start 	(int)	: start index. Optional. Default 1.
+ * 		1)	$length	(int)	: num of rows. Optional. Default 10.
+ *		
  * Return: Data results in array form. If nothing found, NULL returned.
  *
  **************************************************************************************
@@ -58,7 +78,7 @@ class MySQL {
 	}
 
 	// Query
-	public function selectFromTable($table, $args = null, $crits = null) {
+	public function selectFromTable($table, $args = null, $crits = null, $limit = '') {
 		$query = 'SELECT ';
 
 		// Criteria
@@ -80,6 +100,8 @@ class MySQL {
 			}
 			$query .= $args[$i][0] . " = :_" . $args[$i][0];
 		}
+
+		$query .= ' '.$limit;
 
 		try {
 			$stm = $this->dbh->prepare($query);
@@ -128,6 +150,18 @@ class MySQL {
 	    }
 	    
 	    return $result_set;
+	}
+
+	// Select all threads from a particular branch
+	public function selectThreadsFromBranch($id, $start = 1, $length = 10) {
+		$start -= 1;	// For Mysql to start at $start
+	    return $this->selectFromTable('thread', [['id', $id]], null, "LIMIT $start, $length");
+	}
+
+	// Select all replies from a particular thread
+	public function selectRepliesFromThread($id, $start = 1, $length = 10) {
+		$start -= 1;	// For Mysql to start at $start
+	    return $this->selectFromTable('reply', [['thread_id', $id]], null, "LIMIT $start, $length");
 	}
 
 	// Destruction

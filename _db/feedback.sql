@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2014 at 08:05 PM
+-- Generation Time: Sep 17, 2014 at 04:23 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -47,6 +47,26 @@ INSERT INTO `branch` (`id`, `address`, `time`, `phone`) VALUES
 ('kfc_6', '74/2 Hai Bà Tr?ng – Ph??ng B?n Nghé – Qu?n 1- Tp.HCM', 0, '0'),
 ('kfc_7', '80 ???ng Tháp M??i – Ph??ng 2 – Qu?n 6 – Tp.HCM', 0, '0'),
 ('kfc_8', 'Co.op Mart – 571 Nguy?n Ki?m – Ph??ng 9 – Qu?n Phú Nhu?n – Tp.HCM', 0, '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `thread_id` int(11) NOT NULL,
+  `cat` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`thread_id`, `cat`) VALUES
+(1, 'Phuc vu'),
+(1, 'Giu xe'),
+(2, 'San pham');
 
 -- --------------------------------------------------------
 
@@ -131,24 +151,6 @@ INSERT INTO `com_branch` (`company`, `branch`) VALUES
 ('ff_kfc', 'kfc_7'),
 ('ff_kfc', 'kfc_8'),
 ('ff_kfc', 'kfc_5');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `feedback`
---
-
-CREATE TABLE IF NOT EXISTS `feedback` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `company` int(11) NOT NULL,
-  `star` int(11) NOT NULL,
-  `likes` int(11) NOT NULL,
-  `dislikes` int(11) NOT NULL,
-  `solved` int(11) NOT NULL,
-  `tags` text NOT NULL,
-  `parent` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -247,6 +249,105 @@ INSERT INTO `ind_com` (`industry`, `company`) VALUES
 ('telco', 'telco_mobifone'),
 ('telco', 'telco_viettel'),
 ('telco', 'telco_vinaphone');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reply`
+--
+
+CREATE TABLE IF NOT EXISTS `reply` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `thread_id` varchar(64) NOT NULL,
+  `photo` text NOT NULL,
+  `description` text NOT NULL,
+  `time` datetime NOT NULL,
+  `totalVote` int(11) NOT NULL,
+  `voteUp` tinyint(1) NOT NULL,
+  `voteDown` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+--
+-- Dumping data for table `reply`
+--
+
+INSERT INTO `reply` (`id`, `thread_id`, `photo`, `description`, `time`, `totalVote`, `voteUp`, `voteDown`) VALUES
+(1, '1', '', '1', '2014-09-01 00:00:00', 0, 0, 0),
+(2, '1', '', '2', '2014-09-02 00:00:00', 0, 0, 0),
+(3, '1', '', '3', '2014-09-03 00:00:00', 0, 0, 0),
+(4, '1', '', '4', '2014-09-04 00:00:00', 0, 0, 0),
+(5, '1', '', '5', '2014-09-05 00:00:00', 0, 0, 0),
+(6, '1', '', '6', '2014-09-06 00:00:00', 0, 0, 0),
+(7, '1', '', '7', '2014-09-07 00:00:00', 0, 0, 0),
+(8, '1', '', '8', '2014-09-08 00:00:00', 0, 0, 0),
+(9, '1', '', '9', '2014-09-09 00:00:00', 0, 0, 0),
+(10, '1', '', '10', '2014-09-10 00:00:00', 0, 0, 0),
+(11, '1', '', '11', '2014-09-11 00:00:00', 0, 0, 0),
+(12, '2', '', '1', '2014-09-01 00:00:00', 0, 0, 0),
+(13, '2', '', '2', '2014-09-02 00:00:00', 0, 0, 0),
+(14, '2', '', '3', '2014-09-03 00:00:00', 0, 0, 0),
+(15, '2', '', '4', '2014-09-04 00:00:00', 0, 0, 0),
+(16, '2', '', '5', '2014-09-05 00:00:00', 0, 0, 0),
+(17, '2', '', '6', '2014-09-06 00:00:00', 0, 0, 0),
+(18, '2', '', '7', '2014-09-07 00:00:00', 0, 0, 0),
+(19, '2', '', '8', '2014-09-08 00:00:00', 0, 0, 0),
+(20, '2', '', '9', '2014-09-09 00:00:00', 0, 0, 0),
+(21, '2', '', '10', '2014-09-10 00:00:00', 0, 0, 0),
+(22, '2', '', '11', '2014-09-11 00:00:00', 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thread`
+--
+
+CREATE TABLE IF NOT EXISTS `thread` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(128) NOT NULL,
+  `photo` text NOT NULL,
+  `name` text NOT NULL,
+  `description` text NOT NULL,
+  `order` int(11) NOT NULL,
+  `start` tinyint(1) NOT NULL,
+  `isSolved` tinyint(1) NOT NULL,
+  `time` datetime NOT NULL,
+  `ratingScore` int(11) NOT NULL,
+  `totalVote` int(11) NOT NULL,
+  `totalUp` int(11) NOT NULL,
+  `totalDown` int(11) NOT NULL,
+  `isSpam` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `thread`
+--
+
+INSERT INTO `thread` (`id`, `user_id`, `photo`, `name`, `description`, `order`, `start`, `isSolved`, `time`, `ratingScore`, `totalVote`, `totalUp`, `totalDown`, `isSpam`) VALUES
+(1, '1', 'user/user2.jpg', 'Nguyen Duy Long', 'Hôm qua (22/8), mình t?i ?n t?i ? quán này và g?i ph?n Combo 1. Th?c ?n ?em ra không nóng s?t và có c? gián n?m trong ?ó.', 2, 1, 0, '2014-09-17 00:00:00', 2, 13, 5, 7, 0),
+(2, '2', 'user/user1.jpg', 'Tran Doan Khanh Vu', 'T?i th? 7 tu?n r?i (16/8), mình và m?t ng??i b?n t?i quán này ?? ?n tr?a. Không ng? g?p nhân viên gi? xe khá là b?t l?ch s? và g?t g?ng v?i t?i mình. Th? nên cu?i cùng c? hai quy?t ??nh không vào quán n?a mà ghé quán khác', 0, 0, 0, '2014-09-09 00:00:00', 3, 8, 2, 6, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(32) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `photo` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `photo`) VALUES
+(1, 'Nguyen Duy Long', 'user/user2.jpg'),
+(2, 'Tran Doan Khanh Vu', 'user/user1.jpg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
