@@ -15,6 +15,12 @@
         case "GetAllCompaniesFromIndustries":
             $result = $mysql->selectAllCompaniesFromIndustry($_POST['industryId']);
             break;
+        case "GetAllBranchesFromCompany":
+            $result = $mysql->selectAllBranchesFromCompany($_POST['companyId']);
+            break;
+        case "GetThreadsFromBranch":
+            $result = $mysql->selectThreadsFromBranch($_POST['branchId']);
+            break;
         default:
             break;
     }

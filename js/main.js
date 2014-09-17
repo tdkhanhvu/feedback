@@ -7,6 +7,7 @@ var serviceUrl = './_db/WebService.php';
 
 var companies = [];
 var overlayDisable = false;
+var threads = [];
 
 $(function(){
     initEvent();
@@ -119,103 +120,105 @@ function initRating() {
 }
 
 function initReview() {
-    var threads = [
-        {
-            thread_id: 'thread1',
-            id: '11111',
-            photo: 'user/user1.jpg',
-            name: 'Trần Đoàn Khánh Vũ',
-            categories: [
-                'service',
-                'park'
-            ],
-            description: 'Tối thứ 7 tuần rồi (16/8), mình và một người bạn tới quán này để ăn trưa. Không ngờ gặp nhân viên giữ xe khá là bất lịch sự và gắt gỏng với tụi mình. Thế nên cuối cùng cả hai quyết định không vào quán nữa mà ghé quán khác',
-            order: 1,
-            start: true,
-            solve: true,
-            time: '2014-08-22T09:24:17Z',
-            ratingScore: 2,
-            totalVote: 35,
-            voteUp: false,
-            voteDown: false,
-            uploadphotos: [
-                {
-                    photo: '1.jpg'
-                },
-                {
-                    photo: '2.jpg'
-                },
-                {
-                    photo: '3.jpg'
-                }
-            ],
-            replies: [
-                {
-                    id: '4343434',
-                    photo: 'firm/kfc.jpg',
-                    name: 'KFC',
-                    description: 'Cám ơn bạn đã phản hồi cho quán. Quản lý của quán đã làm việc với nhân viên gửi xe. Nếu nhân viên gửi xe còn tái phạm nữa thì quán sẽ thay thế nhân viên khác. Mong bạn sẽ còn quay lại quán những lần sau',
-                    start: false,
-                    time: '2014-08-24T23:24:17Z',
-                    replyTo: 'Trần Đoàn Khánh Vũ',
-                    totalVote: 23,
-                    voteUp:false,
-                    voteDown: true
-                }
-            ]
-        },
-        {
-            thread_id: 'thread2',
-            id: '11112',
-            photo: 'user/user2.jpg',
-            name: 'Nguyễn Duy Long',
-            categories: [
-                'product'
-            ],
-            description: 'Hôm qua (22/8), mình tới ăn tối ở quán này và gọi phần Combo 1. Thức ăn đem ra không nóng sốt và có cả gián nằm trong đó.',
-            order: 2,
-            start: true,
-            solve: false,
-            time: '2014-08-24T09:24:17Z',
-            ratingScore: 1,
-            totalVote: 5,
-            voteUp: true,
-            voteDown: false,
-            replies: [
-                {
-                    id: '4343433',
-                    photo: 'firm/kfc.jpg',
-                    name: 'KFC',
-                    description: 'Cám ơn bạn đã phản hồi cho công ty. Công ty rất tiếc vì trường hợp đã xảy ra. Chúng tôi sẽ làm rõ việc này với nhân viên vì an toàn vệ sinh thực phẩm là mối quan tâm hàng đầu của công ty.',
-                    start: false,
-                    time: '2014-08-25T00:10:17Z',
-                    replyTo: 'Nguyễn Duy Long',
-                    totalVote: 3,
-                    voteUp:false,
-                    voteDown: false
-                }
-            ]
-        }
-    ];
+//    var threads = [
+//        {
+//            thread_id: 'thread1',
+//            id: '11111',
+//            photo: 'user/user1.jpg',
+//            name: 'Trần Đoàn Khánh Vũ',
+//            categories: [
+//                'service',
+//                'park'
+//            ],
+//            description: 'Tối thứ 7 tuần rồi (16/8), mình và một người bạn tới quán này để ăn trưa. Không ngờ gặp nhân viên giữ xe khá là bất lịch sự và gắt gỏng với tụi mình. Thế nên cuối cùng cả hai quyết định không vào quán nữa mà ghé quán khác',
+//            order: 1,
+//            start: true,
+//            solve: true,
+//            time: '2014-08-22T09:24:17Z',
+//            ratingScore: 2,
+//            totalVote: 35,
+//            voteUp: false,
+//            voteDown: false,
+//            uploadphotos: [
+//                {
+//                    photo: '1.jpg'
+//                },
+//                {
+//                    photo: '2.jpg'
+//                },
+//                {
+//                    photo: '3.jpg'
+//                }
+//            ],
+//            replies: [
+//                {
+//                    id: '4343434',
+//                    photo: 'firm/kfc.jpg',
+//                    name: 'KFC',
+//                    description: 'Cám ơn bạn đã phản hồi cho quán. Quản lý của quán đã làm việc với nhân viên gửi xe. Nếu nhân viên gửi xe còn tái phạm nữa thì quán sẽ thay thế nhân viên khác. Mong bạn sẽ còn quay lại quán những lần sau',
+//                    start: false,
+//                    time: '2014-08-24T23:24:17Z',
+//                    replyTo: 'Trần Đoàn Khánh Vũ',
+//                    totalVote: 23,
+//                    voteUp:false,
+//                    voteDown: true
+//                }
+//            ]
+//        },
+//        {
+//            thread_id: 'thread2',
+//            id: '11112',
+//            photo: 'user/user2.jpg',
+//            name: 'Nguyễn Duy Long',
+//            categories: [
+//                'product'
+//            ],
+//            description: 'Hôm qua (22/8), mình tới ăn tối ở quán này và gọi phần Combo 1. Thức ăn đem ra không nóng sốt và có cả gián nằm trong đó.',
+//            order: 2,
+//            start: true,
+//            solve: false,
+//            time: '2014-08-24T09:24:17Z',
+//            ratingScore: 1,
+//            totalVote: 5,
+//            voteUp: true,
+//            voteDown: false,
+//            replies: [
+//                {
+//                    id: '4343433',
+//                    photo: 'firm/kfc.jpg',
+//                    name: 'KFC',
+//                    description: 'Cám ơn bạn đã phản hồi cho công ty. Công ty rất tiếc vì trường hợp đã xảy ra. Chúng tôi sẽ làm rõ việc này với nhân viên vì an toàn vệ sinh thực phẩm là mối quan tâm hàng đầu của công ty.',
+//                    start: false,
+//                    time: '2014-08-25T00:10:17Z',
+//                    replyTo: 'Nguyễn Duy Long',
+//                    totalVote: 3,
+//                    voteUp:false,
+//                    voteDown: false
+//                }
+//            ]
+//        }
+//    ];
 
-    $.views.helpers({getStatus: getStatus});
-    $.views.helpers({getCategoryLabel: getCategoryLabel});
+    $.when.apply($, [getThreadsFromBranch('kfc_1')]).then(function() {
+        $.views.helpers({getStatus: getStatus});
+        $.views.helpers({getCategoryLabel: getCategoryLabel});
 
-    threads.forEach(function(thread){
-        addThread(thread);
+        threads.forEach(function(thread){
+            addThread(thread);
 
-        thread.replies.forEach(function(reply) {
-            addReply(thread.thread_id,reply);
+            thread.replies.forEach(function(reply) {
+                addReply(thread.thread_id,reply);
+            })
         })
-    })
 
-    $( document ).ready(function() {
-        //hide all replies at beginning
-        $('.minimize').each(function() {
-            var min = $(this);
+        $( document ).ready(function() {
+            //hide all replies at beginning
+            $('.minimize').each(function() {
+                var min = $(this);
 
-            if (!min.closest('.comment_detail').hasClass('post_start'))
-                min.trigger('click');
+                if (!min.closest('.comment_detail').hasClass('post_start'))
+                    min.trigger('click');
+            });
         });
     });
 }
@@ -296,7 +299,7 @@ function addThread(thread) {
     $("time.timeago").timeago();
 
     if ($('#button_all').hasClass('active'))
-    $('#button_service').click();
+        $('#button_service').click();
     $('#button_all').click();
 }
 
@@ -316,59 +319,30 @@ function addReply(threadId, reply) {
 
 function initCompany(companyId) {
     if (companyId == 'ff_kfc') {
-        var company = {
-            photo: 'kfc_logo.png',
-            description: 'Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.',
-            time: '7h30-11h00 &amp; 13h00-16h00 các ngày trong tuần',
-            address: 'A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM',
-            phone: '0123456789',
-            branches: [
-                {
-                    id: 'kfc_1',
-                    name: 'A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM'
-                },
-                {
-                    id: 'kfc_2',
-                    name: 'Lầu 4 – DiamondPlaza 34 Lê Duẩn – Phường Bến Nghé – Quận 1- Tp.HCM'
-                },
-                {
-                    id: 'kfc_3',
-                    name: 'Siêu thị Sài Gòn – số 34 Đường 3/2 – Phường 12 – Quận 10 – Tp.HCM'
-                },
-                {
-                    id: 'kfc_4',
-                    name: '15-17 Cộng Hòa – Phường 4 – Quận Tân Bình – Tp.HCM'
-                },
-                {
-                    id: 'kfc_5',
-                    name: '20 An Dương Vương – Phường 9 – Quận 5 – Tp.HCM'
-                },
-                {
-                    id: 'kfc_6',
-                    name: '74/2 Hai Bà Trưng – Phường Bến Nghé – Quận 1- Tp.HCM'
-                },
-                {
-                    id: 'kfc_7',
-                    name: '80 Đường Tháp Mười – Phường 2 – Quận 6 – Tp.HCM'
-                },
-                {
-                    id: 'kfc_8',
-                    name: 'Co.op Mart – 571 Nguyễn Kiệm – Phường 9 – Quận Phú Nhuận – Tp.HCM'
-                }
-            ]
-        };
-        $.templates("#companyTmpl").link('#companyInfo', company);
-        $("#branch_list").select2({maximumSelectionSize: 1 });
-        $('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
+        var branches = [];
+        alert(companyId);
+        $.when.apply($, [getAllBranchesFromCompany(companyId, branches)]).then(function() {
+            var company = {
+                photo: 'kfc_logo.png',
+                description: 'Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.',
+                time: '7h30-11h00 &amp; 13h00-16h00 các ngày trong tuần',
+                address: 'A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM',
+                phone: '0123456789',
+                branches: branches
+            };
+            $.templates("#companyTmpl").link('#companyInfo', company);
+            $("#branch_list").select2({maximumSelectionSize: 1 });
+            $('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
 
-        if (!initFilter) {
-            $('#Container').mixItUp();
-            initFilter = true;
-        }
-        $('#overlay').css('display','block');
+            if (!initFilter) {
+                $('#Container').mixItUp();
+                initFilter = true;
+            }
+            $('#overlay').css('display','block');
 
-        $('.right-preview').toggleClass('unscrollable');
-        $('.wrapper').toggleClass('unscrollable');
+            $('.right-preview').toggleClass('unscrollable');
+            $('.wrapper').toggleClass('unscrollable');
+        });
     }
 }
 
@@ -419,6 +393,80 @@ function getCompaniesByIndustryId(industryId, industryName) {
     });
 }
 
+function getThreadsFromBranch(branchId) {
+    return $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'GetThreadsFromBranch', 'branchId':branchId},
+        dataType: 'json',
+        success: function(result){
+            for (var i = 0; i < result.length; i++) {
+                var thread = result[i];
+                threads.push(
+                    {
+                        thread_id: thread.id,
+                        id: '11111' + thread.id,
+                        photo: thread.photo,
+                        name: thread.name,
+                        categories: [
+                            'service',
+                            'park'
+                        ],
+                        description: thread.description,
+                        order: thread.order,
+                        start: true,
+                        solve: thread.isSolved,
+                        time: thread.time,
+                        ratingScore: thread.ratingScore,
+                        totalVote: thread.totalVote,
+                        voteUp: false,
+                        voteDown: false,
+                        uploadphotos: [
+                            {
+                                photo: '1.jpg'
+                            },
+                            {
+                                photo: '2.jpg'
+                            },
+                            {
+                                photo: '3.jpg'
+                            }
+                        ],
+                        replies: [
+                        ]
+                    });
+            }
+        },
+        error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
+        }
+    });
+}
+
+function getAllBranchesFromCompany(companyId, branches) {
+    return $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'GetAllBranchesFromCompany', 'companyId':companyId},
+        dataType: 'json',
+        success: function(result){
+            for (var i = 0; i < result.length; i++) {
+                var branch = result[i];
+                branches.push(
+                    {
+                        id: branch.id,
+                        name: branch.address
+                    });
+            }
+        },
+        error: function(xhr, status, error) {
+            //var err = eval("(" + xhr.responseText + ")");
+            //alert(err.Message);
+        }
+    });
+}
+
 function resetSubmitThreadForm() {
     $('#input_comment').val('');
     $('#feedback').raty('cancel', false);
@@ -426,6 +474,10 @@ function resetSubmitThreadForm() {
         $('#input_' + category).attr('checked', false)
             .parent().removeClass('active');
     })
+
+    //var id = $('.comment_box').find('form').attr('id');
+    //(Dropzone("#" + id)).removeAllFiles(true);
+    //alert((Dropzone("#" + id)).files);
 }
 
 function initEvent() {
@@ -556,12 +608,10 @@ function initEvent() {
     });
 
     /*
-        close company popup window
+     close company popup window
      */
 
     $('body').on('click', '#overlay', function() {
-        //alert('#overlay');
-
         if(!overlayDisable)
             closeCompanyInfo();
         else
@@ -582,7 +632,7 @@ function initEvent() {
     });
 
     /*
-        end close company popup window
+     end close company popup window
      */
 }
 
