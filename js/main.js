@@ -389,8 +389,8 @@ function getAllBranchesFromCompany(companyId, branches) {
             }
         },
         error: function(xhr, status, error) {
-            //var err = eval("(" + xhr.responseText + ")");
-            //alert(err.Message);
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
         }
     });
 }
@@ -576,7 +576,6 @@ function initEvent() {
     $('body').on('click', '#overlay_content', function(event) {
         //disable clicking on inner element
         overlayDisable = true;
-        //event.stopPropagation();
     });
 
     $(document).keyup(function(e) {
