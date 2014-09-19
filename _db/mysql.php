@@ -78,6 +78,44 @@ class MySQL {
 		return null;
 	}
 
+	// Insert
+	public function insertIntoTable($table, $args = null) {
+		$query = 'INSERT INTO ' . $table . '(';
+		for($i = 0; $i < count($args) - 1; $i++) {
+			$query .= $args[$i][0] . ", ";
+		}
+		$query .= $args[$i][0] . ")";
+
+		// Argument
+		if($args != null) {
+			$query .= ' VALUES(';
+			for($i = 0; $i < count($args) - 1; $i++) {
+				$query .= ':_' . $args[$i][0] . ", ";
+			}
+			$query .= ':_' . $args[$i][0] . ")";
+		}
+
+		try {
+			$stm = $this->dbh->prepare($query);
+
+			// Param Binding
+			if($args != null) {
+				for($i = 0; $i < count($args); $i++) {
+					$stm->bindParam(':_'.$args[$i][0], $args[$i][1], PDO::PARAM_INT);
+				}
+			}
+
+			$stm->execute();
+			return true;
+		}
+		catch(PDOException $e) {
+		    echo $e->getMessage();
+		}
+
+		// No result
+		return false;
+	}
+
 	// Select all industries
 	public function selectAllIndustries() {
 		return $this->selectFromTable('industry');
@@ -122,6 +160,25 @@ class MySQL {
 	    return $this->selectFromTable('thread', [['branch_id', $id]], null, "LIMIT $start, $length");
 	}
 
+	// Insert into thread
+	public function insertIntoThread($branch_id, $user_id, $photo, $name, $text) {
+		return $this->insertIntoTable('thread', 
+			[
+				['branch_id', $branch_id],
+				['user_id', $user_id],
+				['photo', $photo],
+				['name', $name],
+				['text', $text],
+				['solved', 1],
+				['time', date('Y-m-d H:i:s')],
+				['rate', 0],
+				['vote', 0],
+				['up', 0],
+				['spam', 1]
+			]
+		);
+	}
+
 	// Select all categories from a particular thread
 	public function selectCategoriesFromThread($id) {
 	    return $this->selectFromTable('category', [['thread_id', $id]]);
@@ -144,10 +201,3 @@ class MySQL {
 		$this->dbh = null;
 	}
 }
-
-
-$mysql = new MySQL();
-
-echo '<pre>';
-print_r($mysql->selectRepliesFromComment(1));
-echo '</pre>';
