@@ -22,7 +22,7 @@
             $result = $mysql->selectThreadsFromBranch($_POST['branchId']);
             break;
         case "GetRepliesFromThread":
-            $result = $mysql->selectRepliesFromThread($_POST['threadId']);
+            $result = $mysql->selectRepliesFromThread($_POST['threadId'],$_POST['start']);
             break;
         default:
             break;

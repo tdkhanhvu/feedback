@@ -9,6 +9,7 @@ var companies = [];
 var overlayDisable = false;
 var threads = [];
 
+var repliesLimit = 3;
 $(function(){
     initEvent();
     getIndustryList(initIndustry);
@@ -127,15 +128,16 @@ function initReview() {
         loadReplies = [];
 
         threads.forEach(function(thread){
-            loadReplies.push(getRepliesFromThread(thread));
+            loadReplies.push(getRepliesFromThread(thread, 1));
         })
 
         $.when.apply($, loadReplies).then(function() {
             threads.forEach(function(thread){
                 addThread(thread);
 
-                thread.replies.forEach(function(reply) {
-                    addReply(thread.thread_id,reply);
+                thread.replies.forEach(function(reply, index) {
+                    if (index < repliesLimit)
+                        addReply(thread.thread_id,reply);
                 })
             })
 
@@ -240,9 +242,21 @@ function addReply(threadId, reply) {
     $.extend(temp, getReviewAttribute(reply));
     review_tmpl.link("#temp", temp);
 
-    $('#' + threadId).append($('#temp').html());
-    $('#temp').html('');
+    var thread = $('#' + threadId);
+    var viewAll = thread.find('.viewAll');
+    if (viewAll.length) {
+        viewAll.before($('#temp').html());
+    }
+    else
+    {
+        thread.append($('#temp').html());
 
+        if (thread.find('>div').length > repliesLimit)
+            thread.append('<div class="viewAll"><span class="glyphicon glyphicon-comment"></span><a>View more comments</a></div>');
+    }
+
+    $('#temp').html('');
+    thread.attr('start', parseInt(thread.attr('start')) + 1);
     $("time.timeago").timeago();
 }
 
@@ -395,11 +409,11 @@ function getAllBranchesFromCompany(companyId, branches) {
     });
 }
 
-function getRepliesFromThread(thread) {
+function getRepliesFromThread(thread, start) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'GetRepliesFromThread', 'threadId':thread.thread_id},
+        data: {'request':'GetRepliesFromThread', 'threadId':thread.thread_id, 'start': start},
         dataType: 'json',
         success: function(result){
             thread.replies = [];
@@ -421,8 +435,9 @@ function getRepliesFromThread(thread) {
             }
         },
         error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
+            //var err = eval("(" + xhr.responseText + ")");
+            //alert(err.Message);
+            alert(xhr.responseText);
         }
     });
 }
@@ -560,6 +575,20 @@ function initEvent() {
 
             $("#" + id).dropzone({ url: "upload.php", addRemoveLinks: true });
         }
+    });
+
+    $('body').on('click', '.viewAll', function(event) {
+        var threadE = $(this).parent(), thread = {thread_id:threadE.attr('id')};
+
+        $.when.apply($, [getRepliesFromThread(thread, threadE.attr('start'))]).then(function() {
+            //alert(thread.replies[0].replyTo);
+            thread.replies.forEach(function(reply) {
+                addReply(thread.thread_id,reply);
+            });
+
+            if (thread.replies.length < repliesLimit)
+                threadE.find('.viewAll').remove();
+        });
     });
 
     /*
