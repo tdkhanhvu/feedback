@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)http://tympanus.net/Development/Stapel/index.html -->
 <html>
 <?php require 'template.php'?>
 <head>
@@ -95,7 +94,6 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <!--                            <div class="controls">-->
                                 <div class="controls" style="position:fixed; right: 0; z-index: 1; padding: 0%; width: 8%; top: 5%;">
 
                                     <p>Phân Loại</p>

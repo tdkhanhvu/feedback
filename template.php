@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)http://tympanus.net/Development/Stapel/index.html -->
 <html>
 
 <head>
@@ -29,7 +28,7 @@
 </li>
 </script>
 <script id="threadTmpl" type="text/x-jsrender">
-    <div id='{{:id}}' class='mix {{:category}}' data-myorder='{{:order}}'>
+    <div id='{{:id}}' class='mix {{:category}}' data-myorder='{{:order}}' start='1'>
     </div>
 </script>
 <script id="reviewTmpl" type="text/x-jsrender">
@@ -78,7 +77,7 @@
                 </div>
             </div>
         {{/if}}
-        <div class="row">
+        <div class="row command_button">
             <div class="col-md-2">
                 <time class="timeago text-primary text-nowrap" datetime="{{:time}}"></time>
             </div>
@@ -106,7 +105,7 @@
             </div>
         </div>
         {{if uploadphotos}}
-            <div class="row">
+            <div class="row uploadphotos">
                 <hr class="separator"/>
                   {^{for uploadphotos}}
                     <img class="img-responsive img-thumbnail img_uploaded" src="uploaded_file/{{:photo}}"/>
