@@ -1,12 +1,6 @@
 <?php
 
 /*
- * Usage: 	$mysql = new MySQL();
- *			$data = $mysql->selectFromTable(..Read Docs below..);
- *			$data = $mysql->selectAllCompaniesFromIndustry(..Read Docs below..);
- *			$data = $mysql->selectAllBranchesFromCompany(..Read Docs below..);
- *			$data = $mysql->selectThreadsFromBranch(..Read Docs below..);
- *			$data = $mysql->selectRepliesFromThread(..Read Docs below..);
  *
  *************************************************************************************
  *
@@ -15,62 +9,13 @@
  * Parameters: 
  * 		1) $table 	(string): table name. Compulsory. E.g: 'industry'
  *		2) $args 	(2D array)	: paired arguments. Optional and can be more than one. 
- *				E.g: array(['name', 'Mai Linh'])
- *				or 	 array(['name', 'Mai Linh'], ['industry', 'Taxi'])
+ *				E.g: [['name', 'Mai Linh']]
+ *				or 	 [['name', 'Mai Linh'], ['industry', 'Taxi']]
  *		3) $crits 	(1D array) : Criteria. Optional and can be more than one.
- *				E.g: array(['id', 'name'])
+ *				E.g: ['id', 'name']
  *
  * Notes: To select ALL, leave the last 2 parameters null.
  *
- * Return: Data results in array form. If nothing found, NULL returned.
- *
- **************************************************************************************
- *
- * selectAllCompaniesFromIndustry(id) :	fetch all companies belong to an industry
- * 
- * Parameter:
- * 		1)	$id 	(string): industry id. Compulsory. E.g: 'taxi'
- *		
- * Note: refer to the industry.txt to get the list of current industries.
- *
- * Return: Data results in array form. If nothing found, NULL returned.
- *
- **************************************************************************************
- *
- * selectAllBranchesFromCompany(id) :	fetch all branches belong to a company
- * 
- * Parameter:
- * 		1)	$id 	(string): company id. Compulsory. E.g: 'ff_kfc'
- *		
- * Return: Data results in array form. If nothing found, NULL returned.
- *
- **************************************************************************************
- *
- * selectThreadsFromBranch(id, start, length) :	fetch all threads belong to a branch
- * 
- * Parameter:
- * 		1)	$id 	(string): branch id. Compulsory. E.g: 'kfc_1'
- * 		1)	$start 	(int)	: start index. Optional. Default 1.
- * 		1)	$length	(int)	: num of rows. Optional. Default 10.
- *		
- * Return: Data results in array form. If nothing found, NULL returned.
- *
- **************************************************************************************
- * selectRepliesFromThread(id, start, length) :	fetch all replies belong to a thread
- * 
- * Parameter:
- * 		1)	$id 	(string): branch id. Compulsory. E.g: 'kfc_1'
- * 		1)	$start 	(int)	: start index. Optional. Default 1.
- * 		1)	$length	(int)	: num of rows. Optional. Default 10.
- *		
- * Return: Data results in array form. If nothing found, NULL returned.
- *
- **************************************************************************************
- * selectCategoriesFromThread(id, start, length) :	fetch all categories belong to a thread
- * 
- * Parameter:
- * 		1)	$id 	(string): branch id. Compulsory. E.g: 'kfc_1'
- *		
  * Return: Data results in array form. If nothing found, NULL returned.
  *
  **************************************************************************************
@@ -133,6 +78,16 @@ class MySQL {
 		return null;
 	}
 
+	// Select all industries
+	public function selectAllIndustries() {
+		return $this->selectFromTable('industry');
+	}
+
+	// Select all industries
+	public function selectIndustry($id) {
+		return $this->selectFromTable('industry', [['id', $id]]);
+	}
+
 	// Select all companies from a particular industry
 	public function selectAllCompaniesFromIndustry($ind) {
 		$result_set = array();
@@ -167,15 +122,21 @@ class MySQL {
 	    return $this->selectFromTable('thread', [['branch_id', $id]], null, "LIMIT $start, $length");
 	}
 
-	// Select all replies from a particular thread
-	public function selectRepliesFromThread($id, $start = 1, $length = 10) {
-		$start -= 1;	// For Mysql to start at $start
-	    return $this->selectFromTable('reply', [['thread_id', $id]], null, "LIMIT $start, $length");
-	}
-
 	// Select all categories from a particular thread
 	public function selectCategoriesFromThread($id) {
 	    return $this->selectFromTable('category', [['thread_id', $id]]);
+	}
+
+	// Select all replies from a particular thread
+	public function selectCommentsFromThread($id, $start = 1, $length = 10) {
+		$start -= 1;	// For Mysql to start at $start
+	    return $this->selectFromTable('comment', [['thread_id', $id]], null, "LIMIT $start, $length");
+	}
+
+	// Select all replies from a particular thread
+	public function selectRepliesFromComment($id, $start = 1, $length = 10) {
+		$start -= 1;	// For Mysql to start at $start
+	    return $this->selectFromTable('reply', [['comment_id', $id]], null, "LIMIT $start, $length");
 	}
 
 	// Destruction
@@ -183,3 +144,10 @@ class MySQL {
 		$this->dbh = null;
 	}
 }
+
+
+$mysql = new MySQL();
+
+echo '<pre>';
+print_r($mysql->selectRepliesFromComment(1));
+echo '</pre>';
