@@ -37,6 +37,7 @@
             <div class="col-md-12">
                 {{:~getStatus(solved)}}
                 {{:~getCategoryLabel(categories)}}
+                <div id="{{:ratingId}}" style="float:right"></div>
             </div>
         </div>
         <div class='comment_detail post_start'>
@@ -44,66 +45,53 @@
         <div class='comment_detail'>
     {{/if}}
         <div class="row">
-            <div class="col-md-2">
-                <img class="avatar img-thumbnail" src="./images/{{:photo}}"/>
+            <div class="col-md-1">
+                <img class="avatar" src="./images/{{:photo}}"/>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-11">
                 <div class="row">
-                    {{if start }}
-                        <div class="col-md-6" style="padding:0">
-                            <h5 style="color: rgb(141, 30, 30);margin:5px;float:left">{{:name}}</h5>
-                        </div>
-                        <div id="{{:ratingId}}" class="col-md-4"></div>
-                    {{else}}
-                        <div class="col-md-10" style="padding:0">
-                            <h5 style="color: rgb(141, 30, 30);margin:5px;float:left">{{:name}}</h5>
-                        </div>
-                    {{/if}}
+                    <div class="col-md-10" style="padding:0">
+                        <h5 style="margin:5px;float:left"><span style="color: rgb(141, 30, 30);margin-right:5px;">{{:name}}</span>{{:desc}}</h5>
+                    </div>
 
                     <div class="col-md-2">
-                        <span class="action_icon minimize glyphicon glyphicon-minus"></span>
+                        <!-- <span class="action_icon minimize glyphicon glyphicon-minus"></span> -->
                         <span class="action_icon flag glyphicon glyphicon-flag"></span>
                     </div>
                 </div>
 
-                <div class="row">
-                    <h6 class="comment_content">
-                        {{:desc}}
-                    </h6>
+                <div class="row command_button">
+                    <div style="float:left">
+                        <time class="timeago text-primary text-nowrap" datetime="{{:time}}"></time>
+                    </div>
+                    <div style="float:right; margin-right:20px;">
+                        <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
+                        <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
+                        <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
+
+                        {{if userName != name}}
+                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                        {{/if}}
+
+                        {{if voteDown}}
+                            <span class="action_icon down glyphicon glyphicon-chevron-down disabled"></span>
+                        {{else}}
+                            <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
+                        {{/if}}
+
+                        {{if voteUp}}
+                            <span class="action_icon up glyphicon glyphicon-chevron-up disabled"></span>
+                        {{else}}
+                            <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
+                        {{/if}}
+
+                        <span class="badge">{{:vote}}</span>
+                    </div>
                 </div>
-                        <div class="row command_button">
-            <div style="float:left">
-                <time class="timeago text-primary text-nowrap" datetime="{{:time}}"></time>
-            </div>
-            <div style="float:right; margin-right:20px;">
-                <img class="action_icon" src="images/icon/social/glyphicons_social_30_facebook.png"/>
-                <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
-                <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
-
-                {{if userName != name}}
-                    <button type="button" class="btn btn-success reply">Trả Lời</button>
-                {{/if}}
-
-                {{if voteDown}}
-                    <span class="action_icon down glyphicon glyphicon-chevron-down disabled"></span>
-                {{else}}
-                    <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
-                {{/if}}
-
-                {{if voteUp}}
-                    <span class="action_icon up glyphicon glyphicon-chevron-up disabled"></span>
-                {{else}}
-                    <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
-                {{/if}}
-
-                <span class="badge">{{:vote}}</span>
-            </div>
-        </div>
             </div>
         </div>
         <div class="row uploadphotos">
             {{if uploadphotos}}
-                <hr class="separator"/>
                   {^{for uploadphotos}}
                     <img class="img-responsive img-thumbnail img_uploaded" src="uploaded_file/{{:photo}}"/>
                   {{/for}}
