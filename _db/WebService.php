@@ -30,6 +30,10 @@
             $result = $mysql->selectCommentsFromThread(decodeId($_POST['threadId']),$_POST['start']);
             encodeId($result, 'comment');
             break;
+        case "GetRepliesFromComment":
+            $result = $mysql->selectRepliesFromComment(decodeId($_POST['commentId']),$_POST['start']);
+            encodeId($result, 'reply');
+            break;
         default:
             break;
     }

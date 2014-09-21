@@ -40,9 +40,13 @@
                 <div id="{{:ratingId}}" style="float:right"></div>
             </div>
         </div>
-        <div class='comment_detail post_start' start='1'>
+        <div class='comment_detail post_start' start='1' id={{:id}}>
     {{else}}
-        <div class='comment_detail' start='1'>
+        {{if type == 'comment'}}
+            <div class='comment_detail' start='1' id={{:id}}>
+        {{else}}
+            <div class='comment_detail reply_content' start='1' id={{:id}}>
+        {{/if}}
     {{/if}}
         <div class="row">
             <div class="col-md-1">
@@ -50,11 +54,15 @@
             </div>
             <div class="col-md-11">
                 <div class="row">
-                    <div class="col-md-10" style="padding:0">
+                {{if type == 'reply'}}
+                    <div class="col-md-11" style="padding:0 0 0 3px">
+                {{else}}
+                    <div class="col-md-11" style="padding:0">
+                {{/if}}
                         <h5 style="margin:5px;float:left"><span style="color: rgb(141, 30, 30);margin-right:5px;">{{:name}}</span>{{:text}}</h5>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <!-- <span class="action_icon minimize glyphicon glyphicon-minus"></span> -->
                         <span class="action_icon flag glyphicon glyphicon-flag"></span>
                     </div>

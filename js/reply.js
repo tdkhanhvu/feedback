@@ -25,17 +25,17 @@ function addReply(commentId, reply) {
     $("time.timeago").timeago();
 }
 
-function getRepliesFromThread(comment, start) {
+function getRepliesFromComment(comment, start) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'GetRepliesFromThread', 'commentId':comment.comment_id, 'start': start},
+        data: {'request':'GetRepliesFromComment', 'commentId':comment.id, 'start': start},
         dataType: 'json',
         success: function(result){
-            comment.replys = [];
+            comment.replies = [];
             for (var i = 0; i < result.length; i++) {
                 var reply = result[i];
-                comment.replys.push(
+                comment.replies.push(
                     {
                         id: reply.id,
                         photo: 'firm/kfc.jpg',

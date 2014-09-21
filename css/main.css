@@ -272,6 +272,6 @@ footer .row > div {
     margin-top: 10px;
 }
 
-.viewReplies {
+.viewReplies, .reply_content {
     margin-left: 40px;
 }
