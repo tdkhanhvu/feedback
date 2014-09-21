@@ -32,10 +32,11 @@ function getCommentsFromThread(thread, start) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'GetCommentsFromThread', 'threadId':thread.thread_id, 'start': start},
+        data: {'request':'GetCommentsFromThread', 'threadId':thread.id, 'start': start},
         dataType: 'json',
         success: function(result){
             thread.comments = [];
+            //alert('result ' + result.length);
             for (var i = 0; i < result.length; i++) {
                 var comment = result[i];
                 thread.comments.push(

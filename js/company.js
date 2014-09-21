@@ -14,10 +14,10 @@ function initReview() {
         $.when.apply($, loadComments).then(function() {
             threads.forEach(function(thread){
                 addThread(thread);
-
+                //alert(threads[0].comments.length);
                 thread.comments.forEach(function(reply, index) {
                     if (index < commentsLimit)
-                        addComment(thread.thread_id,reply);
+                        addComment(thread.id,reply);
                 })
             })
 

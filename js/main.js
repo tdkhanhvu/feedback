@@ -270,11 +270,11 @@ function initEvent() {
     });
 
     $('body').on('click', '.viewComments', function(event) {
-        var threadE = $(this).parent(), thread = {thread_id:threadE.attr('id')};
+        var threadE = $(this).parent(), thread = {id:threadE.attr('id')};
 
         $.when.apply($, [getCommentsFromThread(thread, threadE.find('.post_start').attr('start'))]).then(function() {
             thread.comments.forEach(function(comment) {
-                addComment(thread.thread_id,comment);
+                addComment(thread.id,comment);
             });
 
             if (thread.comments.length < commentsLimit)
@@ -283,7 +283,7 @@ function initEvent() {
     });
 
     $('body').on('click', '.viewReplies', function(event) {
-        var commentE = $(this).parent(), comment = {id:commentE.attr('id')};
+        var commentE = $(this).closest('.comment_detail'), comment = {id:commentE.attr('id')};
 
         $.when.apply($, [getRepliesFromComment(comment, commentE.attr('start'))]).then(function() {
             comment.replies.forEach(function(reply) {

@@ -7,7 +7,7 @@ function addThread(thread) {
     var thread_tmpl = $.templates("#threadTmpl");
 
     thread_tmpl.link("#temp", {
-        id : thread.thread_id,
+        id : thread.id,
         category: thread.categories.join(' '),
         order: thread.order
     });
@@ -18,11 +18,11 @@ function addThread(thread) {
     var temp = {
         solved: thread.solved,
         categories: thread.categories,
-        ratingId: 'rating' + thread.thread_id
+        ratingId: 'rating' + thread.id
     };
     $.extend(temp, getReviewAttribute(thread));
-    review_tmpl.link("#" + thread.thread_id, temp);
-    $('#rating' + thread.thread_id).raty({
+    review_tmpl.link("#" + thread.id, temp);
+    $('#rating' + thread.id).raty({
         readOnly: true,
         score: thread.rate
     });
@@ -45,8 +45,7 @@ function getThreadsFromBranch(branchId) {
                 var thread = result[i];
                 threads.push(
                     {
-                        thread_id: thread.id,
-                        id: '11111' + thread.id,
+                        id: thread.id,
                         photo: thread.photo,
                         name: thread.name,
                         categories: [
@@ -95,7 +94,7 @@ function initThreadEvent() {
         })
 
         var thread = {
-            thread_id: 'thread'+countThreadId,
+            id: 'thread'+countThreadId,
             id: 'thread'+countThreadId + '_1',
             photo: photo,
             name: userName,
