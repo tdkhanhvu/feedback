@@ -146,6 +146,7 @@
 <script src="./js/company.js"></script>
 <script src="./js/thread.js"></script>
 <script src="js/comment.js"></script>
+<script src="js/reply.js"></script>
 <script src="./js/main.js"></script>
 <div id="temp"></div>
 </body>

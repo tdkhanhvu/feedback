@@ -53,7 +53,7 @@ function getThreadsFromBranch(branchId) {
                             'service',
                             'park'
                         ],
-                        desc: thread.desc,
+                        text: thread.text,
                         order: thread.order,
                         type: 'thread',
                         solved: thread.solved,
@@ -79,8 +79,8 @@ function getThreadsFromBranch(branchId) {
             }
         },
         error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
+            //var err = eval("(" + xhr.responseText + ")");
+            alert(xhr.responseText);
         }
     });
 }
@@ -100,7 +100,7 @@ function initThreadEvent() {
             photo: photo,
             name: userName,
             categories: categories,
-            desc: $('#input_comment').val(),
+            text: $('#input_comment').val(),
             order: countThreadId,
             type: 'thread',
             solved: false,

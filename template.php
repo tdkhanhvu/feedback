@@ -42,7 +42,7 @@
         </div>
         <div class='comment_detail post_start'>
     {{else}}
-        <div class='comment_detail'>
+        <div class='comment_detail' start='1'>
     {{/if}}
         <div class="row">
             <div class="col-md-1">
@@ -51,7 +51,7 @@
             <div class="col-md-11">
                 <div class="row">
                     <div class="col-md-10" style="padding:0">
-                        <h5 style="margin:5px;float:left"><span style="color: rgb(141, 30, 30);margin-right:5px;">{{:name}}</span>{{:desc}}</h5>
+                        <h5 style="margin:5px;float:left"><span style="color: rgb(141, 30, 30);margin-right:5px;">{{:name}}</span>{{:text}}</h5>
                     </div>
 
                     <div class="col-md-2">
@@ -97,6 +97,10 @@
                   {{/for}}
             {{/if}}
         </div>
+
+        {{if type == 'comment'}}
+            <div class="viewReplies"><span class="glyphicon glyphicon-comment"></span><a>All Replies</a></div>
+        {{/if}}
     </div>
 </script>
 <script id="companyTmpl" type="text/x-jsrender">
