@@ -106,6 +106,7 @@ class MySQL {
 			}
 
 			$stm->execute();
+			echo $query;
 			return true;
 		}
 		catch(PDOException $e) {
@@ -201,3 +202,6 @@ class MySQL {
 		$this->dbh = null;
 	}
 }
+
+$mysql = new MySQL();
+$mysql->insertIntoThread('xxx', 5, 'sss', 'rrr', 'dddd');
