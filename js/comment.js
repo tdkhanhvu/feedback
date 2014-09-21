@@ -22,7 +22,9 @@ function addComment(threadId, comment) {
     }
 
     $('#temp').html('');
-    thread.attr('start', parseInt(thread.attr('start')) + 1);
+
+    var postStart = thread.find('.post_start');
+    postStart.attr('start', parseInt(postStart.attr('start')) + 1);
     $("time.timeago").timeago();
 }
 

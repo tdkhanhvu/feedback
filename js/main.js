@@ -272,7 +272,7 @@ function initEvent() {
     $('body').on('click', '.viewComments', function(event) {
         var threadE = $(this).parent(), thread = {thread_id:threadE.attr('id')};
 
-        $.when.apply($, [getCommentsFromThread(thread, threadE.attr('start'))]).then(function() {
+        $.when.apply($, [getCommentsFromThread(thread, threadE.find('.post_start').attr('start'))]).then(function() {
             thread.comments.forEach(function(comment) {
                 addComment(thread.thread_id,comment);
             });

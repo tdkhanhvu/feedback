@@ -28,7 +28,7 @@
 </li>
 </script>
 <script id="threadTmpl" type="text/x-jsrender">
-    <div id='{{:id}}' class='mix {{:category}}' data-myorder='{{:order}}' start='1'>
+    <div id='{{:id}}' class='mix {{:category}}' data-myorder='{{:order}}'>
     </div>
 </script>
 <script id="reviewTmpl" type="text/x-jsrender">
@@ -40,7 +40,7 @@
                 <div id="{{:ratingId}}" style="float:right"></div>
             </div>
         </div>
-        <div class='comment_detail post_start'>
+        <div class='comment_detail post_start' start='1'>
     {{else}}
         <div class='comment_detail' start='1'>
     {{/if}}
