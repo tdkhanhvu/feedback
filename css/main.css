@@ -5,7 +5,7 @@
 /*company info*/
 .left-menu
 {
-    background-color: #fff;
+    background-color: #e9eaed;
     border-right: 1px solid #444;
     display: table;
     position: relative;
@@ -111,6 +111,7 @@
 #Container .mix {
     display: none;
     margin-bottom: 2%;
+    background-color: #fafbfb;
 }
 
 .controls{
@@ -160,7 +161,6 @@ button + label{
 
 #Container > .mix {
     width:100%;
-    background-color: rgba(229, 229, 235,0.5);
 }
 
 .badge {
@@ -262,4 +262,8 @@ footer .row > div {
 .avatar {
     height: 40px;
     width: 40px;
+}
+
+#collapseOne, #collapseTwo {
+    background-color: #e9eaed;
 }
