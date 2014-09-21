@@ -5,7 +5,7 @@
 /*company info*/
 .left-menu
 {
-    background-color: #fff;
+    background-color: #e9eaed;
     border-right: 1px solid #444;
     display: table;
     position: relative;
@@ -75,15 +75,16 @@
 .flag {
     float: right;
     color: rgb(182, 17, 17);
+    opacity: 0;
 }
 
 .up {
-    float: left;
+    float: right;
     color: green;
 }
 
 .down {
-    float: left;
+    float: right;
     color: red;
     margin-right: 10px;
 }
@@ -93,26 +94,24 @@
 }
 
 .reply {
-    float:left;
+    float:right;
     height: 20px;
     padding-top: 0;
-    /*margin-top: 5px;*/
-    margin-right:10px;
 }
 
-.comment_detail {
-    border: 3px solid rgba(0, 0, 128, 0.49);
-    /*padding-bottom: 5px;*/
-    margin:2px 0 0 50px;
+.comment_detail, .viewAll {
+    margin:5px 0;
 }
 
 .post_start {
-    margin: 0;
+    margin: 0 0 10px 0;
+    border: 2px solid rgb(79, 79, 168);
 }
 
 #Container .mix {
     display: none;
     margin-bottom: 2%;
+    background-color: #fafbfb;
 }
 
 .controls{
@@ -160,21 +159,13 @@ button + label{
     height: 100% !important;
 }
 
-#Container > div:nth-child(odd) {
-    background-color: rgb(226, 245, 213);
-}
-
-#Container > div:nth-child(even) {
-    background-color: rgb(245, 236, 231);
-}
-
 #Container > .mix {
     width:100%;
 }
 
 .badge {
-    float: left;
-    margin: 1px 5px 0 0;
+    float: right;
+    margin: 1px 5px;
 }
 
 .avatar {
@@ -227,10 +218,6 @@ footer .row > div {
     padding: 1% 3%;
 }
 
-.comment_content {
-    margin: 0;
-}
-
 .photo_upload_icon {
     position: absolute;
     right: 4%;
@@ -262,4 +249,25 @@ footer .row > div {
 
 .viewAll > span {
     margin: 0 2%;
+}
+
+.tag {
+    border-radius: 5px 5px 0 0;
+}
+
+.uploadphotos {
+    margin-top: 10px;
+}
+
+.avatar {
+    height: 40px;
+    width: 40px;
+}
+
+#collapseOne, #collapseTwo {
+    background-color: #e9eaed;
+}
+
+.comment_box {
+    margin-top: 10px;
 }
