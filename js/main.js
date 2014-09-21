@@ -122,7 +122,7 @@ function getReviewAttribute(obj) {
         type: obj.type,
         name: obj.name,
         photo: obj.photo,
-        desc: obj.desc,
+        text: obj.text,
         time: obj.time,
         vote: obj.vote,
         voteUp: obj.voteUp,
@@ -173,8 +173,8 @@ function getCompaniesByIndustryId(industryId, industryName) {
             }
         },
         error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
+            //var err = eval("(" + xhr.responseText + ")");
+            alert(xhr.responseText);
         }
     });
 }
@@ -193,7 +193,7 @@ function initEvent() {
             id: Math.floor((Math.random() * 100000) + 1),
             photo: photo,
             name: userName,
-            desc: $(this).parent().find('input').val(),
+            text: $(this).parent().find('input').val(),
             type: 'comment',
             time: (new Date()).toISOString(),
             vote: 0,
@@ -269,7 +269,7 @@ function initEvent() {
         }
     });
 
-    $('body').on('click', '.viewAll', function(event) {
+    $('body').on('click', '.viewComments', function(event) {
         var threadE = $(this).parent(), thread = {thread_id:threadE.attr('id')};
 
         $.when.apply($, [getCommentsFromThread(thread, threadE.attr('start'))]).then(function() {
@@ -278,7 +278,20 @@ function initEvent() {
             });
 
             if (thread.comments.length < commentsLimit)
-                threadE.find('.viewAll').remove();
+                threadE.find('.viewComments').remove();
+        });
+    });
+
+    $('body').on('click', '.viewReplies', function(event) {
+        var commentE = $(this).parent(), comment = {id:commentE.attr('id')};
+
+        $.when.apply($, [getRepliesFromComment(comment, commentE.attr('start'))]).then(function() {
+            comment.replies.forEach(function(reply) {
+                addReply(comment.id,reply);
+            });
+
+            if (comment.replies.length < repliesLimit)
+                commentE.find('.viewReplies').remove();
         });
     });
 

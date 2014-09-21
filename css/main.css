@@ -99,7 +99,7 @@
     padding-top: 0;
 }
 
-.comment_detail, .viewAll {
+.comment_detail, .viewComments {
     margin:5px 0;
 }
 
@@ -243,11 +243,11 @@ footer .row > div {
     border: 1px solid black;
 }
 
-.viewAll {
+.viewComments, .viewReplies {
     cursor: pointer;
 }
 
-.viewAll > span {
+.viewComments > span, .viewReplies > span {
     margin: 0 2%;
 }
 
@@ -270,4 +270,8 @@ footer .row > div {
 
 .comment_box {
     margin-top: 10px;
+}
+
+.viewReplies {
+    margin-left: 40px;
 }

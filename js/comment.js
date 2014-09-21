@@ -9,7 +9,7 @@ function addComment(threadId, comment) {
     comment_tmpl.link("#temp", temp);
 
     var thread = $('#' + threadId);
-    var viewAll = thread.find('.viewAll');
+    var viewAll = thread.find('.viewComments');
     if (viewAll.length) {
         viewAll.before($('#temp').html());
     }
@@ -18,7 +18,7 @@ function addComment(threadId, comment) {
         thread.append($('#temp').html());
 
         if (thread.find('>div').length > commentsLimit)
-            thread.append('<div class="viewAll"><span class="glyphicon glyphicon-comment"></span><a>View more comments</a></div>');
+            thread.append('<div class="viewComments"><span class="glyphicon glyphicon-comment"></span><a>View more comments</a></div>');
     }
 
     $('#temp').html('');
@@ -41,7 +41,7 @@ function getCommentsFromThread(thread, start) {
                         id: comment.id,
                         photo: 'firm/kfc.jpg',
                         name: 'KFC',
-                        desc: comment.desc,
+                        text: comment.text,
                         type: 'comment',
                         time: thread.time,
                         vote: comment.vote,
