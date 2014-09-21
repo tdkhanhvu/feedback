@@ -78,45 +78,6 @@ class MySQL {
 		return null;
 	}
 
-	// Insert
-	public function insertIntoTable($table, $args = null) {
-		$query = 'INSERT INTO ' . $table . '(';
-		for($i = 0; $i < count($args) - 1; $i++) {
-			$query .= $args[$i][0] . ", ";
-		}
-		$query .= $args[$i][0] . ")";
-
-		// Argument
-		if($args != null) {
-			$query .= ' VALUES(';
-			for($i = 0; $i < count($args) - 1; $i++) {
-				$query .= ':_' . $args[$i][0] . ", ";
-			}
-			$query .= ':_' . $args[$i][0] . ")";
-		}
-
-		try {
-			$stm = $this->dbh->prepare($query);
-
-			// Param Binding
-			if($args != null) {
-				for($i = 0; $i < count($args); $i++) {
-					$stm->bindParam(':_'.$args[$i][0], $args[$i][1], PDO::PARAM_INT);
-				}
-			}
-
-			$stm->execute();
-			echo $query;
-			return true;
-		}
-		catch(PDOException $e) {
-		    echo $e->getMessage();
-		}
-
-		// No result
-		return false;
-	}
-
 	// Select all industries
 	public function selectAllIndustries() {
 		return $this->selectFromTable('industry');
@@ -158,7 +119,63 @@ class MySQL {
 	// Select all threads from a particular branch
 	public function selectThreadsFromBranch($id, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
-	    return $this->selectFromTable('thread', [['branch_id', $id]], null, "LIMIT $start, $length");
+		$threads = $this->selectFromTable('thread', [['branch_id', $id]], null, "LIMIT $start, $length");
+		foreach ($threads as &$thr) {
+			$cat = $this->selectFromTable('category', [['thread_id', $thr['id']]]);
+			$thr['category'] = $cat;
+		}
+	    return $threads;
+	}
+
+	// Select all replies from a particular thread
+	public function selectCommentsFromThread($id, $start = 1, $length = 10) {
+		$start -= 1;	// For Mysql to start at $start
+	    return $this->selectFromTable('comment', [['thread_id', $id]], null, "LIMIT $start, $length");
+	}
+
+	// Select all replies from a particular thread
+	public function selectRepliesFromComment($id, $start = 1, $length = 10) {
+		$start -= 1;	// For Mysql to start at $start
+	    return $this->selectFromTable('reply', [['comment_id', $id]], null, "LIMIT $start, $length");
+	}
+
+	// Insert
+	public function insertIntoTable($table, $args = null) {
+		$query = 'INSERT INTO ' . $table . '(';
+
+		for($i = 0; $i < count($args) - 1; $i++) {
+			$query .= $args[$i][0] . ", ";
+		}
+		$query .= $args[$i][0] . ")";
+
+		// Argument
+		if($args != null) {
+			$query .= ' VALUES(';
+			for($i = 0; $i < count($args) - 1; $i++) {
+				$query .= ':_' . $args[$i][0] . ", ";
+			}
+			$query .= ':_' . $args[$i][0] . ")";
+		}
+
+		try {
+			$stm = $this->dbh->prepare($query);
+
+			// Param Binding
+			if($args != null) {
+				for($i = 0; $i < count($args); $i++) {
+					$stm->bindParam(':_'.$args[$i][0], $args[$i][1], PDO::PARAM_INT);
+				}
+			}
+
+			$stm->execute();
+			return true;
+		}
+		catch(PDOException $e) {
+		    echo $e->getMessage();
+		}
+
+		// No result
+		return false;
 	}
 
 	// Insert into thread
@@ -175,26 +192,102 @@ class MySQL {
 				['rate', 0],
 				['vote', 0],
 				['up', 0],
-				['spam', 1]
+				['spam', 1],
+				['comments', 0]
 			]
 		);
 	}
 
-	// Select all categories from a particular thread
-	public function selectCategoriesFromThread($id) {
-	    return $this->selectFromTable('category', [['thread_id', $id]]);
+	// Insert into comment
+	public function insertIntoComment($thread_id, $user_id, $photo, $name, $text) {
+		// Update comment count in thread
+		$cmt = $this->selectFromTable('thread', [['id',$thread_id]], ['comments']);
+		if ($cmt[0]['comments'] != null) {
+			$count = intval($cmt[0]['comments']) + 1;
+		}
+
+		$this->updateTable('thread', [['comments', $count]], [['id', $thread_id]]);
+
+		return $this->insertIntoTable('comment', 
+			[
+				['thread_id', $thread_id],
+				['user_id', $user_id],
+				['name', $name],
+				['photo', $photo],
+				['text', $text],
+				['time', date('Y-m-d H:i:s')],
+				['vote', 0],
+				['up', 0],
+				['replies', 0]
+			]
+		);
 	}
 
-	// Select all replies from a particular thread
-	public function selectCommentsFromThread($id, $start = 1, $length = 10) {
-		$start -= 1;	// For Mysql to start at $start
-	    return $this->selectFromTable('comment', [['thread_id', $id]], null, "LIMIT $start, $length");
+	// Insert into reply
+	public function insertIntoReply($comment_id, $user_id, $photo, $name, $text) {
+		// Update comment count in comment
+		$rep = $this->selectFromTable('comment', [['id',$comment_id]], ['replies']);
+		if ($rep[0]['replies'] != null) {
+			$count = intval($rep[0]['replies']) + 1;
+		}
+
+		$this->updateTable('comment', [['replies', $count]], [['id', $comment_id]]);
+
+		return $this->insertIntoTable('reply', 
+			[
+				['comment_id', $comment_id],
+				['user_id', $user_id],
+				['name', $name],
+				['photo', $photo],
+				['text', $text],
+				['time', date('Y-m-d H:i:s')],
+				['vote', 0],
+				['up', 0],
+			]
+		);
 	}
 
-	// Select all replies from a particular thread
-	public function selectRepliesFromComment($id, $start = 1, $length = 10) {
-		$start -= 1;	// For Mysql to start at $start
-	    return $this->selectFromTable('reply', [['comment_id', $id]], null, "LIMIT $start, $length");
+	// Update
+	public function updateTable($table, $args = null, $crits = null) {
+		$query = 'UPDATE ' . $table . ' SET ';
+
+		if ($args != null) {
+			for($i = 0; $i < count($args) - 1; $i++) {
+				$query .= $args[$i][0] . "=?, ";
+			}
+			$query .= $args[$i][0] . "=? ";
+		}
+
+		// Argument
+		if($crits != null) {
+			$query .= ' WHERE ';
+			for($i = 0; $i < count($crits) - 1; $i++) {
+				$query .= $crits[$i][0] . "=? ";
+			}
+			$query .= $crits[$i][0] . "=?";
+		}
+
+		try {
+			$stm = $this->dbh->prepare($query);
+
+			// Param Binding
+			$values = array();
+			foreach ($args as $arg) {
+				$values[] = $arg[1];
+			}
+			foreach ($crits as $crit) {
+				$values[] = $crit[1];
+			}
+
+			$stm->execute($values);
+			return true;
+		}
+		catch(PDOException $e) {
+		    echo $e->getMessage();
+		}
+
+		// No result
+		return false;
 	}
 
 	// Destruction
