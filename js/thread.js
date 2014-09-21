@@ -71,8 +71,6 @@ function getThreadsFromBranch(branchId) {
                             {
                                 photo: '3.jpg'
                             }
-                        ],
-                        replies: [
                         ]
                     });
             }

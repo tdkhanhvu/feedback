@@ -4,6 +4,7 @@ var commentsLimit = 2;
 function addComment(threadId, comment) {
     var comment_tmpl = $.templates("#reviewTmpl");
     temp = {
+        replies: comment.replies
     };
     $.extend(temp, getReviewAttribute(comment));
     comment_tmpl.link("#temp", temp);
@@ -46,10 +47,11 @@ function getCommentsFromThread(thread, start) {
                         name: 'KFC',
                         text: comment.text,
                         type: 'comment',
-                        time: thread.time,
+                        time: comment.time,
                         vote: comment.vote,
                         voteUp:false,
-                        voteDown: true
+                        voteDown: true,
+                        replies: comment.replies
                     });
             }
         },

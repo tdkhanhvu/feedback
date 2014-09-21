@@ -42,7 +42,7 @@ function getRepliesFromComment(comment, start) {
                         name: 'KFC',
                         text: reply.text,
                         type: 'reply',
-                        time: comment.time,
+                        time: reply.time,
                         vote: reply.vote,
                         voteUp:false,
                         voteDown: true

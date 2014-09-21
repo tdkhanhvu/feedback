@@ -106,7 +106,7 @@
             {{/if}}
         </div>
 
-        {{if type == 'comment'}}
+        {{if type == 'comment' && replies > 0}}
             <div class="viewReplies"><span class="glyphicon glyphicon-comment"></span><a>All Replies</a></div>
         {{/if}}
     </div>
