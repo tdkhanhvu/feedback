@@ -1,15 +1,8 @@
-var countThreadId = 2;
 var userName = "Trần Đoàn Khánh Vũ";
 var photo = "user/user1.jpg";
-var allCategories = ['service','park','product'];
-var initFilter = false;
 var serviceUrl = './_db/WebService.php';
 
-var companies = [];
 var overlayDisable = false;
-var threads = [];
-
-var repliesLimit = 3;
 $(function(){
     initEvent();
     getIndustryList(initIndustry);
@@ -120,171 +113,22 @@ function initRating() {
     });
 }
 
-function initReview() {
-    $.when.apply($, [getThreadsFromBranch('kfc_1')]).then(function() {
-        $.views.helpers({getStatus: getStatus});
-        $.views.helpers({getCategoryLabel: getCategoryLabel});
 
-        loadReplies = [];
-
-        threads.forEach(function(thread){
-            loadReplies.push(getRepliesFromThread(thread, 1));
-        })
-
-        $.when.apply($, loadReplies).then(function() {
-            threads.forEach(function(thread){
-                addThread(thread);
-
-                thread.replies.forEach(function(reply, index) {
-                    if (index < repliesLimit)
-                        addReply(thread.thread_id,reply);
-                })
-            })
-
-            $( document ).ready(function() {
-                //hide all replies at beginning
-                $('.minimize').each(function() {
-                    var min = $(this);
-
-                    if (!min.closest('.comment_detail').hasClass('post_start'))
-                        min.trigger('click');
-                });
-            });
-        });
-    });
-}
-
-function getStatus(status) {
-    switch(status) {
-        case true:
-            return "<span class='label label-success'>Đã Giải Quyết</span>";
-        case false:
-            return "<span class='label label-danger'>Chưa Giải Quyết</span>";
-        default:
-            return "";
-    }
-}
-
-function getCategoryLabel(categories) {
-    var result = "";
-    categories.forEach(function(category) {
-        var temp = "";
-        switch(category) {
-            case 'service':
-                temp = "<span class='label label-primary'>Phục Vụ</span>";
-                break;
-            case 'park':
-                temp =  "<span class='label label-success'>Giữ Xe</span>";
-                break;
-            case 'product':
-                temp = "<span class='label label-warning'>Sản Phẩm</span>";
-                break;
-            default:
-                temp = "";
-        }
-        result = result + temp + "\n";
-    })
-    return result;
-}
 
 function getReviewAttribute(obj) {
+    console.log(obj);
     return {
         id : obj.id,
         start: obj.start,
         name: obj.name,
         photo: obj.photo,
-        description: obj.description,
+        desc: obj.desc,
         time: obj.time,
-        totalVote: obj.totalVote,
+        vote: obj.vote,
         voteUp: obj.voteUp,
         voteDown: obj.voteDown,
         userName: userName,
         uploadphotos: obj.uploadphotos
-    }
-}
-
-function addThread(thread) {
-    var thread_tmpl = $.templates("#threadTmpl");
-
-    thread_tmpl.link("#temp", {
-        id : thread.thread_id,
-        category: thread.categories.join(' '),
-        order: thread.order
-    });
-    $('#Container').append($('#temp').html());
-    $('#temp').html('');
-
-    var review_tmpl = $.templates("#reviewTmpl");
-    var temp = {
-        solve: thread.solve,
-        categories: thread.categories,
-        ratingId: 'rating' + thread.thread_id
-    };
-    $.extend(temp, getReviewAttribute(thread));
-    review_tmpl.link("#" + thread.thread_id, temp);
-    $('#rating' + thread.thread_id).raty({
-        readOnly: true,
-        score: thread.ratingScore
-    });
-
-    $("time.timeago").timeago();
-
-    if ($('#button_all').hasClass('active'))
-        $('#button_service').click();
-    $('#button_all').click();
-}
-
-function addReply(threadId, reply) {
-    var review_tmpl = $.templates("#reviewTmpl");
-    temp = {
-        replyTo: reply.replyTo
-    };
-    $.extend(temp, getReviewAttribute(reply));
-    review_tmpl.link("#temp", temp);
-
-    var thread = $('#' + threadId);
-    var viewAll = thread.find('.viewAll');
-    if (viewAll.length) {
-        viewAll.before($('#temp').html());
-    }
-    else
-    {
-        thread.append($('#temp').html());
-
-        if (thread.find('>div').length > repliesLimit)
-            thread.append('<div class="viewAll"><span class="glyphicon glyphicon-comment"></span><a>View more comments</a></div>');
-    }
-
-    $('#temp').html('');
-    thread.attr('start', parseInt(thread.attr('start')) + 1);
-    $("time.timeago").timeago();
-}
-
-function initCompany(companyId) {
-    if (companyId == 'ff_kfc') {
-        var branches = [];
-        $.when.apply($, [getAllBranchesFromCompany(companyId, branches)]).then(function() {
-            var company = {
-                photo: 'kfc_logo.png',
-                description: 'Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.',
-                time: '7h30-11h00 &amp; 13h00-16h00 các ngày trong tuần',
-                address: 'A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM',
-                phone: '0123456789',
-                branches: branches
-            };
-            $.templates("#companyTmpl").link('#companyInfo', company);
-            $("#branch_list").select2({maximumSelectionSize: 1 });
-            $('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
-
-            if (!initFilter) {
-                $('#Container').mixItUp();
-                initFilter = true;
-            }
-            $('#overlay').css('display','block');
-
-            $('.right-preview').toggleClass('unscrollable');
-            $('.wrapper').toggleClass('unscrollable');
-        });
     }
 }
 
@@ -335,176 +179,25 @@ function getCompaniesByIndustryId(industryId, industryName) {
     });
 }
 
-function getThreadsFromBranch(branchId) {
-    return $.ajax({
-        url: serviceUrl,
-        type: "post",
-        data: {'request':'GetThreadsFromBranch', 'branchId':branchId},
-        dataType: 'json',
-        success: function(result){
-            for (var i = 0; i < result.length; i++) {
-                var thread = result[i];
-                threads.push(
-                    {
-                        thread_id: thread.id,
-                        id: '11111' + thread.id,
-                        photo: thread.photo,
-                        name: thread.name,
-                        categories: [
-                            'service',
-                            'park'
-                        ],
-                        description: thread.description,
-                        order: thread.order,
-                        start: true,
-                        solve: thread.isSolved,
-                        time: thread.time,
-                        ratingScore: thread.ratingScore,
-                        totalVote: thread.totalVote,
-                        voteUp: false,
-                        voteDown: false,
-                        uploadphotos: [
-                            {
-                                photo: '1.jpg'
-                            },
-                            {
-                                photo: '2.jpg'
-                            },
-                            {
-                                photo: '3.jpg'
-                            }
-                        ],
-                        replies: [
-                        ]
-                    });
-            }
-        },
-        error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
-        }
-    });
-}
 
-function getAllBranchesFromCompany(companyId, branches) {
-    return $.ajax({
-        url: serviceUrl,
-        type: "post",
-        data: {'request':'GetAllBranchesFromCompany', 'companyId':companyId},
-        dataType: 'json',
-        success: function(result){
-            for (var i = 0; i < result.length; i++) {
-                var branch = result[i];
-                branches.push(
-                    {
-                        id: branch.id,
-                        name: branch.address
-                    });
-            }
-        },
-        error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
-        }
-    });
-}
-
-function getRepliesFromThread(thread, start) {
-    return $.ajax({
-        url: serviceUrl,
-        type: "post",
-        data: {'request':'GetRepliesFromThread', 'threadId':thread.thread_id, 'start': start},
-        dataType: 'json',
-        success: function(result){
-            thread.replies = [];
-            for (var i = 0; i < result.length; i++) {
-                var reply = result[i];
-                thread.replies.push(
-                {
-                    id: reply.id,
-                    photo: 'firm/kfc.jpg',
-                    name: 'KFC',
-                    description: reply.description,
-                    start: false,
-                    time: thread.time,
-                    replyTo: 'Trần Đoàn Khánh Vũ',
-                    totalVote: reply.totalVote,
-                    voteUp:false,
-                    voteDown: true
-                });
-            }
-        },
-        error: function(xhr, status, error) {
-            //var err = eval("(" + xhr.responseText + ")");
-            //alert(err.Message);
-            alert(xhr.responseText);
-        }
-    });
-}
-
-function resetSubmitThreadForm() {
-    $('#input_comment').val('');
-    $('#feedback').raty('cancel', false);
-    allCategories.forEach(function(category) {
-        $('#input_' + category).attr('checked', false)
-            .parent().removeClass('active');
-    })
-
-    //var id = $('.comment_box').find('form').attr('id');
-    //(Dropzone("#" + id)).removeAllFiles(true);
-    //alert((Dropzone("#" + id)).files);
-}
 
 function initEvent() {
     $(document).on('click', ".company", function() {
         initCompany($(this).parent().attr('id'));
     });
 
-    $('body').on('click', '.send_thread', function() {
-        countThreadId++;
-        var categories = new Array();
-        allCategories.forEach(function(category) {
-            if ($('#input_' + category).is(':checked'))
-                categories.push(category);
-        })
-
-        var thread = {
-            thread_id: 'thread'+countThreadId,
-            id: 'thread'+countThreadId + '_1',
-            photo: photo,
-            name: userName,
-            categories: categories,
-            description: $('#input_comment').val(),
-            order: countThreadId,
-            start: true,
-            solve: false,
-            time: (new Date()).toISOString(),
-            ratingScore: $('#feedback').raty('score'),
-            totalVote: 0,
-            voteUp: false,
-            voteDown: false,
-            replies: []
-        };
-        addThread(thread);
-
-        resetSubmitThreadForm();
-    });
-
-    $('body').on('click', '.cancel_thread', function() {
-        resetSubmitThreadForm()
-    });
-
+    initThreadEvent();
     $('body').on('click', '.send_comment', function() {
         var post = $(this).parent().parent().parent();
         var reply = {
             id: Math.floor((Math.random() * 100000) + 1),
             photo: photo,
             name: userName,
-            description: $(this).parent().find('input').val(),
+            desc: $(this).parent().find('input').val(),
             start: false,
             time: (new Date()).toISOString(),
             replyTo: post.find('> .row:first-of-type').find('h4:first-of-type').text(),
-            totalVote: 0,
+            vote: 0,
             voteUp:false,
             voteDown: false
         };

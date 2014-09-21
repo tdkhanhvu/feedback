@@ -63,14 +63,14 @@
                 </div>
 
                 <h6 class="comment_content">
-                    {{:description}}
+                    {{:desc}}
                 </h6>
             </div>
         </div>
         {{if start}}
             <div class="row">
                 <div class="col-md-2">
-                    {{:~getStatus(solve)}}
+                    {{:~getStatus(solved)}}
                 </div>
                 <div class="col-md-10">
                     {{:~getCategoryLabel(categories)}}
@@ -82,7 +82,7 @@
                 <time class="timeago text-primary text-nowrap" datetime="{{:time}}"></time>
             </div>
             <div class="col-md-10">
-                <span class="badge">{{:totalVote}}</span>
+                <span class="badge">{{:vote}}</span>
                 {{if voteUp}}
                     <span class="action_icon up glyphicon glyphicon-chevron-up disabled"></span>
                 {{else}}
