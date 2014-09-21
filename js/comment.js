@@ -42,7 +42,7 @@ function getCommentsFromThread(thread, start) {
                         photo: 'firm/kfc.jpg',
                         name: 'KFC',
                         desc: comment.desc,
-                        start: false,
+                        type: 'comment',
                         time: thread.time,
                         vote: comment.vote,
                         voteUp:false,

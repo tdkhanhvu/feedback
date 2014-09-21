@@ -32,7 +32,7 @@
     </div>
 </script>
 <script id="reviewTmpl" type="text/x-jsrender">
-    {{if start}}
+    {{if type == 'thread'}}
         <div class="row">
             <div class="col-md-12">
                 {{:~getStatus(solved)}}

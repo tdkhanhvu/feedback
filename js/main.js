@@ -119,7 +119,7 @@ function getReviewAttribute(obj) {
     console.log(obj);
     return {
         id : obj.id,
-        start: obj.start,
+        type: obj.type,
         name: obj.name,
         photo: obj.photo,
         desc: obj.desc,
@@ -194,7 +194,7 @@ function initEvent() {
             photo: photo,
             name: userName,
             desc: $(this).parent().find('input').val(),
-            start: false,
+            type: 'comment',
             time: (new Date()).toISOString(),
             vote: 0,
             voteUp:false,

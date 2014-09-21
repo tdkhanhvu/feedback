@@ -267,3 +267,7 @@ footer .row > div {
 #collapseOne, #collapseTwo {
     background-color: #e9eaed;
 }
+
+.comment_box {
+    margin-top: 10px;
+}
