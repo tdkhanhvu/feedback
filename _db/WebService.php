@@ -21,7 +21,7 @@
         case "GetThreadsFromBranch":
             $result = $mysql->selectThreadsFromBranch($_POST['branchId']);
             break;
-        case "GetRepliesFromThread":
+        case "GetCommentsFromThread":
             $result = $mysql->selectCommentsFromThread($_POST['threadId'],$_POST['start']);
             break;
         default:

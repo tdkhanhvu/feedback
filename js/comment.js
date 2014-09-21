@@ -1,12 +1,12 @@
-var repliesLimit = 2;
+var commentsLimit = 2;
 
 
-function addReply(threadId, reply) {
-    var review_tmpl = $.templates("#reviewTmpl");
+function addComment(threadId, comment) {
+    var comment_tmpl = $.templates("#reviewTmpl");
     temp = {
     };
-    $.extend(temp, getReviewAttribute(reply));
-    review_tmpl.link("#temp", temp);
+    $.extend(temp, getReviewAttribute(comment));
+    comment_tmpl.link("#temp", temp);
 
     var thread = $('#' + threadId);
     var viewAll = thread.find('.viewAll');
@@ -17,7 +17,7 @@ function addReply(threadId, reply) {
     {
         thread.append($('#temp').html());
 
-        if (thread.find('>div').length > repliesLimit)
+        if (thread.find('>div').length > commentsLimit)
             thread.append('<div class="viewAll"><span class="glyphicon glyphicon-comment"></span><a>View more comments</a></div>');
     }
 
@@ -26,25 +26,25 @@ function addReply(threadId, reply) {
     $("time.timeago").timeago();
 }
 
-function getRepliesFromThread(thread, start) {
+function getCommentsFromThread(thread, start) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'GetRepliesFromThread', 'threadId':thread.thread_id, 'start': start},
+        data: {'request':'GetCommentsFromThread', 'threadId':thread.thread_id, 'start': start},
         dataType: 'json',
         success: function(result){
-            thread.replies = [];
+            thread.comments = [];
             for (var i = 0; i < result.length; i++) {
-                var reply = result[i];
-                thread.replies.push(
+                var comment = result[i];
+                thread.comments.push(
                     {
-                        id: reply.id,
+                        id: comment.id,
                         photo: 'firm/kfc.jpg',
                         name: 'KFC',
-                        desc: reply.desc,
+                        desc: comment.desc,
                         start: false,
                         time: thread.time,
-                        vote: reply.vote,
+                        vote: comment.vote,
                         voteUp:false,
                         voteDown: true
                     });

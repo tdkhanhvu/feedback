@@ -189,19 +189,18 @@ function initEvent() {
     initThreadEvent();
     $('body').on('click', '.send_comment', function() {
         var post = $(this).parent().parent().parent();
-        var reply = {
+        var comment = {
             id: Math.floor((Math.random() * 100000) + 1),
             photo: photo,
             name: userName,
             desc: $(this).parent().find('input').val(),
             start: false,
             time: (new Date()).toISOString(),
-            replyTo: post.find('> .row:first-of-type').find('h4:first-of-type').text(),
             vote: 0,
             voteUp:false,
             voteDown: false
         };
-        addReply(post.parent().attr('id'),reply);
+        addComment(post.parent().attr('id'),comment);
 
         $(this).parent().parent().remove();
     });
@@ -273,12 +272,12 @@ function initEvent() {
     $('body').on('click', '.viewAll', function(event) {
         var threadE = $(this).parent(), thread = {thread_id:threadE.attr('id')};
 
-        $.when.apply($, [getRepliesFromThread(thread, threadE.attr('start'))]).then(function() {
-            thread.replies.forEach(function(reply) {
-                addReply(thread.thread_id,reply);
+        $.when.apply($, [getCommentsFromThread(thread, threadE.attr('start'))]).then(function() {
+            thread.comments.forEach(function(comment) {
+                addComment(thread.thread_id,comment);
             });
 
-            if (thread.replies.length < repliesLimit)
+            if (thread.comments.length < commentsLimit)
                 threadE.find('.viewAll').remove();
         });
     });

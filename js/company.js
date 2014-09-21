@@ -5,19 +5,19 @@ function initReview() {
         $.views.helpers({getStatus: getStatus});
         $.views.helpers({getCategoryLabel: getCategoryLabel});
 
-        loadReplies = [];
+        loadComments = [];
 
         threads.forEach(function(thread){
-            loadReplies.push(getRepliesFromThread(thread, 1));
+            loadComments.push(getCommentsFromThread(thread, 1));
         })
 
-        $.when.apply($, loadReplies).then(function() {
+        $.when.apply($, loadComments).then(function() {
             threads.forEach(function(thread){
                 addThread(thread);
 
-                thread.replies.forEach(function(reply, index) {
-                    if (index < repliesLimit)
-                        addReply(thread.thread_id,reply);
+                thread.comments.forEach(function(reply, index) {
+                    if (index < commentsLimit)
+                        addComment(thread.thread_id,reply);
                 })
             })
 
