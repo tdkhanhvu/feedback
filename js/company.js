@@ -14,7 +14,6 @@ function initReview() {
         $.when.apply($, loadComments).then(function() {
             threads.forEach(function(thread){
                 addThread(thread);
-                //alert(threads[0].comments.length);
                 thread.comments.forEach(function(reply, index) {
                     if (index < commentsLimit)
                         addComment(thread.id,reply);
@@ -35,7 +34,7 @@ function initReview() {
 }
 
 function initCompany(companyId) {
-    if (companyId == 'ff_kfc') {
+    if (companyId == 'company_ff_kfc') {
         var branches = [];
         $.when.apply($, [getAllBranchesFromCompany(companyId, branches)]).then(function() {
             var company = {
