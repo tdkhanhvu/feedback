@@ -202,6 +202,3 @@ class MySQL {
 		$this->dbh = null;
 	}
 }
-
-$mysql = new MySQL();
-$mysql->insertIntoThread('xxx', 5, 'sss', 'rrr', 'dddd');
