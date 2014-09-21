@@ -1,10 +1,9 @@
-var repliesLimit = 3;
+var repliesLimit = 2;
 
 
 function addReply(threadId, reply) {
     var review_tmpl = $.templates("#reviewTmpl");
     temp = {
-        replyTo: reply.replyTo
     };
     $.extend(temp, getReviewAttribute(reply));
     review_tmpl.link("#temp", temp);
@@ -45,7 +44,6 @@ function getRepliesFromThread(thread, start) {
                         desc: reply.desc,
                         start: false,
                         time: thread.time,
-                        replyTo: 'Trần Đoàn Khánh Vũ',
                         vote: reply.vote,
                         voteUp:false,
                         voteDown: true

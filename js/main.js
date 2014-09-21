@@ -211,12 +211,12 @@ function initEvent() {
     });
 
     $('body').on('click', '.reply', function() {
-        var temp = $(this).parent().parent().parent();
-        var div = temp.find('> .row:last-child');
-        if (!div.hasClass('comment_box'))
-            temp.append('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><span class="glyphicon glyphicon-camera photo_upload_icon"></span><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
+        var photo = $(this).closest('.comment_detail').find('.uploadphotos');
+        var comment = photo.prev();
+        if (!comment.hasClass('comment_box'))
+            photo.before('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><span class="glyphicon glyphicon-camera photo_upload_icon"></span><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
         else {
-            div.toggle();
+            comment.toggle();
         }
     });
 
@@ -225,7 +225,7 @@ function initEvent() {
 
         parent.find('.avatar').toggle();
         parent.find('.comment_content').toggle();
-        parent.find('.command_button').toggle();
+        //parent.find('.command_button').toggle();
         parent.find('.uploadphotos').toggle();
 
         var comment_box = parent.find('.comment_box');
@@ -274,7 +274,6 @@ function initEvent() {
         var threadE = $(this).parent(), thread = {thread_id:threadE.attr('id')};
 
         $.when.apply($, [getRepliesFromThread(thread, threadE.attr('start'))]).then(function() {
-            //alert(thread.replies[0].replyTo);
             thread.replies.forEach(function(reply) {
                 addReply(thread.thread_id,reply);
             });

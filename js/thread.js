@@ -124,9 +124,9 @@ function initThreadEvent() {
 function getStatus(status) {
     switch(status) {
         case "1":
-            return "<span class='label label-success'>Đã Giải Quyết</span>";
+            return "<span class='label label-success tag'>Đã Giải Quyết</span>";
         case "0":
-            return "<span class='label label-danger'>Chưa Giải Quyết</span>";
+            return "<span class='label label-danger tag'>Chưa Giải Quyết</span>";
         default:
             return "";
     }
@@ -138,13 +138,13 @@ function getCategoryLabel(categories) {
         var temp = "";
         switch(category) {
             case 'service':
-                temp = "<span class='label label-primary'>Phục Vụ</span>";
+                temp = "<span class='label label-primary tag'>Phục Vụ</span>";
                 break;
             case 'park':
-                temp =  "<span class='label label-success'>Giữ Xe</span>";
+                temp =  "<span class='label label-success tag'>Giữ Xe</span>";
                 break;
             case 'product':
-                temp = "<span class='label label-warning'>Sản Phẩm</span>";
+                temp = "<span class='label label-warning tag'>Sản Phẩm</span>";
                 break;
             default:
                 temp = "";
