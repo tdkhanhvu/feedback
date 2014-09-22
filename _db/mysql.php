@@ -179,7 +179,7 @@ class MySQL {
 	}
 
 	// Insert into thread
-	public function insertIntoThread($branch_id, $user_id, $photo, $name, $text) {
+	public function insertIntoThread($branch_id, $user_id, $photo, $name, $text, $rate) {
 		return $this->insertIntoTable('thread', 
 			[
 				['branch_id', $branch_id],
@@ -187,7 +187,8 @@ class MySQL {
 				['photo', $photo],
 				['name', $name],
 				['text', $text],
-				['solved', 1],
+				['rate', $rate],
+				['solved', 0],
 				['time', date('Y-m-d H:i:s')],
 				['rate', 0],
 				['vote', 0],
