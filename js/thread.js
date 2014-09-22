@@ -1,4 +1,3 @@
-var countThreadId = 2;
 var threads = [];
 var allCategories = ['service','park','product'];
 var initFilter = false;
@@ -48,10 +47,7 @@ function getThreadsFromBranch(branchId) {
                         id: thread.id,
                         photo: thread.photo,
                         name: thread.name,
-                        categories: [
-                            'service',
-                            'park'
-                        ],
+                        categories: thread.categories.map(function(obj) {return obj['name']}),
                         text: thread.text,
                         order: thread.order,
                         type: 'thread',
@@ -82,35 +78,48 @@ function getThreadsFromBranch(branchId) {
     });
 }
 
+function insertIntoThread(branchId, text) {
+    $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'InsertIntoThread', 'branchId':branchId, 'userId': userId, 'photo': photo, 'name': userName, 'text': text},
+        dataType: 'json',
+        success: function(result){
+            var categories = new Array();
+            allCategories.forEach(function(category) {
+                if ($('#input_' + category).is(':checked'))
+                    categories.push(category);
+            })
+
+            var thread = {
+                id: result.id,
+                photo: photo,
+                name: userName,
+                categories: categories,
+                text: text,
+                type: 'thread',
+                solved: false,
+                time: (new Date()).toISOString(),
+                rate: $('#feedback').raty('score'),
+                vote: 0,
+                voteUp: false,
+                voteDown: false,
+                replies: []
+            };
+            addThread(thread);
+
+            resetSubmitThreadForm();
+        },
+        error: function(xhr, status, error) {
+            //var err = eval("(" + xhr.responseText + ")");
+            alert(xhr.responseText);
+        }
+    });
+}
+
 function initThreadEvent() {
     $('body').on('click', '.send_thread', function() {
-        countThreadId++;
-        var categories = new Array();
-        allCategories.forEach(function(category) {
-            if ($('#input_' + category).is(':checked'))
-                categories.push(category);
-        })
-
-        var thread = {
-            id: 'thread'+countThreadId,
-            id: 'thread'+countThreadId + '_1',
-            photo: photo,
-            name: userName,
-            categories: categories,
-            text: $('#input_comment').val(),
-            order: countThreadId,
-            type: 'thread',
-            solved: false,
-            time: (new Date()).toISOString(),
-            rate: $('#feedback').raty('score'),
-            vote: 0,
-            voteUp: false,
-            voteDown: false,
-            replies: []
-        };
-        addThread(thread);
-
-        resetSubmitThreadForm();
+        insertIntoThread('company_ff_kfc', $('#input_comment').val());
     });
 
     $('body').on('click', '.cancel_thread', function() {
@@ -134,12 +143,15 @@ function getCategoryLabel(categories) {
     categories.forEach(function(category) {
         var temp = "";
         switch(category) {
+            case 'Phuc Vu':
             case 'service':
                 temp = "<span class='label label-primary tag'>Phục Vụ</span>";
                 break;
+            case 'Giu Xe':
             case 'park':
                 temp =  "<span class='label label-success tag'>Giữ Xe</span>";
                 break;
+            case 'San Pham':
             case 'product':
                 temp = "<span class='label label-warning tag'>Sản Phẩm</span>";
                 break;

@@ -1,4 +1,5 @@
 var userName = "Trần Đoàn Khánh Vũ";
+var userId = 1;
 var photo = "user/user1.jpg";
 var serviceUrl = './_db/WebService.php';
 
