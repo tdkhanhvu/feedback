@@ -123,6 +123,9 @@ class MySQL {
 		foreach ($threads as &$thr) {
 			$cat = $this->selectFromTable('category', [['thread_id', $thr['id']]]);
 			$thr['categories'] = $cat;
+			$user_info = $this->selectFromTable('user', [['id', $thr['user_id']]]);
+			$thr['name'] = $user_info[0]['name'];
+			$thr['photo'] = $user_info[0]['photo'];
 		}
 	    return $threads;
 	}
@@ -130,13 +133,29 @@ class MySQL {
 	// Select all replies from a particular thread
 	public function selectCommentsFromThread($id, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
-	    return $this->selectFromTable('comment', [['thread_id', $id]], null, "LIMIT $start, $length");
+
+		$comments = $this->selectFromTable('comment', [['thread_id', $id]], null, "LIMIT $start, $length");
+		foreach ($comments as &$cmt) {
+			$user_info = $this->selectFromTable('user', [['id', $cmt['user_id']]]);
+			$cmt['name'] = $user_info[0]['name'];
+			$cmt['photo'] = $user_info[0]['photo'];
+		}
+
+	    return $comments;
 	}
 
 	// Select all replies from a particular thread
 	public function selectRepliesFromComment($id, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
-	    return $this->selectFromTable('reply', [['comment_id', $id]], null, "LIMIT $start, $length");
+
+	    $replies = $this->selectFromTable('reply', [['comment_id', $id]], null, "LIMIT $start, $length");
+		foreach ($replies as &$rep) {
+			$user_info = $this->selectFromTable('user', [['id', $rep['user_id']]]);
+			$rep['name'] = $user_info[0]['name'];
+			$rep['photo'] = $user_info[0]['photo'];
+		}
+
+	    return $replies;
 	}
 
 	// Insert
@@ -179,13 +198,11 @@ class MySQL {
 	}
 
 	// Insert into thread
-	public function insertIntoThread($branch_id, $user_id, $photo, $name, $text, $rate) {
+	public function insertIntoThread($branch_id, $user_id, $text, $rate) {
 		return $this->insertIntoTable('thread', 
 			[
 				['branch_id', $branch_id],
 				['user_id', $user_id],
-				['photo', $photo],
-				['name', $name],
 				['text', $text],
 				['rate', $rate],
 				['solved', 0],
@@ -200,7 +217,7 @@ class MySQL {
 	}
 
 	// Insert into comment
-	public function insertIntoComment($thread_id, $user_id, $photo, $name, $text) {
+	public function insertIntoComment($thread_id, $user_id, $text) {
 		// Update comment count in thread
 		$cmt = $this->selectFromTable('thread', [['id',$thread_id]], ['comments']);
 		if ($cmt[0]['comments'] != null) {
@@ -213,8 +230,6 @@ class MySQL {
 			[
 				['thread_id', $thread_id],
 				['user_id', $user_id],
-				['name', $name],
-				['photo', $photo],
 				['text', $text],
 				['time', date('Y-m-d H:i:s')],
 				['vote', 0],
@@ -225,7 +240,7 @@ class MySQL {
 	}
 
 	// Insert into reply
-	public function insertIntoReply($comment_id, $user_id, $photo, $name, $text) {
+	public function insertIntoReply($comment_id, $user_id, $text) {
 		// Update comment count in comment
 		$rep = $this->selectFromTable('comment', [['id',$comment_id]], ['replies']);
 		if ($rep[0]['replies'] != null) {
@@ -238,8 +253,6 @@ class MySQL {
 			[
 				['comment_id', $comment_id],
 				['user_id', $user_id],
-				['name', $name],
-				['photo', $photo],
 				['text', $text],
 				['time', date('Y-m-d H:i:s')],
 				['vote', 0],
