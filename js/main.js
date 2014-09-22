@@ -269,15 +269,15 @@ function initEvent() {
     });
 
     $('body').on('click', '.viewComments', function(event) {
-        var threadE = $(this).parent(), thread = {id:threadE.attr('id')};
+        var threadE = $(this).closest('.mix').find('.post_start'), thread = {id:threadE.attr('id')};
 
-        $.when.apply($, [getCommentsFromThread(thread, threadE.find('.post_start').attr('start'))]).then(function() {
+        $.when.apply($, [getCommentsFromThread(thread, threadE.attr('start'))]).then(function() {
             thread.comments.forEach(function(comment) {
                 addComment(thread.id,comment);
             });
 
             if (thread.comments.length < commentsLimit)
-                threadE.find('.viewComments').remove();
+                threadE.closest('.mix').find('.viewComments').remove();
         });
     });
 
