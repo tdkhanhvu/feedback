@@ -9,8 +9,6 @@ $(function(){
     getIndustryList(initIndustry);
     initRating();
 
-    initReview();
-
     $('.collapse').collapse();
 
     $('.right-preview').css('height',$(window).height());
@@ -322,6 +320,17 @@ function initEvent() {
     /*
      end close company popup window
      */
+
+    $(function(){
+        $('.right-preview').scroll(function(){
+            //console.log($('.right-preview').scrollTop() + ' ' + $('.right-preview').height() + ' ' + lastThread.offset().top);
+            console.log(lastThread.offset().top + ' ' + lastThread.height() + ' ' + $('.right-preview').height());
+            if (lastThread.offset().top + lastThread.height() - 200 < $('.right-preview').height()) {
+                loadThread(1);
+            } else {
+            }
+        });
+    });
 }
 
 function closeCompanyInfo() {

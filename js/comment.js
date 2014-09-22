@@ -9,7 +9,7 @@ function addComment(threadId, comment) {
     $.extend(temp, getReviewAttribute(comment));
     comment_tmpl.link("#temp", temp);
 
-    var thread = $('#' + threadId);
+    var thread = $('#parent_' + threadId);
     var viewAll = thread.find('.viewComments');
     if (viewAll.length) {
         viewAll.before($('#temp').html());

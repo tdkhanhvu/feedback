@@ -22,7 +22,16 @@
             encodeId($result, 'branch');
             break;
         case "GetThreadsFromBranch":
-            $result = $mysql->selectThreadsFromBranch(decodeId($_POST['branchId']));
+            $start = 1;
+            $limit = 10;
+
+            if (isset($_POST['start']))
+                $start = $_POST['start'];
+            if (isset($_POST['limit']))
+                $limit = $_POST['limit'];
+
+            $result = $mysql->selectThreadsFromBranch(decodeId($_POST['branchId']), $start, $limit);
+
             encodeId($result, 'thread');
 
             break;
@@ -33,6 +42,10 @@
         case "GetRepliesFromComment":
             $result = $mysql->selectRepliesFromComment(decodeId($_POST['commentId']),$_POST['start']);
             encodeId($result, 'reply');
+            break;
+        case "InsertIntoThread":
+            $result = $mysql->insertIntoThread(decodeId($_POST['branchId']),decodeId($_POST['userId']),$_POST['photo'],$_POST['name'],$_POST['text']);
+            //encodeId($result, 'reply');
             break;
         default:
             break;
@@ -47,6 +60,7 @@ function decodeId($id) {
     $id = str_replace('thread_','',$id);
     $id = str_replace('comment_','',$id);
     $id = str_replace('reply_','',$id);
+    $id = str_replace('user','',$id);
     return $id;
 }
 
@@ -58,7 +72,8 @@ function encodeId(&$result, $type) {
             case 'thread':
             case 'comment':
             case 'reply':
-            $value['id'] = $type . '_' . $value['id'];
+            case 'user':
+                $value['id'] = $type . '_' . $value['id'];
                 break;
             default:
                 break;

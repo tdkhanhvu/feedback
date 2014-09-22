@@ -1,26 +1,35 @@
 var threads = [];
 var allCategories = ['service','park','product'];
 var initFilter = false;
+var lastThread = null;
+var startThread = 1;
 
 function addThread(thread) {
-    var thread_tmpl = $.templates("#threadTmpl");
+    var thread_tmpl = $.templates("#threadTmpl"),
+        review_tmpl = $.templates("#reviewTmpl"),
+        temp = {
+            solved: thread.solved,
+            categories: thread.categories,
+            ratingId: 'rating' + thread.id
+        };
+
+//    insertDom(thread_tmpl, {
+//        id : 'parent_' + thread.id,
+//        category: thread.categories.join(' '),
+//        order: thread.order
+//    }, 'Container');
 
     thread_tmpl.link("#temp", {
-        id : thread.id,
+        id : 'parent_' + thread.id,
         category: thread.categories.join(' '),
         order: thread.order
     });
-    $('#Container').append($('#temp').html());
+
+    $('#Container').mixItUp('append',$('#temp').find('div'));
     $('#temp').html('');
 
-    var review_tmpl = $.templates("#reviewTmpl");
-    var temp = {
-        solved: thread.solved,
-        categories: thread.categories,
-        ratingId: 'rating' + thread.id
-    };
     $.extend(temp, getReviewAttribute(thread));
-    review_tmpl.link("#" + thread.id, temp);
+    insertDom(review_tmpl , temp, 'parent_' + thread.id)
     $('#rating' + thread.id).raty({
         readOnly: true,
         score: thread.rate
@@ -28,18 +37,23 @@ function addThread(thread) {
 
     $("time.timeago").timeago();
 
-    if ($('#button_all').hasClass('active'))
-        $('#button_service').click();
-    $('#button_all').click();
+
+    //if ($('#button_all').hasClass('active'))
+    //    $('#button_service').click();
+    //$('#button_all').click();
+    lastThread = $('#parent_' + thread.id);
+    startThread++;
 }
 
-function getThreadsFromBranch(branchId) {
+function getThreadsFromBranch(branchId, limit) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'GetThreadsFromBranch', 'branchId':branchId},
+        data: {'request':'GetThreadsFromBranch', 'branchId':branchId, 'start': startThread, 'limit': limit},
         dataType: 'json',
         success: function(result){
+            threads = [];
+
             for (var i = 0; i < result.length; i++) {
                 var thread = result[i];
                 threads.push(
@@ -47,7 +61,7 @@ function getThreadsFromBranch(branchId) {
                         id: thread.id,
                         photo: thread.photo,
                         name: thread.name,
-                        categories: thread.categories.map(function(obj) {return obj['name']}),
+                        categories: thread.categories.map(function(obj) {return convertCategoryLabel(obj['name'])}),
                         text: thread.text,
                         order: thread.order,
                         type: 'thread',
@@ -92,7 +106,7 @@ function insertIntoThread(branchId, text) {
             })
 
             var thread = {
-                id: result.id,
+                id: result,
                 photo: photo,
                 name: userName,
                 categories: categories,
@@ -119,7 +133,7 @@ function insertIntoThread(branchId, text) {
 
 function initThreadEvent() {
     $('body').on('click', '.send_thread', function() {
-        insertIntoThread('company_ff_kfc', $('#input_comment').val());
+        insertIntoThread('branch_kfc_1', $('#input_comment').val());
     });
 
     $('body').on('click', '.cancel_thread', function() {
@@ -143,15 +157,12 @@ function getCategoryLabel(categories) {
     categories.forEach(function(category) {
         var temp = "";
         switch(category) {
-            case 'Phuc Vu':
             case 'service':
                 temp = "<span class='label label-primary tag'>Phục Vụ</span>";
                 break;
-            case 'Giu Xe':
             case 'park':
                 temp =  "<span class='label label-success tag'>Giữ Xe</span>";
                 break;
-            case 'San Pham':
             case 'product':
                 temp = "<span class='label label-warning tag'>Sản Phẩm</span>";
                 break;
@@ -161,6 +172,21 @@ function getCategoryLabel(categories) {
         result = result + temp + "\n";
     })
     return result;
+}
+
+function convertCategoryLabel(category) {
+    switch(category) {
+        case 'Phuc Vu':
+            return "service";
+        case 'Giu Xe':
+            return "park";
+        case 'San Pham':
+            return "product";
+        default:
+            return '';
+    }
+
+    return '';
 }
 
 function resetSubmitThreadForm() {
@@ -174,4 +200,24 @@ function resetSubmitThreadForm() {
     //var id = $('.comment_box').find('form').attr('id');
     //(Dropzone("#" + id)).removeAllFiles(true);
     //alert((Dropzone("#" + id)).files);
+}
+
+function loadThread(numOfThread) {
+    $.when.apply($, [getThreadsFromBranch('kfc_1',numOfThread)]).then(function() {
+        loadComments = [];
+
+        threads.forEach(function(thread){
+            loadComments.push(getCommentsFromThread(thread, 1));
+        })
+
+        $.when.apply($, loadComments).then(function() {
+            threads.forEach(function(thread){
+                addThread(thread);
+                thread.comments.forEach(function(reply, index) {
+                    if (index < commentsLimit)
+                        addComment(thread.id,reply);
+                })
+            })
+        });
+    });
 }

@@ -1,36 +1,15 @@
 var companies = [];
 
 function initReview() {
-    $.when.apply($, [getThreadsFromBranch('kfc_1')]).then(function() {
-        $.views.helpers({getStatus: getStatus});
-        $.views.helpers({getCategoryLabel: getCategoryLabel});
+    $.views.helpers({getStatus: getStatus});
+    $.views.helpers({getCategoryLabel: getCategoryLabel});
 
-        loadComments = [];
+    //if (!initFilter) {
+        $('#Container').mixItUp({animation:{effect: 'translateY'}});
+    //    initFilter = true;
+    //}
 
-        threads.forEach(function(thread){
-            loadComments.push(getCommentsFromThread(thread, 1));
-        })
-
-        $.when.apply($, loadComments).then(function() {
-            threads.forEach(function(thread){
-                addThread(thread);
-                thread.comments.forEach(function(reply, index) {
-                    if (index < commentsLimit)
-                        addComment(thread.id,reply);
-                })
-            })
-
-            $( document ).ready(function() {
-                //hide all replies at beginning
-                $('.minimize').each(function() {
-                    var min = $(this);
-
-                    if (!min.closest('.comment_detail').hasClass('post_start'))
-                        min.trigger('click');
-                });
-            });
-        });
-    });
+    loadThread(2);
 }
 
 function initCompany(companyId) {
@@ -49,15 +28,13 @@ function initCompany(companyId) {
             $("#branch_list").select2({maximumSelectionSize: 1 });
             $('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
 
-            if (!initFilter) {
-                $('#Container').mixItUp();
-                initFilter = true;
-            }
             $('#overlay').css('display','block');
 
             $('.right-preview').toggleClass('unscrollable');
             $('.wrapper').toggleClass('unscrollable');
         });
+
+        initReview();
     }
 }
 
