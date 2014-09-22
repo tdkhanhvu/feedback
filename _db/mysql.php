@@ -122,7 +122,7 @@ class MySQL {
 		$threads = $this->selectFromTable('thread', [['branch_id', $id]], null, "LIMIT $start, $length");
 		foreach ($threads as &$thr) {
 			$cat = $this->selectFromTable('category', [['thread_id', $thr['id']]]);
-			$thr['category'] = $cat;
+			$thr['categories'] = $cat;
 		}
 	    return $threads;
 	}
