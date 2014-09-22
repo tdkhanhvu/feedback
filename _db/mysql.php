@@ -168,14 +168,14 @@ class MySQL {
 			}
 
 			$stm->execute();
-			return true;
+			return $this->dbh->lastInsertId('id');
 		}
 		catch(PDOException $e) {
 		    echo $e->getMessage();
 		}
 
 		// No result
-		return false;
+		return -1;
 	}
 
 	// Insert into thread
