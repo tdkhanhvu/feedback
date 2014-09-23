@@ -60,3 +60,27 @@ function getAllBranchesFromCompany(companyId, branches) {
         }
     });
 }
+
+function getCompaniesByIndustryId(industryId, industryName) {
+    return $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'GetAllCompaniesFromIndustries', 'industryId':industryId},
+        dataType: 'json',
+        success: function(result){
+            for (var i = 0; i < result.length; i++) {
+                var company = result[i];
+                companies.push(
+                    {
+                        industryName : industryName,
+                        companyName : company.name,
+                        companyPhoto : company.image,
+                        id: company.id
+                    });
+            }
+        },
+        error: function(xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
+}

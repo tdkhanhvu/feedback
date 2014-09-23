@@ -50,8 +50,6 @@ function getRepliesFromComment(comment, start) {
             }
         },
         error: function(xhr, status, error) {
-            //var err = eval("(" + xhr.responseText + ")");
-            //alert(err.Message);
             alert(xhr.responseText);
         }
     });

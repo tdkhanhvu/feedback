@@ -13,12 +13,6 @@ function addThread(thread) {
             ratingId: 'rating' + thread.id
         };
 
-//    insertDom(thread_tmpl, {
-//        id : 'parent_' + thread.id,
-//        category: thread.categories.join(' '),
-//        order: thread.order
-//    }, 'Container');
-
     thread_tmpl.link("#temp", {
         id : 'parent_' + thread.id,
         category: thread.categories.join(' '),
@@ -37,10 +31,6 @@ function addThread(thread) {
 
     $("time.timeago").timeago();
 
-
-    //if ($('#button_all').hasClass('active'))
-    //    $('#button_service').click();
-    //$('#button_all').click();
     lastThread = $('#parent_' + thread.id);
     startThread++;
 }
@@ -86,19 +76,21 @@ function getThreadsFromBranch(branchId, limit) {
             }
         },
         error: function(xhr, status, error) {
-            //var err = eval("(" + xhr.responseText + ")");
             alert(xhr.responseText);
         }
     });
 }
 
 function insertIntoThread(branchId, text) {
+    var rate = $('#feedback').raty('score');
+    alert(branchId + ' ' + userId + ' ' + text + ' ' + rate);
     $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'InsertIntoThread', 'branchId':branchId, 'userId': userId, 'photo': photo, 'name': userName, 'text': text},
+        data: {'request':'InsertIntoThread', 'branchId':branchId, 'userId': userId, 'text': text, 'rate': rate},
         dataType: 'json',
         success: function(result){
+            alert(result);
             var categories = new Array();
             allCategories.forEach(function(category) {
                 if ($('#input_' + category).is(':checked'))
@@ -112,9 +104,9 @@ function insertIntoThread(branchId, text) {
                 categories: categories,
                 text: text,
                 type: 'thread',
-                solved: false,
+                solved: '0',
                 time: (new Date()).toISOString(),
-                rate: $('#feedback').raty('score'),
+                rate: rate,
                 vote: 0,
                 voteUp: false,
                 voteDown: false,
@@ -125,7 +117,6 @@ function insertIntoThread(branchId, text) {
             resetSubmitThreadForm();
         },
         error: function(xhr, status, error) {
-            //var err = eval("(" + xhr.responseText + ")");
             alert(xhr.responseText);
         }
     });

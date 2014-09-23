@@ -44,8 +44,7 @@
             encodeId($result, 'reply');
             break;
         case "InsertIntoThread":
-            $result = $mysql->insertIntoThread(decodeId($_POST['branchId']),decodeId($_POST['userId']),$_POST['photo'],$_POST['name'],$_POST['text']);
-            //encodeId($result, 'reply');
+            $result = $mysql->insertIntoThread(decodeId($_POST['branchId']),decodeId($_POST['userId']),$_POST['text'],$_POST['rate']);
             break;
         default:
             break;

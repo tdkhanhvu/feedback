@@ -112,8 +112,6 @@ function initRating() {
     });
 }
 
-
-
 function getReviewAttribute(obj) {
     console.log(obj);
     return {
@@ -152,33 +150,6 @@ function getIndustryList(callback) {
         }
     });
 }
-
-function getCompaniesByIndustryId(industryId, industryName) {
-    return $.ajax({
-        url: serviceUrl,
-        type: "post",
-        data: {'request':'GetAllCompaniesFromIndustries', 'industryId':industryId},
-        dataType: 'json',
-        success: function(result){
-            for (var i = 0; i < result.length; i++) {
-                var company = result[i];
-                companies.push(
-                    {
-                        industryName : industryName,
-                        companyName : company.name,
-                        companyPhoto : company.image,
-                        id: company.id
-                    });
-            }
-        },
-        error: function(xhr, status, error) {
-            //var err = eval("(" + xhr.responseText + ")");
-            alert(xhr.responseText);
-        }
-    });
-}
-
-
 
 function initEvent() {
     $(document).on('click', ".company", function() {
@@ -223,7 +194,6 @@ function initEvent() {
 
         parent.find('.avatar').toggle();
         parent.find('.comment_content').toggle();
-        //parent.find('.command_button').toggle();
         parent.find('.uploadphotos').toggle();
 
         var comment_box = parent.find('.comment_box');
