@@ -2,6 +2,7 @@ var userName = "Trần Đoàn Khánh Vũ";
 var userId = 'user_1';
 var photo = "user/user1.jpg";
 var serviceUrl = './_db/WebService.php';
+var disableLoadThread = false;
 
 var overlayDisable = false;
 $(function(){
@@ -254,9 +255,9 @@ function initEvent() {
 
     $(function(){
         $('.right-preview').scroll(function(){
-            //console.log($('.right-preview').scrollTop() + ' ' + $('.right-preview').height() + ' ' + lastThread.offset().top);
             console.log(lastThread.offset().top + ' ' + lastThread.height() + ' ' + $('.right-preview').height());
-            if (lastThread.offset().top + lastThread.height() - 200 < $('.right-preview').height()) {
+            if (!disableLoadThread && lastThread.offset().top + lastThread.height() - 200 < $('.right-preview').height()) {
+                disableLoadThread = true;
                 loadThread(1);
             } else {
             }

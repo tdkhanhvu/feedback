@@ -33,6 +33,7 @@ function addThread(thread) {
 
     lastThread = $('#parent_' + thread.id);
     startThread++;
+    disableLoadThread = false;
 }
 
 function getThreadsFromBranch(branchId, limit) {
@@ -82,8 +83,7 @@ function getThreadsFromBranch(branchId, limit) {
 }
 
 function createNewThread(branchId, text) {
-    var rate = $('#feedback').raty('score');
-    alert(branchId + ' ' + userId + ' ' + text + ' ' + rate);
+    var rate = $('#feedback').raty('score') || 0;
     $.ajax({
         url: serviceUrl,
         type: "post",
