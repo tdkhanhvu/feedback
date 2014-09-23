@@ -114,7 +114,7 @@
 <script id="companyTmpl" type="text/x-jsrender">
     <div style="width:100%;margin:0 auto;">
         <p id="select_branch_text" >Chọn chi nhánh</p>
-        <select multiple="multiple" id="branch_list" style="width:100%">
+        <select id="branch_list" style="width:100%">
             {^{for branches}}
               <option value={{:id}}>{{:name}}</option>
             {{/for}}
