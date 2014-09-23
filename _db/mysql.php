@@ -198,8 +198,10 @@ class MySQL {
 	}
 
 	// Insert into thread
-	public function insertIntoThread($branch_id, $user_id, $text, $rate) {
-		return $this->insertIntoTable('thread', 
+	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat) {
+		$cats = isset($cat) ? json_decode($cat) : null;
+
+		$thr_id = $this->insertIntoTable('thread', 
 			[
 				['branch_id', $branch_id],
 				['user_id', $user_id],
@@ -211,8 +213,33 @@ class MySQL {
 				['up', 0],
 				['spam', 1],
 				['comments', 0]
-			]
-		);
+			]);
+
+		foreach ($cats as $cat) {
+			$name = '';
+			switch ($cat) {
+				case 1:
+					$name = 'Phuc Vu';
+					break;
+
+				case 2:
+					$name = 'Giu Xe';
+					break;
+
+				case 3:
+					$name = 'San Pham';
+					break;
+			}
+
+			$this->insertIntoTable('category', 
+				[
+					['thread_id', $thr_id],
+					['cat', $cat],
+					['name', $name],
+				]);
+		}
+
+		return $thr_id;
 	}
 
 	// Insert into comment
