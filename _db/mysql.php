@@ -207,7 +207,6 @@ class MySQL {
 				['rate', $rate],
 				['solved', 0],
 				['time', date('Y-m-d H:i:s')],
-				['rate', 0],
 				['vote', 0],
 				['up', 0],
 				['spam', 1],
