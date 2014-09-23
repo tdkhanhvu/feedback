@@ -1,5 +1,5 @@
 var userName = "Trần Đoàn Khánh Vũ";
-var userId = 1;
+var userId = 'user_1';
 var photo = "user/user1.jpg";
 var serviceUrl = './_db/WebService.php';
 
@@ -157,27 +157,7 @@ function initEvent() {
     });
 
     initThreadEvent();
-    $('body').on('click', '.send_comment', function() {
-        var post = $(this).parent().parent().parent();
-        var comment = {
-            id: Math.floor((Math.random() * 100000) + 1),
-            photo: photo,
-            name: userName,
-            text: $(this).parent().find('input').val(),
-            type: 'comment',
-            time: (new Date()).toISOString(),
-            vote: 0,
-            voteUp:false,
-            voteDown: false
-        };
-        addComment(post.parent().attr('id'),comment);
-
-        $(this).parent().parent().remove();
-    });
-
-    $('body').on('click', '.cancel_comment', function() {
-        $(this).parent().parent().remove();
-    });
+    initCommentEvent();
 
     $('body').on('click', '.reply', function() {
         var photo = $(this).closest('.comment_detail').find('.uploadphotos');
@@ -236,19 +216,6 @@ function initEvent() {
 
             $("#" + id).dropzone({ url: "upload.php", addRemoveLinks: true });
         }
-    });
-
-    $('body').on('click', '.viewComments', function(event) {
-        var threadE = $(this).closest('.mix').find('.post_start'), thread = {id:threadE.attr('id')};
-
-        $.when.apply($, [getCommentsFromThread(thread, threadE.attr('start'))]).then(function() {
-            thread.comments.forEach(function(comment) {
-                addComment(thread.id,comment);
-            });
-
-            if (thread.comments.length < commentsLimit)
-                threadE.closest('.mix').find('.viewComments').remove();
-        });
     });
 
     $('body').on('click', '.viewReplies', function(event) {
