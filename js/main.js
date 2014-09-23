@@ -254,14 +254,8 @@ function initEvent() {
      */
 
     $(function(){
-        $('.right-preview').scroll(function(){
-            console.log(lastThread.offset().top + ' ' + lastThread.height() + ' ' + $('.right-preview').height());
-            if (!disableLoadThread && lastThread.offset().top + lastThread.height() - 200 < $('.right-preview').height()) {
-                disableLoadThread = true;
-                loadThread(1);
-            } else {
-            }
-        });
+        $(document).on('mousewheel', '.right-preview', loadMoreThreads);
+        //$('.right-preview').scroll(loadMoreThreads);
     });
 }
 
@@ -271,4 +265,15 @@ function closeCompanyInfo() {
 
     $('.right-preview').toggleClass('unscrollable');
     $('.wrapper').toggleClass('unscrollable');
+}
+
+function loadMoreThreads() {
+    var el = $(this);
+
+    console.log(lastThread.offset().top + ' ' + lastThread.height() + ' ' + el.height());
+    if (!disableLoadThread && lastThread.offset().top + lastThread.height() - 200 < el.height()) {
+        disableLoadThread = true;
+        loadThread(1);
+    } else {
+    }
 }
