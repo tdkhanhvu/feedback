@@ -1,26 +1,13 @@
 var repliesLimit = 5;
 
 function addReply(commentId, reply) {
-    var reply_tmpl = $.templates("#reviewTmpl");
-    temp = {
-    };
+    var reply_tmpl = $.templates("#reviewTmpl"),
+        temp = {},
+        comment = $('#' + commentId),
+        viewAll = comment.find('.viewReplies');
     $.extend(temp, getReviewAttribute(reply));
-    reply_tmpl.link("#temp", temp);
 
-    var comment = $('#' + commentId);
-    var viewAll = comment.find('.viewReplies');
-    if (viewAll.length) {
-        viewAll.before($('#temp').html());
-    }
-    else
-    {
-        comment.append($('#temp').html());
-
-        if (comment.find('>div').length > repliesLimit)
-            comment.append('<div class="viewReplies"><span class="glyphicon glyphicon-reply"></span><a>View more replies</a></div>');
-    }
-
-    $('#temp').html('');
+    insertDom(reply_tmpl, temp, commentId);
     comment.attr('start', parseInt(comment.attr('start')) + 1);
     $("time.timeago").timeago();
 }
@@ -103,15 +90,47 @@ function initReplyEvent() {
     });
 
     $('body').on('click', '.viewReplies', function(event) {
-        var commentE = $(this).closest('.comment_detail'), comment = {id:commentE.attr('id')};
+        var commentE = $(this).closest('.comment_detail'),
+            replies = commentE.find('.reply_content');
+
+        if (!replies.length) {
+            commentE.find('.previousReplies').trigger('click');
+        }
+        else {
+            var prevReplies = commentE.find('.previousReplies');
+            $(this).hide();
+            replies.show();
+            commentE.find('.hideReplies').show();
+            if (prevReplies.length)
+                prevReplies.show();
+        }
+    });
+
+    $('body').on('click', '.previousReplies', function(event) {
+        var prev = $(this),
+            commentE = prev.closest('.comment_detail'),
+            comment = {id:commentE.attr('id')};
 
         $.when.apply($, [getRepliesFromComment(comment, commentE.attr('start'))]).then(function() {
             comment.replies.forEach(function(reply) {
                 addReply(comment.id,reply);
             });
 
-            if (comment.replies.length < repliesLimit)
-                commentE.find('.viewReplies').remove();
+            prev.show();
+            commentE.find('.hideReplies').show();
+            commentE.find('.viewReplies').hide();
+            if (comment.replies.length < 10)
+                prev.remove();
         });
+    });
+
+    $('body').on('click', '.hideReplies', function(event) {
+        var commentE = $(this).closest('.comment_detail'),
+            prevReplies = commentE.find('.previousReplies');
+        $(this).hide();
+        commentE.find('.viewReplies').show();
+        commentE.find('.reply_content').hide();
+        if (prevReplies.length)
+            prevReplies.hide();
     });
 }

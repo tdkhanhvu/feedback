@@ -59,7 +59,7 @@
                 {{else}}
                     <div class="col-md-11" style="padding:0">
                 {{/if}}
-                        <h5 style="margin:5px;float:left"><span style="color: rgb(141, 30, 30);margin-right:5px;">{{:name}}</span>{{:text}}</h5>
+                        <h5 style="margin:2%;float:left"><span style="color: rgb(141, 30, 30);margin-right:5px;">{{:name}}</span>{{:text}}</h5>
                     </div>
 
                     <div class="col-md-1">
@@ -107,7 +107,9 @@
         </div>
 
         {{if type == 'comment' && replies > 0}}
-            <div class="viewReplies"><span class="glyphicon glyphicon-comment"></span><a>All Replies</a></div>
+            <div class="viewReplies"><span class="glyphicon glyphicon-comment"></span><a>View Replies</a></div>
+            <div class="hideReplies"><span class="glyphicon glyphicon-chevron-up"></span><a>Hide Replies</a></div>
+            <div class="previousReplies"><span class="glyphicon glyphicon-comment"></span><a>Previous Replies</a></div>
         {{/if}}
     </div>
 </script>

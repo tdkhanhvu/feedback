@@ -99,8 +99,8 @@
     padding-top: 0;
 }
 
-.comment_detail, .viewComments {
-    margin:5px 0;
+.comment_detail{
+    margin: 1% 2%;
 }
 
 .post_start {
@@ -243,12 +243,14 @@ footer .row > div {
     border: 1px solid black;
 }
 
-.viewComments, .viewReplies {
+.viewComments, .viewReplies, .hideReplies, .previousReplies {
     cursor: pointer;
+    background-color: #f0f1f3;
 }
 
-.viewComments > span, .viewReplies > span {
+.viewComments > span, .viewReplies > span, .previousReplies > span, .hideReplies > span {
     margin: 0 2%;
+    color: #3b5998;
 }
 
 .tag {
@@ -272,6 +274,20 @@ footer .row > div {
     margin-top: 10px;
 }
 
-.viewReplies, .reply_content {
-    margin-left: 40px;
+.viewReplies, .reply_content, .hideReplies, .previousReplies, .viewComments {
+    margin-left: 7%;
+    margin-right: 2%;
+    padding: 1% 0;
+}
+
+.viewComments {
+    margin-left: 2%;
+}
+
+.viewReplies {
+    margin-right: 0.5%;
+}
+
+.hideReplies, .previousReplies {
+    display:none;
 }

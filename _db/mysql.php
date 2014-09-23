@@ -211,7 +211,7 @@ class MySQL {
 				['time', date('Y-m-d H:i:s', strtotime("5 hours"))],
 				['up', 0],
 				['down', 0],
-				['spam', 1],
+				['spam', 0],
 				['comments', 0]
 			]);
 
