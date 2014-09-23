@@ -77,7 +77,7 @@
                         <img class="action_icon" src="images/icon/social/glyphicons_social_02_google_plus.png"/>
                         <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
 
-                        {{if userName != name}}
+                        {{if type != 'reply'}}
                             <button type="button" class="btn btn-success reply">Trả Lời</button>
                         {{/if}}
 
