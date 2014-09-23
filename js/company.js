@@ -25,8 +25,8 @@ function initCompany(companyId) {
                 branches: branches
             };
             $.templates("#companyTmpl").link('#companyInfo', company);
-            $("#branch_list").select2({maximumSelectionSize: 1 });
-            $('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
+            $("#branch_list").select2();
+            //$('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
 
             $('#overlay').css('display','block');
 
