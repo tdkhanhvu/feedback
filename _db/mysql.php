@@ -206,7 +206,7 @@ class MySQL {
 				['text', $text],
 				['rate', $rate],
 				['solved', 0],
-				['time', date('Y-m-d H:i:s')],
+				['time', date('Y-m-d H:i:s', strtotime("5 hours"))],
 				['vote', 0],
 				['up', 0],
 				['spam', 1],
