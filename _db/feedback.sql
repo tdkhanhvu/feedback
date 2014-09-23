@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2014 at 08:54 PM
+-- Generation Time: Sep 23, 2014 at 06:51 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -79,32 +79,30 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `thread_id` int(11) NOT NULL,
   `user_id` text NOT NULL,
-  `name` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
-  `photo` text NOT NULL,
   `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `time` datetime NOT NULL,
-  `vote` int(11) NOT NULL,
   `up` int(11) NOT NULL,
+  `down` int(11) NOT NULL,
   `replies` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`id`, `thread_id`, `user_id`, `name`, `photo`, `text`, `time`, `vote`, `up`, `replies`) VALUES
-(1, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'comment một', '2014-09-01 00:00:00', 0, 0, 11),
-(2, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'comment hai', '2014-09-02 00:00:00', 0, 0, 0),
-(3, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'ba', '2014-09-03 00:00:00', 0, 0, 0),
-(4, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'bốn', '0000-00-00 00:00:00', 0, 0, 0),
-(5, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'năm', '2014-09-05 00:00:00', 0, 0, 0),
-(6, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'sáu', '2014-09-06 00:00:00', 0, 0, 0),
-(7, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'bảy', '2014-09-07 00:00:00', 0, 0, 0),
-(8, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'tám', '2014-09-08 00:00:00', 0, 0, 0),
-(9, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'chín', '2014-09-09 00:00:00', 0, 0, 0),
-(10, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'mười', '2014-09-10 00:00:00', 0, 0, 0),
-(11, 1, '2', 'Nguyễn Duy Long', 'user/user2.jpg', 'mười một', '2014-09-11 00:00:00', 0, 0, 0);
+INSERT INTO `comment` (`id`, `thread_id`, `user_id`, `text`, `time`, `up`, `down`, `replies`) VALUES
+(1, 1, '2', 'comment một', '2014-09-01 00:00:00', 0, 0, 11),
+(2, 1, '2', 'comment hai', '2014-09-02 00:00:00', 0, 0, 0),
+(3, 1, '2', 'ba', '2014-09-03 00:00:00', 0, 0, 0),
+(4, 1, '2', 'bốn', '0000-00-00 00:00:00', 0, 0, 0),
+(5, 1, '2', 'năm', '2014-09-05 00:00:00', 0, 0, 0),
+(6, 1, '2', 'sáu', '2014-09-06 00:00:00', 0, 0, 0),
+(7, 1, '2', 'bảy', '2014-09-07 00:00:00', 0, 0, 0),
+(8, 1, '2', 'tám', '2014-09-08 00:00:00', 0, 0, 0),
+(9, 1, '2', 'chín', '2014-09-09 00:00:00', 0, 0, 0),
+(10, 1, '2', 'mười', '2014-09-10 00:00:00', 0, 0, 0),
+(11, 1, '2', 'mười một', '2014-09-11 00:00:00', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -298,31 +296,29 @@ CREATE TABLE IF NOT EXISTS `reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `name` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
-  `photo` text NOT NULL,
   `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `time` datetime NOT NULL,
-  `vote` int(11) NOT NULL,
   `up` int(11) NOT NULL,
+  `down` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `reply`
 --
 
-INSERT INTO `reply` (`id`, `comment_id`, `user_id`, `name`, `photo`, `text`, `time`, `vote`, `up`) VALUES
-(1, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'một', '2014-09-01 00:00:00', 0, 0),
-(2, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'hai', '2014-09-01 00:00:00', 0, 0),
-(3, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'ba', '2014-09-02 00:00:00', 0, 0),
-(4, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'bốn', '2014-09-03 00:00:00', 0, 0),
-(5, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'năm', '2014-09-05 00:00:00', 0, 0),
-(6, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'sáu', '2014-09-06 00:00:00', 0, 0),
-(7, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'bảy', '2014-09-07 00:00:00', 0, 0),
-(8, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'tám', '2014-09-08 00:00:00', 0, 0),
-(9, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'chín', '2014-09-09 00:00:00', 0, 0),
-(10, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'mười', '2014-09-10 00:00:00', 0, 0),
-(11, 1, 2, 'Nguyễn Duy Long', 'user/user2.jpg', 'mười một', '2014-09-11 00:00:00', 0, 0);
+INSERT INTO `reply` (`id`, `comment_id`, `user_id`, `text`, `time`, `up`, `down`) VALUES
+(1, 1, 2, 'một', '2014-09-01 00:00:00', 0, 0),
+(2, 1, 2, 'hai', '2014-09-01 00:00:00', 0, 0),
+(3, 1, 2, 'ba', '2014-09-02 00:00:00', 0, 0),
+(4, 1, 2, 'bốn', '2014-09-03 00:00:00', 0, 0),
+(5, 1, 2, 'năm', '2014-09-05 00:00:00', 0, 0),
+(6, 1, 2, 'sáu', '2014-09-06 00:00:00', 0, 0),
+(7, 1, 2, 'bảy', '2014-09-07 00:00:00', 0, 0),
+(8, 1, 2, 'tám', '2014-09-08 00:00:00', 0, 0),
+(9, 1, 2, 'chín', '2014-09-09 00:00:00', 0, 0),
+(10, 1, 2, 'mười', '2014-09-10 00:00:00', 0, 0),
+(11, 1, 2, 'mười một', '2014-09-11 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -334,26 +330,24 @@ CREATE TABLE IF NOT EXISTS `thread` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `branch_id` varchar(64) NOT NULL,
   `user_id` varchar(128) NOT NULL,
-  `photo` text NOT NULL,
-  `name` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `solved` int(1) NOT NULL,
   `time` datetime NOT NULL,
   `rate` int(11) NOT NULL,
-  `vote` int(11) NOT NULL,
   `up` int(11) NOT NULL,
+  `down` int(11) NOT NULL,
   `spam` int(1) NOT NULL,
   `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `thread`
 --
 
-INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `photo`, `name`, `solved`, `time`, `rate`, `vote`, `up`, `spam`, `text`, `comments`) VALUES
-(1, 'kfc_1', '2', 'user/user2.jpg', 'Nguyễn Duy Long', 1, '2014-09-17 00:00:00', 2, 8, 5, 0, 'Hôm nay trời đẹp', 11),
-(2, 'kfc_1', '1', 'user/user1.jpg', 'Trần Đoàn Khánh Vũ', 0, '2014-09-09 00:00:00', 3, 8, 2, 0, 'Hôm nay vui', 0);
+INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `rate`, `up`, `down`, `spam`, `text`, `comments`) VALUES
+(1, 'kfc_1', '2', 1, '2014-09-17 00:00:00', 2, 9, 7, 0, 'Hôm nay trời đẹp', 12),
+(2, 'kfc_1', '1', 0, '2014-09-09 00:00:00', 3, 8, 2, 0, 'Hôm nay vui', 0);
 
 -- --------------------------------------------------------
 

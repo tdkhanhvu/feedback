@@ -209,8 +209,8 @@ class MySQL {
 				['rate', $rate],
 				['solved', 0],
 				['time', date('Y-m-d H:i:s', strtotime("5 hours"))],
-				['vote', 0],
 				['up', 0],
+				['down', 0],
 				['spam', 1],
 				['comments', 0]
 			]);
@@ -258,8 +258,8 @@ class MySQL {
 				['user_id', $user_id],
 				['text', $text],
 				['time', date('Y-m-d H:i:s')],
-				['vote', 0],
 				['up', 0],
+				['down', 0],
 				['replies', 0]
 			]
 		);
@@ -281,8 +281,8 @@ class MySQL {
 				['user_id', $user_id],
 				['text', $text],
 				['time', date('Y-m-d H:i:s')],
-				['vote', 0],
 				['up', 0],
+				['down', 0],
 			]
 		);
 	}
@@ -328,6 +328,31 @@ class MySQL {
 
 		// No result
 		return false;
+	}
+
+	// Up / Down vote
+	public function vote($table, $id, $action = 'up') {
+		$items = $this->selectFromTable($table, [['id', $id]]);
+		$item = count($items) > 0 ? $items[0] : null;
+
+		if (isset($items)) {
+			$up = intval($item['up']);
+			$down = intval($item['down']);
+
+			if ($action == 'up') {
+				$up++;
+				$this->updateTable($table, [['up', $up]], [['id', $id]]);
+				return $up;
+			}
+			else {
+				$down++;
+				$this->updateTable($table, [['down', $down]], [['id', $id]]);
+				return $down;
+			}
+		}
+		else {
+			return -1;
+		}
 	}
 
 	// Destruction
