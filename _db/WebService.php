@@ -55,6 +55,12 @@
             if ($result != "0")
                 $result = 'comment_' . $result;
             break;
+        case "InsertIntoReply":
+            $result = $mysql->insertIntoReply(decodeId($_POST['commentId']),decodeId($_POST['userId']),$_POST['text']);
+
+            if ($result != "0")
+                $result = 'reply_' . $result;
+            break;
         default:
             break;
     }

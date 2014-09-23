@@ -158,12 +158,19 @@ function initEvent() {
 
     initThreadEvent();
     initCommentEvent();
+    initReplyEvent();
 
     $('body').on('click', '.reply', function() {
-        var photo = $(this).closest('.comment_detail').find('.uploadphotos');
-        var comment = photo.prev();
-        if (!comment.hasClass('comment_box'))
-            photo.before('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><span class="glyphicon glyphicon-camera photo_upload_icon"></span><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
+        var comment_detail = $(this).closest('.comment_detail'),
+            photo = comment_detail.find('.uploadphotos'),
+            comment = photo.prev();
+
+        if (!comment.hasClass('comment_box')) {
+            if (comment_detail.hasClass('post_start'))
+                photo.before('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><span class="glyphicon glyphicon-camera photo_upload_icon"></span><button type="button" class="btn btn-danger cancel_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_comment" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
+            else
+                photo.before('<div class="row comment_box"><div class="col-md-11" style="margin-left:30px;"><input type="text" class="form-control" placeholder="Nhập nhận xét"><span class="glyphicon glyphicon-camera photo_upload_icon"></span><button type="button" class="btn btn-danger cancel_reply" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button><button type="button" class="btn btn-success send_reply" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button></div></div>');
+        }
         else {
             comment.toggle();
         }
@@ -216,19 +223,6 @@ function initEvent() {
 
             $("#" + id).dropzone({ url: "upload.php", addRemoveLinks: true });
         }
-    });
-
-    $('body').on('click', '.viewReplies', function(event) {
-        var commentE = $(this).closest('.comment_detail'), comment = {id:commentE.attr('id')};
-
-        $.when.apply($, [getRepliesFromComment(comment, commentE.attr('start'))]).then(function() {
-            comment.replies.forEach(function(reply) {
-                addReply(comment.id,reply);
-            });
-
-            if (comment.replies.length < repliesLimit)
-                commentE.find('.viewReplies').remove();
-        });
     });
 
     /*
