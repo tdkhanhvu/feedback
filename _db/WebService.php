@@ -5,6 +5,10 @@
 
     if (isset($_POST['request']))
         $request = $_POST['request'];
+
+    // echo '<pre>';
+    // print_r($_POST);
+    // echo '</pre>';
     $mysql = new MySQL();
     $result = [];
 

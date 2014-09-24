@@ -93,6 +93,9 @@ function createNewThread(branchId, text) {
         }
     })
 
+    // console.log('HERE');
+    // console.log(temp);
+    temp = [1,2,3];
     $.ajax({
         url: serviceUrl,
         type: "post",
@@ -121,7 +124,7 @@ function createNewThread(branchId, text) {
             }
         },
         error: function(xhr, status, error) {
-            alert(xhr.responseText);
+            alert(xhr.responseText +'xxx');
         }
     });
 }
