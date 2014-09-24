@@ -83,20 +83,23 @@ function getThreadsFromBranch(branchId, limit) {
 }
 
 function createNewThread(branchId, text) {
-    var rate = $('#feedback').raty('score') || 0;
+    var rate = $('#feedback').raty('score') || 0,
+        categories = new Array(),
+        temp = {};
+    allCategories.forEach(function(category) {
+        if ($('#input_' + category).is(':checked')) {
+            categories.push(category);
+            temp[convertCategoryLabelToInt(category)] = '';
+        }
+    })
+
     $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'InsertIntoThread', 'branchId':branchId, 'userId': userId, 'text': text, 'rate': rate},
+        data: {'request':'InsertIntoThread', 'branchId':branchId, 'userId': userId, 'text': text, 'rate': rate, 'category': JSON.stringify(temp)},
         dataType: 'json',
         success: function(result){
             if (result != '0') {
-                var categories = new Array();
-                allCategories.forEach(function(category) {
-                    if ($('#input_' + category).is(':checked'))
-                        categories.push(category);
-                })
-
                 var thread = {
                     id: result,
                     photo: photo,
@@ -179,6 +182,21 @@ function convertCategoryLabel(category) {
     }
 
     return '';
+}
+
+function convertCategoryLabelToInt(category) {
+    switch(category) {
+        case 'service':
+            return 1;
+        case 'park':
+            return 2;
+        case 'product':
+            return 3;
+        default:
+            return -1;
+    }
+
+    return -1;
 }
 
 function resetSubmitThreadForm() {
