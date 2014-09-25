@@ -5,7 +5,7 @@ function addReply(commentId, reply) {
         temp = {},
         comment = $('#' + commentId),
         viewAll = comment.find('.viewReplies');
-    $.extend(temp, getReviewAttribute(reply));
+    $.extend(temp, getPostAttribute(reply));
 
     insertDom(reply_tmpl, temp, commentId);
     comment.attr('start', parseInt(comment.attr('start')) + 1);
@@ -21,19 +21,11 @@ function getRepliesFromComment(comment, start) {
         success: function(result){
             comment.replies = [];
             for (var i = 0; i < result.length; i++) {
-                var reply = result[i];
-                comment.replies.push(
-                    {
-                        id: reply.id,
-                        photo: 'firm/kfc.jpg',
-                        name: 'KFC',
-                        text: reply.text,
-                        type: 'reply',
-                        time: reply.time,
-                        vote: reply.vote,
-                        voteUp:false,
-                        voteDown: true
-                    });
+                var reply = result[i],
+                    temp = {type: 'reply'};
+                $.extend(temp, extractAjaxPostAttribute(reply));
+
+                comment.replies.push(temp);
             }
         },
         error: function(xhr, status, error) {

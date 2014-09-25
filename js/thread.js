@@ -10,9 +10,7 @@ function addThread(thread) {
         temp = {
             solved: thread.solved,
             categories: thread.categories,
-            ratingId: 'rating' + thread.id,
-            userId: thread.user_id,
-            ownPost: thread.user_id == userId
+            ratingId: 'rating' + thread.id
         };
 
     thread_tmpl.link("#temp", {
@@ -24,7 +22,7 @@ function addThread(thread) {
     $('#Container').mixItUp('append',$('#temp').find('div'));
     $('#temp').html('');
 
-    $.extend(temp, getReviewAttribute(thread));
+    $.extend(temp, getPostAttribute(thread));
     insertDom(review_tmpl , temp, 'parent_' + thread.id)
     $('#rating' + thread.id).raty({
         readOnly: true,
@@ -48,23 +46,13 @@ function getThreadsFromBranch(branchId, limit) {
             threads = [];
 
             for (var i = 0; i < result.length; i++) {
-                var thread = result[i];
-                threads.push(
-                    {
-                        id: thread.id,
-                        photo: thread.photo,
-                        name: thread.name,
+                var thread = result[i],
+                    temp = {
                         categories: thread.categories.map(function(obj) {return convertCategoryLabel(obj['name'])}),
-                        text: thread.text,
                         order: thread.order,
                         type: 'thread',
                         solved: thread.solved,
-                        time: thread.time,
                         rate: thread.rate,
-                        vote: thread.vote,
-                        voteUp: false,
-                        voteDown: false,
-                        user_id: thread.user_id,
                         uploadphotos: [
                             {
                                 photo: '1.jpg'
@@ -74,9 +62,10 @@ function getThreadsFromBranch(branchId, limit) {
                             },
                             {
                                 photo: '3.jpg'
-                            }
-                        ]
-                    });
+                        }]
+                    };
+                $.extend(temp, extractAjaxPostAttribute(thread));
+                threads.push(temp);
             }
         },
         error: function(xhr, status, error) {

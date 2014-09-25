@@ -113,8 +113,7 @@ function initRating() {
     });
 }
 
-function getReviewAttribute(obj) {
-    console.log(obj);
+function getPostAttribute(obj) {
     return {
         id : obj.id,
         type: obj.type,
@@ -126,7 +125,23 @@ function getReviewAttribute(obj) {
         voteUp: obj.voteUp,
         voteDown: obj.voteDown,
         userName: userName,
-        uploadphotos: obj.uploadphotos
+        uploadphotos: obj.uploadphotos,
+        ownPost: obj.user_id == userId
+    }
+}
+
+function extractAjaxPostAttribute(obj) {
+    return {
+        id : obj.id,
+        name: obj.name,
+        photo: obj.photo,
+        text: obj.text,
+        time: obj.time,
+        vote: obj.vote,
+        voteUp: false,
+        voteDown: false,
+        //uploadphotos: obj.uploadphotos,
+        user_id: obj.user_id
     }
 }
 

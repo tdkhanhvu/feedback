@@ -40,7 +40,7 @@
                 <div id="{{:ratingId}}" style="float:right"></div>
             </div>
         </div>
-        <div class='comment_detail post_start' start='1' id={{:id}} userId={{:userId}}>
+        <div class='comment_detail post_start' start='1' id={{:id}}>
     {{else}}
         {{if type == 'comment'}}
             <div class='comment_detail' start='1' id={{:id}}>
@@ -69,7 +69,7 @@
                                 <span class="action_icon accept glyphicon glyphicon-ok"></span>
                             {{/if}}
                         {{else}}
-                            <span class="action_icon flag glyphicon glyphicon-flag"></span>
+                            <span class="action_icon flag glyphicon glyphicon-flag" userId={{:userId}}></span>
                         {{/if}}
                     </div>
                 </div>

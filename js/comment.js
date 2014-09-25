@@ -6,7 +6,7 @@ function addComment(threadId, comment) {
     temp = {
         replies: comment.replies
     };
-    $.extend(temp, getReviewAttribute(comment));
+    $.extend(temp, getPostAttribute(comment));
     comment_tmpl.link("#temp", temp);
 
     var threadParent = $('#parent_' + threadId);
@@ -39,20 +39,13 @@ function getCommentsFromThread(thread, start) {
             thread.comments = [];
             //alert('result ' + result.length);
             for (var i = 0; i < result.length; i++) {
-                var comment = result[i];
-                thread.comments.push(
-                    {
-                        id: comment.id,
-                        photo: 'firm/kfc.jpg',
-                        name: 'KFC',
-                        text: comment.text,
+                var comment = result[i],
+                    temp = {
                         type: 'comment',
-                        time: comment.time,
-                        vote: comment.vote,
-                        voteUp:false,
-                        voteDown: true,
                         replies: comment.replies
-                    });
+                    };
+                $.extend(temp, extractAjaxPostAttribute(comment));
+                thread.comments.push(temp);
             }
         },
         error: function(xhr, status, error) {
