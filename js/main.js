@@ -154,7 +154,17 @@ function getIndustryList(callback) {
 
 function initEvent() {
     $(document).on('click', ".company", function() {
-        initCompany($(this).parent().attr('id'));
+        var temp = $(this).parent().attr('id');
+
+        if (companyId != temp) {
+            companyId = temp;
+            initCompany();
+        }
+
+        $('#overlay').show();
+
+        $('.right-preview').toggleClass('unscrollable');
+        $('.wrapper').toggleClass('unscrollable');
     });
 
     initThreadEvent();

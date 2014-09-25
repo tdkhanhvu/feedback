@@ -1,7 +1,7 @@
 var companies = [];
 var branchId = '';
-
-function initCompany(companyId) {
+var companyId = '';
+function initCompany() {
     if (companyId == 'company_ff_kfc') {
         var branches = [];
         $.when.apply($, [getAllBranchesFromCompany(companyId, branches)]).then(function() {
@@ -17,13 +17,6 @@ function initCompany(companyId) {
             $.templates("#companyTmpl").link('#companyInfo', company);
             $("#branch_list").select2();
             $("#branch_list").on("change", function(e) { loadBranchInfo(e)});
-
-            $('#overlay').css('display','block');
-
-            $('.right-preview').toggleClass('unscrollable');
-            $('.wrapper').toggleClass('unscrollable');
-
-
 
             if (!initFilter) {
                 $.views.helpers({getStatus: getStatus});
