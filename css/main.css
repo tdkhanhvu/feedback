@@ -81,6 +81,7 @@
 .up {
     float: right;
     color: green;
+    margin-left: 10px;
 }
 
 .down {
@@ -282,6 +283,7 @@ footer .row > div {
 
 .viewComments {
     margin-left: 2%;
+    margin-bottom: 1%;
 }
 
 .viewReplies {

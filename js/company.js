@@ -1,16 +1,5 @@
 var companies = [];
-
-function initReview() {
-    $.views.helpers({getStatus: getStatus});
-    $.views.helpers({getCategoryLabel: getCategoryLabel});
-
-    //if (!initFilter) {
-        $('#Container').mixItUp({animation:{effect: 'translateY'}});
-    //    initFilter = true;
-    //}
-
-    loadThread(2);
-}
+var branchId = '';
 
 function initCompany(companyId) {
     if (companyId == 'company_ff_kfc') {
@@ -24,18 +13,35 @@ function initCompany(companyId) {
                 phone: '0123456789',
                 branches: branches
             };
+            branchId = branches[0].id;
             $.templates("#companyTmpl").link('#companyInfo', company);
             $("#branch_list").select2();
-            //$('#s2id_branch_list').append('<img style="position:absolute;width:30px;top:0px;right:0px;" src="./css/dropdown/search.png"/>');
+            $("#branch_list").on("change", function(e) { loadBranchInfo(e)});
 
             $('#overlay').css('display','block');
 
             $('.right-preview').toggleClass('unscrollable');
             $('.wrapper').toggleClass('unscrollable');
-        });
 
-        initReview();
+
+
+            if (!initFilter) {
+                $.views.helpers({getStatus: getStatus});
+                $.views.helpers({getCategoryLabel: getCategoryLabel});
+
+                $('#Container').mixItUp({animation:{effect: 'translateY'}});
+                initFilter = true;
+            }
+            loadThread(2);
+        });
     }
+}
+
+function loadBranchInfo(e) {
+    $('#Container').find('.mix').remove();
+    branchId = e.val;
+    startThread = 1;
+    loadThread(2);
 }
 
 function getAllBranchesFromCompany(companyId, branches) {

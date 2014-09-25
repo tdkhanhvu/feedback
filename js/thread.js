@@ -85,17 +85,14 @@ function getThreadsFromBranch(branchId, limit) {
 function createNewThread(branchId, text) {
     var rate = $('#feedback').raty('score') || 0,
         categories = new Array(),
-        temp = {};
+        temp = new Array();
     allCategories.forEach(function(category) {
         if ($('#input_' + category).is(':checked')) {
             categories.push(category);
-            temp[convertCategoryLabelToInt(category)] = '';
+            temp.push(convertCategoryLabelToInt(category));
         }
     })
 
-    // console.log('HERE');
-    // console.log(temp);
-    temp = [1,2,3];
     $.ajax({
         url: serviceUrl,
         type: "post",
@@ -124,14 +121,14 @@ function createNewThread(branchId, text) {
             }
         },
         error: function(xhr, status, error) {
-            alert(xhr.responseText +'xxx');
+            alert(xhr.responseText);
         }
     });
 }
 
 function initThreadEvent() {
     $('body').on('click', '.send_thread', function() {
-        createNewThread('branch_kfc_1', $('#input_comment').val());
+        createNewThread(branchId, $('#input_comment').val());
     });
 
     $('body').on('click', '.cancel_thread', function() {
@@ -216,7 +213,7 @@ function resetSubmitThreadForm() {
 }
 
 function loadThread(numOfThread) {
-    $.when.apply($, [getThreadsFromBranch('kfc_1',numOfThread)]).then(function() {
+    $.when.apply($, [getThreadsFromBranch(branchId,numOfThread)]).then(function() {
         loadComments = [];
 
         threads.forEach(function(thread){
