@@ -207,9 +207,12 @@ function initEvent() {
         var temp = $(this).closest('.comment_detail');
 
         if (temp.hasClass('post_start')) {
-            temp.parent().find('.comment_detail').each(function() {
-                $(this).html('You have flagged this comment as spam');
+            var container = temp.closest('.mix');
+            container.find('.comment_detail').each(function() {
+                $(this).html('You have flagged this as spam');
             });
+
+            container.find('.viewComments').remove();
         }
         else temp.html('You have flagged this comment as spam');
     });

@@ -12,7 +12,7 @@ function addThread(thread) {
             categories: thread.categories,
             ratingId: 'rating' + thread.id,
             userId: thread.user_id,
-            ownThread: thread.user_id == userId
+            ownPost: thread.user_id == userId
         };
 
     thread_tmpl.link("#temp", {
@@ -116,6 +116,7 @@ function createNewThread(branchId, text) {
                     vote: 0,
                     voteUp: false,
                     voteDown: false,
+                    user_id: userId,
                     comments: []
                 };
                 addThread(thread);

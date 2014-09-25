@@ -64,8 +64,10 @@
 
                     <div class="col-md-1">
                         <!-- <span class="action_icon minimize glyphicon glyphicon-minus"></span> -->
-                        {{if ownThread}}
-                            <span class="action_icon accept glyphicon glyphicon-ok"></span>
+                        {{if ownPost}}
+                            {{if solved == '0'}}
+                                <span class="action_icon accept glyphicon glyphicon-ok"></span>
+                            {{/if}}
                         {{else}}
                             <span class="action_icon flag glyphicon glyphicon-flag"></span>
                         {{/if}}
