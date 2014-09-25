@@ -78,6 +78,12 @@
     opacity: 0;
 }
 
+.accept {
+    float: right;
+    color: rgb(11, 182, 29);
+    opacity: 0;
+}
+
 .up {
     float: right;
     color: green;

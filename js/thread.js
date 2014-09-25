@@ -10,7 +10,9 @@ function addThread(thread) {
         temp = {
             solved: thread.solved,
             categories: thread.categories,
-            ratingId: 'rating' + thread.id
+            ratingId: 'rating' + thread.id,
+            userId: thread.user_id,
+            ownThread: thread.user_id == userId
         };
 
     thread_tmpl.link("#temp", {
@@ -62,6 +64,7 @@ function getThreadsFromBranch(branchId, limit) {
                         vote: thread.vote,
                         voteUp: false,
                         voteDown: false,
+                        user_id: thread.user_id,
                         uploadphotos: [
                             {
                                 photo: '1.jpg'

@@ -38,6 +38,9 @@
 
             encodeId($result, 'thread');
 
+            foreach ($result as &$value) {
+                $value['user_id'] = 'user_' . $value['user_id'];
+            }
             break;
         case "GetCommentsFromThread":
             $result = $mysql->selectCommentsFromThread(decodeId($_POST['threadId']),$_POST['start']);
