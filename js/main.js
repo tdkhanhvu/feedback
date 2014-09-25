@@ -173,7 +173,7 @@ function initEvent() {
 
     $('body').on('click', '.reply', function() {
         var comment_detail = $(this).closest('.comment_detail'),
-            photo = comment_detail.find('.uploadphotos'),
+            photo = comment_detail.find('>.uploadphotos'),
             comment = photo.prev();
 
         if (!comment.hasClass('comment_box')) {
