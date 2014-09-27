@@ -28,7 +28,7 @@
 </li>
 </script>
 <script id="threadTmpl" type="text/x-jsrender">
-    <div id='{{:id}}' class='mix {{:category}}' data-myorder='{{:order}}'>
+    <div id='{{:id}}' class='mix {{:category}} {{:solve}}' data-myorder='{{:order}}'>
     </div>
 </script>
 <script id="reviewTmpl" type="text/x-jsrender">

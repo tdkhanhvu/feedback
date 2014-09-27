@@ -16,7 +16,8 @@ function addThread(thread) {
     thread_tmpl.link("#temp", {
         id : 'parent_' + thread.id,
         category: thread.categories.join(' '),
-        order: thread.order
+        order: thread.order,
+        solve: thread.solved == '0' ? 'unsolved' : 'solved'
     });
 
     $('#Container').mixItUp('append',$('#temp').find('div'));

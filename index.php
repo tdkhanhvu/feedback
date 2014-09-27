@@ -97,10 +97,10 @@
                                 <div class="controls" style="position:fixed; right: 0; z-index: 1; padding: 0%; width: 8%; top: 5%;">
 
                                     <p>Phân Loại</p>
-                                    <p id="button_all" class="filter bg-primary" data-filter="all">
+                                    <p class="filter bg-primary" data-filter="all">
                                         Tất Cả
                                     </p>
-                                    <p id="button_service" class="filter" data-filter=".service">
+                                    <p class="filter" data-filter=".service">
                                         Phục Vụ
                                     </p>
                                     <p class="filter" data-filter=".park">
@@ -108,6 +108,17 @@
                                     </p>
                                     <p class="filter" data-filter=".product">
                                         Sản Phẩm
+                                    </p>
+
+                                    <p style="margin-top: 20%;">Xử Lý</p>
+                                    <p class="filter bg-primary" data-filter="all">
+                                        Tất Cả
+                                    </p>
+                                    <p class="filter" data-filter=".solved">
+                                        Xử Lý
+                                    </p>
+                                    <p class="filter" data-filter=".unsolved">
+                                        Chưa Xử Lý
                                     </p>
 
                                     <p style="margin-top: 20%;">Thời Gian</p>
