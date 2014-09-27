@@ -119,6 +119,7 @@
     display: none;
     margin-bottom: 2%;
     background-color: #fafbfb;
+    border-radius: 7px;
 }
 
 .controls{
@@ -298,4 +299,8 @@ footer .row > div {
 
 .hideReplies, .previousReplies {
     display:none;
+}
+
+.label {
+    font-size: 90%;
 }
