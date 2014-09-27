@@ -1,10 +1,10 @@
-var userName = "Trần Đoàn Khánh Vũ";
-var userId = 'user_1';
-var photo = "user/user1.jpg";
-var serviceUrl = './_db/WebService.php';
-var disableLoadThread = false;
-
-var overlayDisable = false;
+var userName = "Trần Đoàn Khánh Vũ",
+    userId = 'user_1',
+    photo = "user/user1.jpg",
+    serviceUrl = './_db/WebService.php',
+    disableLoadThread = false,
+    uploaders = [],
+    overlayDisable = false;
 $(function(){
     initEvent();
     getIndustryList(initIndustry);
@@ -250,7 +250,11 @@ function initEvent() {
             var id = 'upload-' + $.now();
             $('<form action="/file-upload" class="dropzone" id="' + id + '"></form>').insertAfter(icon);
 
-            $("#" + id).dropzone({ url: "upload.php", addRemoveLinks: true });
+            Dropzone.autoDiscover = false;
+            uploaders[id] = new Dropzone("#" + id, {
+                url: "upload.php",
+                addRemoveLinks: true
+            });
         }
     });
 
@@ -304,4 +308,9 @@ function loadMoreThreads() {
         loadThread(1);
     } else {
     }
+}
+
+function clearUploadedPhotos(formId) {
+    uploaders[formId].removeAllFiles(true);
+    $('#' + formId).hide();
 }

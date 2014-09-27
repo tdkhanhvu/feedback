@@ -74,11 +74,11 @@ function createNewReply(commentId) {
 function initReplyEvent() {
     $('body').on('click', '.send_reply', function() {
         createNewReply($(this).closest('.comment_detail').attr('id'));
+        resetReplyForm($(this).closest('.comment_box'));
     });
 
     $('body').on('click', '.cancel_reply', function() {
-        $(this).closest('.comment_box').toggle()
-            .find('input').val('');
+        resetReplyForm($(this).closest('.comment_box'));
     });
 
     $('body').on('click', '.viewReplies', function(event) {
@@ -125,4 +125,11 @@ function initReplyEvent() {
         if (prevReplies.length)
             prevReplies.hide();
     });
+}
+
+function resetReplyForm(cmtBox) {
+    var form = cmtBox.find('form');
+    cmtBox.hide()
+        .find('input').val('');
+    clearUploadedPhotos(form.attr('id'));
 }

@@ -193,16 +193,17 @@ function convertCategoryLabelToInt(category) {
 }
 
 function resetSubmitThreadForm() {
+    var feedbackId = $('#feedback');
+
     $('#input_comment').val('');
-    $('#feedback').raty('cancel', false);
+    feedbackId.raty('cancel', false);
+
     allCategories.forEach(function(category) {
         $('#input_' + category).attr('checked', false)
             .parent().removeClass('active');
     })
 
-    //var id = $('.comment_box').find('form').attr('id');
-    //(Dropzone("#" + id)).removeAllFiles(true);
-    //alert((Dropzone("#" + id)).files);
+    clearUploadedPhotos(feedbackId.parent().find('form').attr('id'));
 }
 
 function loadThread(numOfThread) {

@@ -94,11 +94,11 @@ function createNewComment(threadId) {
 function initCommentEvent() {
     $('body').on('click', '.send_comment', function() {
         createNewComment($(this).closest('.post_start').attr('id'));
+        resetCommentForm($(this).closest('.comment_box'));
     });
 
     $('body').on('click', '.cancel_comment', function() {
-        $(this).closest('.comment_box').toggle()
-            .find('input').val('');
+        resetCommentForm($(this).closest('.comment_box'));
     });
 
     $('body').on('click', '.viewComments', function(event) {
@@ -113,4 +113,11 @@ function initCommentEvent() {
                 threadE.closest('.mix').find('.viewComments').remove();
         });
     });
+}
+
+function resetCommentForm(cmtBox) {
+    var form = cmtBox.find('form');
+    cmtBox.hide()
+        .find('input').val('');
+    clearUploadedPhotos(form.attr('id'));
 }
