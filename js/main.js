@@ -241,8 +241,8 @@ function initEvent() {
     });
 
     $('body').on('click', '.photo_upload_icon', function() {
-        var icon = $(this);
-        var form = icon.parent().find('form');
+        var icon = $(this),
+            form = icon.parent().find('form');
         if (form.length) {
             form.toggle();
         }
@@ -321,4 +321,18 @@ function getUploadedPhoto(form) {
     });
 
     return fileNames;
+}
+
+function removeFileFromServer(fileName) {
+    $.ajax({
+        url: './upload.php',
+        type: "post",
+        data: {'fileName':fileName},
+        dataType: 'json',
+        success: function(result){
+        },
+        error: function(xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
 }

@@ -466,6 +466,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         }
       },
       removedfile: function(file) {
+        removeFileFromServer(file.uploadName);
         var _ref;
         if (file.previewElement) {
           if ((_ref = file.previewElement) != null) {

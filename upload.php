@@ -15,5 +15,12 @@ if (!empty($_FILES)) {
 
     //return filename in server
     echo substr($mainFile, strrpos($mainFile,"\\") + 1);
+} else {
+    $targetPath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . $upload_dir . DIRECTORY_SEPARATOR.$_POST['fileName'];
+    $result['result'] = $targetPath;
+
+    unlink($targetPath);
+
+    echo json_encode($result);
 }
 ?>
