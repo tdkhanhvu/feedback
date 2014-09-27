@@ -530,9 +530,10 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       totaluploadprogress: noop,
       sending: noop,
       sendingmultiple: noop,
-      success: function(file) {
+      success: function(file, response) {
+        file.uploadName = response;
         if (file.previewElement) {
-          return file.previewElement.classList.add("dz-success");
+            return file.previewElement.classList.add("dz-success");
         }
       },
       successmultiple: noop,

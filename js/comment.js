@@ -59,6 +59,7 @@ function createNewComment(threadId) {
         comment_box = thread.find('.comment_box'),
         input = comment_box.find('input'),
         text = input.val(),
+        uploadPhotos = getUploadedPhoto(comment_box.find('form')),
         comment = {};
 
     $.ajax({

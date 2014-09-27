@@ -77,6 +77,7 @@ function getThreadsFromBranch(branchId, limit) {
 function createNewThread(branchId, text) {
     var rate = $('#feedback').raty('score') || 0,
         categories = new Array(),
+        uploadPhotos = getUploadedPhoto($('#feedback').parent().find('form')),
         temp = new Array();
     allCategories.forEach(function(category) {
         if ($('#input_' + category).is(':checked')) {

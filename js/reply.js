@@ -39,6 +39,7 @@ function createNewReply(commentId) {
         comment_box = comment.find('.comment_box'),
         input = comment_box.find('input'),
         text = input.val(),
+        uploadPhotos = getUploadedPhoto(comment_box.find('form')),
         reply = {};
 
     $.ajax({

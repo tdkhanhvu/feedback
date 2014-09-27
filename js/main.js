@@ -247,7 +247,7 @@ function initEvent() {
             form.toggle();
         }
         else {
-            var id = 'upload-' + $.now();
+            var id = 'upload_' + $.now();
             $('<form action="/file-upload" class="dropzone" id="' + id + '"></form>').insertAfter(icon);
 
             Dropzone.autoDiscover = false;
@@ -300,10 +300,7 @@ function closeCompanyInfo() {
 }
 
 function loadMoreThreads() {
-    var el = $(this);
-
-    console.log(lastThread.offset().top + ' ' + lastThread.height() + ' ' + el.height());
-    if (!disableLoadThread && lastThread.offset().top + lastThread.height() - 200 < el.height()) {
+    if (!disableLoadThread && lastThread.offset().top + lastThread.height() - 200 < $(this).height()) {
         disableLoadThread = true;
         loadThread(1);
     } else {
@@ -313,4 +310,15 @@ function loadMoreThreads() {
 function clearUploadedPhotos(formId) {
     uploaders[formId].removeAllFiles(true);
     $('#' + formId).hide();
+}
+
+function getUploadedPhoto(form) {
+    var formId = form.attr('id'),
+        fileNames = [];
+
+    uploaders[formId].files.forEach(function(file) {
+        fileNames.push(file.uploadName);
+    });
+
+    return fileNames;
 }
