@@ -54,7 +54,7 @@ function getCommentsFromThread(thread, start) {
     });
 }
 
-function createNewComment(threadId) {
+function createNewComment(threadId, cmtBox) {
     var thread = $('#' + threadId),
         comment_box = thread.find('.comment_box'),
         input = comment_box.find('input'),
@@ -84,6 +84,9 @@ function createNewComment(threadId) {
 
                 input.val('');
                 comment_box.toggle();
+
+                removeImageFromPreview(cmtBox);
+                resetCommentForm(cmtBox);
             }
         },
         error: function(xhr, status, error) {
@@ -94,8 +97,7 @@ function createNewComment(threadId) {
 
 function initCommentEvent() {
     $('body').on('click', '.send_comment', function() {
-        createNewComment($(this).closest('.post_start').attr('id'));
-        resetCommentForm($(this).closest('.comment_box'));
+        createNewComment($(this).closest('.post_start').attr('id'), $(this).closest('.comment_box'));
     });
 
     $('body').on('click', '.cancel_comment', function() {

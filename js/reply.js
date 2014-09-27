@@ -34,7 +34,7 @@ function getRepliesFromComment(comment, start) {
     });
 }
 
-function createNewReply(commentId) {
+function createNewReply(commentId, cmtBox) {
     var comment = $('#' + commentId),
         comment_box = comment.find('.comment_box'),
         input = comment_box.find('input'),
@@ -64,6 +64,9 @@ function createNewReply(commentId) {
 
                 input.val('');
                 comment_box.toggle();
+
+                removeImageFromPreview(cmtBox);
+                resetReplyForm(cmtBox);
             }
         },
         error: function(xhr, status, error) {
@@ -74,8 +77,7 @@ function createNewReply(commentId) {
 
 function initReplyEvent() {
     $('body').on('click', '.send_reply', function() {
-        createNewReply($(this).closest('.comment_detail').attr('id'));
-        resetReplyForm($(this).closest('.comment_box'));
+        createNewReply($(this).closest('.comment_detail').attr('id'), $(this).closest('.comment_box'));
     });
 
     $('body').on('click', '.cancel_reply', function() {

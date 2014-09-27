@@ -336,3 +336,12 @@ function removeFileFromServer(fileName) {
         }
     });
 }
+
+function removeImageFromPreview(cmtBox) {
+    var form = cmtBox.parent().find('form'),
+        formId = form.attr('id');
+
+    uploaders[formId].files.forEach(function(file) {
+        file.keepFile = true;
+    });
+}

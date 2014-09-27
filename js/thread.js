@@ -111,6 +111,7 @@ function createNewThread(branchId, text) {
                 };
                 addThread(thread);
 
+                removeImageFromPreview($('#feedback').closest('.comment_box'));
                 resetSubmitThreadForm();
             }
         },
