@@ -2,6 +2,39 @@
     display:none;
 }
 
+body {
+    background-color: rgb(89, 92, 91);
+}
+
+.container > header, main {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1% 0;
+}
+
+.container > header {
+    position: relative;
+}
+
+.container > header h1 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 700;
+    color: #666;
+    float: left;
+    text-shadow: 0 0 1px rgba(0,0,0,0.2);
+    display: inline-block;
+    width: 50%;
+    min-width: 320px;
+}
+
+.container > header h1 span {
+    display: block;
+    font-size: 15px;
+    font-weight: 300;
+}
+
 /*company info*/
 .left-menu
 {
