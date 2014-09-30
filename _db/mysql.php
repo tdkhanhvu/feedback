@@ -15,7 +15,7 @@ class MySQL {
 
 		$this->items = ['thread', 'comment', 'reply'];
 		$this->votes = ['up', 'down'];
-		$this->id_types = ['fb_id'];
+		$this->acc_types = ['fb_id'];
 	}
 
 	// Query
@@ -146,11 +146,11 @@ class MySQL {
 	}
 
 	// Select all voters up/down from Item ID
-	public function selectVotersFromItemID($item_type, $vote_type, $item_id, $id_type = 'fb_id') {
+	public function selectVotersFromItemID($item_type, $vote_type, $item_id, $acc_type = 'fb_id') {
 		if (in_array($item_type, $this->items) && in_array($vote_type, $this->votes)) {
 			$table_name = $item_type.'_'.$vote_type;
 			$arg = $item_type.'_id';
-			return $this->selectFromTable($table_name, [[$arg, $item_id]], [$id_type]);
+			return $this->selectFromTable($table_name, [[$arg, $item_id]], [$acc_type]);
 		}
 		return -1;
 	}
@@ -285,11 +285,11 @@ class MySQL {
 	}
 
 	// Insert vote up/down to Item ID
-	public function insertVoteIntoItem($item_type, $vote_type, $item_id, $user_id, $id_type = 'fb_id') {
+	public function insertVoteIntoItem($item_type, $vote_type, $item_id, $user_id, $acc_type = 'fb_id') {
 		if (in_array($item_type, $this->items) && in_array($vote_type, $this->votes)) {
 			$table_name = $item_type.'_'.$vote_type;
 			$arg = $item_type.'_id';
-			$this->insertIntoTable($table_name, [[$arg, $item_id], [$id_type, $user_id]]);
+			$this->insertIntoTable($table_name, [[$arg, $item_id], [$acc_type, $user_id]]);
 			return true;
 		}
 		return false;
