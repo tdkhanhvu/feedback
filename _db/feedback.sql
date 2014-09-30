@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2014 at 06:51 PM
+-- Generation Time: Sep 30, 2014 at 09:17 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -103,6 +103,28 @@ INSERT INTO `comment` (`id`, `thread_id`, `user_id`, `text`, `time`, `up`, `down
 (9, 1, '2', 'chín', '2014-09-09 00:00:00', 0, 0, 0),
 (10, 1, '2', 'mười', '2014-09-10 00:00:00', 0, 0, 0),
 (11, 1, '2', 'mười một', '2014-09-11 00:00:00', 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment_down`
+--
+
+CREATE TABLE IF NOT EXISTS `comment_down` (
+  `comment_id` int(11) NOT NULL,
+  `fb_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment_up`
+--
+
+CREATE TABLE IF NOT EXISTS `comment_up` (
+  `comment_id` int(11) NOT NULL,
+  `fb_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -323,6 +345,28 @@ INSERT INTO `reply` (`id`, `comment_id`, `user_id`, `text`, `time`, `up`, `down`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reply_down`
+--
+
+CREATE TABLE IF NOT EXISTS `reply_down` (
+  `reply_id` int(11) NOT NULL,
+  `fb_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reply_up`
+--
+
+CREATE TABLE IF NOT EXISTS `reply_up` (
+  `reply_id` int(11) NOT NULL,
+  `fb_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `thread`
 --
 
@@ -339,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `thread` (
   `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `thread`
@@ -348,6 +392,28 @@ CREATE TABLE IF NOT EXISTS `thread` (
 INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `rate`, `up`, `down`, `spam`, `text`, `comments`) VALUES
 (1, 'kfc_1', '2', 1, '2014-09-17 00:00:00', 2, 9, 7, 0, 'Hôm nay trời đẹp', 12),
 (2, 'kfc_1', '1', 0, '2014-09-09 00:00:00', 3, 8, 2, 0, 'Hôm nay vui', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thread_down`
+--
+
+CREATE TABLE IF NOT EXISTS `thread_down` (
+  `thread_id` int(11) NOT NULL,
+  `fb_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thread_up`
+--
+
+CREATE TABLE IF NOT EXISTS `thread_up` (
+  `thread_id` int(11) NOT NULL,
+  `fb_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 

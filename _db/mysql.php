@@ -1,34 +1,21 @@
 <?php
 
-/*
- *
- *************************************************************************************
- *
- * selectFromTable(table, [args, [crits]]) :	fetch data from respective table
- *
- * Parameters: 
- * 		1) $table 	(string): table name. Compulsory. E.g: 'industry'
- *		2) $args 	(2D array)	: paired arguments. Optional and can be more than one. 
- *				E.g: [['name', 'Mai Linh']]
- *				or 	 [['name', 'Mai Linh'], ['industry', 'Taxi']]
- *		3) $crits 	(1D array) : Criteria. Optional and can be more than one.
- *				E.g: ['id', 'name']
- *
- * Notes: To select ALL, leave the last 2 parameters null.
- *
- * Return: Data results in array form. If nothing found, NULL returned.
- *
- **************************************************************************************
- *
- */
 class MySQL {
 	// Private PDO object
 	private $dbh;
 
 	// Construction
 	public function __construct() {
-		$this->dbh = new PDO('mysql:host=localhost;dbname=feedback;charset=utf8', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
-		//$this->dbh = new PDO('mysql:host=toibalocom.ipagemysql.com;dbname=feedback', 'tdkhanhvu', 'F%pks58F');
+		if ($_SERVER['SERVER_NAME'] == 'localhost') {
+			$this->dbh = new PDO('mysql:host=localhost;dbname=feedback;charset=utf8', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+		}
+		else {
+			$this->dbh = new PDO('mysql:host=toibalocom.ipagemysql.com;dbname=feedback', 'tdkhanhvu', 'F%pks58F');
+		}
+
+		$this->items = ['thread', 'comment', 'reply'];
+		$this->votes = ['up', 'down'];
+		$this->id_types = ['fb_id'];
 	}
 
 	// Query
@@ -158,6 +145,16 @@ class MySQL {
 	    return $replies;
 	}
 
+	// Select all voters up/down from Item ID
+	public function selectVotersFromItemID($item_type, $vote_type, $item_id, $id_type = 'fb_id') {
+		if (in_array($item_type, $this->items) && in_array($vote_type, $this->votes)) {
+			$table_name = $item_type.'_'.$vote_type;
+			$arg = $item_type.'_id';
+			return $this->selectFromTable($table_name, [[$arg, $item_id]], [$id_type]);
+		}
+		return -1;
+	}
+
 	// Insert
 	public function insertIntoTable($table, $args = null) {
 		$query = 'INSERT INTO ' . $table . '(';
@@ -285,6 +282,17 @@ class MySQL {
 				['down', 0],
 			]
 		);
+	}
+
+	// Insert vote up/down to Item ID
+	public function insertVoteIntoItem($item_type, $vote_type, $item_id, $user_id, $id_type = 'fb_id') {
+		if (in_array($item_type, $this->items) && in_array($vote_type, $this->votes)) {
+			$table_name = $item_type.'_'.$vote_type;
+			$arg = $item_type.'_id';
+			$this->insertIntoTable($table_name, [[$arg, $item_id], [$id_type, $user_id]]);
+			return true;
+		}
+		return false;
 	}
 
 	// Update
