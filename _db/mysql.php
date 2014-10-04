@@ -368,6 +368,11 @@ class MySQL {
 		return $this->updateTable('thread', [['solved', $status]], [['id', $id]]);
 	}
 
+	// Mark spam
+	public function markSpam($id, $status = 1) {
+		return $this->updateTable('thread', [['spam', $status]], [['id', $id]]);
+	}
+
 	// Destruction
 	public function __destruct() {
 		$this->dbh = null;
