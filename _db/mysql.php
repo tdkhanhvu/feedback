@@ -363,6 +363,11 @@ class MySQL {
 		}
 	}
 
+	// Update solved status
+	public function updateSolved($id, $status = 1) {
+		return $this->updateTable('thread', [['solved', $status]], [['id', $id]]);
+	}
+
 	// Destruction
 	public function __destruct() {
 		$this->dbh = null;

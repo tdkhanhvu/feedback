@@ -4,5 +4,5 @@
   $mysql = new MySQL();
 
   echo '<pre>';
-  print_r($mysql->insertVoteIntoItem('comment', 'down', '1', '43524'));
+  print_r($mysql->updateSolved(1));
   echo '</pre>';
