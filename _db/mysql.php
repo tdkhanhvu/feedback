@@ -195,7 +195,7 @@ class MySQL {
 	}
 
 	// Insert into thread
-	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat) {
+	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat, $image_name) {
 		$cats = isset($cat) ? json_decode($cat) : null;
 
 		$thr_id = $this->insertIntoTable('thread', 
@@ -206,6 +206,7 @@ class MySQL {
 				['rate', $rate],
 				['solved', 0],
 				['time', date('Y-m-d H:i:s', strtotime("5 hours"))],
+				['image', $image_name],
 				['up', 0],
 				['down', 0],
 				['spam', 0],
