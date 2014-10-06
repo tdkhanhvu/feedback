@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2014 at 09:17 PM
+-- Generation Time: Oct 06, 2014 at 08:26 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -376,6 +376,7 @@ CREATE TABLE IF NOT EXISTS `thread` (
   `user_id` varchar(128) NOT NULL,
   `solved` int(1) NOT NULL,
   `time` datetime NOT NULL,
+  `image` text NOT NULL,
   `rate` int(11) NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
@@ -389,9 +390,9 @@ CREATE TABLE IF NOT EXISTS `thread` (
 -- Dumping data for table `thread`
 --
 
-INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `rate`, `up`, `down`, `spam`, `text`, `comments`) VALUES
-(1, 'kfc_1', '2', 1, '2014-09-17 00:00:00', 2, 9, 7, 0, 'Hôm nay trời đẹp', 12),
-(2, 'kfc_1', '1', 0, '2014-09-09 00:00:00', 3, 8, 2, 0, 'Hôm nay vui', 0);
+INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `image`, `rate`, `up`, `down`, `spam`, `text`, `comments`) VALUES
+(1, 'kfc_1', '2', 1, '2014-09-17 00:00:00', '', 2, 9, 7, 0, 'Hôm nay trời đẹp', 12),
+(2, 'kfc_1', '1', 0, '2014-09-09 00:00:00', '', 3, 8, 2, 0, 'Hôm nay vui', 0);
 
 -- --------------------------------------------------------
 
