@@ -34,7 +34,7 @@
 <script id="reviewTmpl" type="text/x-jsrender">
     {{if type == 'thread'}}
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 thread_tag">
                 {{:~getStatus(solved)}}
                 {{:~getCategoryLabel(categories)}}
                 <div id="{{:ratingId}}" style="float:right"></div>

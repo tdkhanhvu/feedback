@@ -48,7 +48,7 @@
             encodeUserId($result);
             break;
         case "InsertIntoThread":
-            $result = $mysql->insertIntoThread(decodeId($_POST['branchId']),decodeId($_POST['userId']),$_POST['text'],$_POST['rate'], $_POST['category']);
+            $result = $mysql->insertIntoThread(decodeId($_POST['branchId']),decodeId($_POST['userId']),$_POST['text'],$_POST['rate'], $_POST['category'],'');
 
             if ($result != "0")
                 $result = 'thread_' . $result;
@@ -64,6 +64,15 @@
 
             if ($result != "0")
                 $result = 'reply_' . $result;
+            break;
+        case "MarkSolved":
+            $result = $mysql->updateSolved(decodeId($_POST['threadId']), $_POST['status']);
+
+            break;
+
+        case "MarkThreadSpam":
+            $result = $mysql->markSpam(decodeId($_POST['threadId']), $_POST['status']);
+
             break;
         default:
             break;
