@@ -297,6 +297,7 @@ class MySQL {
 				['time', date('Y-m-d H:i:s')],
 				['up', 0],
 				['down', 0],
+				['spam', 0],
 				['replies', 0]
 			]
 		);
@@ -333,6 +334,7 @@ class MySQL {
 				['time', date('Y-m-d H:i:s')],
 				['up', 0],
 				['down', 0],
+				['spam', 0],
 			]
 		);
 
@@ -439,8 +441,8 @@ class MySQL {
 	}
 
 	// Mark spam
-	public function markSpam($id, $status = 1) {
-		return $this->updateTable('thread', [['spam', $status]], [['id', $id]]);
+	public function markSpam($table, $id, $status = 1) {
+		return $this->updateTable($table, [['spam', $status]], [['id', $id]]);
 	}
 
 	// Destruction
