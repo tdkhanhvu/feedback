@@ -18,7 +18,11 @@ class MySQL {
 		$this->acc_types = ['fb_id'];
 	}
 
-	// Query
+	/***************************************************
+	 ***************************************************
+	 *********************	Query 	********************
+	 ***************************************************
+	 ***************************************************/
 	public function selectFromTable($table, $args = null, $crits = null, $limit = '') {
 		$query = 'SELECT ';
 
@@ -108,11 +112,18 @@ class MySQL {
 		$start -= 1;	// For Mysql to start at $start
 		$threads = $this->selectFromTable('thread', [['branch_id', $id]], null, "LIMIT $start, $length");
 		foreach ($threads as &$thr) {
+			// Category manipulation
 			$cat = $this->selectFromTable('category', [['thread_id', $thr['id']]]);
 			$thr['categories'] = $cat;
+
+			// User manipulation
 			$user_info = $this->selectFromTable('user', [['id', $thr['user_id']]]);
 			$thr['name'] = $user_info[0]['name'];
 			$thr['photo'] = $user_info[0]['photo'];
+
+			// Image manipulation
+			$images = $this->selectFromTable('thread_image', [['thread_id', $thr['id']]]);
+			$thr['images'] = $images;
 		}
 	    return $threads;
 	}
@@ -155,7 +166,13 @@ class MySQL {
 		return -1;
 	}
 
-	// Insert
+
+	/***************************************************
+	 ***************************************************
+	 *********************	Insert 	********************
+	 ***************************************************
+	 ***************************************************/
+
 	public function insertIntoTable($table, $args = null) {
 		$query = 'INSERT INTO ' . $table . '(';
 
@@ -195,8 +212,9 @@ class MySQL {
 	}
 
 	// Insert into thread
-	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat, $image_name) {
+	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat, $img) {
 		$cats = isset($cat) ? json_decode($cat) : null;
+		$images = isset($img) ? json_decode($img) : null;
 
 		$thr_id = $this->insertIntoTable('thread', 
 			[
@@ -206,13 +224,13 @@ class MySQL {
 				['rate', $rate],
 				['solved', 0],
 				['time', date('Y-m-d H:i:s', strtotime("5 hours"))],
-				['image', $image_name],
 				['up', 0],
 				['down', 0],
 				['spam', 0],
 				['comments', 0]
 			]);
 
+		// Category manipulation
 		foreach ($cats as $cat) {
 			$name = '';
 			switch ($cat) {
@@ -234,6 +252,15 @@ class MySQL {
 					['thread_id', $thr_id],
 					['cat', $cat],
 					['name', $name],
+				]);
+		}
+
+		// Image manipulation
+		foreach ($images as $img) {
+			$this->insertIntoTable('thread_image', 
+				[
+					['thread_id', $thr_id],
+					['image_name', $img],
 				]);
 		}
 
@@ -296,7 +323,13 @@ class MySQL {
 		return false;
 	}
 
-	// Update
+
+	/***************************************************
+	 ***************************************************
+	 *********************	Update 	********************
+	 ***************************************************
+	 ***************************************************/
+
 	public function updateTable($table, $args = null, $crits = null) {
 		$query = 'UPDATE ' . $table . ' SET ';
 
