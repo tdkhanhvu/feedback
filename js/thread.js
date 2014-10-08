@@ -130,6 +130,10 @@ function initThreadEvent() {
     $('body').on('click', '.cancel_thread', function() {
         resetSubmitThreadForm()
     });
+
+    $('body').on('click', '.accept', function() {
+        markSolved($(this).closest('.post_start'));
+    });
 }
 
 function getStatus(status) {
@@ -226,5 +230,26 @@ function loadThread(numOfThread) {
                 })
             })
         });
+    });
+}
+
+function markSolved(thread) {
+    $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'MarkSolved', 'threadId':thread.attr('id'), 'status': 1},
+        dataType: 'json',
+        success: function(result){
+            if (result == true) {
+                thread.closest('.mix').removeClass('unsolved').addClass('solved').
+                    find('.thread_tag .label-danger').removeClass('label-danger')
+                    .addClass('label-success').html('Đã Giải Quyết');
+
+                thread.find('.accept').remove();
+            }
+        },
+        error: function(xhr, status, error) {
+            alert(xhr.responseText);
+        }
     });
 }
