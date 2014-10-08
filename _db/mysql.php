@@ -128,29 +128,39 @@ class MySQL {
 	    return $threads;
 	}
 
-	// Select all replies from a particular thread
+	// Select all comments from a particular thread
 	public function selectCommentsFromThread($id, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
 
 		$comments = $this->selectFromTable('comment', [['thread_id', $id]], null, "LIMIT $start, $length");
 		foreach ($comments as &$cmt) {
+			// User information
 			$user_info = $this->selectFromTable('user', [['id', $cmt['user_id']]]);
 			$cmt['name'] = $user_info[0]['name'];
 			$cmt['photo'] = $user_info[0]['photo'];
+
+			// Image manipulation
+			$images = $this->selectFromTable('comment_image', [['comment_id', $cmt['id']]]);
+			$cmt['images'] = $images;
 		}
 
 	    return $comments;
 	}
 
-	// Select all replies from a particular thread
+	// Select all replies from a particular comment
 	public function selectRepliesFromComment($id, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
 
 	    $replies = $this->selectFromTable('reply', [['comment_id', $id]], null, "LIMIT $start, $length");
 		foreach ($replies as &$rep) {
+			// User information
 			$user_info = $this->selectFromTable('user', [['id', $rep['user_id']]]);
 			$rep['name'] = $user_info[0]['name'];
 			$rep['photo'] = $user_info[0]['photo'];
+
+			// Image manipulation
+			$images = $this->selectFromTable('reply_image', [['reply_id', $rep['id']]]);
+			$rep['images'] = $images;
 		}
 
 	    return $replies;
@@ -268,16 +278,18 @@ class MySQL {
 	}
 
 	// Insert into comment
-	public function insertIntoComment($thread_id, $user_id, $text) {
+	public function insertIntoComment($thread_id, $user_id, $text, $img) {
+		$images = isset($img) ? json_decode($img) : null;
+
 		// Update comment count in thread
-		$cmt = $this->selectFromTable('thread', [['id',$thread_id]], ['comments']);
-		if ($cmt[0]['comments'] != null) {
-			$count = intval($cmt[0]['comments']) + 1;
+		$thread = $this->selectFromTable('thread', [['id',$thread_id]], ['comments']);
+		if ($thread[0]['comments'] != null) {
+			$count = intval($thread[0]['comments']) + 1;
 		}
 
 		$this->updateTable('thread', [['comments', $count]], [['id', $thread_id]]);
 
-		return $this->insertIntoTable('comment', 
+		$cmt_id = $this->insertIntoTable('comment', 
 			[
 				['thread_id', $thread_id],
 				['user_id', $user_id],
@@ -288,19 +300,32 @@ class MySQL {
 				['replies', 0]
 			]
 		);
+
+		// Image manipulation
+		foreach ($images as $img) {
+			$this->insertIntoTable('comment_image', 
+				[
+					['comment_id', $cmt_id],
+					['image_name', $img],
+				]);
+		}
+
+		return $cmt_id;
 	}
 
 	// Insert into reply
-	public function insertIntoReply($comment_id, $user_id, $text) {
+	public function insertIntoReply($comment_id, $user_id, $text, $img) {
+		$images = isset($img) ? json_decode($img) : null;
+
 		// Update comment count in comment
-		$rep = $this->selectFromTable('comment', [['id',$comment_id]], ['replies']);
-		if ($rep[0]['replies'] != null) {
-			$count = intval($rep[0]['replies']) + 1;
+		$cmt = $this->selectFromTable('comment', [['id',$comment_id]], ['replies']);
+		if ($cmt[0]['replies'] != null) {
+			$count = intval($cmt[0]['replies']) + 1;
 		}
 
 		$this->updateTable('comment', [['replies', $count]], [['id', $comment_id]]);
 
-		return $this->insertIntoTable('reply', 
+		$rep_id = $this->insertIntoTable('reply', 
 			[
 				['comment_id', $comment_id],
 				['user_id', $user_id],
@@ -310,6 +335,17 @@ class MySQL {
 				['down', 0],
 			]
 		);
+
+		// Image manipulation
+		foreach ($images as $img) {
+			$this->insertIntoTable('reply_image', 
+				[
+					['reply_id', $rep_id],
+					['image_name', $img],
+				]);
+		}
+
+		return $rep_id;
 	}
 
 	// Insert vote up/down to Item ID

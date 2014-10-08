@@ -4,5 +4,5 @@
   $mysql = new MySQL();
 
   echo '<pre>';
-  print_r($mysql->selectThreadsFromBranch('kfc_1'));
+  print_r($mysql->selectRepliesFromComment(12));
   echo '</pre>';
