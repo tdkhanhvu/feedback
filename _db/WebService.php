@@ -69,6 +69,11 @@
             $result = $mysql->updateSolved(decodeId($_POST['threadId']), $_POST['status']);
 
             break;
+
+        case "MarkThreadSpam":
+            $result = $mysql->markSpam(decodeId($_POST['threadId']), $_POST['status']);
+
+            break;
         default:
             break;
     }
