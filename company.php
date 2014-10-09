@@ -56,6 +56,19 @@
                     <div class="chart">
                         <div id="branch_chart2"></div>
                     </div>
+                    <div class="chart">
+                        <div id="branch_chart3"></div>
+                    </div>
+                    <div class="chart">
+                        <div id="branch_chart4"></div>
+                    </div>
+                    <div class="chart">
+                        <div id="branch_chart5"></div>
+                    </div>
+                    <div class="chart">
+                        <div id="branch_chart6"></div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
