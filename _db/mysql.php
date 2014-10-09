@@ -353,8 +353,25 @@ class MySQL {
 	// Insert vote up/down to Item ID
 	public function insertVoteIntoItem($item_type, $vote_type, $item_id, $user_id, $acc_type = 'fb_id') {
 		if (in_array($item_type, $this->items) && in_array($vote_type, $this->votes)) {
-			$table_name = $item_type.'_'.$vote_type;
+			if ($vote_type == 'up') {
+				$table_name = $item_type.'_up';
+				$opp_table = $item_type.'_down';
+			}
+			else {
+				$table_name = $item_type.'_down';
+				$opp_table = $item_type.'_up';
+			}
+
+			// Check if opposite type existed
+			$opp_id = $this->selectFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+			
+			if (count($opp_id) > 0) {
+				// Delete
+				$this->deleteFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+			}
+
 			$arg = $item_type.'_id';
+			$this->deleteFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);	// Avoid duplicate
 			$this->insertIntoTable($table_name, [[$arg, $item_id], [$acc_type, $user_id]]);
 			return true;
 		}
@@ -411,7 +428,7 @@ class MySQL {
 	}
 
 	// Up / Down vote
-	public function vote($table, $id, $action = 'up') {
+	public function vote($table, $id, $type = 'up', $action = 'add') {
 		$items = $this->selectFromTable($table, [['id', $id]]);
 		$item = count($items) > 0 ? $items[0] : null;
 
@@ -419,13 +436,19 @@ class MySQL {
 			$up = intval($item['up']);
 			$down = intval($item['down']);
 
-			if ($action == 'up') {
-				$up++;
+			if ($type == 'up') {
+				if ($action == 'add')
+					$up++;
+				else
+					$up--;
 				$this->updateTable($table, [['up', $up]], [['id', $id]]);
 				return $up;
 			}
 			else {
-				$down++;
+				if ($action == 'add')
+					$down++;
+				else
+					$down--;
 				$this->updateTable($table, [['down', $down]], [['id', $id]]);
 				return $down;
 			}
@@ -443,6 +466,47 @@ class MySQL {
 	// Mark spam
 	public function markSpam($table, $id, $status = 1) {
 		return $this->updateTable($table, [['spam', $status]], [['id', $id]]);
+	}
+
+
+	/***************************************************
+	 ***************************************************
+	 *********************	Delete 	********************
+	 ***************************************************
+	 ***************************************************/
+
+	public function deleteFromTable($table, $crits) {
+		$query = 'DELETE FROM ' . $table;
+
+		// Argument
+		if($crits != null) {
+			$query .= ' WHERE ';
+			for($i = 0; $i < count($crits) - 1; $i++) {
+				$query .= $crits[$i][0] . '= :_' . $crits[$i][0] . ' AND ';
+			}
+			$query .= $crits[$i][0] . '= :_' . $crits[$i][0];
+		}
+
+		// return $query;
+
+		try {
+			$stm = $this->dbh->prepare($query);
+
+			// Param Binding
+			$values = array();
+			foreach ($crits as $crit) {
+				$values['_'.$crit[0]] = $crit[1];
+			}
+
+			$stm->execute($values);
+			return true;
+		}
+		catch(PDOException $e) {
+		    echo $e->getMessage();
+		}
+
+		// No result
+		return false;
 	}
 
 	// Destruction
