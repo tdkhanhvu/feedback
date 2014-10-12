@@ -87,10 +87,13 @@ function createNewThread(branchId, text) {
         }
     })
 
+    alert(JSON.stringify(categories));
+    alert(JSON.stringify(uploadPhotos));
     $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'InsertIntoThread', 'branchId':branchId, 'userId': userId, 'text': text, 'rate': rate, 'category': JSON.stringify(temp)},
+        data: {'request':'InsertIntoThread', 'branchId':branchId, 'userId': userId, 'text': text, 'rate': rate,
+            'category': JSON.stringify(temp), 'image': JSON.stringify(uploadPhotos)},
         dataType: 'json',
         success: function(result){
             if (result != '0') {

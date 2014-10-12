@@ -26,7 +26,25 @@
 
             <div class="tab-content">
                 <div class="tab-pane active" id="industry">
-                    Tight pants next level keffiyeh you probably haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel have a terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan whatever keytar, scenester farm-to-table banksy Austin twitter handle freegan cred raw denim single-origin coffee viral.
+                    <div class="chart">
+                        <div id="industry_chart1"></div>
+                    </div>
+                    <div class="chart">
+                        <div id="industry_chart2"></div>
+                    </div>
+                    <div class="chart">
+                        <div id="industry_chart3"></div>
+                    </div>
+                    <div class="chart">
+                        <div id="industry_chart4"></div>
+                    </div>
+                    <div class="chart">
+                        <div id="industry_chart5"></div>
+                    </div>
+                    <div class="chart">
+                        <div id="industry_chart6"></div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
                 <div class="tab-pane" id="overview">
                     <div class="chart">
@@ -103,6 +121,7 @@
 <script src="./js/highchart/modules/exporting.js"></script>
 <script src="http://code.highcharts.com/modules/data.js"></script>
 <script src="http://code.highcharts.com/modules/drilldown.js"></script>
+<script src="./js/industry_chart.js"></script>
 <script src="./js/overview_chart.js"></script>
 <script src="./js/branch_chart.js"></script>
 <script>

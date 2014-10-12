@@ -19,14 +19,13 @@ $(function(){
 
 function changeCount(e, inc, index) {
     var item = $(e);
-    if (!item.hasClass('disabled')) {
-        var span = item.parent().find('>span');
-        var temp = span.first();
 
-        temp.html(parseInt(temp.html(), 10) + inc);
-        item.addClass('disabled');
-        span.eq(index).removeClass('disabled');
-    }
+    var span = item.parent().find('>span');
+    var temp = span.first();
+
+    temp.html(parseInt(temp.html(), 10) + inc);
+    item.addClass('clicked');
+    span.eq(index).removeClass('clicked');
 }
 
 function initIndustry(indInfos) {
@@ -232,13 +231,14 @@ function initEvent() {
         else temp.html('You have flagged this comment as spam');
     });
 
-    $('body').on('click', '.up', function() {
-        changeCount(this, 1, 2);
+    $('body').on('click', '.up, .down', function() {
+        updateLikeDislike(this);
+        //updateLike(this);
     });
 
-    $('body').on('click', '.down', function() {
-        changeCount(this, -1, 1);
-    });
+    //$('body').on('click', '.down', function() {
+        //changeCount(this, -1, 1);
+    //});
 
     $('body').on('click', '.photo_upload_icon', function() {
         var icon = $(this),
@@ -343,5 +343,69 @@ function removeImageFromPreview(cmtBox) {
 
     uploaders[formId].files.forEach(function(file) {
         file.keepFile = true;
+    });
+}
+
+function updateLike(el) {
+    //changeCount(el, 1, 2);
+    changeCount(el);
+}
+
+function updateLikeDislike(e) {
+    var item = $(e),
+        span = item.parent().find('>span'),
+        count = span.first(),
+        other = null,
+        inc = 0,
+        action = '',
+        table = '',
+        comment_detail = item.closest('.comment_detail');
+
+    if (item.hasClass('up')) {
+        other = span.eq(2);
+        action = 'up';
+
+        if (other.hasClass('clicked')) {
+            inc = 2;
+        }
+        else {
+            inc = 1;
+        }
+    }
+    else {
+        other = span.eq(1);
+        action = 'down';
+
+        if (other.hasClass('clicked')) {
+            inc = -2;
+        }
+        else {
+            inc = -1;
+        }
+    }
+
+    if (comment_detail.hasClass('post_start'))
+        table = 'thread';
+    else if (comment_detail.hasClass('reply_content'))
+        table = 'reply';
+    else
+        table = 'comment';
+
+    alert(action + ' ' + table + ' ' + inc);
+
+    $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'UpdateLikeDislike', 'userId': userId,'action':action, 'table':table},
+        dataType: 'json',
+        success: function(result){
+            count.html(parseInt(count.html(), 10) + inc);
+            item.addClass('clicked');
+            other.removeClass('clicked');
+        },
+        error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
+        }
     });
 }
