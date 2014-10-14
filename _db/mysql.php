@@ -151,7 +151,7 @@ class MySQL {
 	}
 
 	// Select all comments from a particular thread
-	public function selectCommentsFromThread($id, $start = 1, $length = 10) {
+	public function selectCommentsFromThread($id, $user_id = null, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
 
 		$comments = $this->selectFromTable('comment', [['thread_id', $id]], null, "LIMIT $start, $length");
@@ -164,13 +164,35 @@ class MySQL {
 			// Image manipulation
 			$images = $this->selectFromTable('comment_image', [['comment_id', $cmt['id']]]);
 			$cmt['images'] = $images;
+
+			// User vote up/down
+			$cmt['vote'] = '';
+			if ($user_id != null) {
+				// Up voters
+				$up_voters = $this->selectVotersFromItemID('comment', 'up', $cmt['id']);
+				foreach ($up_voters as $up_voter) {
+					if ($up_voter['fb_id'] == $user_id) {
+						$cmt['vote'] = 'up';
+						break;
+					}
+				}
+
+				// Down voters
+				$down_voters = $this->selectVotersFromItemID('comment', 'down', $cmt['id']);
+				foreach ($down_voters as $down_voter) {
+					if ($down_voter['fb_id'] == $user_id) {
+						$cmt['vote'] = 'down';
+						break;
+					}
+				}
+			}
 		}
 
 	    return $comments;
 	}
 
 	// Select all replies from a particular comment
-	public function selectRepliesFromComment($id, $start = 1, $length = 10) {
+	public function selectRepliesFromComment($id, $user_id = null, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
 
 	    $replies = $this->selectFromTable('reply', [['comment_id', $id]], null, "LIMIT $start, $length");
@@ -183,6 +205,28 @@ class MySQL {
 			// Image manipulation
 			$images = $this->selectFromTable('reply_image', [['reply_id', $rep['id']]]);
 			$rep['images'] = $images;
+
+			// User vote up/down
+			$rep['vote'] = '';
+			if ($user_id != null) {
+				// Up voters
+				$up_voters = $this->selectVotersFromItemID('reply', 'up', $rep['id']);
+				foreach ($up_voters as $up_voter) {
+					if ($up_voter['fb_id'] == $user_id) {
+						$rep['vote'] = 'up';
+						break;
+					}
+				}
+
+				// Down voters
+				$down_voters = $this->selectVotersFromItemID('reply', 'down', $rep['id']);
+				foreach ($down_voters as $down_voter) {
+					if ($down_voter['fb_id'] == $user_id) {
+						$rep['vote'] = 'down';
+						break;
+					}
+				}
+			}
 		}
 
 	    return $replies;
