@@ -40,12 +40,12 @@
 
             break;
         case "GetCommentsFromThread":
-            $result = $mysql->selectCommentsFromThread(decodeId($_POST['threadId']), $user_id,$_POST['start']);
+            $result = $mysql->selectCommentsFromThread(decodeId($_POST['threadId']),$start,$limit);
             encodeId($result, 'comment');
             encodeUserId($result);
             break;
         case "GetRepliesFromComment":
-            $result = $mysql->selectRepliesFromComment(decodeId($_POST['commentId']), $user_id,$_POST['start']);
+            $result = $mysql->selectRepliesFromComment(decodeId($_POST['commentId']),$start,$limit);
             encodeId($result, 'reply');
             encodeUserId($result);
             break;

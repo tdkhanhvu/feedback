@@ -53,8 +53,7 @@ function getThreadsFromBranch(branchId, limit) {
                         order: thread.order,
                         type: 'thread',
                         solved: thread.solved,
-                        rate: thread.rate,
-                        uploadphotos: thread.images.map(function(obj) {return {photo: obj.image_name}})
+                        rate: thread.rate
                     };
 
                 $.extend(temp, extractAjaxPostAttribute(thread));
