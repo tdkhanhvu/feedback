@@ -108,7 +108,7 @@ class MySQL {
 	}
 
 	// Select all threads from a particular branch
-	public function selectThreadsFromBranch($id, $start = 1, $length = 10) {
+	public function selectThreadsFromBranch($id, $user_id = null, $start = 1, $length = 10) {
 		$start -= 1;	// For Mysql to start at $start
 		$threads = $this->selectFromTable('thread', [['branch_id', $id]], null, "LIMIT $start, $length");
 		foreach ($threads as &$thr) {
@@ -124,6 +124,28 @@ class MySQL {
 			// Image manipulation
 			$images = $this->selectFromTable('thread_image', [['thread_id', $thr['id']]]);
 			$thr['images'] = $images;
+
+			// User vote up/down
+			$thr['vote'] = '';
+			if ($user_id != null) {
+				// Up voters
+				$up_voters = $this->selectVotersFromItemID('thread', 'up', $thr['id']);
+				foreach ($up_voters as $up_voter) {
+					if ($up_voter['fb_id'] == $user_id) {
+						$thr['vote'] = 'up';
+						break;
+					}
+				}
+
+				// Down voters
+				$down_voters = $this->selectVotersFromItemID('thread', 'down', $thr['id']);
+				foreach ($down_voters as $down_voter) {
+					if ($down_voter['fb_id'] == $user_id) {
+						$thr['vote'] = 'down';
+						break;
+					}
+				}
+			}
 		}
 	    return $threads;
 	}
