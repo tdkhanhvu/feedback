@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `thread_id` int(11) NOT NULL,
   `user_id` text NOT NULL,
-  `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+  `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
@@ -354,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+  `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
@@ -442,7 +442,7 @@ CREATE TABLE IF NOT EXISTS `thread` (
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
   `spam` int(1) NOT NULL,
-  `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+  `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
@@ -505,7 +505,7 @@ CREATE TABLE IF NOT EXISTS `thread_up` (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+  `name` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `photo` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;

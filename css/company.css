@@ -105,9 +105,8 @@
     *border-left-color: #ffffff;
 }
 
-.analytics {
+.analytics, .company_menu {
     background-color: #e9eaed;
-    margin-top: 80px;
 }
 
 .analytics > .nav {
@@ -124,7 +123,4 @@
     float:left;
     padding: 1%;
     background-color: #245269;
-}
-
-.chart > div {
 }

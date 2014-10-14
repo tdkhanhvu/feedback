@@ -8,6 +8,16 @@
 
     $mysql = new MySQL();
     $result = [];
+    $user_id = null;
+    $start = 1;
+    $limit = 10;
+
+    if (isset($_POST['start']))
+        $start = $_POST['start'];
+    if (isset($_POST['limit']))
+        $limit = $_POST['limit'];
+    if (isset($_POST['userId']))
+        $user_id = decodeId($_POST['userId']);
 
     switch($request) {
         case "GetAllIndustries":
@@ -23,27 +33,19 @@
             encodeId($result, 'branch');
             break;
         case "GetThreadsFromBranch":
-            $start = 1;
-            $limit = 10;
-
-            if (isset($_POST['start']))
-                $start = $_POST['start'];
-            if (isset($_POST['limit']))
-                $limit = $_POST['limit'];
-
-            $result = $mysql->selectThreadsFromBranch(decodeId($_POST['branchId']), $start, $limit);
+            $result = $mysql->selectThreadsFromBranch(decodeId($_POST['branchId']), $user_id, $start, $limit);
 
             encodeId($result, 'thread');
             encodeUserId($result);
 
             break;
         case "GetCommentsFromThread":
-            $result = $mysql->selectCommentsFromThread(decodeId($_POST['threadId']),$_POST['start']);
+            $result = $mysql->selectCommentsFromThread(decodeId($_POST['threadId']), $user_id,$_POST['start']);
             encodeId($result, 'comment');
             encodeUserId($result);
             break;
         case "GetRepliesFromComment":
-            $result = $mysql->selectRepliesFromComment(decodeId($_POST['commentId']),$_POST['start']);
+            $result = $mysql->selectRepliesFromComment(decodeId($_POST['commentId']), $user_id,$_POST['start']);
             encodeId($result, 'reply');
             encodeUserId($result);
             break;
