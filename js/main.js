@@ -139,7 +139,7 @@ function extractAjaxPostAttribute(obj) {
         vote: obj.vote,
         voteUp: false,
         voteDown: false,
-        //uploadphotos: obj.uploadphotos,
+        uploadphotos: obj.images.map(function(obj) {return {photo: obj.image_name}}),
         user_id: obj.user_id
     }
 }

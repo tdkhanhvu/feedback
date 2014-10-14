@@ -16,7 +16,7 @@ function getRepliesFromComment(comment, start) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'GetRepliesFromComment', 'commentId':comment.id, 'start': start},
+        data: {'request':'GetRepliesFromComment', 'commentId':comment.id, 'start': start, 'userId': userId},
         dataType: 'json',
         success: function(result){
             comment.replies = [];
@@ -45,7 +45,8 @@ function createNewReply(commentId, cmtBox) {
     $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'InsertIntoReply', 'commentId':commentId, 'userId': userId, 'text': text},
+        data: {'request':'InsertIntoReply', 'commentId':commentId, 'userId': userId, 'text': text
+            , 'image': JSON.stringify(uploadPhotos)},
         dataType: 'json',
         success: function(result){
             if (result != '0') {
@@ -56,6 +57,7 @@ function createNewReply(commentId, cmtBox) {
                     text: text,
                     type: 'reply',
                     time: (new Date()).toISOString(),
+                    uploadphotos: uploadPhotos.map(function(obj) {return {photo: obj}}),
                     vote: 0,
                     voteUp:false,
                     voteDown: false

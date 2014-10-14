@@ -33,11 +33,10 @@ function getCommentsFromThread(thread, start) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'GetCommentsFromThread', 'threadId':thread.id, 'start': start},
+        data: {'request':'GetCommentsFromThread', 'threadId':thread.id, 'start': start, 'userId': userId},
         dataType: 'json',
         success: function(result){
             thread.comments = [];
-            //alert('result ' + result.length);
             for (var i = 0; i < result.length; i++) {
                 var comment = result[i],
                     temp = {
@@ -65,7 +64,8 @@ function createNewComment(threadId, cmtBox) {
     $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'InsertIntoComment', 'threadId':threadId, 'userId': userId, 'text': text},
+        data: {'request':'InsertIntoComment', 'threadId':threadId, 'userId': userId, 'text': text
+            , 'image': JSON.stringify(uploadPhotos)},
         dataType: 'json',
         success: function(result){
             if (result != '0') {
@@ -76,6 +76,7 @@ function createNewComment(threadId, cmtBox) {
                     text: text,
                     type: 'comment',
                     time: (new Date()).toISOString(),
+                    uploadphotos: uploadPhotos.map(function(obj) {return {photo: obj}}),
                     vote: 0,
                     voteUp:false,
                     voteDown: false

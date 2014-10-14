@@ -41,7 +41,7 @@ function getThreadsFromBranch(branchId, limit) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'GetThreadsFromBranch', 'branchId':branchId, 'start': startThread, 'limit': limit},
+        data: {'request':'GetThreadsFromBranch', 'branchId':branchId, 'userId': userId,'start': startThread, 'limit': limit},
         dataType: 'json',
         success: function(result){
             threads = [];
@@ -53,18 +53,9 @@ function getThreadsFromBranch(branchId, limit) {
                         order: thread.order,
                         type: 'thread',
                         solved: thread.solved,
-                        rate: thread.rate,
-                        uploadphotos: [
-                            {
-                                photo: '1.jpg'
-                            },
-                            {
-                                photo: '2.jpg'
-                            },
-                            {
-                                photo: '3.jpg'
-                        }]
+                        rate: thread.rate
                     };
+
                 $.extend(temp, extractAjaxPostAttribute(thread));
                 threads.push(temp);
             }
@@ -87,8 +78,6 @@ function createNewThread(branchId, text) {
         }
     })
 
-    alert(JSON.stringify(categories));
-    alert(JSON.stringify(uploadPhotos));
     $.ajax({
         url: serviceUrl,
         type: "post",
@@ -106,6 +95,7 @@ function createNewThread(branchId, text) {
                     type: 'thread',
                     solved: '0',
                     time: (new Date()).toISOString(),
+                    uploadphotos: uploadPhotos.map(function(obj) {return {photo: obj}}),
                     rate: rate,
                     vote: 0,
                     voteUp: false,

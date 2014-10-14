@@ -17,80 +17,96 @@
     <header>
     </header>
     <main>
-        <div class="tabbable tabs-right analytics">
-            <ul class="nav nav-tabs" role="tablist" id="myTab"">
-                <li class="active"><a href="#industry" role="tab" data-toggle="tab">Industry</a></li>
-                <li><a href="#overview" role="tab" data-toggle="tab">Overview</a></li>
-                <li><a href="#branches" role="tab" data-toggle="tab">Branches</a></li>
+        <div class="tabbable company_menu">
+            <ul class="nav nav-tabs" role="tablist" id="overviewTab"">
+            <li class="active"><a href="#branchMgt" role="tab" data-toggle="tab">Branch</a></li>
+            <li><a href="#analytics" role="tab" data-toggle="tab">Analytics</a></li>
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane active" id="industry">
-                    <div class="chart">
-                        <div id="industry_chart1"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="industry_chart2"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="industry_chart3"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="industry_chart4"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="industry_chart5"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="industry_chart6"></div>
-                    </div>
+                <div class="tab-pane active" id="branchMgt">
+                    <p>abc</p>
                     <div class="clearfix"></div>
                 </div>
-                <div class="tab-pane" id="overview">
-                    <div class="chart">
-                        <div id="overview_chart1"></div>
+                <div class="tab-pane" id="analytics">
+                    <div class="tabbable tabs-right analytics">
+                        <ul class="nav nav-tabs" role="tablist" id="myTab"">
+                        <li class="active"><a href="#industry" role="tab" data-toggle="tab">Industry</a></li>
+                        <li><a href="#overview" role="tab" data-toggle="tab">Overview</a></li>
+                        <li><a href="#branches" role="tab" data-toggle="tab">Branches</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="industry">
+                                <div class="chart">
+                                    <div id="industry_chart1"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="industry_chart2"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="industry_chart3"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="industry_chart4"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="industry_chart5"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="industry_chart6"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="tab-pane" id="overview">
+                                <div class="chart">
+                                    <div id="overview_chart1"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="overview_chart2"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="overview_chart3"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="overview_chart4"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="overview_chart5"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="overview_chart6"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="tab-pane" id="branches">
+                                <div class="chart">
+                                    <div id="branch_chart1"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="branch_chart2"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="branch_chart3"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="branch_chart4"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="branch_chart5"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="branch_chart6"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="chart">
-                        <div id="overview_chart2"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="overview_chart3"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="overview_chart4"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="overview_chart5"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="overview_chart6"></div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="tab-pane" id="branches">
-                    <div class="chart">
-                        <div id="branch_chart1"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="branch_chart2"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="branch_chart3"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="branch_chart4"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="branch_chart5"></div>
-                    </div>
-                    <div class="chart">
-                        <div id="branch_chart6"></div>
-                    </div>
+
                     <div class="clearfix"></div>
                 </div>
             </div>
         </div>
-        <div style="clear:both"></div>
     </main>
     <footer>
         <div class="row">
@@ -127,6 +143,7 @@
 <script>
     $(function () {
         $('#myTab a[href="#overview"]').tab('show');
+        $('#overviewTab a[href="#analytics"]').tab('show');
     })
 </script>
 </body>
