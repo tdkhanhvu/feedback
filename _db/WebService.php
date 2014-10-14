@@ -48,19 +48,19 @@
             encodeUserId($result);
             break;
         case "InsertIntoThread":
-            $result = $mysql->insertIntoThread(decodeId($_POST['branchId']),decodeId($_POST['userId']),$_POST['text'],$_POST['rate'], $_POST['category'],'');
+            $result = $mysql->insertIntoThread(decodeId($_POST['branchId']),decodeId($_POST['userId']),$_POST['text'],$_POST['rate'], $_POST['category'],$_POST['image']);
 
             if ($result != "0")
                 $result = 'thread_' . $result;
             break;
         case "InsertIntoComment":
-            $result = $mysql->insertIntoComment(decodeId($_POST['threadId']),decodeId($_POST['userId']),$_POST['text']);
+            $result = $mysql->insertIntoComment(decodeId($_POST['threadId']),decodeId($_POST['userId']),$_POST['text'],$_POST['image']);
 
             if ($result != "0")
                 $result = 'comment_' . $result;
             break;
         case "InsertIntoReply":
-            $result = $mysql->insertIntoReply(decodeId($_POST['commentId']),decodeId($_POST['userId']),$_POST['text']);
+            $result = $mysql->insertIntoReply(decodeId($_POST['commentId']),decodeId($_POST['userId']),$_POST['text'],$_POST['image']);
 
             if ($result != "0")
                 $result = 'reply_' . $result;
@@ -72,6 +72,11 @@
 
         case "MarkThreadSpam":
             $result = $mysql->markSpam(decodeId($_POST['threadId']), $_POST['status']);
+
+            break;
+
+        case "UpdateLikeDislike":
+            $result = $mysql->vote($_POST['table'],decodeId($_POST['userId']), $_POST['action']);
 
             break;
         default:

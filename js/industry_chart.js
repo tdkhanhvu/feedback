@@ -1,19 +1,19 @@
 
 $(function () {
     //http://jsfiddle.net/6bBzt/2/
-    branchPositiveNegativeFeedback('#branch_chart1');
-    branchCategoryOfFeedback('#branch_chart2');
-    branchCustomerRating('#branch_chart3');
-    branchCaseResolution('#branch_chart4');
-    branchAverageCaseResponseTime('#branch_chart5');
-    branchAverageThreadResponse('#branch_chart6');
+    industryPositiveNegativeFeedback('#industry_chart1');
+    industryCategoryOfFeedback('#industry_chart2');
+    industryCustomerRating('#industry_chart3');
+    industryCaseResolution('#industry_chart4');
+    industryAverageCaseResponseTime('#industry_chart5');
+    industryAverageThreadResponse('#industry_chart6');
 });
 
-function branchPositiveNegativeFeedback(id) {
-    var branchesData = [{
+function industryPositiveNegativeFeedback(id) {
+    var industriesData = [{
             name: 'Positive',
-            data: [{name:'Branch 1', y:50, drilldown:'positive 1'}, {name:'Branch 2', y:70, drilldown:'positive 2'},
-                {name:'Branch 3', y:90, drilldown:'positive 3'}, {name:'Branch 4', y:60, drilldown:'positive 4'}]
+            data: [{name:'You', y:50, drilldown:'positive 1'}, {name:'Firm 1', y:70, drilldown:'positive 2'},
+                {name:'Firm 2', y:90, drilldown:'positive 3'}, {name:'Firm 3', y:60, drilldown:'positive 4'}]
         }, {
             name: 'Negative',
             data: [{y:30, drilldown:'negative 1'}, {y:40, drilldown:'negative 2'}, {y:70, drilldown:'negative 3'}
@@ -177,18 +177,18 @@ function branchPositiveNegativeFeedback(id) {
             shared: true,
             useHTML: true
         },
-        series: branchesData,
+        series: industriesData,
         drilldown: {
             series: drilldownSeries
         }
     });
 }
 
-function branchCategoryOfFeedback(id) {
-    var branchesData = [{
+function industryCategoryOfFeedback(id) {
+    var industriesData = [{
             name: 'Total',
-            data: [{name:'Branch 1', y:50, drilldown:'total 1'}, {name:'Branch 2', y:70, drilldown:'total 2'},
-                {name:'Branch 3', y:90, drilldown:'total 3'}, {name:'Branch 4', y:60, drilldown:'total 4'}]
+            data: [{name:'You', y:50, drilldown:'total 1'}, {name:'Firm 1', y:70, drilldown:'total 2'},
+                {name:'Firm 2', y:90, drilldown:'total 3'}, {name:'Firm 3', y:60, drilldown:'total 4'}]
         }, {
             name: 'Service',
             data: [{y:30, drilldown:'service 1'}, {y:40, drilldown:'service 2'}, {y:70, drilldown:'service 3'}
@@ -480,18 +480,18 @@ function branchCategoryOfFeedback(id) {
             shared: true,
             useHTML: true
         },
-        series: branchesData,
+        series: industriesData,
         drilldown: {
             series: drilldownSeries
         }
     });
 }
 
-function branchCustomerRating(id) {
-    var branchesData = [{
+function industryCustomerRating(id) {
+    var industriesData = [{
             name: 'Rating',
-            data: [{name:'Branch 1', y:4.5, drilldown:'rating 1'}, {name:'Branch 2', y:4, drilldown:'rating 2'},
-                {name:'Branch 3', y:4.2, drilldown:'rating 3'}, {name:'Branch 4', y:3.6, drilldown:'rating 4'}]
+            data: [{name:'You', y:4.5, drilldown:'rating 1'}, {name:'Firm 1', y:4, drilldown:'rating 2'},
+                {name:'Firm 2', y:4.2, drilldown:'rating 3'}, {name:'Firm 3', y:3.6, drilldown:'rating 4'}]
         }],
         drilldownSeries = [{
             id: 'rating 1',
@@ -591,18 +591,18 @@ function branchCustomerRating(id) {
             shared: true,
             useHTML: true
         },
-        series: branchesData,
+        series: industriesData,
         drilldown: {
             series: drilldownSeries
         }
     });
 }
 
-function branchCaseResolution(id) {
-    var branchesData = [{
+function industryCaseResolution(id) {
+    var industriesData = [{
             name: 'Case Resolution',
-            data: [{name:'Branch 1', y:80, drilldown:'resolution 1'}, {name:'Branch 2', y:75, drilldown:'resolution 2'},
-                {name:'Branch 3', y:88, drilldown:'resolution 3'}, {name:'Branch 4', y:66, drilldown:'resolution 4'}]
+            data: [{name:'You', y:80, drilldown:'resolution 1'}, {name:'Firm 1', y:75, drilldown:'resolution 2'},
+                {name:'Firm 2', y:88, drilldown:'resolution 3'}, {name:'Firm 3', y:66, drilldown:'resolution 4'}]
         }],
         drilldownSeries = [{
             id: 'resolution 1',
@@ -702,18 +702,18 @@ function branchCaseResolution(id) {
             shared: true,
             useHTML: true
         },
-        series: branchesData,
+        series: industriesData,
         drilldown: {
             series: drilldownSeries
         }
     });
 }
 
-function branchAverageCaseResponseTime(id){
-    var branchesData = [{
+function industryAverageCaseResponseTime(id){
+    var industriesData = [{
             name: 'Average Case Response Time',
-            data: [{name:'Branch 1', y:10, drilldown:'response 1'}, {name:'Branch 2', y:13, drilldown:'response 2'},
-                {name:'Branch 3', y:15, drilldown:'response 3'}, {name:'Branch 4', y:20, drilldown:'response 4'}]
+            data: [{name:'You', y:10, drilldown:'response 1'}, {name:'Firm 1', y:13, drilldown:'response 2'},
+                {name:'Firm 2', y:15, drilldown:'response 3'}, {name:'Firm 3', y:20, drilldown:'response 4'}]
         }],
         drilldownSeries = [{
             id: 'response 1',
@@ -813,18 +813,18 @@ function branchAverageCaseResponseTime(id){
             shared: true,
             useHTML: true
         },
-        series: branchesData,
+        series: industriesData,
         drilldown: {
             series: drilldownSeries
         }
     });
 }
 
-function branchAverageThreadResponse(id){
-    var branchesData = [{
+function industryAverageThreadResponse(id){
+    var industriesData = [{
             name: 'Average Thread Response',
-            data: [{name:'Branch 1', y:10, drilldown:'response 1'}, {name:'Branch 2', y:13, drilldown:'response 2'},
-                {name:'Branch 3', y:15, drilldown:'response 3'}, {name:'Branch 4', y:20, drilldown:'response 4'}]
+            data: [{name:'You', y:10, drilldown:'response 1'}, {name:'Firm 1', y:13, drilldown:'response 2'},
+                {name:'Firm 2', y:15, drilldown:'response 3'}, {name:'Firm 3', y:20, drilldown:'response 4'}]
         }],
         drilldownSeries = [{
             id: 'response 1',
@@ -924,7 +924,7 @@ function branchAverageThreadResponse(id){
             shared: true,
             useHTML: true
         },
-        series: branchesData,
+        series: industriesData,
         drilldown: {
             series: drilldownSeries
         }
