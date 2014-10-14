@@ -4,5 +4,5 @@
   $mysql = new MySQL();
 
   echo '<pre>';
-  print_r($mysql->selectThreadsFromBranch('kfc_1', 2));
+  print_r($_SERVER['SERVER_NAME']);
   echo '</pre>';
