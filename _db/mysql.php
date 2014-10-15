@@ -422,18 +422,25 @@ class MySQL {
 			if ($vote_type == 'up') {
 				$table_name = $item_type.'_up';
 				$opp_table = $item_type.'_down';
+				$opp_type = 'down';
 			}
 			else {
 				$table_name = $item_type.'_down';
 				$opp_table = $item_type.'_up';
+				$opp_type = 'up';
 			}
+
+			// Update the up/down count in main table
+			$this->vote($item_type, $item_id, $vote_type, 'add');
 
 			// Check if opposite type existed
 			$opp_id = $this->selectFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
 			
 			if (count($opp_id) > 0) {
+				echo 'xxx';
 				// Delete
 				$this->deleteFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+				$this->vote($item_type, $item_id, $opp_type, 'remove');
 			}
 
 			$arg = $item_type.'_id';
@@ -494,7 +501,7 @@ class MySQL {
 	}
 
 	// Up / Down vote
-	public function vote($table, $id, $type = 'up', $action = 'add') {
+	private function vote($table, $id, $type = 'up', $action = 'add') {
 		$items = $this->selectFromTable($table, [['id', $id]]);
 		$item = count($items) > 0 ? $items[0] : null;
 

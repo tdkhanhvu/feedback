@@ -4,5 +4,5 @@
   $mysql = new MySQL();
 
   echo '<pre>';
-  print_r($_SERVER['SERVER_NAME']);
+  print_r($mysql->insertVoteIntoItem('thread', 'down', 1, 1));
   echo '</pre>';
