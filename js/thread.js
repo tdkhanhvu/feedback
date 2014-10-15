@@ -97,9 +97,9 @@ function createNewThread(branchId, text) {
                     time: (new Date()).toISOString(),
                     uploadphotos: uploadPhotos.map(function(obj) {return {photo: obj}}),
                     rate: rate,
-                    vote: 0,
-                    voteUp: false,
-                    voteDown: false,
+                    vote: '',
+                    up: 0,
+                    down: 0,
                     user_id: userId,
                     comments: []
                 };

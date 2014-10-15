@@ -130,6 +130,7 @@ function getPostAttribute(obj) {
 }
 
 function extractAjaxPostAttribute(obj) {
+    console.log(obj);
     return {
         id : obj.id,
         name: obj.name,
@@ -234,12 +235,7 @@ function initEvent() {
 
     $('body').on('click', '.up, .down', function() {
         updateLikeDislike(this);
-        //updateLike(this);
     });
-
-    //$('body').on('click', '.down', function() {
-        //changeCount(this, -1, 1);
-    //});
 
     $('body').on('click', '.photo_upload_icon', function() {
         var icon = $(this),
@@ -317,9 +313,10 @@ function getUploadedPhoto(form) {
     var formId = form.attr('id'),
         fileNames = [];
 
-    uploaders[formId].files.forEach(function(file) {
-        fileNames.push(file.uploadName);
-    });
+    if (typeof uploaders[formId] !='undefined')
+        uploaders[formId].files.forEach(function(file) {
+            fileNames.push(file.uploadName);
+        });
 
     return fileNames;
 }
@@ -347,62 +344,74 @@ function removeImageFromPreview(cmtBox) {
     });
 }
 
-function updateLike(el) {
-    //changeCount(el, 1, 2);
-    changeCount(el);
-}
-
 function updateLikeDislike(e) {
     var item = $(e),
-        span = item.parent().find('>span'),
-        count = span.first(),
+        parent = item.parent(),
+        count = parent.find('.badge'),
         other = null,
         inc = 0,
         action = '',
-        table = '',
+        type = '',
         comment_detail = item.closest('.comment_detail');
 
     if (item.hasClass('up')) {
-        other = span.eq(2);
         action = 'up';
+    }
+    else {
+        action = 'down';
+    }
 
-        if (other.hasClass('clicked')) {
-            inc = 2;
+    if (item.hasClass('clicked')) {
+        if (item.hasClass('up')) {
+            inc = -1;
         }
         else {
             inc = 1;
         }
     }
     else {
-        other = span.eq(1);
-        action = 'down';
+        if (item.hasClass('up')) {
+            other = parent.find('.down');
 
-        if (other.hasClass('clicked')) {
-            inc = -2;
+            if (other.hasClass('clicked')) {
+                inc = 2;
+            }
+            else {
+                inc = 1;
+            }
         }
         else {
-            inc = -1;
+            other = parent.find('.up');
+
+
+            if (other.hasClass('clicked')) {
+                inc = -2;
+            }
+            else {
+                inc = -1;
+            }
         }
     }
 
-    if (comment_detail.hasClass('post_start'))
-        table = 'thread';
-    else if (comment_detail.hasClass('reply_content'))
-        table = 'reply';
-    else
-        table = 'comment';
 
-    alert(action + ' ' + table + ' ' + inc);
+    if (comment_detail.hasClass('post_start'))
+        type = 'thread';
+    else if (comment_detail.hasClass('reply_content'))
+        type = 'reply';
+    else
+        type = 'comment';
 
     $.ajax({
         url: serviceUrl,
         type: "post",
-        data: {'request':'UpdateLikeDislike', 'userId': userId,'action':action, 'table':table},
+        data: {'request':'UpdateLikeDislike', 'userId': userId,'action':action, 'type':type, 'itemId':comment_detail.attr('id')},
         dataType: 'json',
         success: function(result){
             count.html(parseInt(count.html(), 10) + inc);
-            item.addClass('clicked');
-            other.removeClass('clicked');
+            item.toggleClass('clicked');
+
+            if (other != null)
+                other.removeClass('clicked');
         },
         error: function(xhr, status, error) {
             var err = eval("(" + xhr.responseText + ")");

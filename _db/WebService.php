@@ -40,12 +40,12 @@
 
             break;
         case "GetCommentsFromThread":
-            $result = $mysql->selectCommentsFromThread(decodeId($_POST['threadId']),$start,$limit);
+            $result = $mysql->selectCommentsFromThread(decodeId($_POST['threadId']), $user_id,$start,$limit);
             encodeId($result, 'comment');
             encodeUserId($result);
             break;
         case "GetRepliesFromComment":
-            $result = $mysql->selectRepliesFromComment(decodeId($_POST['commentId']),$start,$limit);
+            $result = $mysql->selectRepliesFromComment(decodeId($_POST['commentId']), $user_id,$start,$limit);
             encodeId($result, 'reply');
             encodeUserId($result);
             break;
@@ -78,7 +78,8 @@
             break;
 
         case "UpdateLikeDislike":
-            $result = $mysql->vote($_POST['table'],decodeId($_POST['userId']), $_POST['action']);
+            $result = $mysql->insertVoteIntoItem($_POST['type'],$_POST['action'],decodeId($_POST['itemId']),
+                decodeId($_POST['userId']));
 
             break;
         default:

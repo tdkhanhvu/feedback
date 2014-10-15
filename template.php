@@ -93,7 +93,7 @@
                             <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
                         {{/if}}
 
-                        {{if vote == 'down'}}
+                        {{if vote == 'up'}}
                             <span class="action_icon up glyphicon glyphicon-chevron-up clicked"></span>
                         {{else}}
                             <span class="action_icon up glyphicon glyphicon-chevron-up"></span>

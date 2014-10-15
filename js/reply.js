@@ -58,9 +58,9 @@ function createNewReply(commentId, cmtBox) {
                     type: 'reply',
                     time: (new Date()).toISOString(),
                     uploadphotos: uploadPhotos.map(function(obj) {return {photo: obj}}),
-                    vote: 0,
-                    voteUp:false,
-                    voteDown: false
+                    vote: '',
+                    up:0,
+                    down: 0
                 }
                 addReply(commentId,reply);
 
