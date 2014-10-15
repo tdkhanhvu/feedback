@@ -121,8 +121,8 @@ function getPostAttribute(obj) {
         text: obj.text,
         time: obj.time,
         vote: obj.vote,
-        voteUp: obj.voteUp,
-        voteDown: obj.voteDown,
+        up: parseInt(obj.up),
+        down: parseInt(obj.down),
         userName: userName,
         uploadphotos: obj.uploadphotos,
         ownPost: obj.user_id == userId
@@ -137,10 +137,11 @@ function extractAjaxPostAttribute(obj) {
         text: obj.text,
         time: obj.time,
         vote: obj.vote,
-        voteUp: false,
-        voteDown: false,
+        up: parseInt(obj.up),
+        down: parseInt(obj.down),
         uploadphotos: obj.images.map(function(obj) {return {photo: obj.image_name}}),
-        user_id: obj.user_id
+        user_id: obj.user_id,
+        ownPost: obj.user_id == userId
     }
 }
 
