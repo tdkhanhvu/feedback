@@ -87,19 +87,19 @@
                             <button type="button" class="btn btn-success reply">Trả Lời</button>
                         {{/if}}
 
-                        {{if voteDown}}
-                            <span class="action_icon down glyphicon glyphicon-chevron-down disabled"></span>
+                        {{if vote=='down'}}
+                            <span class="action_icon down glyphicon glyphicon-chevron-down clicked"></span>
                         {{else}}
                             <span class="action_icon down glyphicon glyphicon-chevron-down"></span>
                         {{/if}}
 
-                        {{if voteUp}}
-                            <span class="action_icon up glyphicon glyphicon-chevron-up disabled"></span>
+                        {{if vote == 'down'}}
+                            <span class="action_icon up glyphicon glyphicon-chevron-up clicked"></span>
                         {{else}}
                             <span class="action_icon up glyphicon glyphicon-chevron-up"></span>
                         {{/if}}
 
-                        <span class="badge">{{:vote}}</span>
+                        <span class="badge">{{:up - down}}</span>
                     </div>
                 </div>
             </div>
