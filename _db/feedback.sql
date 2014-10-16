@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2014 at 06:33 PM
+-- Generation Time: Oct 16, 2014 at 06:14 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -87,11 +87,12 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `thread_id` int(11) NOT NULL,
   `user_id` text NOT NULL,
-  `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
   `spam` int(11) NOT NULL,
+  `spam_reported` int(11) NOT NULL,
   `replies` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
@@ -100,19 +101,19 @@ CREATE TABLE IF NOT EXISTS `comment` (
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`id`, `thread_id`, `user_id`, `text`, `time`, `up`, `down`, `spam`, `replies`) VALUES
-(1, 1, '2', 'comment một', '2014-09-01 00:00:00', 0, 0, 0, 11),
-(2, 1, '2', 'comment hai', '2014-09-02 00:00:00', 0, 0, 0, 0),
-(3, 1, '2', 'ba', '2014-09-03 00:00:00', 0, 0, 0, 0),
-(4, 1, '2', 'bốn', '0000-00-00 00:00:00', 0, 0, 0, 0),
-(5, 1, '2', 'năm', '2014-09-05 00:00:00', 0, 0, 0, 0),
-(6, 1, '2', 'sáu', '2014-09-06 00:00:00', 0, 0, 0, 0),
-(7, 1, '2', 'bảy', '2014-09-07 00:00:00', 0, 0, 0, 0),
-(8, 1, '2', 'tám', '2014-09-08 00:00:00', 0, 0, 0, 0),
-(9, 1, '2', 'chín', '2014-09-09 00:00:00', 0, 0, 0, 0),
-(10, 1, '2', 'mười', '2014-09-10 00:00:00', 0, 0, 0, 0),
-(11, 1, '2', 'mười một', '2014-09-11 00:00:00', 0, 0, 0, 0),
-(12, 7, '2', 'xxx', '2014-10-08 20:06:53', 0, 0, 1, 4);
+INSERT INTO `comment` (`id`, `thread_id`, `user_id`, `text`, `time`, `up`, `down`, `spam`, `spam_reported`, `replies`) VALUES
+(1, 1, '2', 'comment một', '2014-09-01 00:00:00', 0, 0, 0, 1, 11),
+(2, 1, '2', 'comment hai', '2014-09-02 00:00:00', 0, 0, 0, 0, 0),
+(3, 1, '2', 'ba', '2014-09-03 00:00:00', 0, 0, 0, 0, 0),
+(4, 1, '2', 'bốn', '0000-00-00 00:00:00', 0, 0, 0, 0, 0),
+(5, 1, '2', 'năm', '2014-09-05 00:00:00', 0, 0, 0, 0, 0),
+(6, 1, '2', 'sáu', '2014-09-06 00:00:00', 0, 0, 0, 0, 0),
+(7, 1, '2', 'bảy', '2014-09-07 00:00:00', 0, 0, 0, 0, 0),
+(8, 1, '2', 'tám', '2014-09-08 00:00:00', 0, 0, 0, 0, 0),
+(9, 1, '2', 'chín', '2014-09-09 00:00:00', 0, 0, 0, 0, 0),
+(10, 1, '2', 'mười', '2014-09-10 00:00:00', 0, 0, 0, 0, 0),
+(11, 1, '2', 'mười một', '2014-09-11 00:00:00', 0, 0, 0, 0, 0),
+(12, 7, '2', 'xxx', '2014-10-08 20:06:53', 0, 0, 1, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -150,6 +151,24 @@ CREATE TABLE IF NOT EXISTS `comment_image` (
 INSERT INTO `comment_image` (`comment_id`, `image_name`) VALUES
 (12, 'aaa'),
 (12, 'bbb');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment_spam_reporter`
+--
+
+CREATE TABLE IF NOT EXISTS `comment_spam_reporter` (
+  `comment_id` int(11) NOT NULL,
+  `fb_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comment_spam_reporter`
+--
+
+INSERT INTO `comment_spam_reporter` (`comment_id`, `fb_id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -354,11 +373,12 @@ CREATE TABLE IF NOT EXISTS `reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
   `spam` int(11) NOT NULL,
+  `spam_reported` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
@@ -366,20 +386,20 @@ CREATE TABLE IF NOT EXISTS `reply` (
 -- Dumping data for table `reply`
 --
 
-INSERT INTO `reply` (`id`, `comment_id`, `user_id`, `text`, `time`, `up`, `down`, `spam`) VALUES
-(1, 1, 2, 'một', '2014-09-01 00:00:00', 0, 0, 0),
-(2, 1, 2, 'hai', '2014-09-01 00:00:00', 0, 0, 0),
-(3, 1, 2, 'ba', '2014-09-02 00:00:00', 0, 0, 0),
-(4, 1, 2, 'bốn', '2014-09-03 00:00:00', 0, 0, 0),
-(5, 1, 2, 'năm', '2014-09-05 00:00:00', 0, 0, 0),
-(6, 1, 2, 'sáu', '2014-09-06 00:00:00', 0, 0, 0),
-(7, 1, 2, 'bảy', '2014-09-07 00:00:00', 0, 0, 0),
-(8, 1, 2, 'tám', '2014-09-08 00:00:00', 0, 0, 0),
-(9, 1, 2, 'chín', '2014-09-09 00:00:00', 0, 0, 0),
-(10, 1, 2, 'mười', '2014-09-10 00:00:00', 0, 0, 0),
-(11, 1, 2, 'mười một', '2014-09-11 00:00:00', 0, 0, 0),
-(14, 12, 2, 'rrr', '2014-10-08 20:09:35', 0, 0, 0),
-(15, 12, 2, 'rrr', '2014-10-08 20:16:10', 0, 0, 0);
+INSERT INTO `reply` (`id`, `comment_id`, `user_id`, `text`, `time`, `up`, `down`, `spam`, `spam_reported`) VALUES
+(1, 1, 2, 'một', '2014-09-01 00:00:00', 0, 0, 0, 0),
+(2, 1, 2, 'hai', '2014-09-01 00:00:00', 0, 0, 0, 0),
+(3, 1, 2, 'ba', '2014-09-02 00:00:00', 0, 0, 0, 0),
+(4, 1, 2, 'bốn', '2014-09-03 00:00:00', 0, 0, 0, 0),
+(5, 1, 2, 'năm', '2014-09-05 00:00:00', 0, 0, 0, 0),
+(6, 1, 2, 'sáu', '2014-09-06 00:00:00', 0, 0, 0, 0),
+(7, 1, 2, 'bảy', '2014-09-07 00:00:00', 0, 0, 0, 0),
+(8, 1, 2, 'tám', '2014-09-08 00:00:00', 0, 0, 0, 0),
+(9, 1, 2, 'chín', '2014-09-09 00:00:00', 0, 0, 0, 0),
+(10, 1, 2, 'mười', '2014-09-10 00:00:00', 0, 0, 0, 0),
+(11, 1, 2, 'mười một', '2014-09-11 00:00:00', 0, 0, 0, 0),
+(14, 12, 2, 'rrr', '2014-10-08 20:09:35', 0, 0, 0, 0),
+(15, 12, 2, 'rrr', '2014-10-08 20:16:10', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -418,6 +438,17 @@ INSERT INTO `reply_image` (`reply_id`, `image_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reply_spam_reporter`
+--
+
+CREATE TABLE IF NOT EXISTS `reply_spam_reporter` (
+  `reply_id` int(11) NOT NULL,
+  `fb_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reply_up`
 --
 
@@ -442,7 +473,8 @@ CREATE TABLE IF NOT EXISTS `thread` (
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
   `spam` int(1) NOT NULL,
-  `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `spam_reported` int(11) NOT NULL,
+  `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
@@ -451,10 +483,10 @@ CREATE TABLE IF NOT EXISTS `thread` (
 -- Dumping data for table `thread`
 --
 
-INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `rate`, `up`, `down`, `spam`, `text`, `comments`) VALUES
-(1, 'kfc_1', '2', 1, '2014-09-17 00:00:00', 2, 9, 7, 0, 'Hôm nay trời đẹp', 12),
-(2, 'kfc_1', '1', 0, '2014-09-09 00:00:00', 3, 8, 2, 0, 'Hôm nay vui', 0),
-(7, 'kfc_1', '2', 0, '2014-10-09 00:44:16', 4, 0, 0, 0, 'sss', 1);
+INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `rate`, `up`, `down`, `spam`, `spam_reported`, `text`, `comments`) VALUES
+(1, 'kfc_1', '2', 1, '2014-09-17 00:00:00', 2, 15, 6, 0, 1, 'Hôm nay trời đẹp', 12),
+(2, 'kfc_1', '1', 0, '2014-09-09 00:00:00', 3, 8, 2, 0, 0, 'Hôm nay vui', 0),
+(7, 'kfc_1', '2', 0, '2014-10-09 00:44:16', 4, 0, 0, 0, 0, 'sss', 1);
 
 -- --------------------------------------------------------
 
@@ -466,6 +498,13 @@ CREATE TABLE IF NOT EXISTS `thread_down` (
   `thread_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `thread_down`
+--
+
+INSERT INTO `thread_down` (`thread_id`, `fb_id`) VALUES
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -489,6 +528,24 @@ INSERT INTO `thread_image` (`thread_id`, `image_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `thread_spam_reporter`
+--
+
+CREATE TABLE IF NOT EXISTS `thread_spam_reporter` (
+  `thread_id` int(11) NOT NULL,
+  `fb_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `thread_spam_reporter`
+--
+
+INSERT INTO `thread_spam_reporter` (`thread_id`, `fb_id`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `thread_up`
 --
 
@@ -496,6 +553,15 @@ CREATE TABLE IF NOT EXISTS `thread_up` (
   `thread_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `thread_up`
+--
+
+INSERT INTO `thread_up` (`thread_id`, `fb_id`) VALUES
+(1, 2),
+(1, 4),
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -505,7 +571,7 @@ CREATE TABLE IF NOT EXISTS `thread_up` (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `photo` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;

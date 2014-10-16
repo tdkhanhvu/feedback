@@ -555,30 +555,30 @@ class MySQL {
 		return $this->updateTable($table, [['spam', $status]], [['id', $id]]);
 	}
 
-	public function reportSpam($table, $item_id, $user_id, $user_type = 'fb_id') {
+	public function reportSpam($table_name, $item_id, $user_id, $user_type = 'fb_id') {
 		// Check if user already reported
-		$spam_reporter_table = $table.'_spam_reporter';
-		$id_list = $this->selectFromTable($spam_reporter_table, [[$table.'_id', $item_id], [$user_type, $user_id]]);
+		$spam_reporter_table = $table_name.'_spam_reporter';
+		$id_list = $this->selectFromTable($spam_reporter_table, [[$table_name.'_id', $item_id], [$user_type, $user_id]]);
 
 		if (count($id_list) > 0) {
 			// Remove spam report of that user
-			$items = $this->selectFromTable($table, [['id', $item_id]]);
+			$items = $this->selectFromTable($table_name, [['id', $item_id]]);
 			$item = count($items) > 0 ? $items[0] : null;
 			if (isset($items)) {
 				$spam_count = intval($item['spam_reported']);
-				$this->updateTable($table, [['spam_reported', --$spam_count]], [['id', $item_id]]);
-				$this->deleteFromTable($spam_reporter_table, [[$table.'_id', $item_id], [$user_type, $user_id]]);
+				$this->updateTable($table_name, [['spam_reported', --$spam_count]], [['id', $item_id]]);
+				$this->deleteFromTable($spam_reporter_table, [[$table_name.'_id', $item_id], [$user_type, $user_id]]);
 				return true;
 			}
 		}
 		else {
 			// Add new spam report
-			$items = $this->selectFromTable($table, [['id', $item_id]]);
+			$items = $this->selectFromTable($table_name, [['id', $item_id]]);
 			$item = count($items) > 0 ? $items[0] : null;
 			if (isset($items)) {
 				$spam_count = intval($item['spam_reported']);
-				$this->updateTable($table, [['spam_reported', ++$spam_count]], [['id', $item_id]]);
-				$this->insertIntoTable($spam_reporter_table, [[$table.'_id', $item_id], [$user_type, $user_id]]);
+				$this->updateTable($table_name, [['spam_reported', ++$spam_count]], [['id', $item_id]]);
+				$this->insertIntoTable($spam_reporter_table, [[$table_name.'_id', $item_id], [$user_type, $user_id]]);
 				return true;
 			}
 		}
