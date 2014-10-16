@@ -15,7 +15,7 @@ class MySQL {
 
 		$this->items = ['thread', 'comment', 'reply'];
 		$this->votes = ['up', 'down'];
-		$this->acc_types = ['fb_id'];
+		$this->user_types = ['fb_id'];
 	}
 
 	/***************************************************
@@ -233,11 +233,11 @@ class MySQL {
 	}
 
 	// Select all voters up/down from Item ID
-	public function selectVotersFromItemID($item_type, $vote_type, $item_id, $acc_type = 'fb_id') {
+	public function selectVotersFromItemID($item_type, $vote_type, $item_id, $user_type = 'fb_id') {
 		if (in_array($item_type, $this->items) && in_array($vote_type, $this->votes)) {
 			$table_name = $item_type.'_'.$vote_type;
 			$arg = $item_type.'_id';
-			return $this->selectFromTable($table_name, [[$arg, $item_id]], [$acc_type]);
+			return $this->selectFromTable($table_name, [[$arg, $item_id]], [$user_type]);
 		}
 		return -1;
 	}
@@ -417,7 +417,7 @@ class MySQL {
 	}
 
 	// Insert vote up/down to Item ID
-	public function insertVoteIntoItem($item_type, $vote_type, $item_id, $user_id, $acc_type = 'fb_id') {
+	public function insertVoteIntoItem($item_type, $vote_type, $item_id, $user_id, $user_type = 'fb_id') {
 		if (in_array($item_type, $this->items) && in_array($vote_type, $this->votes)) {
 			if ($vote_type == 'up') {
 				$table_name = $item_type.'_up';
@@ -431,32 +431,32 @@ class MySQL {
 			}
 
 			// Check if he already voted
-			$id = $this->selectFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+			$id = $this->selectFromTable($table_name, [[$item_type.'_id', $item_id], [$user_type, $user_id]]);
 			if (count($id) == 0) {
 				// Update the up/down count in main table
 				$this->vote($item_type, $item_id, $vote_type, 'add');
 
 				// Check if opposite type existed
-				$opp_id = $this->selectFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+				$opp_id = $this->selectFromTable($opp_table, [[$item_type.'_id', $item_id], [$user_type, $user_id]]);
 				
 				if (count($opp_id) > 0) {
 					// Delete
-					$this->deleteFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+					$this->deleteFromTable($opp_table, [[$item_type.'_id', $item_id], [$user_type, $user_id]]);
 					$this->vote($item_type, $item_id, $opp_type, 'remove');
 				}
 
 				$arg = $item_type.'_id';
-				$this->deleteFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);	// Avoid duplicate
-				$this->insertIntoTable($table_name, [[$arg, $item_id], [$acc_type, $user_id]]);
+				$this->deleteFromTable($table_name, [[$item_type.'_id', $item_id], [$user_type, $user_id]]);	// Avoid duplicate
+				$this->insertIntoTable($table_name, [[$arg, $item_id], [$user_type, $user_id]]);
 			}
 			else {
 				// Reduce if already existed
 				$this->vote($item_type, $item_id, $vote_type, 'remove');
 
 				// Check if current type existed
-				$curr_id = $this->selectFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+				$curr_id = $this->selectFromTable($table_name, [[$item_type.'_id', $item_id], [$user_type, $user_id]]);
 				if (count($curr_id) > 0) {
-					$this->deleteFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+					$this->deleteFromTable($table_name, [[$item_type.'_id', $item_id], [$user_type, $user_id]]);
 				}
 			}
 			return true;
@@ -549,9 +549,41 @@ class MySQL {
 		return $this->updateTable('thread', [['solved', $status]], [['id', $id]]);
 	}
 
-	// Mark spam
+	// Mark spam 
+	// Should only be for admin
 	public function markSpam($table, $id, $status = 1) {
 		return $this->updateTable($table, [['spam', $status]], [['id', $id]]);
+	}
+
+	public function reportSpam($table, $item_id, $user_id, $user_type = 'fb_id') {
+		// Check if user already reported
+		$spam_reporter_table = $table.'_spam_reporter';
+		$id_list = $this->selectFromTable($spam_reporter_table, [[$table.'_id', $item_id], [$user_type, $user_id]]);
+
+		if (count($id_list) > 0) {
+			// Remove spam report of that user
+			$items = $this->selectFromTable($table, [['id', $item_id]]);
+			$item = count($items) > 0 ? $items[0] : null;
+			if (isset($items)) {
+				$spam_count = intval($item['spam_reported']);
+				$this->updateTable($table, [['spam_reported', --$spam_count]], [['id', $item_id]]);
+				$this->deleteFromTable($spam_reporter_table, [[$table.'_id', $item_id], [$user_type, $user_id]]);
+				return true;
+			}
+		}
+		else {
+			// Add new spam report
+			$items = $this->selectFromTable($table, [['id', $item_id]]);
+			$item = count($items) > 0 ? $items[0] : null;
+			if (isset($items)) {
+				$spam_count = intval($item['spam_reported']);
+				$this->updateTable($table, [['spam_reported', ++$spam_count]], [['id', $item_id]]);
+				$this->insertIntoTable($spam_reporter_table, [[$table.'_id', $item_id], [$user_type, $user_id]]);
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 
