@@ -430,22 +430,35 @@ class MySQL {
 				$opp_type = 'up';
 			}
 
-			// Update the up/down count in main table
-			$this->vote($item_type, $item_id, $vote_type, 'add');
+			// Check if he already voted
+			$id = $this->selectFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+			if (count($id) == 0) {
+				// Update the up/down count in main table
+				$this->vote($item_type, $item_id, $vote_type, 'add');
 
-			// Check if opposite type existed
-			$opp_id = $this->selectFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
-			
-			if (count($opp_id) > 0) {
-				echo 'xxx';
-				// Delete
-				$this->deleteFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
-				$this->vote($item_type, $item_id, $opp_type, 'remove');
+				// Check if opposite type existed
+				$opp_id = $this->selectFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+				
+				if (count($opp_id) > 0) {
+					// Delete
+					$this->deleteFromTable($opp_table, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+					$this->vote($item_type, $item_id, $opp_type, 'remove');
+				}
+
+				$arg = $item_type.'_id';
+				$this->deleteFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);	// Avoid duplicate
+				$this->insertIntoTable($table_name, [[$arg, $item_id], [$acc_type, $user_id]]);
 			}
+			else {
+				// Reduce if already existed
+				$this->vote($item_type, $item_id, $vote_type, 'remove');
 
-			$arg = $item_type.'_id';
-			$this->deleteFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);	// Avoid duplicate
-			$this->insertIntoTable($table_name, [[$arg, $item_id], [$acc_type, $user_id]]);
+				// Check if current type existed
+				$curr_id = $this->selectFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+				if (count($curr_id) > 0) {
+					$this->deleteFromTable($table_name, [[$item_type.'_id', $item_id], [$acc_type, $user_id]]);
+				}
+			}
 			return true;
 		}
 		return false;
