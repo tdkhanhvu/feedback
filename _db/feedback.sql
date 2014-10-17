@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2014 at 06:14 PM
+-- Generation Time: Oct 17, 2014 at 05:04 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -91,8 +91,8 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
-  `spam` int(11) NOT NULL,
-  `spam_reported` int(11) NOT NULL,
+  `spam_status` int(11) NOT NULL,
+  `spam_count` int(11) NOT NULL,
   `replies` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`id`, `thread_id`, `user_id`, `text`, `time`, `up`, `down`, `spam`, `spam_reported`, `replies`) VALUES
+INSERT INTO `comment` (`id`, `thread_id`, `user_id`, `text`, `time`, `up`, `down`, `spam_status`, `spam_count`, `replies`) VALUES
 (1, 1, '2', 'comment một', '2014-09-01 00:00:00', 0, 0, 0, 1, 11),
 (2, 1, '2', 'comment hai', '2014-09-02 00:00:00', 0, 0, 0, 0, 0),
 (3, 1, '2', 'ba', '2014-09-03 00:00:00', 0, 0, 0, 0, 0),
@@ -377,8 +377,8 @@ CREATE TABLE IF NOT EXISTS `reply` (
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
-  `spam` int(11) NOT NULL,
-  `spam_reported` int(11) NOT NULL,
+  `spam_status` int(11) NOT NULL,
+  `spam_count` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
@@ -386,7 +386,7 @@ CREATE TABLE IF NOT EXISTS `reply` (
 -- Dumping data for table `reply`
 --
 
-INSERT INTO `reply` (`id`, `comment_id`, `user_id`, `text`, `time`, `up`, `down`, `spam`, `spam_reported`) VALUES
+INSERT INTO `reply` (`id`, `comment_id`, `user_id`, `text`, `time`, `up`, `down`, `spam_status`, `spam_count`) VALUES
 (1, 1, 2, 'một', '2014-09-01 00:00:00', 0, 0, 0, 0),
 (2, 1, 2, 'hai', '2014-09-01 00:00:00', 0, 0, 0, 0),
 (3, 1, 2, 'ba', '2014-09-02 00:00:00', 0, 0, 0, 0),
@@ -472,8 +472,8 @@ CREATE TABLE IF NOT EXISTS `thread` (
   `rate` int(11) NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
-  `spam` int(1) NOT NULL,
-  `spam_reported` int(11) NOT NULL,
+  `spam_status` int(1) NOT NULL,
+  `spam_count` int(11) NOT NULL,
   `text` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -483,9 +483,9 @@ CREATE TABLE IF NOT EXISTS `thread` (
 -- Dumping data for table `thread`
 --
 
-INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `rate`, `up`, `down`, `spam`, `spam_reported`, `text`, `comments`) VALUES
+INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `rate`, `up`, `down`, `spam_status`, `spam_count`, `text`, `comments`) VALUES
 (1, 'kfc_1', '2', 1, '2014-09-17 00:00:00', 2, 15, 6, 0, 1, 'Hôm nay trời đẹp', 12),
-(2, 'kfc_1', '1', 0, '2014-09-09 00:00:00', 3, 8, 2, 0, 0, 'Hôm nay vui', 0),
+(2, 'kfc_1', '1', 0, '2014-09-09 00:00:00', 3, 9, 2, 0, 0, 'Hôm nay vui', 0),
 (7, 'kfc_1', '2', 0, '2014-10-09 00:44:16', 4, 0, 0, 0, 0, 'sss', 1);
 
 -- --------------------------------------------------------
@@ -561,7 +561,8 @@ CREATE TABLE IF NOT EXISTS `thread_up` (
 INSERT INTO `thread_up` (`thread_id`, `fb_id`) VALUES
 (1, 2),
 (1, 4),
-(1, 1);
+(1, 1),
+(2, 1);
 
 -- --------------------------------------------------------
 

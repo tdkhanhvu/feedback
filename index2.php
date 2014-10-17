@@ -4,5 +4,5 @@
   $mysql = new MySQL();
 
   echo '<pre>';
-  print_r($mysql->reportSpam('comment', 1, 1));
+  print_r($mysql->selectThreadsFromBranch('kfc_1', 1));
   echo '</pre>';

@@ -146,6 +146,19 @@ class MySQL {
 					}
 				}
 			}
+
+			// User spam report
+			$thr['spam_report'] = 0;
+			if ($user_id != null) {
+				// Spam reporters
+				$spam_reporters = $this->selectSpamReporters('thread', $thr['id'], $user_type = 'fb_id');
+				foreach ($spam_reporters as $reporter) {
+					if ($reporter['fb_id'] == $user_id) {
+						$thr['spam_report'] = 1;
+						break;
+					}
+				}
+			}
 		}
 	    return $threads;
 	}
@@ -242,6 +255,16 @@ class MySQL {
 		return -1;
 	}
 
+	// Select spam reporters
+	public function selectSpamReporters($item_type, $item_id, $user_type = 'fb_id') {
+		if (in_array($item_type, $this->items)) {
+			$table_name = $item_type.'_spam_reporter';
+			$arg = $item_type.'_id';
+			return $this->selectFromTable($table_name, [[$arg, $item_id]], [$user_type]);
+		}
+		return -1;
+	}
+
 
 	/***************************************************
 	 ***************************************************
@@ -302,7 +325,7 @@ class MySQL {
 				['time', date('Y-m-d H:i:s', strtotime("5 hours"))],
 				['up', 0],
 				['down', 0],
-				['spam', 0],
+				['spam_status', 0],
 				['comments', 0]
 			]);
 
@@ -363,7 +386,7 @@ class MySQL {
 				['time', date('Y-m-d H:i:s')],
 				['up', 0],
 				['down', 0],
-				['spam', 0],
+				['spam_status', 0],
 				['replies', 0]
 			]
 		);
@@ -400,7 +423,7 @@ class MySQL {
 				['time', date('Y-m-d H:i:s')],
 				['up', 0],
 				['down', 0],
-				['spam', 0],
+				['spam_status', 0],
 			]
 		);
 
@@ -552,9 +575,10 @@ class MySQL {
 	// Mark spam 
 	// Should only be for admin
 	public function markSpam($table, $id, $status = 1) {
-		return $this->updateTable($table, [['spam', $status]], [['id', $id]]);
+		return $this->updateTable($table, [['spam_status', $status]], [['id', $id]]);
 	}
 
+	// Report spam
 	public function reportSpam($table_name, $item_id, $user_id, $user_type = 'fb_id') {
 		// Check if user already reported
 		$spam_reporter_table = $table_name.'_spam_reporter';
@@ -565,8 +589,8 @@ class MySQL {
 			$items = $this->selectFromTable($table_name, [['id', $item_id]]);
 			$item = count($items) > 0 ? $items[0] : null;
 			if (isset($items)) {
-				$spam_count = intval($item['spam_reported']);
-				$this->updateTable($table_name, [['spam_reported', --$spam_count]], [['id', $item_id]]);
+				$spam_count = intval($item['spam_count']);
+				$this->updateTable($table_name, [['spam_count', --$spam_count]], [['id', $item_id]]);
 				$this->deleteFromTable($spam_reporter_table, [[$table_name.'_id', $item_id], [$user_type, $user_id]]);
 				return true;
 			}
@@ -576,8 +600,8 @@ class MySQL {
 			$items = $this->selectFromTable($table_name, [['id', $item_id]]);
 			$item = count($items) > 0 ? $items[0] : null;
 			if (isset($items)) {
-				$spam_count = intval($item['spam_reported']);
-				$this->updateTable($table_name, [['spam_reported', ++$spam_count]], [['id', $item_id]]);
+				$spam_count = intval($item['spam_count']);
+				$this->updateTable($table_name, [['spam_count', ++$spam_count]], [['id', $item_id]]);
 				$this->insertIntoTable($spam_reporter_table, [[$table_name.'_id', $item_id], [$user_type, $user_id]]);
 				return true;
 			}
