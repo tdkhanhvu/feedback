@@ -199,6 +199,19 @@ class MySQL {
 					}
 				}
 			}
+
+			// User spam report
+			$cmt['spam_report'] = 0;
+			if ($user_id != null) {
+				// Spam reporters
+				$spam_reporters = $this->selectSpamReporters('comment', $cmt['id'], $user_type = 'fb_id');
+				foreach ($spam_reporters as $reporter) {
+					if ($reporter['fb_id'] == $user_id) {
+						$cmt['spam_report'] = 1;
+						break;
+					}
+				}
+			}
 		}
 
 	    return $comments;
@@ -236,6 +249,19 @@ class MySQL {
 				foreach ($down_voters as $down_voter) {
 					if ($down_voter['fb_id'] == $user_id) {
 						$rep['vote'] = 'down';
+						break;
+					}
+				}
+			}
+
+			// User spam report
+			$rep['spam_report'] = 0;
+			if ($user_id != null) {
+				// Spam reporters
+				$spam_reporters = $this->selectSpamReporters('reply', $rep['id'], $user_type = 'fb_id');
+				foreach ($spam_reporters as $reporter) {
+					if ($reporter['fb_id'] == $user_id) {
+						$rep['spam_report'] = 1;
 						break;
 					}
 				}
