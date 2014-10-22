@@ -69,7 +69,11 @@
                                 <span class="action_icon accept glyphicon glyphicon-ok"></span>
                             {{/if}}
                         {{else}}
-                            <span class="action_icon flag glyphicon glyphicon-flag" userId={{:userId}}></span>
+                            {{if spam_report == '1'}}
+                                <span class="action_icon active flag glyphicon glyphicon-flag" userId={{:userId}}></span>
+                            {{else}}
+                                <span class="action_icon flag glyphicon glyphicon-flag" userId={{:userId}}></span>
+                            {{/if}}
                         {{/if}}
                     </div>
                 </div>

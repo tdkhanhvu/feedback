@@ -72,8 +72,8 @@
 
             break;
 
-        case "MarkThreadSpam":
-            $result = $mysql->markSpam(decodeId($_POST['threadId']), $_POST['status']);
+        case "UpdateSpam":
+            $result = $mysql->reportSpam($_POST['type'],decodeId($_POST['id']), decodeId($_POST['userId']));
 
             break;
 

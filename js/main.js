@@ -113,6 +113,7 @@ function initRating() {
 }
 
 function getPostAttribute(obj) {
+    console.log(obj);
     return {
         id : obj.id,
         type: obj.type,
@@ -125,12 +126,12 @@ function getPostAttribute(obj) {
         down: parseInt(obj.down),
         userName: userName,
         uploadphotos: obj.uploadphotos,
-        ownPost: obj.user_id == userId
+        ownPost: obj.user_id == userId,
+        spam_report: obj.spam_report
     }
 }
 
 function extractAjaxPostAttribute(obj) {
-    console.log(obj);
     return {
         id : obj.id,
         name: obj.name,
@@ -142,7 +143,8 @@ function extractAjaxPostAttribute(obj) {
         down: parseInt(obj.down),
         uploadphotos: obj.images.map(function(obj) {return {photo: obj.image_name}}),
         user_id: obj.user_id,
-        ownPost: obj.user_id == userId
+        ownPost: obj.user_id == userId,
+        spam_report: obj.spam_report
     }
 }
 
@@ -220,7 +222,17 @@ function initEvent() {
     });
 
     $('body').on('click', '.flag', function() {
-        var temp = $(this).closest('.comment_detail');
+        var flag = $(this),
+            type = '',
+            comment_detail = flag.closest('.comment_detail');
+
+        if (comment_detail.hasClass('post_start'))
+            type = 'thread';
+        else if (comment_detail.hasClass('reply_content'))
+            type = 'reply';
+        else
+            type = 'comment';
+/*        var temp = $(this).closest('.comment_detail');
 
         if (temp.hasClass('post_start')) {
             var container = temp.closest('.mix');
@@ -230,7 +242,24 @@ function initEvent() {
 
             container.find('.viewComments').remove();
         }
-        else temp.html('You have flagged this comment as spam');
+        else temp.html('You have flagged this comment as spam');*/
+
+        //alert(type + ' ' + comment_detail.attr('id'));
+
+        return $.ajax({
+            url: serviceUrl,
+            type: "post",
+            data: {'request':'UpdateSpam', 'id': comment_detail.attr('id'), 'type': type, 'userId':userId},
+            dataType: 'json',
+            success: function(result){
+                if (result === true) {
+                    flag.toggleClass('active');
+                }
+            },
+            error: function(xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
     });
 
     $('body').on('click', '.up, .down', function() {
@@ -284,7 +313,6 @@ function initEvent() {
 
     $(function(){
         $(document).on('mousewheel', '.right-preview', loadMoreThreads);
-        //$('.right-preview').scroll(loadMoreThreads);
     });
 }
 
@@ -305,7 +333,8 @@ function loadMoreThreads() {
 }
 
 function clearUploadedPhotos(formId) {
-    uploaders[formId].removeAllFiles(true);
+    if (typeof uploaders[formId] !='undefined')
+        uploaders[formId].removeAllFiles(true);
     $('#' + formId).hide();
 }
 
@@ -339,9 +368,10 @@ function removeImageFromPreview(cmtBox) {
     var form = cmtBox.parent().find('form'),
         formId = form.attr('id');
 
-    uploaders[formId].files.forEach(function(file) {
-        file.keepFile = true;
-    });
+    if (typeof uploaders[formId] !='undefined')
+        uploaders[formId].files.forEach(function(file) {
+            file.keepFile = true;
+        });
 }
 
 function updateLikeDislike(e) {

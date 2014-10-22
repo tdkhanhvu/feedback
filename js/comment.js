@@ -79,7 +79,8 @@ function createNewComment(threadId, cmtBox) {
                     uploadphotos: uploadPhotos.map(function(obj) {return {photo: obj}}),
                     vote: '',
                     up:0,
-                    down: 0
+                    down: 0,
+                    user_id: userId
                 }
                 addComment(threadId,comment);
 

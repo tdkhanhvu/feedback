@@ -60,7 +60,8 @@ function createNewReply(commentId, cmtBox) {
                     uploadphotos: uploadPhotos.map(function(obj) {return {photo: obj}}),
                     vote: '',
                     up:0,
-                    down: 0
+                    down: 0,
+                    user_id: userId
                 }
                 addReply(commentId,reply);
 
