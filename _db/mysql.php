@@ -10,7 +10,7 @@ class MySQL {
 			$this->dbh = new PDO('mysql:host=localhost;dbname=feedback;charset=utf8', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
 		}
 		else {
-			$this->dbh = new PDO('mysql:host=toibalocom.ipagemysql.com;dbname=toifeedback', 'toifeedback', 'F%pks58F');
+			$this->dbh = new PDO('mysql:host=toibalocom.ipagemysql.com;dbname=toifeedback', 'toifeedback', 'teamfeedback', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'");
 		}
 
 		$this->items = ['thread', 'comment', 'reply'];
