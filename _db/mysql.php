@@ -40,7 +40,7 @@ class MySQL {
 	 *********************	Query 	********************
 	 ***************************************************
 	 ***************************************************/
-	public function selectFromTable($table, $args = null, $crits = null, $limit = '') {
+	private function selectFromTable($table, $args = null, $crits = null, $limit = '') {
 		$query = 'SELECT ';
 
 		// Criteria
