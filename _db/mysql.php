@@ -40,7 +40,7 @@ class MySQL {
 	 *********************	Query 	********************
 	 ***************************************************
 	 ***************************************************/
-	private function selectFromTable($table, $args = null, $crits = null, $limit = '') {
+	public function selectFromTable($table, $args = null, $crits = null, $limit = '') {
 		$query = 'SELECT ';
 
 		// Criteria
@@ -58,9 +58,9 @@ class MySQL {
 		if ($args != null) {
 			$query .= ' WHERE ';
 			for($i = 0; $i < count($args) - 1; $i++) {
-				$query .= $args[$i][0] . ' = ' . $args[$i][1] . ' AND ';
+				$query .= $args[$i][0] . ' = "' . $args[$i][1] . '"" AND ';
 			}
-			$query .= $args[$i][0] . ' = ' . $args[$i][1];
+			$query .= $args[$i][0] . ' = "' . $args[$i][1] . '"';
 		}
 
 		$query .= ' '.$limit;

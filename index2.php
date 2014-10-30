@@ -3,5 +3,5 @@
   $mysql = new MySQL();
 
   echo '<pre>';
-  print_r($mysql->deleteFromTable('comment', [['id','11'],['thread_id','8']]));
+  print_r($mysql->selectFromTable('company', [['id', 'ff_burgerking']]));
   echo '</pre>';
