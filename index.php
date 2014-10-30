@@ -97,7 +97,7 @@
                                 <div class="controls" style="position:fixed; right: 0; z-index: 1; padding: 0%; width: 8%; top: 5%;">
 
                                     <p>Phân Loại</p>
-                                    <p class="filter bg-primary" data-filter="all">
+                                    <p class="filter bg-primary" data-filter=".service,.park,.product">
                                         Tất Cả
                                     </p>
                                     <p class="filter" data-filter=".service">
@@ -111,7 +111,7 @@
                                     </p>
 
                                     <p style="margin-top: 20%;">Xử Lý</p>
-                                    <p class="filter bg-primary" data-filter="all">
+                                    <p class="filter bg-primary" data-filter=".solved,.unsolved">
                                         Tất Cả
                                     </p>
                                     <p class="filter" data-filter=".solved">

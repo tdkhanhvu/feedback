@@ -61,14 +61,17 @@ function getAllBranchesFromCompany(companyId, branches) {
 }
 
 function getCompaniesByIndustryId(industryId, industryName) {
+    console.log('make call getCompaniesByIndustryId for id ' + industryId);
     return $.ajax({
         url: serviceUrl,
         type: "post",
         data: {'request':'GetAllCompaniesFromIndustries', 'industryId':industryId},
         dataType: 'json',
         success: function(result){
+            console.log("receive result " + result.length);
             for (var i = 0; i < result.length; i++) {
                 var company = result[i];
+                console.log(company);
                 companies.push(
                     {
                         industryName : industryName,
@@ -79,7 +82,7 @@ function getCompaniesByIndustryId(industryId, industryName) {
             }
         },
         error: function(xhr, status, error) {
-            alert(xhr.responseText);
+            console.log(xhr.responseText);
         }
     });
 }

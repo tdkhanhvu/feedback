@@ -89,7 +89,7 @@ class MySQL {
 
 	// Select all industries
 	public function selectIndustry($id) {
-		return $this->selectFromTable('industry', [['id', $id]]);
+		return $this->selectFromTable('industry', null, [['id', $id]]);
 	}
 
 	// Select all companies from a particular industry

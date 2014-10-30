@@ -21,7 +21,7 @@
 
     switch($request) {
         case "GetAllIndustries":
-            $result = $mysql->selectFromTable('industry');
+            $result = $mysql->selectAllIndustries();
             encodeId($result, 'industry');
             break;
         case "GetAllCompaniesFromIndustries":

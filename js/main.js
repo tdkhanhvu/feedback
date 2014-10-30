@@ -161,11 +161,11 @@ function getIndustryList(callback) {
         data: {'request':'GetAllIndustries'},
         dataType: 'json',
         success: function(result){
+            console.log(result);
             callback(result);
         },
         error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
+            console.log(xhr.responseText);
         }
     });
 }
