@@ -1,13 +1,11 @@
 <pre>
 <?php
-    include('mysql.php');
+include('mysql.php');
+$mysql = new MySQL();
 
-    $mysql = new MySQL();
-    $result = [];
-
-	$result = $mysql->selectFromTable('industry');
-
-	print_r($result);
+echo '<pre>';
+print_r($mysql->selectFromTable('company', [['id', 'ff_burgerking']]));
+echo '</pre>';
 ?>
 </pre>
 	

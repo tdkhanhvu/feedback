@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php require 'template.php'?>
+<?php require 'language.php'?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -48,7 +49,7 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    <span class="glyphicon glyphicon-plus"></span>Thêm nhận xét về công ty
+                                    <span class="glyphicon glyphicon-plus"></span><?php echo $lang['ADD_REVIEW']; ?>
                                 </a>
                             </h4>
                         </div>
@@ -64,21 +65,21 @@
                                             <h4 style="color: rgb(141, 30, 30);margin:5px;">Trần Đoàn Khánh Vũ</h4>
                                         </div>
                                         <div id="feedback" class="col-md-5"></div>
-                                        <input id="input_comment" type="text" class="form-control" placeholder="Nhập nhận xét">
+                                        <input id="input_comment" type="text" class="form-control" placeholder="<?php echo $lang['INPUT_REVIEW']; ?>">
                                         <span class="glyphicon glyphicon-camera photo_upload_icon" id="photo_upload_comment_box"></span>
                                         <div class="btn-group" data-toggle="buttons">
                                             <label class="btn btn-default active">
-                                                <input id="input_service" type="checkbox" checked>Phục Vụ
+                                                <input id="input_service" type="checkbox" checked><?php echo $lang['CATEGORY_SERVICE']; ?>
+    </label>
+                                            <label class="btn btn-default">
+                                                <input id="input_park" type="checkbox"> <?php echo $lang['CATEGORY_PARK']; ?>
                                             </label>
                                             <label class="btn btn-default">
-                                                <input id="input_park" type="checkbox"> Giữ Xe
-                                            </label>
-                                            <label class="btn btn-default">
-                                                <input id="input_product" type="checkbox"> Sản Phẩm
+                                                <input id="input_product" type="checkbox"> <?php echo $lang['CATEGORY_PRODUCT']; ?>
                                             </label>
                                         </div>
-                                        <button type="button" class="btn btn-danger cancel_thread" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px">Hủy</button>
-                                        <button type="button" class="btn btn-success send_thread" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;">Gửi</button>
+                                        <button type="button" class="btn btn-danger cancel_thread" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px"><?php echo $lang['CANCEL']; ?></button>
+                                        <button type="button" class="btn btn-success send_thread" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;"><?php echo $lang['SEND']; ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +89,7 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                    Tất cả nhận xét
+                                    <?php echo $lang['ALL_REVIEWS']; ?>
                                 </a>
                             </h4>
                         </div>
@@ -96,37 +97,37 @@
                             <div class="panel-body">
                                 <div class="controls" style="position:fixed; right: 0; z-index: 1; padding: 0%; width: 8%; top: 5%;">
 
-                                    <p>Phân Loại</p>
+                                    <p><?php echo $lang['CATEGORIES']; ?></p>
                                     <p class="filter bg-primary" data-filter=".service,.park,.product">
-                                        Tất Cả
+                                        <?php echo $lang['ALL']; ?>
                                     </p>
                                     <p class="filter" data-filter=".service">
-                                        Phục Vụ
+                                        <?php echo $lang['CATEGORY_SERVICE']; ?>
                                     </p>
                                     <p class="filter" data-filter=".park">
-                                        Giữ Xe
+                                        <?php echo $lang['CATEGORY_PARK']; ?>
                                     </p>
                                     <p class="filter" data-filter=".product">
-                                        Sản Phẩm
+                                        <?php echo $lang['CATEGORY_PRODUCT']; ?>
                                     </p>
 
-                                    <p style="margin-top: 20%;">Xử Lý</p>
+                                    <p style="margin-top: 20%;"><?php echo $lang['CASE_CLOSED']; ?></p>
                                     <p class="filter bg-primary" data-filter=".solved,.unsolved">
-                                        Tất Cả
+                                        <?php echo $lang['ALL']; ?>
                                     </p>
                                     <p class="filter" data-filter=".solved">
-                                        Xử Lý
+                                        <?php echo $lang['CASE_CLOSED']; ?>
                                     </p>
                                     <p class="filter" data-filter=".unsolved">
-                                        Chưa Xử Lý
+                                        <?php echo $lang['CASE_OPEN']; ?>
                                     </p>
 
-                                    <p style="margin-top: 20%;">Thời Gian</p>
+                                    <p style="margin-top: 20%;"><?php echo $lang['TIME']; ?></p>
                                     <p class="sort" data-sort="myorder:asc">
-                                        Gần Nhất
+                                        <?php echo $lang['LATEST']; ?>
                                     </p>
                                     <p class="sort" data-sort="myorder:desc">
-                                        Xa Nhất
+                                        <?php echo $lang['OLDEST']; ?>
                                     </p>
                                 </div>
                                 <div id="Container"></div>

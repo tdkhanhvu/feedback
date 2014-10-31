@@ -9,7 +9,7 @@ class MySQL {
 			$this->mysqli = mysqli_connect('localhost', 'root', '', 'feedback');
 		}
 		else {
-			$this->mysqli = mysqli_connect('toibalocom.ipagemysql.com', 'toifeedback', 'teamfeedback', 'toifeedback');
+			$this->mysqli = mysqli_connect('toibalocom.ipagemysql.com', 'toifeedback', 'toifeedback', 'F%pks58F');
 		}
 
 		/*
@@ -89,7 +89,7 @@ class MySQL {
 
 	// Select all industries
 	public function selectIndustry($id) {
-		return $this->selectFromTable('industry', null, [['id', $id]]);
+		return $this->selectFromTable('industry', [['id', $id]]);
 	}
 
 	// Select all companies from a particular industry
