@@ -1,3 +1,5 @@
+<?php require 'language.php'?>
+
 <!DOCTYPE html>
 <html>
 
@@ -88,7 +90,7 @@
                         <img class="action_icon" src="images/icon/social/glyphicons_social_31_twitter.png"/>
 
                         {{if type != 'reply'}}
-                            <button type="button" class="btn btn-success reply">Trả Lời</button>
+                            <button type="button" class="btn btn-success reply"><?php echo $lang['REPLY']; ?></button>
                         {{/if}}
 
                         {{if vote=='down'}}
@@ -117,15 +119,15 @@
         </div>
 
         {{if type == 'comment' && replies > 0}}
-            <div class="viewReplies"><span class="glyphicon glyphicon-comment"></span><a>View Replies</a></div>
-            <div class="hideReplies"><span class="glyphicon glyphicon-chevron-up"></span><a>Hide Replies</a></div>
-            <div class="previousReplies"><span class="glyphicon glyphicon-comment"></span><a>Previous Replies</a></div>
+            <div class="viewReplies"><span class="glyphicon glyphicon-comment"></span><a><?php echo $lang['VIEW_REPLIES']; ?></a></div>
+            <div class="hideReplies"><span class="glyphicon glyphicon-chevron-up"></span><a><?php echo $lang['HIDE_REPLIES']; ?></a></div>
+            <div class="previousReplies"><span class="glyphicon glyphicon-comment"></span><a><?php echo $lang['PREVIOUS_REPLIES']; ?></a></div>
         {{/if}}
     </div>
 </script>
 <script id="companyTmpl" type="text/x-jsrender">
     <div style="width:100%;margin:0 auto;">
-        <p id="select_branch_text" >Chọn chi nhánh</p>
+        <p id="select_branch_text" ><?php echo $lang['SELECT_BRANCHES']; ?></p>
         <select id="branch_list" style="width:100%">
             {^{for branches}}
               <option value={{:id}}>{{:name}}</option>

@@ -1,4 +1,5 @@
 <?php
+    $lang = [];
     $lang['ADD_REVIEW'] = 'Add more reviews for company';
     $lang['INPUT_REVIEW'] = 'Input Review';
     $lang['CATEGORY_SERVICE'] = 'Service';
@@ -14,4 +15,9 @@
     $lang['TIME'] = 'Time';
     $lang['LATEST'] = 'Latest';
     $lang['OLDEST'] = 'Oldest';
+    $lang['REPLY'] = 'Reply';
+    $lang['VIEW_REPLIES'] = 'View Replies';
+    $lang['HIDE_REPLIES'] = 'Hide Replies';
+    $lang['PREVIOUS_REPLIES'] = 'Previous Replies';
+    $lang['SELECT_BRANCHES'] = 'Select branch';
 ?>

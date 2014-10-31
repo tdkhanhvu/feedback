@@ -132,9 +132,9 @@ function initThreadEvent() {
 function getStatus(status) {
     switch(status) {
         case "1":
-            return "<span class='label label-success tag'>Đã Giải Quyết</span>";
+            return "<span class='label label-success tag'>" + getLangValue('Solved')+"</span>";
         case "0":
-            return "<span class='label label-danger tag'>Chưa Giải Quyết</span>";
+            return "<span class='label label-danger tag'>" + getLangValue('Unsolved')+"</span>";
         default:
             return "";
     }
@@ -146,13 +146,13 @@ function getCategoryLabel(categories) {
         var temp = "";
         switch(category) {
             case 'service':
-                temp = "<span class='label label-primary tag'>Phục Vụ</span>";
+                temp = "<span class='label label-primary tag'>" + getLangValue('Service') + "</span>";
                 break;
             case 'park':
-                temp =  "<span class='label label-success tag'>Giữ Xe</span>";
+                temp =  "<span class='label label-success tag'>" + getLangValue('Park') + "</span>";
                 break;
             case 'product':
-                temp = "<span class='label label-warning tag'>Sản Phẩm</span>";
+                temp = "<span class='label label-warning tag'>" + getLangValue('Product') + "</span>";
                 break;
             default:
                 temp = "";
@@ -236,7 +236,7 @@ function markSolved(thread) {
             if (result == true) {
                 thread.closest('.mix').removeClass('unsolved').addClass('solved').
                     find('.thread_tag .label-danger').removeClass('label-danger')
-                    .addClass('label-success').html('Đã Giải Quyết');
+                    .addClass('label-success').html(getLangValue('Solved'));
 
                 thread.find('.accept').remove();
             }

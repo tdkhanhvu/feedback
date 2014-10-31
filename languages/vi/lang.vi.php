@@ -14,4 +14,9 @@
     $lang['TIME'] = 'Thời Gian';
     $lang['LATEST'] = 'Gần Nhất';
     $lang['OLDEST'] = 'Xa Nhất';
+    $lang['REPLY'] = 'Trả Lời';
+    $lang['VIEW_REPLIES'] = 'Xem Hồi Âm';
+    $lang['HIDE_REPLIES'] = 'Ẩn Hồi Âm';
+    $lang['PREVIOUS_REPLIES'] = 'Các Hồi Âm Trước';
+    $lang['SELECT_BRANCHES'] = 'Chọn Chi Nhánh';
 ?>
