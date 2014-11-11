@@ -6,7 +6,8 @@ class MySQL {
 	// Construction
 	public function __construct() {
 		if ($_SERVER['SERVER_NAME'] == 'localhost') {
-			$this->mysqli = mysqli_connect('localhost', 'root', '', 'feedback');
+			//$this->mysqli = mysqli_connect('localhost', 'root', '', 'feedback');
+            $this->mysqli = mysqli_connect('localhost', 'root', '', 'feedback_en');
 		}
 		else {
 			$this->mysqli = mysqli_connect('toibalocom.ipagemysql.com', 'toifeedback', 'toifeedback', 'F%pks58F');
