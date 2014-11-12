@@ -3,5 +3,5 @@
   $mysql = new MySQL();
 
   echo '<pre>';
-  print_r($mysql->selectFromTable('company', [['id', 'ff_burgerking']]));
+  print_r($mysql->selectAllIndustries());
   echo '</pre>';
