@@ -1,4 +1,5 @@
 <?php
+    $lang = [];
     $lang['ADD_REVIEW'] = 'Thêm nhận xét về công ty';
     $lang['INPUT_REVIEW'] = 'Nhập nhận xét';
     $lang['CATEGORY_SERVICE'] = 'Dịch Vụ';

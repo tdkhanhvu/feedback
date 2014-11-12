@@ -16,5 +16,5 @@
         }
     }
     // Include active language
-    include('languages/'.$_SESSION['lang'].'/lang.'.$_SESSION['lang'].'.php');
+    include_once('languages/'.$_SESSION['lang'].'/lang.'.$_SESSION['lang'].'.php');
 ?>

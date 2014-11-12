@@ -1,14 +1,5 @@
-<?php require 'language.php'?>
+<?php include('language.php');?>
 
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-</body>
-</html>
 <script id="industryTmpl" type="text/x-jsrender">
 <li data-pile='{{:industryName}}' id='{{:id}}'>
     <span class='tp-info'>

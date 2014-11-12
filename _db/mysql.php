@@ -1,34 +1,16 @@
 <?php
 
 class MySQL {
-	private $mysqli;
+	// Private PDO object
+	private $dbh;
 
 	// Construction
 	public function __construct() {
 		if ($_SERVER['SERVER_NAME'] == 'localhost') {
-			//$this->mysqli = mysqli_connect('localhost', 'root', '', 'feedback');
-            $this->mysqli = mysqli_connect('localhost', 'root', '', 'feedback_en');
+			$this->dbh = mysqli_connect('localhost', 'root', '', 'feedback_en');
 		}
 		else {
-			$this->mysqli = mysqli_connect('toibalocom.ipagemysql.com', 'toifeedback', 'toifeedback', 'F%pks58F');
-		}
-
-		/*
-		 * This is the "official" OO way to do it,
-		 * BUT $connect_error was broken until PHP 5.2.9 and 5.3.0.
-		 */
-		if ($this->mysqli->connect_error) {
-		    die('Connect Error (' . $this->mysqli->connect_errno . ') '
-		            . $this->mysqli->connect_error);
-		}
-
-		/*
-		 * Use this instead of $connect_error if you need to ensure
-		 * compatibility with PHP versions prior to 5.2.9 and 5.3.0.
-		 */
-		if (mysqli_connect_error()) {
-		    die('Connect Error (' . mysqli_connect_errno() . ') '
-		            . mysqli_connect_error());
+			$this->dbh = new PDO('mysql:host=toibalocom.ipagemysql.com;dbname=toifeedback', 'toifeedback', 'teamfeedback', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
 		}
 
 		$this->items = ['thread', 'comment', 'reply'];
@@ -45,8 +27,8 @@ class MySQL {
 		$query = 'SELECT ';
 
 		// Criteria
-		if ($crits == null) {
-			$query .= "* from $table ";
+		if($crits == null) {
+			$query .= " * from $table ";
 		}
 		else {
 			for($i = 0; $i < count($crits) - 1; $i++) {
@@ -56,31 +38,35 @@ class MySQL {
 		}
 
 		// Argument
-		if ($args != null) {
-			$query .= ' WHERE ';
+		if($args != null) {
+			$query .= " WHERE ";
 			for($i = 0; $i < count($args) - 1; $i++) {
-				$query .= $args[$i][0] . ' = "' . $args[$i][1] . '"" AND ';
+				$query .= $args[$i][0] . " = :_" . $args[$i][0] . " AND ";
 			}
-			$query .= $args[$i][0] . ' = "' . $args[$i][1] . '"';
+			$query .= $args[$i][0] . " = :_" . $args[$i][0];
 		}
 
 		$query .= ' '.$limit;
 
-		$data = [];
+		try {
+			$stm = $this->dbh->prepare($query);
 
-		/* Select queries return a resultset */
-		if ($result = $this->mysqli->query($query)) {
-			while ($row = $result->fetch_array())
-  			{
-  				$data[] = $row;
-  			}
+			// Argument Binding
+			if($args != null) {
+				for($i = 0; $i < count($args); $i++) {
+					$stm->bindValue(':_'.$args[$i][0], $args[$i][1], PDO::PARAM_INT);
+				}
+			}
 
-		    /* free result set */
-		    $result->close();
+			$stm->execute();
+			return $stm->fetchAll();
+		}
+		catch(PDOException $e) {
+		    echo $e->getMessage();
 		}
 
 		// No result
-		return $data;
+		return null;
 	}
 
 	// Select all industries
@@ -316,31 +302,44 @@ class MySQL {
 		$query = 'INSERT INTO ' . $table . '(';
 
 		for($i = 0; $i < count($args) - 1; $i++) {
-			$query .= $args[$i][0] . ', ';
+			$query .= $args[$i][0] . ", ";
 		}
-		$query .= $args[$i][0] . ')';
+		$query .= $args[$i][0] . ")";
 
 		// Argument
-		if ($args != null) {
+		if($args != null) {
 			$query .= ' VALUES(';
 			for($i = 0; $i < count($args) - 1; $i++) {
-				$query .= '"' . $args[$i][1] . '", ';
+				$query .= ':_' . $args[$i][0] . ", ";
 			}
-			$query .= '"' . $args[$i][1] . '")';
+			$query .= ':_' . $args[$i][0] . ")";
 		}
 
-		if ($this->mysqli->query($query)){
-		    return $this->mysqli->insert_id; 
+		try {
+			$stm = $this->dbh->prepare($query);
+
+			// Param Binding
+			if($args != null) {
+				for($i = 0; $i < count($args); $i++) {
+					$stm->bindParam(':_'.$args[$i][0], $args[$i][1], PDO::PARAM_INT);
+				}
+			}
+
+			$stm->execute();
+			return $this->dbh->lastInsertId('id');
 		}
-		else {
-		    return -1;
+		catch(PDOException $e) {
+		    echo $e->getMessage();
 		}
+
+		// No result
+		return -1;
 	}
 
 	// Insert into thread
-	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat = null, $img = null) {
-		$cats = isset($cat) ? json_decode($cat) : [];
-		$images = isset($img) ? json_decode($img) : [];
+	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat, $img) {
+		$cats = isset($cat) ? json_decode($cat) : null;
+		$images = isset($img) ? json_decode($img) : null;
 
 		$thr_id = $this->insertIntoTable('thread', 
 			[
@@ -394,8 +393,8 @@ class MySQL {
 	}
 
 	// Insert into comment
-	public function insertIntoComment($thread_id, $user_id, $text, $img = null) {
-		$images = isset($img) ? json_decode($img) : [];
+	public function insertIntoComment($thread_id, $user_id, $text, $img) {
+		$images = isset($img) ? json_decode($img) : null;
 
 		// Update comment count in thread
 		$thread = $this->selectFromTable('thread', [['id',$thread_id]], ['comments']);
@@ -431,8 +430,8 @@ class MySQL {
 	}
 
 	// Insert into reply
-	public function insertIntoReply($comment_id, $user_id, $text, $img = null) {
-		$images = isset($img) ? json_decode($img) : [];
+	public function insertIntoReply($comment_id, $user_id, $text, $img) {
+		$images = isset($img) ? json_decode($img) : null;
 
 		// Update comment count in comment
 		$cmt = $this->selectFromTable('comment', [['id',$comment_id]], ['replies']);
@@ -526,27 +525,41 @@ class MySQL {
 
 		if ($args != null) {
 			for($i = 0; $i < count($args) - 1; $i++) {
-				$query .= $args[$i][0] . ' = "' . $args[$i][1] . '", ';
+				$query .= $args[$i][0] . "=?, ";
 			}
-			$query .= $args[$i][0] . ' = "' . $args[$i][1] . '"';
+			$query .= $args[$i][0] . "=? ";
 		}
 
 		// Argument
-		if ($crits != null) {
+		if($crits != null) {
 			$query .= ' WHERE ';
 			for($i = 0; $i < count($crits) - 1; $i++) {
-				$query .= $crits[$i][0] . ' = "' . $crits[$i][1] . '" AND ';
+				$query .= $crits[$i][0] . "=? ";
 			}
-			$query .= $crits[$i][0] . ' = "' . $crits[$i][1] . '"';
+			$query .= $crits[$i][0] . "=?";
 		}
 
-		$results = $this->mysqli->query($query);
-		if ($results){
-		    return true;
+		try {
+			$stm = $this->dbh->prepare($query);
+
+			// Param Binding
+			$values = array();
+			foreach ($args as $arg) {
+				$values[] = $arg[1];
+			}
+			foreach ($crits as $crit) {
+				$values[] = $crit[1];
+			}
+
+			$stm->execute($values);
+			return true;
 		}
-		else {
-		   	return false;
+		catch(PDOException $e) {
+		    echo $e->getMessage();
 		}
+
+		// No result
+		return false;
 	}
 
 	// Up / Down vote
@@ -634,20 +647,34 @@ class MySQL {
 		$query = 'DELETE FROM ' . $table;
 
 		// Argument
-		if ($crits != null) {
+		if($crits != null) {
 			$query .= ' WHERE ';
 			for($i = 0; $i < count($crits) - 1; $i++) {
-				$query .= $crits[$i][0] . ' = "' . $crits[$i][1] . '" AND ';
+				$query .= $crits[$i][0] . '= :_' . $crits[$i][0] . ' AND ';
 			}
-			$query .= $crits[$i][0] . ' = "' . $crits[$i][1] . '"';
+			$query .= $crits[$i][0] . '= :_' . $crits[$i][0];
 		}
 
-		if ($this->mysqli->query($query)){
-		    return true;
+		// return $query;
+
+		try {
+			$stm = $this->dbh->prepare($query);
+
+			// Param Binding
+			$values = array();
+			foreach ($crits as $crit) {
+				$values['_'.$crit[0]] = $crit[1];
+			}
+
+			$stm->execute($values);
+			return true;
 		}
-		else {
-		    return false;
+		catch(PDOException $e) {
+		    echo $e->getMessage();
 		}
+
+		// No result
+		return false;
 	}
 
 	// Destruction

@@ -7,7 +7,7 @@
         $request = $_POST['request'];
 
     $mysql = new MySQL();
-    $result = [];
+    $result = array();
     $user_id = null;
     $start = 1;
     $limit = 10;
@@ -121,3 +121,5 @@ function encodeUserId(&$result) {
         $value['user_id'] = 'user_' . $value['user_id'];
     }
 }
+
+?>
