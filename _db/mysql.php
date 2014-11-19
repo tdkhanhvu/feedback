@@ -337,7 +337,7 @@ class MySQL {
 	}
 
 	// Insert into thread
-	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat, $img) {
+	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat = null, $img = null) {
 		$cats = isset($cat) ? json_decode($cat) : null;
 		$images = isset($img) ? json_decode($img) : null;
 
@@ -356,44 +356,48 @@ class MySQL {
 			]);
 
 		// Category manipulation
-		foreach ($cats as $cat) {
-			$name = '';
-			switch ($cat) {
-				case 1:
-					$name = 'Phuc Vu';
-					break;
+		if (isset($cats)) {
+			foreach ($cats as $cat) {
+				$name = '';
+				switch ($cat) {
+					case 1:
+						$name = 'Phuc Vu';
+						break;
 
-				case 2:
-					$name = 'Giu Xe';
-					break;
+					case 2:
+						$name = 'Giu Xe';
+						break;
 
-				case 3:
-					$name = 'San Pham';
-					break;
+					case 3:
+						$name = 'San Pham';
+						break;
+				}
+
+				$this->insertIntoTable('category', 
+					[
+						['thread_id', $thr_id],
+						['cat', $cat],
+						['name', $name],
+					]);
 			}
-
-			$this->insertIntoTable('category', 
-				[
-					['thread_id', $thr_id],
-					['cat', $cat],
-					['name', $name],
-				]);
 		}
 
 		// Image manipulation
-		foreach ($images as $img) {
-			$this->insertIntoTable('thread_image', 
-				[
-					['thread_id', $thr_id],
-					['image_name', $img],
-				]);
+		if (isset($images)) {
+			foreach ($images as $img) {
+				$this->insertIntoTable('thread_image', 
+					[
+						['thread_id', $thr_id],
+						['image_name', $img],
+					]);
+			}
 		}
 
 		return $thr_id;
 	}
 
 	// Insert into comment
-	public function insertIntoComment($thread_id, $user_id, $text, $img) {
+	public function insertIntoComment($thread_id, $user_id, $text, $img = null) {
 		$images = isset($img) ? json_decode($img) : null;
 
 		// Update comment count in thread
@@ -418,19 +422,21 @@ class MySQL {
 		);
 
 		// Image manipulation
-		foreach ($images as $img) {
-			$this->insertIntoTable('comment_image', 
-				[
-					['comment_id', $cmt_id],
-					['image_name', $img],
-				]);
+		if (isset($images)) {
+			foreach ($images as $img) {
+				$this->insertIntoTable('comment_image', 
+					[
+						['comment_id', $cmt_id],
+						['image_name', $img],
+					]);
+			}
 		}
 
 		return $cmt_id;
 	}
 
 	// Insert into reply
-	public function insertIntoReply($comment_id, $user_id, $text, $img) {
+	public function insertIntoReply($comment_id, $user_id, $text, $img = null) {
 		$images = isset($img) ? json_decode($img) : null;
 
 		// Update comment count in comment
@@ -454,12 +460,14 @@ class MySQL {
 		);
 
 		// Image manipulation
-		foreach ($images as $img) {
-			$this->insertIntoTable('reply_image', 
-				[
-					['reply_id', $rep_id],
-					['image_name', $img],
-				]);
+		if (isset($images)) {
+			foreach ($images as $img) {
+				$this->insertIntoTable('reply_image', 
+					[
+						['reply_id', $rep_id],
+						['image_name', $img],
+					]);
+			}
 		}
 
 		return $rep_id;

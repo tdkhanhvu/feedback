@@ -1,7 +1,10 @@
 <?php
-  include('_db\mysql.php');
-  $mysql = new MySQL();
-
-  echo '<pre>';
-  print_r($mysql->selectAllIndustries());
-  echo '</pre>';
+	# get a integer
+	fscanf(STDIN, "%d", $a);
+	# get two integers separated with half-width break
+	fscanf(STDIN, "%d %d", $b, $c);
+	# get a string
+	fscanf(STDIN, "%s", $s);
+	# output
+	echo ($a+$b+$c)." ".$s."\n";
+?>
