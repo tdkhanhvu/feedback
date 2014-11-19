@@ -93,6 +93,12 @@ class MySQL {
 	    return $result_set;
 	}
 
+    public function selectCompanyInfo($id)
+    {
+        $rels = $this->selectFromTable('company', [['id', $id]]);
+
+        return $rels[0];
+    }
 	// Select all branches from a particular company
 	public function selectAllBranchesFromCompany($ind) {
 		$result_set = array();

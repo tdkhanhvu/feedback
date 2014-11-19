@@ -6,7 +6,7 @@
     $available_langs = array('en','vi');
 
     // Set our default language session
-    $_SESSION['lang'] = 'en';
+    $_SESSION['lang'] = 'vi';
 
     if(isset($_GET['lang']) && $_GET['lang'] != ''){
         // check if the language is one we support

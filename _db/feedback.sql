@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 17, 2014 at 05:04 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost
+-- Generation Time: Nov 19, 2014 at 08:51 PM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `feedback`
 --
+CREATE DATABASE IF NOT EXISTS `feedback` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `feedback`;
 
 -- --------------------------------------------------------
 
@@ -32,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `branch` (
   `time` int(11) NOT NULL,
   `phone` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `branch`
@@ -58,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `thread_id` int(11) NOT NULL,
   `cat` int(11) NOT NULL,
   `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `category`
@@ -87,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `thread_id` int(11) NOT NULL,
   `user_id` text NOT NULL,
-  `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `text` text NOT NULL,
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
@@ -95,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `spam_count` int(11) NOT NULL,
   `replies` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `comment`
@@ -124,7 +126,7 @@ INSERT INTO `comment` (`id`, `thread_id`, `user_id`, `text`, `time`, `up`, `down
 CREATE TABLE IF NOT EXISTS `comment_down` (
   `comment_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `comment_down`
@@ -142,7 +144,7 @@ INSERT INTO `comment_down` (`comment_id`, `fb_id`) VALUES
 CREATE TABLE IF NOT EXISTS `comment_image` (
   `comment_id` int(11) NOT NULL,
   `image_name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `comment_image`
@@ -161,7 +163,7 @@ INSERT INTO `comment_image` (`comment_id`, `image_name`) VALUES
 CREATE TABLE IF NOT EXISTS `comment_spam_reporter` (
   `comment_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `comment_spam_reporter`
@@ -179,7 +181,7 @@ INSERT INTO `comment_spam_reporter` (`comment_id`, `fb_id`) VALUES
 CREATE TABLE IF NOT EXISTS `comment_up` (
   `comment_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -195,50 +197,50 @@ CREATE TABLE IF NOT EXISTS `company` (
   `address` text NOT NULL,
   `description` text NOT NULL,
   `time` text NOT NULL,
-  `phone` int(64) NOT NULL,
+  `phone` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`id`, `name`, `image`, `info`, `address`, `description`, `time`, `phone`) VALUES
-('cine_cinebox', 'Cinebox Cinema', 'cinebox_cinema.jpg', '', '', '', '', 0),
-('cine_galaxy', 'Cinema Galaxy', 'galaxy_cinema.jpg', '', '', '', '', 0),
-('cine_lotte', 'Cinema Lotteria', 'lotte_cinema.jpg', '', '', '', '', 0),
-('cine_megastar', 'Cinema Megastar', 'megastar_cinema.jpg', '', '', '', '', 0),
-('ff_burgerking', 'Burger King', 'burgerking.jpg', '', '', '', '', 0),
-('ff_jollibee', 'Jollibee', 'jollibee.jpg', '', '', '', '', 0),
-('ff_kfc', 'KFC', 'kfc.jpg', '', '', '', '', 0),
-('ff_lotte', 'Lotteria', 'lotteria.jpg', '', '', '', '', 0),
-('ff_mcdonald', 'Mc Donald''s', 'mcdonald.jpg', '', '', '', '', 0),
-('ff_pizzahut', 'Pizza Hut', 'pizzahut.jpg', '', '', '', '', 0),
-('gas_benthanh', 'Ben Thanh', 'ben_thanh.jpg', '', '', '', '', 0),
-('gas_dbp', 'Dien Bien Phu', 'dien_bien_phu.jpg', '', '', '', '', 0),
-('gas_notranglong', 'No Trang Long', 'no_trang_long.jpg', '', '', '', '', 0),
-('gas_ntp', 'Nguyen Tri Phuong', 'nguyen_tri_phuong.jpg', '', '', '', '', 0),
-('mall_aeon', 'Aeon Mall', 'aeon_mall.jpg', '', '', '', '', 0),
-('mall_diamond', 'Diamond Plaza Mall', 'diamond_plaza.jpg', '', '', '', '', 0),
-('mall_nowzone', 'Now Zone', 'nowzone.jpg', '', '', '', '', 0),
-('mall_parkson', 'Parkson', 'parkson.jpg', '', '', '', '', 0),
-('mall_vincom', 'Vincom', 'vincom.jpg', '', '', '', '', 0),
-('mart_bigc', 'Big C', 'bigC.jpg', '', '', '', '', 0),
-('mart_coopmart', 'Coop Mart', 'coopmart.jpg', '', '', '', '', 0),
-('mart_lotte', 'Lotte Mart', 'lottemart.jpg', '', '', '', '', 0),
-('mart_maximark', 'Maximark', 'maximark.jpg', '', '', '', '', 0),
-('taxi_daukhicuulong', 'Dau Khi Cuu Long', 'dau_khi_cuu_long.jpg', '', '', '', '', 0),
-('taxi_hoanglong', 'Hoang Long', 'hoang_long.jpg', '', '', '', '', 0),
-('taxi_mailinh', 'Mai Linh', 'mai_linh.jpg', '', '', '', '', 0),
-('taxi_phuongtrang', 'Phuong Trang', 'phuong_trang.jpg', '', '', '', '', 0),
-('taxi_saigonair', 'Saigon Air', 'saigonair.jpg', '', '', '', '', 0),
-('taxi_saigontourist', 'Saigontourist', 'saigontourist.jpg', '', '', '', '', 0),
-('taxi_vinasun', 'Vinasun', 'vinasun.jpg', '', '', '', '', 0),
-('taxi_vinataxi', 'Vina Taxi', 'vinataxi.jpg', '', '', '', '', 0),
-('telco_beeline', 'Beeline', 'beeline.jpg', '', '', '', '', 0),
-('telco_mobifone', 'Mobifone', 'mobifone.jpg', '', '', '', '', 0),
-('telco_viettel', 'Viettel', 'viettel.jpg', '', '', '', '', 0),
-('telco_vinaphone', 'Vinaphone', 'vinaphone.jpg', '', '', '', '', 0);
+('cine_cinebox', 'Cinebox Cinema', 'cinebox_cinema.jpg', '', '', '', '', '0'),
+('cine_galaxy', 'Cinema Galaxy', 'galaxy_cinema.jpg', '', '', '', '', '0'),
+('cine_lotte', 'Cinema Lotteria', 'lotte_cinema.jpg', '', '', '', '', '0'),
+('cine_megastar', 'Cinema Megastar', 'megastar_cinema.jpg', '', '', '', '', '0'),
+('ff_burgerking', 'Burger King', 'burgerking.jpg', '', '', '', '', '0'),
+('ff_jollibee', 'Jollibee', 'jollibee.jpg', '', '', '', '', '0'),
+('ff_kfc', 'KFC', 'kfc.jpg', 'kfc_logo.png', 'A43 Trường Sơn – Phường 4 – Quận Tân Bình – Tp.HCM', 'Bên cạnh những món ăn truyền thống như gà rán và Bơ-gơ, đến với thị trường Việt Nam, KFC đã chế biến thêm một số món để phục vụ những thức ăn hợp khẩu vị người Việt như: Gà Big‘n Juicy, Gà Giòn Không Xương, Cơm Gà KFC, Bắp Cải Trộn … Một số món mới cũng đã được phát triển và giới thiệu tại thị trường Việt Nam, góp phần làm tăng thêm sự đa dạng trong danh mục thực đơn, như: Bơ-gơ Tôm, Lipton, Bánh Egg Tart.', '7h30-11h00 & 13h00-16h00 các ngày trong tuần', '123456789'),
+('ff_lotte', 'Lotteria', 'lotteria.jpg', '', '', '', '', '0'),
+('ff_mcdonald', 'Mc Donald''s', 'mcdonald.jpg', '', '', '', '', '0'),
+('ff_pizzahut', 'Pizza Hut', 'pizzahut.jpg', '', '', '', '', '0'),
+('gas_benthanh', 'Ben Thanh', 'ben_thanh.jpg', '', '', '', '', '0'),
+('gas_dbp', 'Dien Bien Phu', 'dien_bien_phu.jpg', '', '', '', '', '0'),
+('gas_notranglong', 'No Trang Long', 'no_trang_long.jpg', '', '', '', '', '0'),
+('gas_ntp', 'Nguyen Tri Phuong', 'nguyen_tri_phuong.jpg', '', '', '', '', '0'),
+('mall_aeon', 'Aeon Mall', 'aeon_mall.jpg', '', '', '', '', '0'),
+('mall_diamond', 'Diamond Plaza Mall', 'diamond_plaza.jpg', '', '', '', '', '0'),
+('mall_nowzone', 'Now Zone', 'nowzone.jpg', '', '', '', '', '0'),
+('mall_parkson', 'Parkson', 'parkson.jpg', '', '', '', '', '0'),
+('mall_vincom', 'Vincom', 'vincom.jpg', '', '', '', '', '0'),
+('mart_bigc', 'Big C', 'bigC.jpg', '', '', '', '', '0'),
+('mart_coopmart', 'Coop Mart', 'coopmart.jpg', '', '', '', '', '0'),
+('mart_lotte', 'Lotte Mart', 'lottemart.jpg', '', '', '', '', '0'),
+('mart_maximark', 'Maximark', 'maximark.jpg', '', '', '', '', '0'),
+('taxi_daukhicuulong', 'Dau Khi Cuu Long', 'dau_khi_cuu_long.jpg', '', '', '', '', '0'),
+('taxi_hoanglong', 'Hoang Long', 'hoang_long.jpg', '', '', '', '', '0'),
+('taxi_mailinh', 'Mai Linh', 'mai_linh.jpg', '', '', '', '', '0'),
+('taxi_phuongtrang', 'Phuong Trang', 'phuong_trang.jpg', '', '', '', '', '0'),
+('taxi_saigonair', 'Saigon Air', 'saigonair.jpg', '', '', '', '', '0'),
+('taxi_saigontourist', 'Saigontourist', 'saigontourist.jpg', '', '', '', '', '0'),
+('taxi_vinasun', 'Vinasun', 'vinasun.jpg', '', '', '', '', '0'),
+('taxi_vinataxi', 'Vina Taxi', 'vinataxi.jpg', '', '', '', '', '0'),
+('telco_beeline', 'Beeline', 'beeline.jpg', '', '', '', '', '0'),
+('telco_mobifone', 'Mobifone', 'mobifone.jpg', '', '', '', '', '0'),
+('telco_viettel', 'Viettel', 'viettel.jpg', '', '', '', '', '0'),
+('telco_vinaphone', 'Vinaphone', 'vinaphone.jpg', '', '', '', '', '0');
 
 -- --------------------------------------------------------
 
@@ -249,7 +251,7 @@ INSERT INTO `company` (`id`, `name`, `image`, `info`, `address`, `description`, 
 CREATE TABLE IF NOT EXISTS `com_branch` (
   `company` text NOT NULL,
   `branch` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `com_branch`
@@ -275,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `field` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `field`
@@ -296,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `industry` (
   `id` text NOT NULL,
   `name` text NOT NULL,
   `image` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `industry`
@@ -320,7 +322,7 @@ INSERT INTO `industry` (`id`, `name`, `image`) VALUES
 CREATE TABLE IF NOT EXISTS `ind_com` (
   `industry` text NOT NULL,
   `company` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `ind_com`
@@ -373,14 +375,14 @@ CREATE TABLE IF NOT EXISTS `reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `text` text NOT NULL,
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL,
   `spam_status` int(11) NOT NULL,
   `spam_count` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `reply`
@@ -410,7 +412,7 @@ INSERT INTO `reply` (`id`, `comment_id`, `user_id`, `text`, `time`, `up`, `down`
 CREATE TABLE IF NOT EXISTS `reply_down` (
   `reply_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -421,7 +423,7 @@ CREATE TABLE IF NOT EXISTS `reply_down` (
 CREATE TABLE IF NOT EXISTS `reply_image` (
   `reply_id` int(11) NOT NULL,
   `image_name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `reply_image`
@@ -444,7 +446,7 @@ INSERT INTO `reply_image` (`reply_id`, `image_name`) VALUES
 CREATE TABLE IF NOT EXISTS `reply_spam_reporter` (
   `reply_id` int(11) NOT NULL,
   `fb_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -455,7 +457,7 @@ CREATE TABLE IF NOT EXISTS `reply_spam_reporter` (
 CREATE TABLE IF NOT EXISTS `reply_up` (
   `reply_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -474,10 +476,10 @@ CREATE TABLE IF NOT EXISTS `thread` (
   `down` int(11) NOT NULL,
   `spam_status` int(1) NOT NULL,
   `spam_count` int(11) NOT NULL,
-  `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `text` text NOT NULL,
   `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `thread`
@@ -497,7 +499,7 @@ INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `rate`, `u
 CREATE TABLE IF NOT EXISTS `thread_down` (
   `thread_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thread_down`
@@ -515,7 +517,7 @@ INSERT INTO `thread_down` (`thread_id`, `fb_id`) VALUES
 CREATE TABLE IF NOT EXISTS `thread_image` (
   `thread_id` int(11) NOT NULL,
   `image_name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thread_image`
@@ -534,7 +536,7 @@ INSERT INTO `thread_image` (`thread_id`, `image_name`) VALUES
 CREATE TABLE IF NOT EXISTS `thread_spam_reporter` (
   `thread_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thread_spam_reporter`
@@ -552,7 +554,7 @@ INSERT INTO `thread_spam_reporter` (`thread_id`, `fb_id`) VALUES
 CREATE TABLE IF NOT EXISTS `thread_up` (
   `thread_id` int(11) NOT NULL,
   `fb_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `thread_up`
@@ -572,10 +574,10 @@ INSERT INTO `thread_up` (`thread_id`, `fb_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` text NOT NULL,
   `photo` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user`

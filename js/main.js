@@ -5,7 +5,7 @@ var userName = "Trần Đoàn Khánh Vũ",
     disableLoadThread = false,
     uploaders = [],
     overlayDisable = false;
-    language = 'en';
+    language = 'vi';
 $(function(){
     initEvent();
     getIndustryList(initIndustry);

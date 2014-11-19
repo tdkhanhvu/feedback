@@ -28,6 +28,10 @@
             $result = $mysql->selectAllCompaniesFromIndustry(decodeId($_POST['industryId']));
             encodeId($result, 'company');
             break;
+        case "GetCompanyInfo":
+            $result = $mysql->selectCompanyInfo(decodeId($_POST['companyId']));
+            //encodeId($result, 'company');
+            break;
         case "GetAllBranchesFromCompany":
             $result = $mysql->selectAllBranchesFromCompany(decodeId($_POST['companyId']));
             encodeId($result, 'branch');
