@@ -6,12 +6,12 @@ class MySQL {
 
 	// Construction
 	public function __construct() {
-		// if ($_SERVER['SERVER_NAME'] == 'localhost') {
+		if ($_SERVER['SERVER_NAME'] == 'localhost') {
 			$this->dbh = new PDO('mysql:host=localhost;dbname=feedback_en', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
-		// }
-		// else {
-		// 	$this->dbh = new PDO('mysql:host=toibalocom.ipagemysql.com;dbname=toifeedback', 'toifeedback', 'teamfeedback', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
-		// }
+		}
+		else {
+			$this->dbh = new PDO('mysql:host=localhost;dbname=feedback_en', 'root', 'admindb', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+		}
 
 		$this->items = ['thread', 'comment', 'reply'];
 		$this->votes = ['up', 'down'];
