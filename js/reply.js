@@ -10,6 +10,8 @@ function addReply(commentId, reply) {
     insertDom(reply_tmpl, temp, commentId);
     comment.attr('start', parseInt(comment.attr('start')) + 1);
     $("time.timeago").timeago();
+
+    showHideCommandButton($('#' + reply.id).find('.command_button'));
 }
 
 function getRepliesFromComment(comment, start) {

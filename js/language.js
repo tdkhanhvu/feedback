@@ -7,6 +7,7 @@ vietnamese = {};
     addLangValue('Product', 'Product', 'Sản Phẩm');
     addLangValue('Solved', 'Solved', 'Đã Giải Quyết');
     addLangValue('Unsolved', 'Unsolved', 'Chưa Giải Quyết');
+    addLangValue('MoreComment', 'View More Comments', 'Xem Thêm Phản Hồi');
 }());
 
 function addLangValue(key, en, vi) {

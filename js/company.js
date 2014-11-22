@@ -5,7 +5,8 @@ var companyId = '';
 function initCompany() {
     var company = {},
         branches = [];
-    $.when.apply($, [getAllBranchesFromCompany(companyId, branches)], loadCompanyInfo(companyId, company)).then(function() {
+    $.when.apply($, [loadCompanyInfo(companyId, company),
+            getAllBranchesFromCompany(companyId, branches)]).then(function() {
         company.branches = branches;
 
         branchId = branches[0].id;

@@ -19,7 +19,8 @@ function addComment(threadId, comment) {
         threadParent.append($('#temp').html());
 
         if (threadParent.find('>div').length > commentsLimit)
-            threadParent.append('<div class="viewComments"><span class="glyphicon glyphicon-comment"></span><a>View more comments</a></div>');
+            threadParent.append('<div class="viewComments"><span class="glyphicon glyphicon-comment"></span><a>'
+                + getLangValue('MoreComment') + '</a></div>');
     }
 
     $('#temp').html('');
@@ -27,6 +28,7 @@ function addComment(threadId, comment) {
     var postStart = threadParent.find('.post_start');
     postStart.attr('start', parseInt(postStart.attr('start')) + 1);
     $("time.timeago").timeago();
+    showHideCommandButton($('#' + comment.id).find('.command_button'));
 }
 
 function getCommentsFromThread(thread, start) {

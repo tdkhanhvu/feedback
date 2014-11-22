@@ -35,6 +35,8 @@ function addThread(thread) {
     lastThread = $('#parent_' + thread.id);
     startThread++;
     disableLoadThread = false;
+
+    showHideCommandButton($('#' + thread.id).find('.command_button'));
 }
 
 function getThreadsFromBranch(branchId, limit) {

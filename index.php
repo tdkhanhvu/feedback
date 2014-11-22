@@ -53,14 +53,14 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <div class="row comment_box">
+                                <div id='login' class="row comment_box">
 
                                     <div class="col-md-2" style="padding:0;">
-                                        <img class="img-thumbnail" src="images/user/user1.jpg"/>
+                                        <img id="userPhoto" class="img-thumbnail"/>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-7">
-                                            <h4 style="color: rgb(141, 30, 30);margin:5px;">Trần Đoàn Khánh Vũ</h4>
+                                            <h4 id="username" style="color: rgb(141, 30, 30);margin:5px;"></h4>
                                         </div>
                                         <div id="feedback" class="col-md-5"></div>
                                         <input id="input_comment" type="text" class="form-control" placeholder="<?php echo $lang['INPUT_REVIEW']; ?>">
@@ -78,6 +78,12 @@
                                         </div>
                                         <button type="button" class="btn btn-danger cancel_thread" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;margin-left:20px"><?php echo $lang['CANCEL']; ?></button>
                                         <button type="button" class="btn btn-success send_thread" style="float:right;height: 20px;padding-top: 0;margin-top: 5px;"><?php echo $lang['SEND']; ?></button>
+                                    </div>
+                                </div>
+                                <div id='notLogin'>
+                                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                                    </fb:login-button>
+                                    <div id="status">
                                     </div>
                                 </div>
                             </div>
