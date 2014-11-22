@@ -1,3 +1,7 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+
 <?php include('language.php');?>
 
 <script id="industryTmpl" type="text/x-jsrender">
@@ -43,7 +47,7 @@
     {{/if}}
         <div class="row">
             <div class="col-md-1">
-                <img class="avatar" src="./images/{{:photo}}"/>
+                <img class="avatar" src="{{:photo}}"/>
             </div>
             <div class="col-md-11">
                 <div class="row">

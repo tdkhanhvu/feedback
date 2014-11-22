@@ -539,7 +539,7 @@ function testAPI() {
         userId = response.id;
         userName = response.name;
         $('#username').html(userName);
-        $('#userPhoto').attr('src', 'https://graph.facebook.com/718438217/picture?type=large');
+        $('#userPhoto').attr('src', 'https://graph.facebook.com/' + userId + '/picture?type=large');
 
         //document.getElementById('status').innerHTML =
         //  'Thanks for logging in, ' + response.id + '!';
