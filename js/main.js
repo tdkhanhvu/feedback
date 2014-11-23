@@ -128,7 +128,8 @@ function getPostAttribute(obj) {
         userName: userName,
         uploadphotos: obj.uploadphotos,
         ownPost: obj.user_id == userId,
-        spam_report: obj.spam_report
+        spam_report: obj.spam_report,
+        profile: obj.profile
     }
 }
 
@@ -136,7 +137,6 @@ function extractAjaxPostAttribute(obj) {
     return {
         id : obj.id,
         name: obj.name,
-        photo: obj.photo,
         text: obj.text,
         time: obj.time,
         vote: obj.vote,
@@ -145,6 +145,8 @@ function extractAjaxPostAttribute(obj) {
         uploadphotos: obj.images.map(function(obj) {return {photo: obj.image_name}}),
         user_id: obj.user_id,
         ownPost: obj.user_id == userId,
+        photo: 'https://graph.facebook.com/' + obj.user_id + '/picture?type=large',
+        profile: 'https://www.facebook.com/' + obj.user_id,
         spam_report: obj.spam_report
     }
 }
@@ -477,7 +479,7 @@ function statusChangeCallback(response) {
     } else {
         // The person is not logged into Facebook, so we're not sure if
         // they are logged into this app or not.
-        $('#status').html('Please log into Facebook.');
+        $('#status').html(getLangValue('Login'));
         $('#notLogin').show();
         $('#login').hide();
         $('.command_button > div:nth-of-type(2)').hide();

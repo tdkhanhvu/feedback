@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2014 at 08:51 PM
+-- Generation Time: Nov 23, 2014 at 11:01 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -77,7 +77,8 @@ INSERT INTO `category` (`thread_id`, `cat`, `name`) VALUES
 (6, 1, 'Phuc Vu'),
 (6, 2, 'Giu Xe'),
 (7, 1, 'Phuc Vu'),
-(7, 2, 'Giu Xe');
+(7, 2, 'Giu Xe'),
+(8, 1, 'Phuc Vu');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,7 @@ INSERT INTO `category` (`thread_id`, `cat`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `thread_id` int(11) NOT NULL,
-  `user_id` text NOT NULL,
+  `user_id` bigint(20) NOT NULL,
   `text` text NOT NULL,
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
@@ -104,18 +105,18 @@ CREATE TABLE IF NOT EXISTS `comment` (
 --
 
 INSERT INTO `comment` (`id`, `thread_id`, `user_id`, `text`, `time`, `up`, `down`, `spam_status`, `spam_count`, `replies`) VALUES
-(1, 1, '2', 'comment một', '2014-09-01 00:00:00', 0, 0, 0, 1, 11),
-(2, 1, '2', 'comment hai', '2014-09-02 00:00:00', 0, 0, 0, 0, 0),
-(3, 1, '2', 'ba', '2014-09-03 00:00:00', 0, 0, 0, 0, 0),
-(4, 1, '2', 'bốn', '0000-00-00 00:00:00', 0, 0, 0, 0, 0),
-(5, 1, '2', 'năm', '2014-09-05 00:00:00', 0, 0, 0, 0, 0),
-(6, 1, '2', 'sáu', '2014-09-06 00:00:00', 0, 0, 0, 0, 0),
-(7, 1, '2', 'bảy', '2014-09-07 00:00:00', 0, 0, 0, 0, 0),
-(8, 1, '2', 'tám', '2014-09-08 00:00:00', 0, 0, 0, 0, 0),
-(9, 1, '2', 'chín', '2014-09-09 00:00:00', 0, 0, 0, 0, 0),
-(10, 1, '2', 'mười', '2014-09-10 00:00:00', 0, 0, 0, 0, 0),
-(11, 1, '2', 'mười một', '2014-09-11 00:00:00', 0, 0, 0, 0, 0),
-(12, 7, '2', 'xxx', '2014-10-08 20:06:53', 0, 0, 1, 0, 4);
+(1, 1, 10153585547158306, 'comment một', '2014-09-01 00:00:00', 0, 0, 0, 1, 11),
+(2, 1, 10153585547158306, 'comment hai', '2014-09-02 00:00:00', 0, 0, 0, 0, 0),
+(3, 1, 10153585547158306, 'ba', '2014-09-03 00:00:00', 0, 0, 0, 0, 0),
+(4, 1, 10153585547158306, 'bốn', '0000-00-00 00:00:00', 0, 0, 0, 0, 0),
+(5, 1, 10153585547158306, 'năm', '2014-09-05 00:00:00', 0, 0, 0, 0, 0),
+(6, 1, 10153585547158306, 'sáu', '2014-09-06 00:00:00', 0, 0, 0, 0, 0),
+(7, 1, 10153585547158306, 'bảy', '2014-09-07 00:00:00', 0, 0, 0, 0, 0),
+(8, 1, 10153585547158306, 'tám', '2014-09-08 00:00:00', 0, 0, 0, 0, 0),
+(9, 1, 10153585547158306, 'chín', '2014-09-09 00:00:00', 0, 0, 0, 0, 0),
+(10, 1, 10153585547158306, 'mười', '2014-09-10 00:00:00', 0, 0, 0, 0, 0),
+(11, 1, 10153585547158306, 'mười một', '2014-09-11 00:00:00', 0, 0, 0, 0, 0),
+(12, 7, 10153585547158306, 'xxx', '2014-10-08 20:06:53', 0, 0, 1, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -374,7 +375,7 @@ INSERT INTO `ind_com` (`industry`, `company`) VALUES
 CREATE TABLE IF NOT EXISTS `reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
   `text` text NOT NULL,
   `time` datetime NOT NULL,
   `up` int(11) NOT NULL,
@@ -389,19 +390,19 @@ CREATE TABLE IF NOT EXISTS `reply` (
 --
 
 INSERT INTO `reply` (`id`, `comment_id`, `user_id`, `text`, `time`, `up`, `down`, `spam_status`, `spam_count`) VALUES
-(1, 1, 2, 'một', '2014-09-01 00:00:00', 0, 0, 0, 0),
-(2, 1, 2, 'hai', '2014-09-01 00:00:00', 0, 0, 0, 0),
-(3, 1, 2, 'ba', '2014-09-02 00:00:00', 0, 0, 0, 0),
-(4, 1, 2, 'bốn', '2014-09-03 00:00:00', 0, 0, 0, 0),
-(5, 1, 2, 'năm', '2014-09-05 00:00:00', 0, 0, 0, 0),
-(6, 1, 2, 'sáu', '2014-09-06 00:00:00', 0, 0, 0, 0),
-(7, 1, 2, 'bảy', '2014-09-07 00:00:00', 0, 0, 0, 0),
-(8, 1, 2, 'tám', '2014-09-08 00:00:00', 0, 0, 0, 0),
-(9, 1, 2, 'chín', '2014-09-09 00:00:00', 0, 0, 0, 0),
-(10, 1, 2, 'mười', '2014-09-10 00:00:00', 0, 0, 0, 0),
-(11, 1, 2, 'mười một', '2014-09-11 00:00:00', 0, 0, 0, 0),
-(14, 12, 2, 'rrr', '2014-10-08 20:09:35', 0, 0, 0, 0),
-(15, 12, 2, 'rrr', '2014-10-08 20:16:10', 0, 0, 0, 0);
+(1, 1, 10153585547158306, 'một', '2014-09-01 00:00:00', 0, 0, 0, 0),
+(2, 1, 10153585547158306, 'hai', '2014-09-01 00:00:00', 0, 0, 0, 0),
+(3, 1, 10153585547158306, 'ba', '2014-09-02 00:00:00', 0, 0, 0, 0),
+(4, 1, 10153585547158306, 'bốn', '2014-09-03 00:00:00', 0, 0, 0, 0),
+(5, 1, 10153585547158306, 'năm', '2014-09-05 00:00:00', 0, 0, 0, 0),
+(6, 1, 10153585547158306, 'sáu', '2014-09-06 00:00:00', 0, 0, 0, 0),
+(7, 1, 10153585547158306, 'bảy', '2014-09-07 00:00:00', 0, 0, 0, 0),
+(8, 1, 10153585547158306, 'tám', '2014-09-08 00:00:00', 0, 0, 0, 0),
+(9, 1, 10153585547158306, 'chín', '2014-09-09 00:00:00', 0, 0, 0, 0),
+(10, 1, 10153585547158306, 'mười', '2014-09-10 00:00:00', 0, 0, 0, 0),
+(11, 1, 10153585547158306, 'mười một', '2014-09-11 00:00:00', 0, 0, 0, 0),
+(14, 12, 10153585547158306, 'rrr', '2014-10-08 20:09:35', 0, 0, 0, 0),
+(15, 12, 10153585547158306, 'rrr', '2014-10-08 20:16:10', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -468,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `reply_up` (
 CREATE TABLE IF NOT EXISTS `thread` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `branch_id` varchar(64) NOT NULL,
-  `user_id` varchar(128) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
   `solved` int(1) NOT NULL,
   `time` datetime NOT NULL,
   `rate` int(11) NOT NULL,
@@ -479,16 +480,17 @@ CREATE TABLE IF NOT EXISTS `thread` (
   `text` text NOT NULL,
   `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `thread`
 --
 
 INSERT INTO `thread` (`id`, `branch_id`, `user_id`, `solved`, `time`, `rate`, `up`, `down`, `spam_status`, `spam_count`, `text`, `comments`) VALUES
-(1, 'kfc_1', '2', 1, '2014-09-17 00:00:00', 2, 15, 6, 0, 1, 'Hôm nay trời đẹp', 12),
-(2, 'kfc_1', '1', 0, '2014-09-09 00:00:00', 3, 9, 2, 0, 0, 'Hôm nay vui', 0),
-(7, 'kfc_1', '2', 0, '2014-10-09 00:44:16', 4, 0, 0, 0, 0, 'sss', 1);
+(1, 'kfc_1', 10153585547158306, 1, '2014-09-17 00:00:00', 2, 15, 6, 0, 1, 'Hôm nay trời đẹp', 12),
+(2, 'kfc_1', 10152503138978218, 0, '2014-09-09 00:00:00', 3, 9, 2, 0, 0, 'Hôm nay vui', 0),
+(7, 'kfc_1', 10153585547158306, 0, '2014-10-09 00:44:16', 4, 0, 0, 0, 0, 'sss', 1),
+(8, 'kfc_1', 10152503138978218, 0, '2014-11-22 21:27:50', 5, 0, 0, 0, 0, 'Hay thế cơ mà', 0);
 
 -- --------------------------------------------------------
 
@@ -573,19 +575,19 @@ INSERT INTO `thread_up` (`thread_id`, `fb_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(32) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `name` text NOT NULL,
   `photo` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `photo`) VALUES
-(1, 'Tran Doan Khanh Vu', 'user/user1.jpg'),
-(2, 'Nguyen Duy Long', 'user/user2.jpg');
+(10152503138978218, 'Trần Đoàn Khánh Vũ', 'https://graph.facebook.com/10152503138978218/picture?type=large'),
+(10153585547158306, 'Nguyễn Quang Phúc', 'https://graph.facebook.com/10153585547158306/picture?type=large');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
