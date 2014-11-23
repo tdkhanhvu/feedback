@@ -115,11 +115,10 @@ function initRating() {
 
 function getPostAttribute(obj) {
     console.log(obj);
-    return {
+    var tempObj = {
         id : obj.id,
         type: obj.type,
         name: obj.name,
-        photo: obj.photo,
         text: obj.text,
         time: obj.time,
         vote: obj.vote,
@@ -127,10 +126,20 @@ function getPostAttribute(obj) {
         down: parseInt(obj.down),
         userName: userName,
         uploadphotos: obj.uploadphotos,
+        user_id: obj.user_id,
         ownPost: obj.user_id == userId,
         spam_report: obj.spam_report,
+        photo: obj.photo,
         profile: obj.profile
-    }
+    };
+
+    if (obj.photo === '')
+        $.extend(tempObj,{
+                photo: convertIdIntoFBPhoto(obj.user_id),
+                profile: convertIdIntoFBLink(obj.user_id)
+            });
+
+    return tempObj;
 }
 
 function extractAjaxPostAttribute(obj) {
@@ -145,8 +154,8 @@ function extractAjaxPostAttribute(obj) {
         uploadphotos: obj.images.map(function(obj) {return {photo: obj.image_name}}),
         user_id: obj.user_id,
         ownPost: obj.user_id == userId,
-        photo: 'https://graph.facebook.com/' + obj.user_id + '/picture?type=large',
-        profile: 'https://www.facebook.com/' + obj.user_id,
+        photo: convertIdIntoFBPhoto(obj.user_id),
+        profile: convertIdIntoFBLink(obj.user_id),
         spam_report: obj.spam_report
     }
 }
@@ -541,14 +550,20 @@ function testAPI() {
         userId = response.id;
         userName = response.name;
         $('#username').html(userName);
-        $('#userPhoto').attr('src', 'https://graph.facebook.com/' + userId + '/picture?type=large');
+        $('#userPhoto').attr('src', convertIdIntoFBPhoto(userId));
 
-        //document.getElementById('status').innerHTML =
-        //  'Thanks for logging in, ' + response.id + '!';
         $('#notLogin').hide();
         $('#login').show();
         $('.command_button').each(function(index, el) {
             showHideCommandButton(el);
         });
     });
+}
+
+function convertIdIntoFBLink(id) {
+    return 'https://www.facebook.com/' + id;
+}
+
+function convertIdIntoFBPhoto(id) {
+    return 'https://graph.facebook.com/' + id + '/picture?type=large';
 }
