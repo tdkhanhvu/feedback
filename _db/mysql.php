@@ -342,6 +342,11 @@ class MySQL {
 		return -1;
 	}
 
+    public function getAllCategoriesForCompany($comp_id) {
+        $result = $this->selectFromTable('ind_com', [['company', $comp_id]]);
+        return $this->selectFromTable('category_type', [['industry', $result[0]['industry']]]);
+    }
+
 	// Insert into thread
 	public function insertIntoThread($branch_id, $user_id, $text, $rate, $cat = null, $img = null) {
 		$cats = isset($cat) ? json_decode($cat) : null;
@@ -364,26 +369,10 @@ class MySQL {
 		// Category manipulation
 		if (isset($cats)) {
 			foreach ($cats as $cat) {
-				$name = '';
-				switch ($cat) {
-					case 1:
-						$name = 'Phuc Vu';
-						break;
-
-					case 2:
-						$name = 'Giu Xe';
-						break;
-
-					case 3:
-						$name = 'San Pham';
-						break;
-				}
-
 				$this->insertIntoTable('category', 
 					[
 						['thread_id', $thr_id],
 						['cat', $cat],
-						['name', $name],
 					]);
 			}
 		}

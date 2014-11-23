@@ -1,28 +1,35 @@
-var companies = [];
-var branchId = '';
-var companyId = '';
+var companies = [],
+    branchId = '',
+    companyId = '',
+    categories = {},
+    branches = [],
+    company = {};
 
 function initCompany() {
-    var company = {},
+    company = {},
         branches = [];
-    $.when.apply($, [loadCompanyInfo(companyId, company),
-            getAllBranchesFromCompany(companyId, branches)]).then(function() {
-        company.branches = branches;
+    //need to load all categories first!
+    loadCategoriesForIndustry(companyId, loadCompanyInfo(companyId, company,
+        getAllBranchesFromCompany(companyId, branches,finishInitCompany))
+    );
+}
 
-        branchId = branches[0].id;
-        $.templates("#companyTmpl").link('#companyInfo', company);
-        $("#branch_list").select2();
-        $("#branch_list").on("change", function(e) { loadBranchInfo(e)});
+function finishInitCompany() {
+    company.branches = branches;
 
-        if (!initFilter) {
-            $.views.helpers({getStatus: getStatus});
-            $.views.helpers({getCategoryLabel: getCategoryLabel});
+    branchId = branches[0].id;
+    $.templates("#companyTmpl").link('#companyInfo', company);
+    $("#branch_list").select2();
+    $("#branch_list").on("change", function(e) { loadBranchInfo(e)});
 
-            $('#Container').mixItUp({animation:{effect: 'translateY'}});
-            initFilter = true;
-        }
-        loadThread(2);
-    });
+    if (!initFilter) {
+        $.views.helpers({getStatus: getStatus});
+        $.views.helpers({getCategoryLabel: getCategoryLabel});
+
+        $('#Container').mixItUp({animation:{effect: 'translateY'}});
+        initFilter = true;
+    }
+    loadThread(2);
 }
 
 function loadBranchInfo(e) {
@@ -32,7 +39,7 @@ function loadBranchInfo(e) {
     loadThread(2);
 }
 
-function loadCompanyInfo(companyId, company) {
+function loadCompanyInfo(companyId, company, callback) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
@@ -46,6 +53,9 @@ function loadCompanyInfo(companyId, company) {
             //TODO: need to add logo field to company table
             company.photo = result.info;
             company.time = result.time;
+
+            if (typeof(callback) == "function")
+                callback();
         },
         error: function(xhr, status, error) {
             alert(xhr.responseText );
@@ -53,7 +63,31 @@ function loadCompanyInfo(companyId, company) {
     });
 }
 
-function getAllBranchesFromCompany(companyId, branches) {
+function loadCategoriesForIndustry(companyId, callback) {
+    return $.ajax({
+        url: serviceUrl,
+        type: "post",
+        data: {'request':'GetAllCategoriesForCompany', 'companyId':companyId},
+        dataType: 'json',
+        success: function(result){
+            for (var i = 0; i < result.length; i++) {
+                var category = result[i];
+                if (!(category['id'] in categories)) {
+                    categories[category['id']] = category;
+                    console.log('add category ' + Object.keys(categories).length);
+                    console.log(categories);
+                }
+            }
+            if (typeof(callback) == "function")
+                callback();
+        },
+        error: function(xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
+}
+
+function getAllBranchesFromCompany(companyId, branches, callback) {
     return $.ajax({
         url: serviceUrl,
         type: "post",
@@ -68,10 +102,11 @@ function getAllBranchesFromCompany(companyId, branches) {
                         name: branch.address
                     });
             }
+            if (typeof(callback) == "function")
+                callback();
         },
         error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
+            alert(xhr.responseText);
         }
     });
 }

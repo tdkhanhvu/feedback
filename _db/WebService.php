@@ -28,6 +28,9 @@
             $result = $mysql->selectAllCompaniesFromIndustry(decodeId($_POST['industryId']));
             encodeId($result, 'company');
             break;
+        case "GetAllCategoriesForCompany":
+            $result = $mysql->getAllCategoriesForCompany(decodeId($_POST['companyId']));
+            break;
         case "GetCompanyInfo":
             $result = $mysql->selectCompanyInfo(decodeId($_POST['companyId']));
             //encodeId($result, 'company');

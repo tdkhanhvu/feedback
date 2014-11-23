@@ -51,7 +51,7 @@ function getThreadsFromBranch(branchId, limit) {
             for (var i = 0; i < result.length; i++) {
                 var thread = result[i],
                     temp = {
-                        categories: thread.categories.map(function(obj) {return convertCategoryLabel(obj['name'])}),
+                        categories: thread.categories,
                         order: thread.order,
                         type: 'thread',
                         solved: thread.solved,
@@ -142,41 +142,17 @@ function getStatus(status) {
     }
 }
 
-function getCategoryLabel(categories) {
+function getCategoryLabel(cats) {
     var result = "";
-    categories.forEach(function(category) {
-        var temp = "";
-        switch(category) {
-            case 'service':
-                temp = "<span class='label label-primary tag'>" + getLangValue('Service') + "</span>";
-                break;
-            case 'park':
-                temp =  "<span class='label label-success tag'>" + getLangValue('Park') + "</span>";
-                break;
-            case 'product':
-                temp = "<span class='label label-warning tag'>" + getLangValue('Product') + "</span>";
-                break;
-            default:
-                temp = "";
-        }
+    cats.forEach(function(category) {
+        var catId = category['cat'];
+
+        temp = "<span class='label label-" + categories[catId]['label'] + " tag'>" +
+            getLangValue(categories[catId]['category']) + "</span>";
+
         result = result + temp + "\n";
     })
     return result;
-}
-
-function convertCategoryLabel(category) {
-    switch(category) {
-        case 'Phuc Vu':
-            return "service";
-        case 'Giu Xe':
-            return "park";
-        case 'San Pham':
-            return "product";
-        default:
-            return '';
-    }
-
-    return '';
 }
 
 function convertCategoryLabelToInt(category) {
