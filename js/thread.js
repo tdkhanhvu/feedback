@@ -70,13 +70,13 @@ function getThreadsFromBranch(branchId, limit) {
 
 function createNewThread(branchId, text) {
     var rate = $('#feedback').raty('score') || 0,
-        categories = new Array(),
-        uploadPhotos = getUploadedPhoto($('#feedback').parent().find('form')),
-        temp = new Array();
+        cats = [],
+        uploadPhotos = getUploadedPhoto($('#feedback').parent().find('form'));
+
     allCategories.forEach(function(category) {
         if ($('#input_' + category).is(':checked')) {
-            categories.push(category);
-            temp.push(convertCategoryLabelToInt(category));
+            var a = convertCategoryLabelToInt(category);
+            cats.push(a);
         }
     })
 
@@ -84,7 +84,7 @@ function createNewThread(branchId, text) {
         url: serviceUrl,
         type: "post",
         data: {'request':'InsertIntoThread', 'branchId':branchId, 'userId': userId, 'text': text, 'rate': rate,
-            'category': JSON.stringify(temp), 'image': JSON.stringify(uploadPhotos)},
+            'category': JSON.stringify(cats), 'image': JSON.stringify(uploadPhotos)},
         dataType: 'json',
         success: function(result){
             if (result != '0') {
@@ -92,7 +92,7 @@ function createNewThread(branchId, text) {
                     id: result,
                     photo: photo,
                     name: userName,
-                    categories: categories,
+                    categories: cats,
                     text: text,
                     type: 'thread',
                     solved: '0',
@@ -143,9 +143,16 @@ function getStatus(status) {
 }
 
 function getCategoryLabel(cats) {
-    var result = "";
+    var result = "",
+        catId = -1;
     cats.forEach(function(category) {
-        var catId = category['cat'];
+        catId = -1;
+
+        //add new thread. return id of category only
+        if (typeof category['cat'] === 'undefined')
+            catId = category;
+        else//load from server
+            catId = category['cat'];
 
         temp = "<span class='label label-" + categories[catId]['label'] + " tag'>" +
             getLangValue(categories[catId]['category']) + "</span>";
@@ -156,18 +163,15 @@ function getCategoryLabel(cats) {
 }
 
 function convertCategoryLabelToInt(category) {
-    switch(category) {
-        case 'service':
-            return 1;
-        case 'park':
-            return 2;
-        case 'product':
-            return 3;
-        default:
-            return -1;
-    }
+    var result = -1;
+    $.each(categories, function(k, v) {
+        if (v['category'] == category) {
+            result = k;
+            return false;
+        }
+    });
 
-    return -1;
+    return result;
 }
 
 function resetSubmitThreadForm() {

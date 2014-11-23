@@ -74,8 +74,6 @@ function loadCategoriesForIndustry(companyId, callback) {
                 var category = result[i];
                 if (!(category['id'] in categories)) {
                     categories[category['id']] = category;
-                    console.log('add category ' + Object.keys(categories).length);
-                    console.log(categories);
                 }
             }
             if (typeof(callback) == "function")
@@ -119,7 +117,6 @@ function getCompaniesByIndustryId(industryId, industryName) {
         data: {'request':'GetAllCompaniesFromIndustries', 'industryId':industryId},
         dataType: 'json',
         success: function(result){
-            console.log("receive result " + result.length);
             for (var i = 0; i < result.length; i++) {
                 var company = result[i];
                 console.log(company);
